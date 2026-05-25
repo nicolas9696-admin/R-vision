@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Révision BPEL Module 3M3</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,sans-serif;background:#f5f5f0;color:#1a1a1a;padding:1rem}
+h1{font-size:20px;font-weight:600;margin-bottom:0.25rem;color:#1a1a1a}
+.subtitle{font-size:13px;color:#666;margin-bottom:1rem}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;padding:0.75rem 0;border-bottom:1px solid #e0e0d8;margin-bottom:1rem}
+.tab{padding:6px 14px;border-radius:8px;border:1px solid #d0d0c8;font-size:13px;cursor:pointer;background:#fff;color:#555;transition:all 0.15s}
+.tab.active{background:#1a5fb4;color:#fff;border-color:#1a5fb4;font-weight:500}
+.tab:hover:not(.active){background:#f0f0e8}
+.section{display:none}
+.section.active{display:block}
+.card{background:#fff;border:1px solid #e0e0d8;border-radius:12px;padding:1rem 1.25rem;margin-bottom:1rem}
+.card h3{font-size:15px;font-weight:600;margin-bottom:0.75rem}
+.card p,.card li{font-size:14px;color:#444;line-height:1.6}
+.card ul,.card ol{padding-left:1.2rem}
+.card li{margin-bottom:4px}
+.badge{display:inline-block;font-size:11px;padding:2px 10px;border-radius:20px;font-weight:600;margin-bottom:0.6rem;text-transform:uppercase;letter-spacing:0.03em}
+.b-blue{background:#dbeafe;color:#1e40af}
+.b-green{background:#dcfce7;color:#166534}
+.b-amber{background:#fef3c7;color:#92400e}
+.b-red{background:#fee2e2;color:#991b1b}
+.formula{background:#f0f4ff;border-left:3px solid #3b82f6;padding:0.75rem 1rem;margin:0.75rem 0;font-size:13px;font-family:monospace;border-radius:0 8px 8px 0;line-height:1.5}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.qa-item{border:1px solid #e0e0d8;border-radius:8px;margin-bottom:0.75rem;overflow:hidden}
+.qa-q{padding:0.75rem 1rem;font-size:14px;font-weight:500;cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:#fafaf8}
+.qa-q:hover{background:#f0f0e8}
+.qa-a{display:none;padding:0.75rem 1rem;font-size:13px;color:#444;line-height:1.6;border-top:1px solid #e0e0d8;background:#fff}
+.qa-a.open{display:block}
+.arrow{font-size:16px;color:#888;transition:transform 0.2s;display:inline-block}
+.arrow.open{transform:rotate(90deg)}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;padding:7px 10px;background:#f5f5f0;font-weight:600;color:#333;border-bottom:1px solid #e0e0d8}
+td{padding:7px 10px;border-bottom:1px solid #e0e0d8;color:#555;vertical-align:top}
+.hi{color:#1a5fb4;font-weight:600}
+.btn{display:inline-block;margin-top:0.75rem;padding:7px 16px;border:1px solid #d0d0c8;border-radius:8px;font-size:13px;cursor:pointer;background:#fff;color:#444;text-decoration:none}
+.btn:hover{background:#f0f0e8}
+</style>
+</head>
+<body>
+<h1>📚 Révision BPEL — Module 3M3</h1>
+<p class="subtitle">Étude du projet, réalisation et prestations · Niveau Brevet Fédéral Suisse · CERPE 2025</p>
+
+<div class="tabs">
+  <button class="tab active" onclick="show('bilan',this)">⚡ Bilan de puissance</button>
+  <button class="tab" onclick="show('schema',this)">📐 Schéma distribution</button>
+  <button class="tab" onclick="show('faceav',this)">🔌 Face avant EA</button>
+  <button class="tab" onclick="show('eclairage',this)">💡 Éclairage</button>
+  <button class="tab" onclick="show('domot',this)">🏠 Domotique</button>
+  <button class="tab" onclick="show('chantier',this)">🏗️ Chantier</button>
+  <button class="tab" onclick="show('sia',this)">📋 SIA & Minergie</button>
+  <button class="tab" onclick="show('qcm',this)">🧠 Quiz</button>
+</div>
+
+<!-- BILAN DE PUISSANCE -->
+<div id="bilan" class="section active">
+  <div class="card">
+    <span class="badge b-blue">Formule clé — examen</span>
+    <h3>Calcul de l'intensité d'introduction</h3>
+    <div class="formula">I = (P × fs) / (400 × √3 × cos φ)</div>
+    <ul>
+      <li><span class="hi">P</span> = puissance totale installée (W)</li>
+      <li><span class="hi">fs</span> = facteur de simultanéité (NIBT ou adapté selon exploitation)</li>
+      <li><span class="hi">cos φ = 0.9</span> — valeur théorique standard, minimum admis par les GRD suisses</li>
+      <li><span class="hi">400 V</span> = tension triphasée du réseau suisse</li>
+    </ul>
+  </div>
+  <div class="two-col">
+    <div class="card">
+      <span class="badge b-green">Méthode 1 — Recommandée</span>
+      <h3>Par puissance max du disjoncteur</h3>
+      <table>
+        <tr><th>Disjoncteur</th><th>Mono</th><th>Triphasé</th></tr>
+        <tr><td>C13A</td><td class="hi">3 kW</td><td class="hi">9 kW</td></tr>
+        <tr><td>C16A</td><td class="hi">3.6 kW</td><td class="hi">11 kW</td></tr>
+      </table>
+      <p style="margin-top:0.5rem;font-size:12px;color:#777">Appliquer un fs plus petit que la norme pour rester cohérent avec la réalité. Méthode plus rapide en examen.</p>
+    </div>
+    <div class="card">
+      <span class="badge b-amber">Méthode 2 — Détaillée</span>
+      <h3>Par type d'appareil</h3>
+      <ul>
+        <li>Prise de courant → <span class="hi">100 W / prise</span></li>
+        <li>Point lumineux → <span class="hi">20 W / luminaire</span></li>
+        <li>Appliquer les facteurs NIBT selon nombre de circuits</li>
+        <li>Prises doubles/triples = 1 seul appareil</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card">
+    <span class="badge b-red">Point critique examen — Sélectivité</span>
+    <h3>Sélectivité partielle vs totale</h3>
+    <ul>
+      <li>Utiliser la <span class="hi">tabelle constructeur</span> fournie dans la consigne</li>
+      <li>Croiser : courant groupe × courant de court-circuit × protection introduction</li>
+      <li>Zone grisée = <span class="hi">sélectivité totale</span> | Zone blanche = <span class="hi">pas de sélectivité</span></li>
+      <li>Dans tableau disjoncteur : "T" = totalement sélectif, "–" = pas de sélectivité, valeur numérique = sélectif au-dessus de ce Icc</li>
+    </ul>
+    <div class="formula">Exemple corrigé exercice :<br>
+Icc = 4.3 kA | Groupe B40A | Introduction 80A → PAS de sélectivité<br>
+→ Il faut un HPC 100A pour obtenir la sélectivité totale</div>
+  </div>
+</div>
+
+<!-- SCHÉMA DE DISTRIBUTION -->
+<div id="schema" class="section">
+  <div class="card">
+    <span class="badge b-blue">Éléments obligatoires sur le schéma</span>
+    <h3>Ce qui doit impérativement figurer sur le schéma de distribution</h3>
+    <table>
+      <tr><th>Élément</th><th>Détail</th></tr>
+      <tr><td>Nom du GRD</td><td>Gestionnaire du réseau de distribution local</td></tr>
+      <tr><td>Système de mise au neutre</td><td>Avant ET après le CSG (compteur)</td></tr>
+      <tr><td>Sections de câbles</td><td>Nombre de fils + section de tous les tronçons</td></tr>
+      <tr><td>Mises à terre</td><td>Électrode de fondation, conducteur PE principal</td></tr>
+      <tr><td>Protections</td><td>Type (B/C/D) + caractéristiques (courant nominal)</td></tr>
+      <tr><td>Numéros de groupes</td><td>Désignation, nombre de fils et sections</td></tr>
+      <tr><td>Éléments GRD</td><td>TC, protection TC, récepteur délesté, lignes pilotes</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <span class="badge b-amber">Couleurs normalisées — plan d'installation</span>
+    <h3>Code couleur obligatoire</h3>
+    <table>
+      <tr><td>🔵 <b>Bleu</b></td><td>Lumière</td><td>🔴 <b>Rouge</b></td><td>Force, liaison équipotentielle, électrode de fondation</td></tr>
+      <tr><td>🟢 <b>Vert</b></td><td>Éclairage de secours, TT, informatique, CUC</td><td>🟡 <b>Jaune</b></td><td>Tracé, conduits</td></tr>
+      <tr><td>🩷 <b>Rose</b></td><td>Contrôle d'accès, alarme effraction</td><td>🟠 <b>Orange</b></td><td>Détection incendie</td></tr>
+      <tr><td>🟤 <b>Brun</b></td><td>Interphone, audio, horloge</td><td>🟣 <b>Violet</b></td><td>Radio/TV, KNX</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <span class="badge b-red">Règles d'or du plan — à ne pas oublier</span>
+    <h3>Limites et exigences</h3>
+    <ul>
+      <li>Maximum <span class="hi">8 tubes par boîte de dérivation</span></li>
+      <li>Maximum <span class="hi">12 à 15 appareils par groupe</span> (1200–1500 W)</li>
+      <li>Prises doubles/triples = 1 seul appareil pour le comptage</li>
+      <li>Tubes ≠ M20 → à indiquer sur le plan</li>
+      <li>Sections > 1.5 mm² → à indiquer sur le plan</li>
+      <li>Nombre de conducteurs dans le tube → à indiquer</li>
+      <li>EA, luminaires et chemins de câbles → à l'échelle sur le plan</li>
+    </ul>
+  </div>
+</div>
+
+<!-- FACE AVANT EA -->
+<div id="faceav" class="section">
+  <div class="card">
+    <span class="badge b-blue">Règle fondamentale</span>
+    <h3>Face avant d'ensemble d'appareillage (EA)</h3>
+    <ul>
+      <li>Toujours à l'échelle <span class="hi">1/10ème</span></li>
+      <li>Utiliser un <span class="hi">chablon</span> pour la rapidité et la précision</li>
+      <li>Prévoir de la <span class="hi">place de réserve</span> dans la distribution</li>
+      <li>Respecter PDIE et NIBT : hauteurs de montage, dimensions plaques compteurs</li>
+      <li>Faire apparaître l'infrastructure principale : chemins de câbles, TI, boîtes à bornes</li>
+    </ul>
+  </div>
+  <div class="two-col">
+    <div class="card">
+      <span class="badge b-green">Système Smissline (ABB)</span>
+      <h3>Distribution modulaire moderne</h3>
+      <ul>
+        <li>Bloc d'alimentation + <span class="hi">rail d'énergie</span></li>
+        <li>Disjoncteurs, RCD clipsés directement sur le rail</li>
+        <li>Pas besoin de dessiner chaque disjoncteur individuellement</li>
+        <li>Indiquer l'espace nécessaire selon le descriptif</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="badge b-amber">Types de fusibles avant-compteur</span>
+      <h3>Protections HTA/BT</h3>
+      <ul>
+        <li><span class="hi">DII (Diazed)</span> → jusqu'à 25 A</li>
+        <li><span class="hi">DIII (Diazed)</span> → jusqu'à 63 A</li>
+        <li><span class="hi">HPC Din00</span> → 80 A, 100 A et plus</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card">
+    <span class="badge b-blue">Armoire informatique — ordre logique</span>
+    <h3>Organisation du bas vers le haut</h3>
+    <table>
+      <tr><th>Position</th><th>Élément</th></tr>
+      <tr><td>🔋 Bas</td><td><span class="hi">ASI</span> (alimentation sans coupure) avec bypass de maintenance</td></tr>
+      <tr><td>🖥️</td><td>Éléments actifs réseau privé : serveurs, PABX/IPBX</td></tr>
+      <tr><td>🔀</td><td>Switch + Patch panel (distribution RJ45)</td></tr>
+      <tr><td>🔒</td><td>Passerelle réseau : routeur, firewall (entre public et privé)</td></tr>
+      <tr><td>📥 Haut</td><td><span class="hi">Introduction</span> : fibre optique, alimentation électrique</td></tr>
+    </table>
+    <p style="margin-top:0.5rem;font-size:13px;color:#666">Toujours prévoir : alimentation électrique dédiée, liaison équipotentielle, dimensionnement ASI selon temps d'autonomie requis.</p>
+  </div>
+</div>
+
+<!-- ÉCLAIRAGE -->
+<div id="eclairage" class="section">
+  <div class="card">
+    <span class="badge b-blue">Formule — à maîtriser parfaitement</span>
+    <h3>Nombre de luminaires nécessaires</h3>
+    <div class="formula">N = (Surface [m²] × Éclairement voulu [lux]) / (Flux lumineux [lm] × Rendement η)</div>
+    <ul>
+      <li>η (rendement global) sans indication : prévoir <span class="hi">0.4 à 0.6</span></li>
+      <li>Intègre : rendement du local + rendement du luminaire + vieillissement</li>
+    </ul>
+    <div class="formula">Exemple corrigé du cours :<br>
+Pièce 5×6 m = 30 m² | 500 lux | Flux 2360 lm | η = 0.45<br>
+N = (30 × 500) / (2360 × 0.45) = 15000 / 1062 = <b>14.1 → arrondi à 15</b></div>
+  </div>
+  <div class="two-col">
+    <div class="card">
+      <span class="badge b-green">Répartition idéale</span>
+      <h3>Positionnement des luminaires</h3>
+      <ul>
+        <li>Marge au bord : <span class="hi">1/6 de la travée</span></li>
+        <li>Espacement central : <span class="hi">1/3 de la travée</span></li>
+        <li>Objectif : uniformité maximale de l'éclairement</li>
+        <li>À éviter : marge 1/4 → zones sombres aux angles</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="badge b-amber">Solutions rapides en projet</span>
+      <h3>Types de luminaires</h3>
+      <ul>
+        <li>Faux plafond → <span class="hi">encastrés 60×60</span>, câbles plats</li>
+        <li>Sans contrainte → <span class="hi">rail d'éclairage</span> (Tecton, Traq)</li>
+        <li>Bureau open space → <span class="hi">lampes sur pieds</span> connectées</li>
+        <li>Variation prévue → <span class="hi">protocole DALI obligatoire</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="card">
+    <span class="badge b-blue">TV — Dimensionnement du signal</span>
+    <h3>Calcul d'antenne TV / câble</h3>
+    <ul>
+      <li>Signal utilisable : <span class="hi">63 à 73 dBµV</span></li>
+      <li>Toujours travailler depuis la <span class="hi">branche la plus défavorable</span></li>
+      <li>Partir de la prise la plus éloignée (valeur cible), puis remonter</li>
+      <li>Comptabiliser les atténuations : câble, prises, répartiteurs</li>
+      <li>Prise intermédiaire : prendre le signal en entrée et compter l'atténuation de raccordement</li>
+      <li>Privilégier une <span class="hi">distribution en étoile</span> (éviter les prises en série)</li>
+    </ul>
+  </div>
+</div>
+
+<!-- DOMOTIQUE -->
+<div id="domot" class="section">
+  <div class="card">
+    <span class="badge b-blue">KNX — Standard ouvert</span>
+    <h3>Bus EIB / KNX</h3>
+    <ul>
+      <li>Normalisé <span class="hi">ISO/CEI 14543</span> et <span class="hi">CEN EN 13321</span></li>
+      <li>Tension d'alimentation bus : <span class="hi">30 V SELV</span></li>
+      <li>3 modes de configuration : <span class="hi">A</span> (Automatic), <span class="hi">E</span> (Easy), <span class="hi">S</span> (System)</li>
+    </ul>
+    <table style="margin-top:0.75rem">
+      <tr><th>Capteurs</th><th>Actionneurs</th></tr>
+      <tr><td>Boutons-poussoirs, interrupteurs</td><td>Commutation (lumières, moteurs)</td></tr>
+      <tr><td>Détecteurs mouvement/présence</td><td>Variation d'intensité</td></tr>
+      <tr><td>Capteurs de luminosité</td><td>Volets roulants, stores</td></tr>
+      <tr><td>Entrées binaires (contacts libres)</td><td>—</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <span class="badge b-green">DALI — Norme CEI 62386</span>
+    <h3>Digital Addressable Lighting Interface</h3>
+    <ul>
+      <li>Transmission numérique sur <span class="hi">2 brins</span></li>
+      <li>Max <span class="hi">64 participants</span>, <span class="hi">16 groupes</span>, <span class="hi">16 scénarios</span> par segment</li>
+      <li>Longueur max conducteur : <span class="hi">300 m</span></li>
+      <li>Communication <span class="hi">bidirectionnelle</span> (renvoi d'état)</li>
+      <li>Topologie libre : ligne, arbre, étoile, mixte</li>
+      <li>Remplace l'interface analogique 1–10 V</li>
+    </ul>
+    <div class="formula">Passerelles KNX disponibles : DALI, DMX, SMI</div>
+  </div>
+  <div class="card">
+    <span class="badge b-amber">Comparatif systèmes</span>
+    <h3>Ouvert vs propriétaire</h3>
+    <table>
+      <tr><th>Système</th><th>Type</th><th>Particularité clé</th></tr>
+      <tr><td><b>KNX</b></td><td>Ouvert</td><td>Standard international, tous fabricants interopérables</td></tr>
+      <tr><td><b>DALI</b></td><td>Ouvert</td><td>Dédié éclairage, intégrable via passerelle KNX</td></tr>
+      <tr><td><b>Free@home (ABB)</b></td><td>Propriétaire</td><td>Bus 2 fils, installation simplifiée</td></tr>
+      <tr><td><b>Wiser (Feller)</b></td><td>Propriétaire</td><td>Fil T (K+) supplémentaire, max 50 appareils</td></tr>
+      <tr><td><b>MyHome (Bticino)</b></td><td>Propriétaire</td><td>Bus 27 Vdc, actionneurs au tableau</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- GESTION DE CHANTIER -->
+<div id="chantier" class="section">
+  <div class="card">
+    <span class="badge b-blue">Phases SIA 108 — à connaître par cœur</span>
+    <h3>Les 6 phases du projet</h3>
+    <table>
+      <tr><th>#</th><th>Phase</th><th>Rôle de l'électricien-chef de projet</th></tr>
+      <tr><td>1</td><td>Définition des objectifs</td><td>Absent (honoraires maîtrise d'ouvrage)</td></tr>
+      <tr><td>2</td><td>Études préliminaires</td><td>Faisabilité, choix des mandataires</td></tr>
+      <tr><td>3</td><td>Projet</td><td>Avant-projet, projet de construction, demande d'autorisation</td></tr>
+      <tr><td>4</td><td>Appel d'offres</td><td>Comparaison offres, proposition d'adjudication</td></tr>
+      <tr><td>5</td><td>Réalisation</td><td>Exécution, mise en service</td></tr>
+      <tr><td>6</td><td>Exploitation</td><td>Maintenance, finalisation dossiers</td></tr>
+    </table>
+  </div>
+  <div class="two-col">
+    <div class="card">
+      <span class="badge b-green">Classeur de chantier</span>
+      <h3>Documents mis à disposition des travailleurs</h3>
+      <ol>
+        <li>Plan hygiène et sécurité (PHS)</li>
+        <li>Numéros de téléphone et adresses utiles</li>
+        <li>Plan d'exécution</li>
+        <li>Planning intentionnel</li>
+        <li>Bulletins de livraison</li>
+        <li>Notices de montage</li>
+        <li>PV de chantier</li>
+      </ol>
+    </div>
+    <div class="card">
+      <span class="badge b-amber">Dossier de révision</span>
+      <h3>Remis au client en fin de chantier</h3>
+      <ol>
+        <li>Rapport de sécurité + protocoles de mesure</li>
+        <li>Documents OIBT (avis d'installation)</li>
+        <li>Fiches techniques du matériel</li>
+        <li>Plans révisés (as-built)</li>
+        <li>Protocoles mesures informatiques</li>
+        <li>Certificat conformité éclairage de secours</li>
+        <li>Certificat conformité paratonnerre</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<!-- SIA & MINERGIE -->
+<div id="sia" class="section">
+  <div class="card">
+    <span class="badge b-blue">5 normes SIA — à citer à l'examen</span>
+    <h3>Normes SIA de l'électricien-chef de projet</h3>
+    <table>
+      <tr><th>Norme</th><th>Objet</th></tr>
+      <tr><td class="hi">SIA 108</td><td>Prestations et honoraires des ingénieurs — 6 phases du projet</td></tr>
+      <tr><td class="hi">SIA 118</td><td>Conditions générales pour l'exécution des travaux de construction</td></tr>
+      <tr><td class="hi">SIA 118/380</td><td>Conditions générales pour les installations techniques du bâtiment</td></tr>
+      <tr><td class="hi">SIA 387/4</td><td>Électricité — éclairage : calcul et exigences (màj 2023) · s'applique aux bâtiments > 1000 m² SRE</td></tr>
+      <tr><td class="hi">SIA 451</td><td>Informatique — formats des données pour descriptifs (échange BIM/CFC)</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <span class="badge b-green">3 labels Minergie — du moins au plus efficient</span>
+    <h3>Labels de construction climato-responsable</h3>
+    <table>
+      <tr><th>Label</th><th>Description</th></tr>
+      <tr><td class="hi">Minergie</td><td>Bilan énergétique ~25% meilleur qu'une construction conventionnelle. Base standard.</td></tr>
+      <tr><td class="hi">Minergie P</td><td>Isolation renforcée, étanchéité à l'air testée sur place. Efficacité maximale de l'enveloppe.</td></tr>
+      <tr><td class="hi">Minergie A</td><td>Indépendance énergétique maximale. Production &gt; consommation (PV). Zéro net 2050.</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <span class="badge b-amber">7 principes Minergie — à réciter</span>
+    <h3>Fondements d'un projet Minergie</h3>
+    <ol>
+      <li>Exploitation du potentiel solaire</li>
+      <li>Installation du monitoring énergétique</li>
+      <li>Enveloppe de bâtiment parfaitement isolée et étanche à l'air</li>
+      <li>Protection thermique adaptée à demain</li>
+      <li>Renouvellement de l'air automatique</li>
+      <li>Zéro CO₂ en exploitation</li>
+      <li>Minimisation des émissions grises</li>
+    </ol>
+  </div>
+</div>
+
+<!-- QUIZ -->
+<div id="qcm" class="section">
+  <div class="card" style="margin-bottom:1rem">
+    <span class="badge b-blue">12 questions niveau Brevet Fédéral</span>
+    <h3>Cliquez sur une question pour révéler la réponse</h3>
+  </div>
+  <div class="qa-item"><div class="qa-q" onclick="tog(0)"><span>Quelle est la puissance assignée à un disjoncteur C13A monophasé dans le bilan de puissance ?</span><span class="arrow" id="a0">›</span></div><div class="qa-a" id="r0">3 kW (13A × 230V ≈ 3000 W). Pour le C13A triphasé → 9 kW (13A × 400V × √3 ≈ 9000 W).</div></div>
+  <div class="qa-item"><div class="qa-q" onclick="tog(1)"><span>Quel cos φ théorique utiliser pour le bilan de puissance ? Pourquoi ?</span><span class="arrow" id="a1">›</span></div><div class="qa-a" id="r1">cos φ = 0.9. C'est la valeur théorique standard et la valeur minimale admise par les GRD suisses.</div></div>
+  <div class="qa-item"><div class="qa-q" onclick="tog(2)"><span>À quelle échelle doit être réalisée la face avant d'un EA ?</span><span class="arrow" id="a2">›</span></div><div class="qa-a" id="r2">À l'échelle 1/10ème, avec utilisation recommandée d'un chablon pour la précision et la rapidité.</div></div>
+  <div class="qa-item"><div class="qa-q" onclick="tog(3)"><span>Quel est le niveau de signal requis pour une prise TV ? Comment procéder au calcul ?</span><span class="arrow" id="a3">›</span></div><div class="qa-a" id="r3">63 à 73 dBµV. On part de la prise la plus éloignée (valeur cible dans la plage), puis on remonte en ajoutant les atténuations (câble, prises, répartiteurs) pour déterminer le niveau nécessaire en tête.</div></div>
+  <div class="qa-item"><div class="qa-q" onclick="tog(4)"><span>Combien de participants max par segment DALI ? Combien de groupes et scénarios ?</span><span class="arrow" id="a4">›</span></div><div class="qa-a" id="r4">64 participants, 16 groupes, 16 scénarios par segment DALI. Longueur max 300 m. Transmission sur 2 brins.</div></div>
+  <div class="qa-item"><div class="qa-q" onclick="tog(5)"><span>Citez les 6 phases du projet selon la norme SIA 108.</span><span class="arrow" id="a5">›</span></div><div class="qa-a" id="r5">1. Définition des objectifs → 2. Études préliminaires → 3. Projet → 4. Appel d'offres → 5. Réalisation → 6. Exploitation.</div></div>
+  <div class="qa-item"><div class="qa-q" onclick="tog(6)"><span>Citez les 3 labels Minergie du moins au plus efficient.</span><span class="arrow" id="a6">›</span></div><div class="qa-a" id="r6">1. Minergie → 2. Minergie P → 3. Minergie A (production supérieure à la consommation sur l'année).</div></div>
+  <div class="qa-item"><div class="qa-q" onclick="tog(7)"><span>Quelle est la répartition idéale des luminaires dans une pièce rectangulaire ?</span><span class="arrow" id="a7">›</span></div><div class="qa-a" id="r7">Marge au bord = 1/6 de la travée, espacement central = 1/3 de la travée. À éviter : marge de 1/4 qui crée des zones trop éclairées et des zones sombres aux angles.</div></div>
+  <div class="qa-item"><div class="qa-q" onclick="tog(8)"><span>Quelle norme SIA concerne l'éclairage dans les bâtiments > 1000 m² SRE ?</span><span class="arrow" id="a8">›</span></div><div class="qa-a" id="r8">SIA 387/4 — Électricité dans les bâtiments — Éclairage : calcul et exigences (mise à jour 2023). Ne s'applique pas aux bâtiments résidentiels.</div></div>
+  <div class="qa-item"><div class="qa-q" onclick="tog(9)"><span>Quel rendement η prévoir pour un calcul d'éclairage sans indication spécifique ?</span><span class="arrow" id="a9">›</span></div><div class="qa-a" id="r9">Entre 0.4 et 0.6. Ce rendement global intègre le rendement du local, du luminaire et le vieillissement des sources lumineuses.</div></div>
+  <div class="qa-item"><div class="qa-q" onclick="tog(10)"><span>Quels éléments doit-on indiquer sur le plan d'installation (règles d'or) ?</span><span class="arrow" id="a10">›</span></div><div class="qa-a" id="r10">Max 8 tubes/boîte. Max 12-15 appareils/groupe. Tubes ≠ M20 à noter. Sections > 1.5 mm² à noter. Nombre de conducteurs à indiquer. EA, luminaires et chemins de câbles à l'échelle.</div></div>
+  <div class="qa-item"><div class="qa-q" onclick="tog(11)"><span>Exercice : pièce 4×8m, 300 lux, luminaire 3000 lm, η=0.5 → combien de luminaires ?</span><span class="arrow" id="a11">›</span></div><div class="qa-a" id="r11">N = (4×8 × 300) / (3000 × 0.5) = 9600 / 1500 = 6.4 → arrondir à 7 luminaires (ou 8 pour une meilleure répartition selon les dimensions de la pièce).</div></div>
+</div>
+
+<script>
+function show(id,btn){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+function tog(n){
+  var a=document.getElementById('r'+n);
+  var arr=document.getElementById('a'+n);
+  var open=a.classList.contains('open');
+  document.querySelectorAll('.qa-a').forEach(x=>x.classList.remove('open'));
+  document.querySelectorAll('.arrow').forEach(x=>x.classList.remove('open'));
+  if(!open){a.classList.add('open');arr.classList.add('open');}
+}
+</script>
+</body>
+</html>
