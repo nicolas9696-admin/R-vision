@@ -1,0 +1,1752 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Révision BPEL — M3M3 + Module 4 Complet V2</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,sans-serif;background:#f2f2ee;color:#1a1a1a}
+.hdr{background:#1a3a5c;color:#fff;padding:1rem 1.5rem;position:sticky;top:0;z-index:200;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+.hdr h1{font-size:16px;font-weight:700}
+.hdr p{font-size:11px;opacity:.7;margin-top:2px}
+.mod-tabs{display:flex;overflow-x:auto;background:#fff;border-bottom:2px solid #1a3a5c}
+.mtab{padding:10px 18px;font-size:13px;font-weight:700;cursor:pointer;border:none;background:transparent;color:#555;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap}
+.mtab.on{color:#1a3a5c;border-bottom-color:#1a3a5c;background:#f0f4ff}
+.mtab:hover:not(.on){background:#f5f5f0}
+.mod{display:none;padding:1rem}
+.mod.on{display:block}
+.stabs{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:1rem}
+.stab{padding:5px 13px;border-radius:20px;border:1px solid #ccc;font-size:12px;cursor:pointer;background:#fff;color:#555}
+.stab.on{background:#1a3a5c;color:#fff;border-color:#1a3a5c;font-weight:600}
+.sub{display:none}
+.sub.on{display:block}
+.card{background:#fff;border:1px solid #e0e0d8;border-radius:10px;padding:1rem 1.2rem;margin-bottom:.85rem}
+h3{font-size:14px;font-weight:700;color:#1a3a5c;margin-bottom:.6rem}
+h4{font-size:13px;font-weight:700;color:#333;margin:.75rem 0 .35rem}
+p,li{font-size:13px;color:#444;line-height:1.65}
+ul,ol{padding-left:1.2rem}
+li{margin-bottom:3px}
+.badge{display:inline-block;font-size:11px;padding:2px 9px;border-radius:12px;font-weight:700;margin-bottom:.5rem}
+.bb{background:#dbeafe;color:#1e3a8a}
+.bg{background:#dcfce7;color:#14532d}
+.ba{background:#fef3c7;color:#78350f}
+.br{background:#fee2e2;color:#7f1d1d}
+.bp{background:#f3e8ff;color:#4c1d95}
+.bo{background:#ffedd5;color:#7c2d12}
+.fm{background:#f0f4ff;border-left:3px solid #3b82f6;padding:.65rem .9rem;margin:.6rem 0;font-size:12.5px;font-family:monospace;border-radius:0 6px 6px 0;line-height:1.6}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.three{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.75rem}
+.qa{border:1px solid #e0e0d8;border-radius:8px;margin-bottom:.6rem;overflow:hidden}
+.qq{padding:.65rem 1rem;font-size:13px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:#fafaf8}
+.qq:hover{background:#f0f0e8}
+.ra{display:none;padding:.65rem 1rem;font-size:13px;color:#333;line-height:1.65;border-top:1px solid #e8e8e0}
+.ra.on{display:block}
+.ar{font-size:16px;color:#888;transition:transform .2s;min-width:16px;display:inline-block}
+.ar.on{transform:rotate(90deg)}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th{text-align:left;padding:6px 9px;background:#eef0f8;font-weight:700;color:#1a3a5c;border-bottom:1.5px solid #d0d4e8}
+td{padding:6px 9px;border-bottom:1px solid #e8e8e0;color:#444;vertical-align:top}
+tr:last-child td{border-bottom:none}
+.hi{color:#1a3a5c;font-weight:700}
+.ok{color:#14532d;font-weight:600}
+.wn{color:#78350f;font-weight:600}
+.er{color:#7f1d1d;font-weight:600}
+.warn{background:#fff3cd;border:1px solid #ffc107;border-radius:6px;padding:.6rem .9rem;font-size:12.5px;margin:.5rem 0}
+.info{background:#e8f4fd;border:1px solid #3b82f6;border-radius:6px;padding:.6rem .9rem;font-size:12.5px;margin:.5rem 0;color:#1e3a8a}
+.stit{font-size:16px;font-weight:700;color:#1a3a5c;margin:.5rem 0 .75rem;padding-bottom:.4rem;border-bottom:2px solid #e0e4f0}
+@media(max-width:600px){.two,.three{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <h1>📚 Révision BPEL — M3M3 &amp; Module 4 Complet V2</h1>
+  <p>Brevet Fédéral Électricien Chef de Projet · CERPE Suisse · Sources Drive complet</p>
+</div>
+<div class="mod-tabs">
+  <button class="mtab on" onclick="M('m3m3',this)">MODULE 3M3</button>
+  <button class="mtab" onclick="M('m41',this)">M4.1 — Contrôle NIBT</button>
+  <button class="mtab" onclick="M('m42',this)">M4.2 — Mesures</button>
+  <button class="mtab" onclick="M('m42b',this)">M4.2 — Systèmes &amp; Terre</button>
+  <button class="mtab" onclick="M('m42c',this)">M4.2 — IRVE &amp; Appareils</button>
+  <button class="mtab" onclick="M('m43',this)">M4.3 — Sécurité</button>
+  <button class="mtab" onclick="M('quiz',this)">🧠 QUIZ 50 questions</button>
+</div>
+
+<!-- ===== M3M3 ===== -->
+<div id="m3m3" class="mod on">
+<div class="stabs">
+  <button class="stab on" onclick="S('bp',this,'m3m3')">⚡ Bilan puissance</button>
+  <button class="stab" onclick="S('sd',this,'m3m3')">📐 Schéma distribution</button>
+  <button class="stab" onclick="S('fav',this,'m3m3')">🔌 Face avant EA</button>
+  <button class="stab" onclick="S('ecl',this,'m3m3')">💡 Éclairage</button>
+  <button class="stab" onclick="S('dom',this,'m3m3')">🏠 Domotique</button>
+  <button class="stab" onclick="S('chan',this,'m3m3')">🏗️ Chantier SIA</button>
+  <button class="stab" onclick="S('min',this,'m3m3')">🌿 Minergie</button>
+</div>
+<div id="bp" class="sub on">
+<p class="stit">Bilan de puissance</p>
+<div class="card">
+  <span class="badge bb">Formule fondamentale — examen</span>
+  <h3>Intensité d'introduction</h3>
+  <div class="fm">I = (P × fs) / (400 × √3 × cos φ) = (P × fs) / 623.5</div>
+  <ul>
+    <li><span class="hi">P</span> = puissance totale installée (W)</li>
+    <li><span class="hi">fs</span> = facteur de simultanéité selon NIBT ou adapté</li>
+    <li><span class="hi">cos φ = 0.9</span> — standard et minimum admis par les GRD suisses</li>
+    <li><span class="hi">400 V × √3 = 692.8</span> → × 0.9 = 623.5</li>
+    <li>Installations PV : NE PAS compter dans le bilan. Si PV &gt; 30 kVA → compteur d'injection obligatoire</li>
+  </ul>
+</div>
+<div class="two">
+<div class="card">
+  <span class="badge bg">Méthode 1 — Par disjoncteur (rapide)</span>
+  <h3>Puissances max par calibre</h3>
+  <table>
+    <tr><th>Disj.</th><th>Mono 230V</th><th>Tri 400V</th></tr>
+    <tr><td>C10A</td><td class="hi">2.3 kW</td><td class="hi">6.9 kW</td></tr>
+    <tr><td><b>C13A</b></td><td class="hi">3 kW</td><td class="hi">9 kW</td></tr>
+    <tr><td>C16A</td><td class="hi">3.6 kW</td><td class="hi">11 kW</td></tr>
+    <tr><td>C20A</td><td class="hi">4.6 kW</td><td class="hi">13.8 kW</td></tr>
+    <tr><td>C25A</td><td class="hi">5.75 kW</td><td class="hi">17.3 kW</td></tr>
+    <tr><td>C32A</td><td class="hi">7.4 kW</td><td class="hi">22 kW</td></tr>
+  </table>
+</div>
+<div class="card">
+  <span class="badge ba">Méthode 2 — Par appareil (détaillée)</span>
+  <h3>Puissances par type + Facteurs NIBT</h3>
+  <ul>
+    <li>Prise de courant → <span class="hi">100 W/prise</span></li>
+    <li>Point lumineux → <span class="hi">20 W/point</span></li>
+    <li>Prises doubles/triples = <span class="hi">1 seul appareil</span></li>
+  </ul>
+  <table style="margin-top:.5rem">
+    <tr><th>Circuits</th><th>fs NIBT</th></tr>
+    <tr><td>2–3</td><td class="hi">0.8</td></tr>
+    <tr><td>4–5</td><td class="hi">0.7</td></tr>
+    <tr><td>6–9</td><td class="hi">0.6</td></tr>
+    <tr><td>10+</td><td class="hi">0.5</td></tr>
+  </table>
+</div>
+</div>
+<div class="card">
+  <span class="badge br">Sélectivité — point critique examen</span>
+  <h3>Sélectivité totale, partielle, filiation</h3>
+  <ul>
+    <li><span class="hi">Sélectivité totale</span> = SEUL le disjoncteur en aval du défaut déclenche dans tous les cas</li>
+    <li><span class="hi">Sélectivité partielle</span> = sélective seulement jusqu'à une certaine valeur de Icc</li>
+    <li><span class="hi">Filiation (back-up)</span> = protection du disjoncteur aval, mais les DEUX peuvent déclencher → pas de continuité garantie</li>
+    <li>Utiliser la <span class="hi">tabelle constructeur fournie dans la consigne</span></li>
+    <li>T = totalement sélectif | – = pas de sélectivité | valeur numérique = sélectif au-dessus de ce Icc</li>
+  </ul>
+  <div class="fm">Exemple CERPE : Icc=4.3kA | Groupe B40A | Intro 80A → PAS de sélectivité<br>→ HPC 100A nécessaire pour sélectivité totale</div>
+  <div class="fm">Exercice complet : 15×C16A mono + 3×C13A tri + 1 CE 9kW tri, fs=0.5<br>→ P = (15×3.6 + 3×9 + 9) = 54+27+9 = 90 kW<br>→ I = (90000×0.5)/623.5 = 72.2 A → Introduction 80A</div>
+</div>
+</div>
+
+<div id="sd" class="sub">
+<p class="stit">Schéma de distribution — éléments obligatoires</p>
+<div class="card">
+  <span class="badge bb">Checklist complète</span>
+  <h3>Éléments impératifs sur le schéma</h3>
+  <table>
+    <tr><th>Élément</th><th>Détail</th></tr>
+    <tr><td class="hi">Nom du GRD</td><td>Groupe E, SIG, EKZ… gestionnaire local</td></tr>
+    <tr><td class="hi">Système de mise au neutre</td><td>Avant ET après CSG : TN-S, TN-C, TT…</td></tr>
+    <tr><td class="hi">Sections câbles</td><td>Nb fils + section tous tronçons (ex: 5×16mm²)</td></tr>
+    <tr><td class="hi">Mises à terre</td><td>Électrode fondation, PE principal, sections</td></tr>
+    <tr><td class="hi">Protections</td><td>Type B/C/D, In, pouvoir de coupure, DDR si présent</td></tr>
+    <tr><td class="hi">Groupes</td><td>Désignation, nb conducteurs, sections</td></tr>
+    <tr><td class="hi">Éléments GRD</td><td>TC, protection TC, récepteur délesté, lignes pilotes</td></tr>
+    <tr><td class="hi">Équipotentialité</td><td>Sections des conducteurs d'équipotentialité</td></tr>
+  </table>
+</div>
+<div class="card">
+  <span class="badge ba">Code couleur obligatoire</span>
+  <h3>Plan d'installation</h3>
+  <table>
+    <tr><td>🔵 <b>Bleu</b></td><td>Lumière (éclairage normal)</td></tr>
+    <tr><td>🔴 <b>Rouge</b></td><td>Force, liaison équipotentielle, électrode de fondation</td></tr>
+    <tr><td>🟢 <b>Vert</b></td><td>Éclairage de secours, TT, informatique, CUC</td></tr>
+    <tr><td>🟡 <b>Jaune</b></td><td>Tracé de conduits, chemins de câbles</td></tr>
+    <tr><td>🩷 <b>Rose</b></td><td>Contrôle d'accès, alarme effraction</td></tr>
+    <tr><td>🟠 <b>Orange</b></td><td>Détection incendie</td></tr>
+    <tr><td>🟤 <b>Brun</b></td><td>Interphone, audio, horloge</td></tr>
+    <tr><td>🟣 <b>Violet</b></td><td>Radio/TV, KNX, bus domotique</td></tr>
+  </table>
+</div>
+<div class="card">
+  <span class="badge br">Règles d'or — à ne jamais oublier</span>
+  <h3>Limites réglementaires</h3>
+  <div class="two">
+    <ul>
+      <li>Max <span class="hi">8 tubes/boîte de dérivation</span></li>
+      <li>Max <span class="hi">12–15 appareils/groupe</span> (1200–1500W)</li>
+      <li>Prises doubles/triples = <span class="hi">1 seul appareil</span></li>
+      <li>Tubes ≠ M20 → noter sur plan</li>
+    </ul>
+    <ul>
+      <li>Sections &gt;1.5mm² → noter</li>
+      <li>Nb conducteurs dans tube → noter</li>
+      <li>EA, luminaires, chemins de câbles → à l'échelle</li>
+      <li>Légende + plan de coupe → obligatoires</li>
+    </ul>
+  </div>
+  <h4>Ordre de tracé recommandé</h4>
+  <ol>
+    <li>Placer les tableaux d'abord (optimiser longueurs)</li>
+    <li>Définir chemins de câbles</li>
+    <li>Placer appareils (simples d'abord : WC, cave)</li>
+    <li>Placer boîtes de dérivation</li>
+    <li>Réaliser schéma de tableau en parallèle</li>
+    <li>Légende et plan de coupe</li>
+  </ol>
+</div>
+</div>
+
+<div id="fav" class="sub">
+<p class="stit">Face avant EA et armoires</p>
+<div class="card">
+  <span class="badge bb">Règles EA</span>
+  <h3>Face avant d'ensemble d'appareillage</h3>
+  <ul>
+    <li>Toujours à l'échelle <span class="hi">1/10ème</span> — utiliser un chablon</li>
+    <li>Hauteur minimale disjoncteur principal : <span class="hi">500mm du sol</span> (PDIE)</li>
+    <li>Prévoir <span class="hi">≥20% de réserve</span> en modules libres</li>
+    <li>Respecter PDIE et NIBT : hauteurs, dimensions plaques compteurs</li>
+  </ul>
+  <div class="two">
+    <div>
+      <h4>Types fusibles avant-compteur</h4>
+      <table>
+        <tr><th>Type</th><th>Courant max</th></tr>
+        <tr><td class="hi">DII (Diazed)</td><td>jusqu'à 25A</td></tr>
+        <tr><td class="hi">DIII (Diazed)</td><td>jusqu'à 63A</td></tr>
+        <tr><td class="hi">HPC Din00</td><td>80A, 100A, 125A+</td></tr>
+      </table>
+      <p style="font-size:12px;margin-top:.4rem;color:#666">HPC : réservé BA4/BA5. Pouvoir coupure jusqu'à 100kA. Pince extracteur à proximité obligatoire.</p>
+    </div>
+    <div>
+      <h4>Smissline ABB</h4>
+      <ul>
+        <li>Bloc alim + rail d'énergie</li>
+        <li>Disjoncteurs/RCD clipsés directement</li>
+        <li>Pas de dessin individuel nécessaire</li>
+        <li>Grande modularité</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <span class="badge ba">Armoire informatique — bas → haut</span>
+  <h3>Organisation logique</h3>
+  <table>
+    <tr><th>Position</th><th>Élément</th><th>Points de vigilance</th></tr>
+    <tr><td>🔋 Bas</td><td class="hi">ASI (UPS) + bypass</td><td>Dimensionner selon temps autonomie requis</td></tr>
+    <tr><td>🖥️</td><td>Serveurs, PABX/IPBX, NAS</td><td>Éléments actifs réseau privé</td></tr>
+    <tr><td>🔀</td><td>Switch + Patch panel</td><td>Distribution RJ45</td></tr>
+    <tr><td>🔒</td><td>Routeur, Firewall</td><td>Passerelle réseau public/privé</td></tr>
+    <tr><td>📥 Haut</td><td class="hi">Introduction FO + alim. 230V</td><td>Liaison équipotentielle obligatoire</td></tr>
+  </table>
+  <ul style="margin-top:.5rem">
+    <li>Alimentation électrique dédiée avec disjoncteur C16A min.</li>
+    <li>Liaison équipotentielle (barre cuivre ou tresse)</li>
+    <li>Passe-câbles suffisants</li>
+    <li>ASI dimensionnée : P_charge × t / capacité batterie</li>
+  </ul>
+</div>
+</div>
+
+<div id="ecl" class="sub">
+<p class="stit">Calcul d'éclairage et TV</p>
+<div class="card">
+  <span class="badge bb">Formule — à maîtriser</span>
+  <h3>Nombre de luminaires</h3>
+  <div class="fm">N = (Surface [m²] × Éclairement [lux]) / (Flux lumineux [lm] × Rendement η)</div>
+  <ul>
+    <li>η sans indication → <span class="hi">0.5</span> (plage 0.4–0.6)</li>
+    <li>η intègre : rendement local + luminaire + vieillissement</li>
+    <li>Arrondir à l'entier supérieur, puis ajuster pour répartition</li>
+  </ul>
+  <div class="fm">Exemple CERPE : 5×6m=30m² | 500lux | 2360lm | η=0.45<br>N=(30×500)/(2360×0.45)=15000/1062=14.1 → 15 luminaires<br><br>Exercice : 8×10m | 300lux | 4000lm | η=0.5<br>N=(80×300)/(4000×0.5)=24000/2000=12 → 12 luminaires</div>
+</div>
+<div class="two">
+  <div class="card">
+    <span class="badge bg">Répartition idéale</span>
+    <h3>Règle 1/6 — 1/3</h3>
+    <ul>
+      <li>Marge bord : <span class="hi">1/6 de la travée</span></li>
+      <li>Espacement central : <span class="hi">1/3 de la travée</span></li>
+      <li>Éviter marge 1/4 → zones sombres aux angles</li>
+    </ul>
+    <h4>Solutions par type de local</h4>
+    <ul>
+      <li>Faux plafond → encastrés 60×60, câbles plats</li>
+      <li>Sans contrainte → rail (Tecton, Traq)</li>
+      <li>Bureau open space → lampes sur pieds</li>
+      <li>Variation → <span class="hi">DALI obligatoire</span></li>
+    </ul>
+    <h4>Éclairements recommandés</h4>
+    <table>
+      <tr><td>Couloirs, escaliers</td><td class="hi">100 lux</td></tr>
+      <tr><td>Salon, réception</td><td class="hi">200–300 lux</td></tr>
+      <tr><td>Bureau standard</td><td class="hi">500 lux</td></tr>
+      <tr><td>Atelier précision</td><td class="hi">750–1000 lux</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <span class="badge ba">TV — Signal antenne</span>
+    <h3>Dimensionnement distribution TV</h3>
+    <ul>
+      <li>Signal : <span class="hi">63 à 73 dBµV</span> toutes prises</li>
+      <li>Travailler depuis la <span class="hi">branche la plus défavorable</span></li>
+      <li>Partir de la prise la plus éloignée (ex: 65 dBµV)</li>
+      <li>Remonter en ajoutant les atténuations</li>
+      <li>Privilégier <span class="hi">distribution en étoile</span></li>
+    </ul>
+    <h4>SIA 387/4</h4>
+    <ul>
+      <li>S'applique aux bâtiments &gt; <span class="hi">1000m² SRE</span></li>
+      <li>Ne s'applique PAS au résidentiel</li>
+      <li>Logiciel de référence : <span class="hi">ReluxEnergie</span></li>
+      <li>Valeurs cibles et limites par affectation</li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<div id="dom" class="sub">
+<p class="stit">Domotique — KNX, DALI et systèmes</p>
+<div class="card">
+  <span class="badge bb">KNX — Standard ouvert international</span>
+  <h3>Caractéristiques complètes</h3>
+  <div class="two">
+    <div>
+      <h4>Normes et physique</h4>
+      <ul>
+        <li>Normalisé <span class="hi">ISO/CEI 14543</span> et CEN EN 13321</li>
+        <li>Tension bus : <span class="hi">30V SELV</span></li>
+        <li>Débit : <span class="hi">9.6 kbit/s</span></li>
+        <li>Câble 2×2×0.8mm (paires torsadées)</li>
+        <li>3 modes : A (Auto), E (Easy), S (System)</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Architecture réseau KNX</h4>
+      <ul>
+        <li><span class="hi">Ligne</span> : max 64 appareils</li>
+        <li><span class="hi">Zone</span> : max 15 lignes</li>
+        <li><span class="hi">Réseau</span> : max 15 zones</li>
+        <li>Routeur IP pour intégration Ethernet</li>
+        <li>Interface USB pour config ETS</li>
+      </ul>
+    </div>
+  </div>
+  <table style="margin-top:.5rem">
+    <tr><th>Type</th><th>Exemples</th></tr>
+    <tr><td><b>Capteurs</b></td><td>BP, interrupteurs, détecteurs présence/mouvement, luminosité, entrées binaires</td></tr>
+    <tr><td><b>Actionneurs</b></td><td>Commutation, variation (dimming), volets roulants, chauffage, climatisation</td></tr>
+    <tr><td><b>Passerelles</b></td><td>DALI, DMX, SMI, Modbus, BACnet, IP</td></tr>
+  </table>
+</div>
+<div class="card">
+  <span class="badge bg">DALI — CEI 62386</span>
+  <h3>Digital Addressable Lighting Interface</h3>
+  <div class="two">
+    <ul>
+      <li>Transmission numérique <span class="hi">2 brins</span> (non polarisé)</li>
+      <li>Max <span class="hi">64 participants/segment</span></li>
+      <li>Max <span class="hi">16 groupes</span> et <span class="hi">16 scénarios</span></li>
+      <li>Longueur max : <span class="hi">300m</span></li>
+    </ul>
+    <ul>
+      <li>Communication <span class="hi">bidirectionnelle</span> (renvoi d'état)</li>
+      <li>Topologie libre : ligne, étoile, arbre, mixte</li>
+      <li>Remplace interface analogique 1–10V</li>
+      <li>Intégrable via passerelle KNX/DALI</li>
+    </ul>
+  </div>
+  <div class="info">💡 Si variation prévue dans le projet → luminaires DALI obligatoires. Reconfiguration sans changement de câblage.</div>
+</div>
+<div class="card">
+  <span class="badge ba">Comparatif systèmes domotiques</span>
+  <h3>Ouvert vs propriétaire</h3>
+  <table>
+    <tr><th>Système</th><th>Type</th><th>Support</th><th>Particularité</th></tr>
+    <tr><td class="hi">KNX</td><td>Ouvert</td><td>Câble bus 2 fils</td><td>Standard international, tous fabricants, logiciel ETS</td></tr>
+    <tr><td class="hi">DALI</td><td>Ouvert</td><td>2 brins</td><td>Dédié éclairage, passerelle KNX</td></tr>
+    <tr><td class="hi">Free@home (ABB)</td><td>Propriétaire</td><td>Bus 2 fils</td><td>Installation simplifiée, ABB uniquement</td></tr>
+    <tr><td class="hi">Wiser (Feller)</td><td>Propriétaire</td><td>Fil T (K+)</td><td>Max 50 appareils, WLAN requis</td></tr>
+    <tr><td class="hi">MyHome (BTicino)</td><td>Propriétaire</td><td>Bus 27 Vdc</td><td>Actionneurs au tableau</td></tr>
+    <tr><td class="hi">eSMART</td><td>Propriétaire</td><td>Powerline</td><td>Via installation électrique existante</td></tr>
+  </table>
+</div>
+</div>
+
+<div id="chan" class="sub">
+<p class="stit">Gestion de chantier — SIA 108 et documents</p>
+<div class="card">
+  <span class="badge bb">6 phases SIA 108</span>
+  <h3>Rôle de l'électricien chef de projet</h3>
+  <table>
+    <tr><th>#</th><th>Phase</th><th>Rôle chef de projet électricien</th></tr>
+    <tr><td class="hi">1</td><td>Définition objectifs</td><td>Absent. Faire demande raccordement technique (DRT) au GRD dès que possible</td></tr>
+    <tr><td class="hi">2</td><td>Études préliminaires</td><td>Faisabilité, choix mandataires, discussion prix fournisseurs</td></tr>
+    <tr><td class="hi">3</td><td>Projet</td><td>Avant-projet, autorisation, schéma EA, analyse technique, 1er acompte</td></tr>
+    <tr><td class="hi">4</td><td>Appel d'offres</td><td>Comparaison offres, adjudication, choix câble, calcul marge</td></tr>
+    <tr><td class="hi">5</td><td>Réalisation</td><td>Exécution, mise en service, métré contradictoire, raccordement Swisscom</td></tr>
+    <tr><td class="hi">6</td><td>Exploitation</td><td>Maintenance, dossier révision, paratonnerre, éclairage secours, facture finale</td></tr>
+  </table>
+</div>
+<div class="two">
+  <div class="card">
+    <span class="badge bg">Classeur de chantier</span>
+    <h3>Mis à dispo des TRAVAILLEURS pendant chantier</h3>
+    <ol>
+      <li>Plan hygiène et sécurité (PHS)</li>
+      <li>Numéros urgences, adresses</li>
+      <li>Plan d'exécution (à jour)</li>
+      <li>Planning intentionnel</li>
+      <li>Bulletins de livraison</li>
+      <li>Notices de montage</li>
+      <li>PV de chantier</li>
+    </ol>
+  </div>
+  <div class="card">
+    <span class="badge ba">Dossier de révision</span>
+    <h3>Remis au CLIENT en fin de chantier</h3>
+    <ol>
+      <li>Rapport de sécurité + protocoles de mesure</li>
+      <li>Documents OIBT (avis d'installation)</li>
+      <li>Fiches techniques du matériel</li>
+      <li>Plans révisés as-built</li>
+      <li>Protocoles mesures informatiques</li>
+      <li>Certificat conformité éclairage de secours</li>
+      <li>Certificat conformité paratonnerre</li>
+    </ol>
+  </div>
+</div>
+<div class="card">
+  <span class="badge bb">5 normes SIA essentielles</span>
+  <h3>À citer à l'examen</h3>
+  <table>
+    <tr><th>Norme</th><th>Titre</th><th>Points clés</th></tr>
+    <tr><td class="hi">SIA 108</td><td>Prestations et honoraires</td><td>6 phases projet, droits et devoirs parties</td></tr>
+    <tr><td class="hi">SIA 118</td><td>CG travaux construction</td><td>Obligations, délais, paiements, défauts</td></tr>
+    <tr><td class="hi">SIA 118/380</td><td>CG installations bâtiment</td><td>Extension SIA 118 pour lots techniques</td></tr>
+    <tr><td class="hi">SIA 387/4</td><td>Éclairage (màj 2023)</td><td>&gt;1000m² SRE, valeurs cibles et limites</td></tr>
+    <tr><td class="hi">SIA 451</td><td>Formats données descriptifs</td><td>Échange BIM/CFC entre acteurs</td></tr>
+  </table>
+</div>
+</div>
+
+<div id="min" class="sub">
+<p class="stit">Minergie — Standard suisse complet</p>
+<div class="card">
+  <span class="badge bg">Définition et principes</span>
+  <h3>3 principes fondamentaux</h3>
+  <ul>
+    <li>Confort thermique → <span class="hi">enveloppe étanche et bien isolée</span></li>
+    <li>Renouvellement air → <span class="hi">double flux automatique</span> (η ≥ 80%)</li>
+    <li>Production énergie → <span class="hi">énergies renouvelables</span> (PAC, bois, solaire)</li>
+  </ul>
+  <div class="warn">⚠️ Ouverture des fenêtres ≠ répond aux exigences Minergie. L'échange d'air contrôlé toute l'année est prescrit.</div>
+</div>
+<div class="three">
+  <div class="card">
+    <span class="badge bg">Minergie</span>
+    <h3>Base</h3>
+    <ul>
+      <li>Bilan -25% vs conventionnel</li>
+      <li>Valeur bien +7%</li>
+      <li>~1900 CHF HT certification</li>
+    </ul>
+  </div>
+  <div class="card">
+    <span class="badge bb">Minergie-P</span>
+    <h3>Pro enveloppe</h3>
+    <ul>
+      <li>Max 70% de MoPEC</li>
+      <li>Étanchéité testée sur site</li>
+      <li>Concept étanchéité obligatoire</li>
+    </ul>
+  </div>
+  <div class="card">
+    <span class="badge bp">Minergie-A</span>
+    <h3>Autonome</h3>
+    <ul>
+      <li>Production &gt; consommation</li>
+      <li>PV obligatoire</li>
+      <li>Zéro net 2050</li>
+    </ul>
+  </div>
+</div>
+<div class="card">
+  <span class="badge ba">7 principes Minergie — à réciter à l'examen</span>
+  <h3>Fondements obligatoires</h3>
+  <ol>
+    <li><span class="hi">Exploitation du potentiel solaire</span> — PV obligatoire sur toute la toiture</li>
+    <li><span class="hi">Monitoring énergétique</span> — obligatoire si &gt;2000m² SRE</li>
+    <li><span class="hi">Enveloppe isolée et étanche à l'air</span></li>
+    <li><span class="hi">Protection thermique adaptée à demain</span> — confort estival</li>
+    <li><span class="hi">Renouvellement de l'air automatique</span> — double flux, η≥80%</li>
+    <li><span class="hi">Zéro CO₂ en exploitation</span> — pas de combustibles fossiles</li>
+    <li><span class="hi">Minimisation des émissions grises</span> — matériaux durables</li>
+  </ol>
+</div>
+<div class="card">
+  <span class="badge bb">Procédure + exigences clés 2024</span>
+  <h3>Certification et obligations</h3>
+  <div class="fm">Requête → Contrôle dossier → Certificat provisoire → Annonce achèvement → Certificat définitif → Contrôles aléatoires (1 sur 5)</div>
+  <div class="two">
+    <ul>
+      <li>Monitoring si &gt;<span class="hi">2000m² SRE</span></li>
+      <li>PV toute la toiture (nouvelles constructions)</li>
+      <li>Autoproduction min <span class="hi">10Wp/m² SRE</span></li>
+      <li>Équipement mobilité électrique (SIA 2060)</li>
+    </ul>
+    <ul>
+      <li>ECS : min 30% par solaire ou CAD renouvelable</li>
+      <li>Pas de combustibles fossiles chauffage principal</li>
+      <li>Min 20% consommation électrique par renouvelable</li>
+      <li>Pas de biocides, solvants, métaux lourds</li>
+    </ul>
+  </div>
+</div>
+</div>
+</div>
+
+<!-- ===== M4.1 ===== -->
+<div id="m41" class="mod">
+<div class="stabs">
+  <button class="stab on" onclick="S('t41',this,'m41')">🔍 Types de contrôles</button>
+  <button class="stab" onclick="S('vis41',this,'m41')">👁️ Contrôle visuel</button>
+  <button class="stab" onclick="S('def41',this,'m41')">⚠️ Défauts NIBT 2025</button>
+  <button class="stab" onclick="S('ddr41',this,'m41')">🔌 Défauts DDR</button>
+  <button class="stab" onclick="S('n2025',this,'m41')">📖 NIBT 2025</button>
+  <button class="stab" onclick="S('proc41',this,'m41')">📋 Procédures RS/PM</button>
+</div>
+<div id="t41" class="sub on">
+<p class="stit">Types de contrôles OIBT</p>
+<div class="card">
+  <span class="badge bb">5 types de contrôles</span>
+  <h3>Tableau complet avec autorisations</h3>
+  <table>
+    <tr><th>Type</th><th>Quand</th><th>Par qui</th><th>Autorisation</th></tr>
+    <tr><td class="hi">1ère vérification</td><td>À chaque mise en service groupe</td><td>Monteur de l'entreprise</td><td>N° I</td></tr>
+    <tr><td class="hi">Contrôle final</td><td>Fin de TOUTE installation</td><td>Entreprise ayant fait les travaux ou mandatée</td><td>N° I ou K</td></tr>
+    <tr><td class="hi">Contrôle de réception</td><td>Périodicité &lt;20 ans, dans les 6 mois</td><td>Entreprise N'AYANT PAS participé à la conception</td><td>N° K accrédité</td></tr>
+    <tr><td class="hi">Contrôle périodique</td><td>Selon périodicité</td><td>Entreprise indépendante</td><td>N° K</td></tr>
+    <tr><td class="hi">Sporadique/ponctuel</td><td>Sur demande ESTI/GRD</td><td>Entreprise indépendante</td><td>N° K</td></tr>
+  </table>
+  <div class="warn">⚠️ Autorisation K → NE PEUT PAS contrôler zones Ex, gares, locaux médicaux groupe 2. Ces contrôles nécessitent une entreprise accréditée ESTI.</div>
+</div>
+<div class="two">
+  <div class="card">
+    <span class="badge bg">Autorisation N° I</span>
+    <h3>Art. 7 et 9 OIBT</h3>
+    <ul>
+      <li>Pour personnes physiques (art. 7) ou entreprise PDM (art. 9)</li>
+      <li>Installer ET faire contrôles finaux</li>
+      <li>Peut intervenir sur locaux spéciaux (Ex, médical…)</li>
+    </ul>
+  </div>
+  <div class="card">
+    <span class="badge ba">Autorisation N° K</span>
+    <h3>Art. 27 OIBT</h3>
+    <ul>
+      <li>Format : K-_ _ _ _ _</li>
+      <li>Contrôles finaux, périodiques, réception standards</li>
+      <li>NE PEUT PAS = locaux spéciaux</li>
+      <li>Entreprise accréditée ESTI = locaux spéciaux</li>
+    </ul>
+  </div>
+</div>
+<div class="card">
+  <span class="badge bp">Périodicités selon OIBT</span>
+  <h3>Fréquence des contrôles</h3>
+  <table>
+    <tr><th>Type d'installation</th><th>Périodicité</th></tr>
+    <tr><td>Logements (résidentiel)</td><td class="hi">20 ans</td></tr>
+    <tr><td>Locaux commerciaux, bureaux</td><td class="hi">10 ans</td></tr>
+    <tr><td>Chantiers de construction</td><td class="hi">1 an</td></tr>
+    <tr><td>Bornes VE publiques</td><td class="hi">5 ans (évent. 1 an)</td></tr>
+    <tr><td>Locaux médicaux groupe 1</td><td class="hi">5 ans</td></tr>
+    <tr><td>Zones Ex</td><td class="hi">3 ans</td></tr>
+    <tr><td>TN-C (Sch. III)</td><td class="hi">5 ans</td></tr>
+  </table>
+</div>
+</div>
+
+<div id="vis41" class="sub">
+<p class="stit">Contrôle visuel complet</p>
+<div class="card">
+  <span class="badge bb">4 sens du contrôle</span>
+  <h3>Un contrôle visuel ne se limite pas à la vue !</h3>
+  <table>
+    <tr><td>👁️ <b>Vue</b></td><td>État matériel, couleurs, marquages, IP, fixations</td></tr>
+    <tr><td>👃 <b>Odorat</b></td><td>Odeur de brûlé, plastique fondu, surchauffe</td></tr>
+    <tr><td>✋ <b>Touché</b></td><td>Chaleur anormale des câbles (PRUDENCE !), vibrations</td></tr>
+    <tr><td>👂 <b>Écoute</b></td><td>Claquement, arc électrique, sifflement</td></tr>
+  </table>
+</div>
+<div class="card">
+  <span class="badge ba">Checklist complète</span>
+  <h3>Points à vérifier systématiquement</h3>
+  <div class="two">
+    <div>
+      <h4>Introduction / Mise à la terre</h4>
+      <ul>
+        <li>Tuyaux eau, radier, double radier raccordés</li>
+        <li>Sections conducteurs de terre (min. 16mm², max 50mm²)</li>
+        <li>Mode de mise au neutre : TN-S, TN-C, TT…</li>
+        <li>Liaisons équipotentielles + pontage compteurs eau/gaz</li>
+        <li>Coffret introduction : accessibilité, étanchéité</li>
+        <li>Conducteur de terre présent (avant 1985 : parfois absent !)</li>
+      </ul>
+      <h4>Dans l'EA</h4>
+      <ul>
+        <li>Emplacement IP adéquat</li>
+        <li>Étanchéité : corps étrangers, animaux</li>
+        <li>Liste circuits présente et correcte</li>
+        <li>Raccords/dérivations volants (interdits)</li>
+        <li>Fixation EA, hauteurs réglementaires</li>
+        <li>Réglage thermique moteur noté sur plans</li>
+        <li>Documentation (schémas) à jour</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Dans l'installation</h4>
+      <ul>
+        <li>Mode de pose, sections câbles, Kgh</li>
+        <li>IP, IK appareils selon local</li>
+        <li>DDR : type, calibre, accessibilité</li>
+        <li>Éclairage de secours conforme</li>
+        <li>Hauteurs de montage (prises, interrupteurs)</li>
+        <li>Marquage des circuits (étiquettes)</li>
+        <li>Amiante (codes 3130-3134)</li>
+        <li>PCB (rouge=confirmé, orange=suspect, vert=sans)</li>
+      </ul>
+      <h4>Locaux spéciaux</h4>
+      <ul>
+        <li>SDB : zones, IP, équipotentialité supplémentaire</li>
+        <li>Extérieur : min IP X4</li>
+        <li>Agriculture : équipotentialité animaux</li>
+        <li>IRVE : DDR, disjoncteur, documentation</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <span class="badge br">Ordre des opérations — CRITIQUE</span>
+  <h3>Avant de couper le courant</h3>
+  <ol>
+    <li>Avertir client — arrêt machines, sauvegarde PC, déconnexion appareils sensibles</li>
+    <li>Allumer toutes les lumières (détecter retours lampe et mélanges N)</li>
+    <li>Brancher consommateurs pour vérification</li>
+    <li>Vérifier que personne n'est dans les ascenseurs</li>
+    <li>Prévenir centrale d'alarme si nécessaire</li>
+    <li>Vérifier EPI disponibles</li>
+    <li>Coupes courtes sur circuits chauffage solaire</li>
+  </ol>
+  <h4>Ordre des mesures (sans tension d'abord !)</h4>
+  <table>
+    <tr><th>Ordre</th><th>Mesure</th><th>Condition</th></tr>
+    <tr><td>1</td><td class="hi">Continuité PE — TOUJOURS EN PREMIER</td><td>Sans tension</td></tr>
+    <tr><td>2</td><td>Riso (500V DC)</td><td>Sans tension, appareils sensibles déconnectés</td></tr>
+    <tr><td>3</td><td>Test DDR : bouton → 0.4×IΔn → IΔn</td><td>Avec tension</td></tr>
+    <tr><td>4</td><td>Icc max (tableau) + Icc min (point éloigné)</td><td>Avec tension</td></tr>
+    <tr><td>5</td><td>Champ tournant</td><td>Avec tension</td></tr>
+    <tr><td>6</td><td>Tension et fréquence</td><td>Avec tension</td></tr>
+  </table>
+  <h4>Après le contrôle</h4>
+  <ul>
+    <li>Rebrancher appareils déconnectés</li>
+    <li>Vérifier frigos, congélateurs, alarmes</li>
+    <li>Vérifier ascenseurs</li>
+    <li>Remettre alarmes en service</li>
+  </ul>
+</div>
+</div>
+
+<div id="def41" class="sub">
+<p class="stit">Défauts NIBT 2025 — Phrases officielles</p>
+<div class="info">📌 Les défauts s'expriment avec les phrases standardisées du catalogue NIBT 2025, avec références normatives.</div>
+<div class="card">
+  <span class="badge br">Raccordement d'immeuble — CSG</span>
+  <h3>Coupe-surintensité et enveloppes</h3>
+  <table>
+    <tr><th>Code</th><th>Défaut</th><th>Référence</th></tr>
+    <tr><td>1112</td><td>Coffret ne satisfait pas conditions d'environnement → remplacer</td><td>NIBT 4.2.1</td></tr>
+    <tr><td>1114</td><td>Entrées de lignes non obturées → obturer</td><td>NIBT 5.2</td></tr>
+    <tr><td>1142</td><td>Organes sous tension non protégés contre contact → adapter barrière</td><td>NIBT 4.1.A</td></tr>
+    <tr><td>1144</td><td>Couvercle manquant → monter</td><td>NIBT 4.1.1.2</td></tr>
+    <tr><td>1146</td><td>Couvercle endommagé → remplacer</td><td>NIBT 4.1.1.2</td></tr>
+    <tr><td>1148</td><td>Couvercle desserré → fixer fermement</td><td>NIBT 4.1.1.2</td></tr>
+    <tr><td>1162</td><td>Accessibilité insuffisante → disposer accessible sans moyens auxiliaires</td><td>NIBT 4.3.2.5.3</td></tr>
+    <tr><td>1222</td><td>Ordre des phases faux → raccorder pour champ tournant droit</td><td>NIBT 6.1.3.9, PDIE 5.4</td></tr>
+    <tr><td>1262</td><td>Protection surintensités insuffisante → calculer courant admissible, adapter</td><td>NIBT 5.2.3</td></tr>
+    <tr><td>1272</td><td>Sélectivité insuffisante → définir avec GRD</td><td>NIBT 5.3.6, PDIE 4.1</td></tr>
+    <tr><td>1282</td><td>Marquage Imax manquant sur HPC → apposer</td><td>NIBT 5.1.4.5</td></tr>
+    <tr><td>1312</td><td>Sectionneur de neutre manquant → monter</td><td>NIBT 4.6.2.2.1</td></tr>
+  </table>
+</div>
+<div class="card">
+  <span class="badge br">Mise à la terre et équipotentialité</span>
+  <h3>Électrodes et liaisons</h3>
+  <table>
+    <tr><th>Code</th><th>Défaut</th><th>Référence</th></tr>
+    <tr><td>2112</td><td>Canalisation eau/gaz utilisée comme électrode → inadmissible, créer électrode appropriée</td><td>NIBT 5.4.2.2.6</td></tr>
+    <tr><td>2122</td><td>Électrode de fondation manquante → créer (nouvelles constructions)</td><td>NIBT 5.4.2.2, PDIE 3.2.2</td></tr>
+    <tr><td>2124</td><td>Électrode manquante existant → fers à béton ≥8mm si disponibles</td><td>NIBT 5.4.2.2.9</td></tr>
+    <tr><td>2154</td><td>Ruban de terre trop peu profond → min. 70cm</td><td>NIBT 5.4.2.2.4</td></tr>
+    <tr><td>2212</td><td>Conducteur de terre manquant → créer selon règles de l'art</td><td>NIBT 4.1.1.4, 5.4.2.1.2</td></tr>
+    <tr><td>2262</td><td>Conducteur de terre trop petit → min. 1/2×section extérieur, min. 16mm², max 50mm²</td><td>NIBT 5.4.2.3.1</td></tr>
+    <tr><td>2264</td><td>Conducteur de terre enterré trop petit → min. 50mm² Cu si enterré</td><td>NIBT 5.4.2.3.1</td></tr>
+    <tr><td>2312</td><td>Liaison équipotentielle principale manquante → inclure eau, gaz, éléments conducteurs</td><td>NIBT 4.1.1.3.1.2</td></tr>
+    <tr><td>2338</td><td>Pontage compteurs eau/gaz/adoucisseur manquant → ponter</td><td>NIBT 4.1.1.3.1.2</td></tr>
+    <tr><td>2392</td><td>Conducteur équipotentialité trop petit → min. 1/2×PE, min. 6mm² (10mm² foudre), max 25mm²</td><td>NIBT 5.4.4.1.1</td></tr>
+  </table>
+</div>
+<div class="card">
+  <span class="badge ba">EA — Défauts fréquents</span>
+  <h3>Tableaux et documentation</h3>
+  <table>
+    <tr><th>Code</th><th>Défaut</th><th>Référence</th></tr>
+    <tr><td>3012</td><td>Accès EA obstrué → dégager toujours</td><td>NIBT 5.1.3</td></tr>
+    <tr><td>3130-3134</td><td>Amiante détecté/suspecté → ne pas percer, entreprise spécialisée</td><td>Directive CFST 6503</td></tr>
+    <tr><td>3136</td><td>PCB confirmé (autocollant rouge) → mise hors service immédiate</td><td>ORRChim annexe 2.14</td></tr>
+    <tr><td>3137</td><td>PCB suspecté (orange) → informer office cantonal, prouver &lt;50ppm dans 6 mois</td><td>ORRChim annexe 2.14</td></tr>
+    <tr><td>3186</td><td>Section 1mm² avec protection 16A → max 8A (disj. 6A)</td><td>NIBT 5.2.3.1.1.3</td></tr>
+    <tr><td>3206</td><td>Liste circuits manquante → créer</td><td>NIBT 5.1.4.4.1</td></tr>
+    <tr><td>3208</td><td>Liste circuits incorrecte → corriger</td><td>NIBT 5.1.4.4.1</td></tr>
+    <tr><td>3310</td><td>DDR ≤30mA manquant prises ≤32A libre emploi → monter</td><td>NIBT 4.1.1.3.3</td></tr>
+    <tr><td>3312</td><td>DDR ≤30mA manquant circuits luminaires habitation → monter (NOUVEAU NIBT 2025)</td><td>NIBT 4.1.1.3.4</td></tr>
+    <tr><td>3540</td><td>Schéma ne correspond pas à l'état actuel → remanier entièrement</td><td>NIBT 5.1.4.5</td></tr>
+    <tr><td>3542</td><td>Documentation incomplète → compléter et conserver à proximité</td><td>NIBT 1.3.2.13</td></tr>
+    <tr><td>3552</td><td>Documentation manquante → conserver pendant toute la durée de vie</td><td>NIBT 1.3.2.13, OIBT art.5</td></tr>
+  </table>
+</div>
+</div>
+
+<div id="ddr41" class="sub">
+<p class="stit">Défauts DDR — NIBT 2025</p>
+<div class="card">
+  <span class="badge br">Codes défauts DDR complets</span>
+  <h3>Phrases officielles</h3>
+  <table>
+    <tr><th>Code</th><th>Défaut</th><th>Référence</th></tr>
+    <tr><td>3310</td><td>DDR ≤30mA manquant pour prises ≤32A à libre emploi → monter</td><td>NIBT 4.1.1.3.3</td></tr>
+    <tr><td>3312</td><td>DDR ≤30mA manquant circuits luminaires pièces d'habitation (NOUVEAU 2025)</td><td>NIBT 4.1.1.3.4</td></tr>
+    <tr><td>3314</td><td>DDR 300mA insuffisant → remplacer par 30mA</td><td>NIBT 4.1.5.1.1</td></tr>
+    <tr><td>3316</td><td>DDR en système TN-C → inadmissible, adapter en TN-S</td><td>NIBT 4.1.1.4.5</td></tr>
+    <tr><td>3318</td><td>Division circuits insuffisante → répartir sur plusieurs DDR</td><td>NIBT 3.1.4</td></tr>
+    <tr><td class="er">3320</td><td class="er">DDR type AC → INTERDIT en Suisse, remplacer par type A minimum</td><td>NIBT 5.3.1.3.3</td></tr>
+    <tr><td>3338</td><td>Sélectivité DDR insuffisante → seul circuit concerné doit déclencher</td><td>NIBT 5.3.6.4.1.4</td></tr>
+    <tr><td>3340</td><td>DDR ne se déclenche pas au test → remplacer</td><td>NIBT 5.3.1.3</td></tr>
+    <tr><td>3342</td><td>Temps de coupure insuffisant → remplacer</td><td>NIBT 5.3.1.3</td></tr>
+    <tr><td>3344</td><td>DDR se déclenche intempestivement → adapter type ou diviser circuits</td><td>NIBT 5.3.1.3.2</td></tr>
+    <tr><td>3348</td><td>Touche d'essai ne fonctionne pas → remplacer DDR</td><td>NIBT 5.3.1.3.7</td></tr>
+    <tr><td class="er">3352</td><td class="er">DDR ponté → supprimer pontage immédiatement</td><td>NIBT 5.3.1.3.2, OIBT art.3</td></tr>
+  </table>
+</div>
+<div class="card">
+  <span class="badge br">DDR par type de local — NIBT 2025</span>
+  <h3>Exigences spécifiques</h3>
+  <table>
+    <tr><th>Local / Installation</th><th>DDR requis</th><th>Référence</th></tr>
+    <tr><td>Prises ≤32A libre emploi</td><td class="hi">≤30mA type A min.</td><td>NIBT 4.1.1.3.3</td></tr>
+    <tr><td>Circuits luminaires habitation (NOUVEAU)</td><td class="hi">≤30mA</td><td>NIBT 4.1.1.3.4</td></tr>
+    <tr><td>Salle de bains / douche</td><td class="hi">≤30mA TOUS circuits</td><td>NIBT 7.01.4.1.5.1</td></tr>
+    <tr><td>Sauna</td><td class="hi">≤30mA (sauf radiateur)</td><td>NIBT 7.03.4.1.5.1</td></tr>
+    <tr><td>Chantier (prises ≤32A)</td><td class="hi">≤30mA</td><td>NIBT 7.04.4.1.0.10</td></tr>
+    <tr><td>Agriculture</td><td class="hi">≤300mA circuits, ≤30mA prises</td><td>NIBT 7.05.4.1.1.1</td></tr>
+    <tr><td>Éclairage extérieur (≤2.8m haut.)</td><td class="hi">≤30mA</td><td>NIBT 7.14.4.1.1.3.3</td></tr>
+    <tr><td>Borne VE (chaque point)</td><td class="hi">≤30mA type B ou A+détect. DC</td><td>NIBT 7.22.5.3.1.3.101</td></tr>
+    <tr><td>Meubles avec installations (NOUVEAU)</td><td class="hi">≤30mA</td><td>NIBT 7.13.4.1.5.1.1</td></tr>
+  </table>
+</div>
+</div>
+
+<div id="n2025" class="sub">
+<p class="stit">NIBT 2025 — Modifications + 5+5 règles vitales</p>
+<div class="card">
+  <span class="badge bb">Nouveautés NIBT 2025 à connaître</span>
+  <h3>Modifications importantes</h3>
+  <ul>
+    <li><span class="er">DDR type AC INTERDIT</span> (code 3320) → type A minimum obligatoire pour tous</li>
+    <li>Circuits luminaires habitation → DDR ≤30mA obligatoire (NIBT 4.1.1.3.4) — <span class="hi">NOUVEAU</span></li>
+    <li>Meubles avec installations → DDR ≤30mA (NIBT 7.13) — <span class="hi">NOUVEAU</span></li>
+    <li>Nouvelles exigences IRVE développées — NIBT 7.22</li>
+    <li>3 variantes coupe-surintensité pour bornes VE</li>
+    <li>Hauteur coupe-surintensité dans boîtiers muraux VE imposée</li>
+    <li>AFDD recommandé pour locaux à risque incendie</li>
+    <li>Mise à jour références normatives (EN, IEC)</li>
+  </ul>
+  <div class="info">💡 Pourquoi type AC interdit ? Les charges électroniques modernes produisent des courants pulsés ou DC que le type AC ne détecte pas.</div>
+</div>
+<div class="card">
+  <span class="badge br">5+5 Règles vitales SUVA</span>
+  <h3>Non-respect = 50% des accidents électriques</h3>
+  <div class="two">
+    <div>
+      <h4>5 règles HORS tension</h4>
+      <ol>
+        <li>Mettre hors tension</li>
+        <li>Condamner (cadenasser, pancarte)</li>
+        <li>Vérifier absence de tension (VAT)</li>
+        <li>Mettre à la terre et en court-circuit</li>
+        <li>Délimiter et couvrir pièces voisines sous tension</li>
+      </ol>
+    </div>
+    <div>
+      <h4>5 règles SOUS tension (TST)</h4>
+      <ol>
+        <li>Formation spécifique TST obligatoire</li>
+        <li>Autorisation explicite de l'employeur</li>
+        <li>EPI adaptés (gants isolants, vêtements arc)</li>
+        <li>Outillage isolé 1000V</li>
+        <li>Travailler avec partenaire ou sous surveillance</li>
+      </ol>
+    </div>
+  </div>
+  <div class="warn">⚠️ Respecter les 3 premières règles hors tension éviterait ~50% des accidents électriques selon la SUVA.</div>
+</div>
+</div>
+
+<div id="proc41" class="sub">
+<p class="stit">Procédures OIBT — RS et PM</p>
+<div class="card">
+  <span class="badge bb">Procédures contrôle final et réception</span>
+  <div class="fm">Contrôle final :<br>Contrôle → Défaut grave ? → OUI: Arrêt + hors tension | NON: Liste défauts<br>→ Mise en conformité par installateur → Vérification → PM + RS<br>→ Remise propriétaire + GRD → Si périodicité &lt;20 ans : informer contrôle réception nécessaire</div>
+  <div class="fm">Contrôle de réception :<br>Obtention RS+PM du CF → Contrôle (entreprise indépendante)<br>→ Défaut grave ? → OUI: Mise hors circuit | NON: Liste défauts<br>→ Installateur corrige + signe bordereau → Vérification<br>→ PM + RS → Remise propriétaire + GRD</div>
+  <div class="fm">Après contrôle périodique :<br>Envoi protocole de retouche (bordereau) + délai fixé au propriétaire<br>→ Installateur corrige + SIGNE le bordereau + renvoie au contrôleur<br>→ Vérification authenticité ! → Si OK: RS+PM au propriétaire+GRD<br>→ Lettre explicative obligatoire → Facture !</div>
+  <div class="info">💡 La pince à courant de fuite peut être utilisée pour contrôles périodiques si on ne peut pas couper le courant.</div>
+</div>
+<div class="card">
+  <span class="badge ba">Contenu RS et PM</span>
+  <h3>Rapport de sécurité — éléments obligatoires</h3>
+  <ul>
+    <li>Propriétaire + gestionnaire, installateur N° autorisation, organe contrôle N° K</li>
+    <li>Adresse et description installation, type de contrôle, périodicité</li>
+    <li>Protection : fusible, emplacement, In</li>
+    <li>GRD, N° compteur, N° avis d'installation</li>
+    <li>Système de mise au neutre, schéma de réseau</li>
+    <li>Signatures installateur + contrôleur + dates</li>
+    <li>Annexes : liste défauts, schémas, PM</li>
+  </ul>
+  <p class="info">📋 Le RS confirme conformité OIBT art. 3/4 et doit être conservé jusqu'à la prochaine inspection (art. 5 OIBT).</p>
+  <h4>Protocole de mesure — valeurs</h4>
+  <table>
+    <tr><th>Mesure</th><th>Valeur attendue</th></tr>
+    <tr><td>Icc max (L-PE)</td><td>Selon pouvoir de coupure disjoncteur</td></tr>
+    <tr><td>Icc min (L-PE)</td><td>Vérifier temps de coupure courbe disjoncteur</td></tr>
+    <tr><td>Riso</td><td>≥1MΩ (TBTS ≥0.25MΩ)</td></tr>
+    <tr><td>Continuité PE</td><td>≤1Ω référence ESTI</td></tr>
+    <tr><td>Test DDR temps</td><td>≤0.4s circuits terminaux ≤32A</td></tr>
+    <tr><td>Test DDR courant</td><td>Déclenche à IΔn, pas à 0.4×IΔn</td></tr>
+    <tr><td>Résistance de terre</td><td>Selon tableau ESTI (≤1650Ω pour DDR 30mA TT)</td></tr>
+    <tr><td>Champ tournant</td><td>Rotation droite</td></tr>
+  </table>
+</div>
+</div>
+</div>
+
+<!-- ===== M4.2 ===== -->
+<div id="m42" class="mod">
+<div class="stabs">
+  <button class="stab on" onclick="S('inst42',this,'m42')">🔧 Instruments</button>
+  <button class="stab" onclick="S('iso42',this,'m42')">📏 Riso</button>
+  <button class="stab" onclick="S('cont42',this,'m42')">🔗 Continuité PE</button>
+  <button class="stab" onclick="S('ddr42',this,'m42')">🔌 Test DDR</button>
+  <button class="stab" onclick="S('icc42',this,'m42')">⚡ Icc</button>
+  <button class="stab" onclick="S('prot42',this,'m42')">🛡️ Protections</button>
+  <button class="stab" onclick="S('app42',this,'m42')">🧰 SNR 462638</button>
+</div>
+<div id="inst42" class="sub on">
+<p class="stit">Instruments de mesure OIBT</p>
+<div class="two">
+  <div class="card">
+    <span class="badge bb">3 familles d'appareils</span>
+    <h3>Classification et erreurs</h3>
+    <ul>
+      <li><span class="hi">Analogiques</span> — aiguille, lecture interpolation, sensibles vibrations</li>
+      <li><span class="hi">Numériques</span> — valeur "figée" à l'instant t, plus précis</li>
+      <li><span class="hi">Enregistreurs</span> — mémorisation dans le temps, oscilloscopes</li>
+    </ul>
+    <h4>Erreurs de mesure</h4>
+    <ul>
+      <li><span class="hi">Absolue</span> = valeur fixe inhérente (ex: ±4V sur calibre 400V à 1%)</li>
+      <li><span class="hi">Relative</span> = absolue/valeur mesurée×100% (ex: 4/250=1.6%)</li>
+      <li><span class="hi">3 sources</span> : imperfection appareil, défaut méthode, limites humaines</li>
+    </ul>
+  </div>
+  <div class="card">
+    <span class="badge ba">Catégories CAT</span>
+    <h3>Immunité aux surtensions</h3>
+    <table>
+      <tr><th>CAT</th><th>Application</th></tr>
+      <tr><td class="hi">CAT I</td><td>Circuits électroniques protégés, laboratoire</td></tr>
+      <tr><td class="hi">CAT II</td><td>Appareils domestiques sur prise (machines, PC)</td></tr>
+      <tr><td class="hi">CAT III</td><td>Installations fixes : tableaux, prises murales</td></tr>
+      <tr><td class="hi">CAT IV</td><td>Source réseau : lignes aériennes, compteurs</td></tr>
+    </table>
+    <div class="info">💡 Appareil OIBT = minimum CAT III 600V. Plus le numéro est élevé, plus l'immunité est élevée.</div>
+  </div>
+</div>
+<div class="card">
+  <span class="badge bg">Mesures disponibles sur Fluke 1653</span>
+  <h3>Fonctions complètes</h3>
+  <div class="two">
+    <ul>
+      <li>Tension et fréquence</li>
+      <li>Riso — EN 61557-2</li>
+      <li>Continuité PE — EN 61557-4</li>
+      <li>Résistance de boucle Icc — EN 61557-3</li>
+    </ul>
+    <ul>
+      <li>Temps déclenchement DDR — EN 61557-6</li>
+      <li>Courant déclenchement DDR — EN 61557-6</li>
+      <li>Résistance de terre — EN 61557-5</li>
+      <li>Ordre des phases — EN 61557-7</li>
+    </ul>
+  </div>
+</div>
+</div>
+<div id="iso42" class="sub">
+<p class="stit">Mesure de résistance d'isolement (Riso)</p>
+<div class="card">
+  <span class="badge bb">Principe</span>
+  <h3>Méthode et valeurs</h3>
+  <ul>
+    <li>Mesure résistance entre conducteurs actifs (L, N) et PE/terre</li>
+    <li>Tension de test : <span class="hi">500V DC</span> pour 230/400V</li>
+    <li>Valeur min. légale : <span class="hi">≥1MΩ</span> (installations ≥2010)</li>
+    <li>Nouvelle installation : idéalement &gt;2MΩ</li>
+    <li>Se fait <span class="hi">sans tension</span>, fusibles/disjoncteurs fermés, interrupteurs fermés</li>
+  </ul>
+  <div class="warn">⚠️ DÉCONNECTER avant mesure : variateurs vitesse, ballasts électroniques, onduleurs, appareils IT, LED avec drivers → risque dommage par 500V DC !</div>
+</div>
+<div class="card">
+  <span class="badge ba">Valeurs historiques selon époque</span>
+  <h3>Pour contrôle d'anciennes installations</h3>
+  <table>
+    <tr><th>Époque</th><th>Riso min.</th><th>Tension essai DC</th></tr>
+    <tr><td>≤PIE 1985 (secs/humides)</td><td>0.25MΩ</td><td>= Unom. installation</td></tr>
+    <tr><td>≤PIE 1985 (mouillés/corrosion)</td><td>0.05MΩ</td><td>= Unom.</td></tr>
+    <tr><td>1985–1995</td><td>0.5MΩ (&gt;300V)</td><td>500V</td></tr>
+    <tr><td>1995–2005 (TBTS/TBTP)</td><td>0.25MΩ (50-500V)</td><td>250V</td></tr>
+    <tr><td class="hi">À partir de 2010</td><td class="hi">1MΩ (50-500V)</td><td class="hi">500V</td></tr>
+  </table>
+  <div class="info">💡 Installations TN-C anciennes : si le reste n'est pas touché → valeurs de l'époque de réalisation font foi.</div>
+</div>
+<div class="card">
+  <span class="badge bg">Interprétation et localisation d'un défaut</span>
+  <h3>Technique de diagnostic</h3>
+  <table>
+    <tr><th>Résultat</th><th>État</th><th>Action</th></tr>
+    <tr><td class="ok">&gt;10MΩ</td><td>Excellent</td><td>OK</td></tr>
+    <tr><td class="ok">2–10MΩ</td><td>Très bon</td><td>OK</td></tr>
+    <tr><td class="ok">1–2MΩ</td><td>Acceptable (minimum légal)</td><td>OK, surveiller</td></tr>
+    <tr><td class="wn">0.5–1MΩ</td><td>Dégradé</td><td>Signaler, chercher cause</td></tr>
+    <tr><td class="er">&lt;0.5MΩ</td><td>Défaut sérieux</td><td>Localiser et corriger</td></tr>
+    <tr><td class="er">0Ω</td><td>Court-circuit à la terre</td><td>Arrêt immédiat</td></tr>
+  </table>
+  <h4>Localisation pas à pas</h4>
+  <ol>
+    <li>Mesurer Riso sur tout le tableau → si &lt;1MΩ, problème existe</li>
+    <li>Ouvrir les disjoncteurs un par un → disparaît quand on ouvre le groupe en faute</li>
+    <li>Débrancher appareils du groupe → disparaît quand on débranche l'appareil défectueux</li>
+    <li>Mesurer séparément câble seul → distinguer défaut câble vs appareil</li>
+  </ol>
+</div>
+</div>
+<div id="cont42" class="sub">
+<p class="stit">Mesure de continuité du conducteur PE</p>
+<div class="card">
+  <span class="badge bb">Principe — TOUJOURS EN PREMIER</span>
+  <h3>Continuité PE</h3>
+  <ul>
+    <li>Mesure résistance du PE de l'EA jusqu'à chaque point</li>
+    <li>Se fait <span class="hi">sans tension</span>, absolument EN PREMIER</li>
+    <li>Tension mesure : 4–24V DC ou AC | Courant : ≥200mA</li>
+    <li>Valeur référence : <span class="hi">≤1Ω</span> (SNR 464022 ESTI)</li>
+  </ul>
+  <div class="warn">⚠️ Si PE interrompu et non détecté d'abord → toutes les mesures suivantes sont FAUSSÉES. L'installation semble conforme alors qu'elle est DANGEREUSE.</div>
+  <h4>Valeurs selon installation</h4>
+  <table>
+    <tr><th>Type</th><th>PE max.</th><th>Référence</th></tr>
+    <tr><td>Standard</td><td class="hi">≤1Ω (référence)</td><td>SNR 464022 6.3.5</td></tr>
+    <tr><td>Local médical groupe 1</td><td class="hi">≤0.7Ω</td><td>NIBT 7.10.4.1.5.2.2</td></tr>
+    <tr><td>Local médical groupe 2</td><td class="hi">≤0.2Ω</td><td>NIBT 7.10.4.1.5.2.2</td></tr>
+    <tr><td>Appareil portatif (cordon ≤5m)</td><td class="hi">≤0.3Ω</td><td>SNR 462638</td></tr>
+    <tr><td>Appareil portatif (+7.5m)</td><td class="hi">+0.1Ω/7.5m (max 1Ω)</td><td>SNR 462638</td></tr>
+  </table>
+</div>
+</div>
+<div id="ddr42" class="sub">
+<p class="stit">Test complet des DDR</p>
+<div class="card">
+  <span class="badge bb">3 étapes obligatoires</span>
+  <h3>Procédure test DDR</h3>
+  <ol>
+    <li><span class="hi">Test bouton mécanique</span> → vérification déclenchement mécanique (au moins 1×/an)</li>
+    <li><span class="hi">Test à 0.4 × IΔn</span> → le DDR <span class="er">NE DOIT PAS</span> déclencher (discrimination)</li>
+    <li><span class="hi">Test à IΔn</span> → le DDR <span class="ok">DOIT</span> déclencher dans le temps imparti</li>
+  </ol>
+  <div class="warn">⚠️ Le test à 0.4×IΔn est souvent oublié ! Il vérifie que le DDR ne déclenche pas sur courants de fuite normaux.</div>
+  <h4>Temps de déclenchement max.</h4>
+  <table>
+    <tr><th>Type de circuit</th><th>Courant</th><th>Temps max.</th></tr>
+    <tr><td>Circuits terminaux ≤32A avec prises</td><td>IΔn</td><td class="hi">0.4s</td></tr>
+    <tr><td>Récepteurs fixes ≤63A sans prises</td><td>IΔn</td><td class="hi">1s</td></tr>
+    <tr><td>DDR type S (sélectif retardé)</td><td>IΔn</td><td class="hi">0.5s max</td></tr>
+  </table>
+</div>
+<div class="card">
+  <span class="badge bg">Types DDR — Classification complète NIBT 2025</span>
+  <h3>Choix du bon type</h3>
+  <table>
+    <tr><th>Type</th><th>Détecte</th><th>Usage</th><th>Statut Suisse</th></tr>
+    <tr><td class="er">Type AC</td><td>AC sinusoïdal uniquement</td><td>Anciens équipements</td><td class="er">INTERDIT</td></tr>
+    <tr><td class="hi">Type A</td><td>AC + courants pulsés continus</td><td>Usage universel</td><td class="ok">MINIMUM OBLIGATOIRE</td></tr>
+    <tr><td class="hi">Type F</td><td>AC + pulsés + fréq. mixtes ≤1kHz</td><td>Variateurs mono, PAC</td><td class="ok">Recommandé</td></tr>
+    <tr><td class="hi">Type B</td><td>Tous y.c. DC lisse</td><td>Onduleurs PV, VE sans détection DC</td><td class="ok">Obligatoire si besoin</td></tr>
+    <tr><td class="hi">Type B EV</td><td>Type B adapté VE</td><td>Bornes VE spécifiques</td><td class="ok">Bornes VE</td></tr>
+    <tr><td class="hi">Type S</td><td>Type A avec retard sélectif</td><td>Protection amont cascade</td><td class="ok">Sélectivité DDR</td></tr>
+  </table>
+  <div class="fm">Choix DDR pour IRVE :<br>→ Borne avec détection DC intégrée (&gt;6mA DC) → DDR type A 30mA suffisant<br>→ Borne SANS détection DC → DDR type B 30mA obligatoire</div>
+</div>
+</div>
+<div id="icc42" class="sub">
+<p class="stit">Mesure du courant de court-circuit (Icc)</p>
+<div class="card">
+  <span class="badge bb">Principe et formule</span>
+  <h3>Mesure Icc</h3>
+  <ul>
+    <li>L'appareil mesure l'<span class="hi">impédance de boucle</span> (Zboucle = ZL + ZPE)</li>
+    <li>Calcule Icc présumé via loi d'Ohm</li>
+    <li>Facteur correctif : <span class="hi">0.75</span> (tient compte variation résistance à chaud)</li>
+    <li>Icc max = mesure au tableau | Icc min = point le plus éloigné</li>
+  </ul>
+  <div class="fm">Icc présumé = 0.95 × U0 / Zboucle (U0=230V)<br>Icc utilisé pour vérification = Icc mesuré × 0.75</div>
+  <div class="warn">⚠️ Mesure Icc IMPOSSIBLE derrière un DDR (le DDR déclenche). Mesurer avant le DDR ou calculer.</div>
+  <h4>Vérification temps de coupure</h4>
+  <ul>
+    <li>Icc min au point éloigné doit être &gt; 5×In pour courbe B, &gt;10×In pour courbe C, &gt;20×In pour courbe D</li>
+    <li>Si insuffisant → temps de coupure trop long → risque personnes</li>
+  </ul>
+  <h4>Pouvoir de coupure</h4>
+  <table>
+    <tr><th>Icc max</th><th>Protection requise</th></tr>
+    <tr><td>&lt;1.5kA</td><td>Disj. standard 1500A</td></tr>
+    <tr><td>1.5–6kA</td><td>Disj. 6kA minimum</td></tr>
+    <tr><td>6–10kA</td><td>Disj. 10kA ou HPC amont</td></tr>
+    <tr><td>&gt;10kA</td><td class="hi">HPC obligatoire</td></tr>
+  </table>
+</div>
+</div>
+<div id="prot42" class="sub">
+<p class="stit">Protections — Disjoncteurs, DDR, HPC</p>
+<div class="card">
+  <span class="badge bb">Courbes B, C, D</span>
+  <h3>Déclenchement magnétique</h3>
+  <table>
+    <tr><th>Courbe</th><th>Déclenchement magn.</th><th>Application</th></tr>
+    <tr><td class="hi">B</td><td>3 à 5 × In</td><td>Circuits résistifs, éclairage, câbles longs, résidentiel sensible</td></tr>
+    <tr><td class="hi">C</td><td>5 à 10 × In</td><td>Usage courant, circuits mixtes, distribution standard</td></tr>
+    <tr><td class="hi">D</td><td>10 à 20 × In</td><td>Moteurs, transformateurs, forte pointe au démarrage</td></tr>
+  </table>
+  <div class="info">🔑 C13A basique suisse : In=13A, courbe C → déclenchement magnétique si Icc &gt;65A à 130A</div>
+</div>
+<div class="card">
+  <span class="badge ba">Sélectivité complète</span>
+  <h3>Total, partiel, filiation</h3>
+  <ul>
+    <li><span class="hi">Sélectivité totale</span> = SEUL le disjoncteur aval du défaut déclenche, toujours → continuité garantie</li>
+    <li><span class="hi">Sélectivité partielle</span> = sélective jusqu'à une certaine valeur de Icc → au-dessus les deux déclenchent</li>
+    <li><span class="hi">Filiation (back-up)</span> = disjoncteur amont protège l'aval → MAIS les deux peuvent déclencher ensemble → pas de continuité</li>
+  </ul>
+  <h4>Comment obtenir la sélectivité totale</h4>
+  <ul>
+    <li>Utiliser tabelles constructeur (données par le fabricant)</li>
+    <li>HPC amont + disjoncteur aval → souvent sélectivité totale</li>
+    <li>DDR type S amont + DDR instantané aval → sélectivité DDR</li>
+    <li>Différence de 2 calibres minimum entre amont et aval</li>
+  </ul>
+</div>
+<div class="card">
+  <span class="badge br">HPC — Fusibles haute performance</span>
+  <h3>Caractéristiques complètes</h3>
+  <ul>
+    <li>Courbe temps-courant très rapide pour forts défauts</li>
+    <li>Pouvoir de coupure jusqu'à <span class="hi">100kA</span></li>
+    <li>Réservé aux personnes averties (BA4) ou qualifiées (BA5)</li>
+    <li>Marquage Imax obligatoire sur coffret (code 1282)</li>
+    <li>Organe extracteur à maintenir à proximité — NIBT 4.1.A.3</li>
+    <li>Types : DII (≤25A), DIII (≤63A), Din00 (80A+)</li>
+    <li>Ne se réarme pas — se remplace par même calibre ou inférieur !</li>
+  </ul>
+</div>
+</div>
+<div id="app42" class="sub">
+<p class="stit">Contrôle d'appareils portatifs — SNR 462638</p>
+<div class="card">
+  <span class="badge bb">Base légale</span>
+  <h3>Norme SNR 462638 (depuis avril 2018)</h3>
+  <ul>
+    <li>Remplace VDE 0701-0702. Validée par TK 64/23, ESTI et SUVA</li>
+    <li>Basée sur OMBT art. 3 et OPA art. 32b</li>
+    <li>Tension : jusqu'à <span class="hi">1000V AC / 1500V DC</span></li>
+  </ul>
+  <h4>Types d'appareils concernés</h4>
+  <ul>
+    <li>Outillage électrique (perceuses, meuleuses…)</li>
+    <li>Appareils électrodomestiques et analogues</li>
+    <li>Enrouleurs, cordons prolongateurs, câbles raccordement</li>
+    <li>Luminaires non fixes</li>
+    <li>Appareils techniques (divertissement, info, communication)</li>
+    <li>Appareils mesure, commande, réglage</li>
+    <li>Appareils conversion tension non fixes</li>
+  </ul>
+  <div class="warn">⚠️ EXCLUSIONS : appareils exploitation minière, protection Ex, médicaux → normes spéciales.</div>
+</div>
+<div class="card">
+  <span class="badge ba">Quand contrôler + abréviations</span>
+  <h3>Occasions de contrôle</h3>
+  <div class="two">
+    <div>
+      <ul>
+        <li>À la <span class="hi">première acquisition</span> (mesures comparatives)</li>
+        <li>Après <span class="hi">maintenance ou réparation</span></li>
+        <li>Après <span class="hi">modification</span></li>
+        <li>Après <span class="hi">mauvaise utilisation</span></li>
+        <li>Périodiquement selon périodicité</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Abréviations protocole</h4>
+      <ul>
+        <li><span class="hi">CP</span> = Contrôle périodique</li>
+        <li><span class="hi">CR</span> = Contrôle après réparation</li>
+        <li><span class="hi">CM</span> = Contrôle après modification</li>
+        <li><span class="hi">CU</span> = Contrôle après mauvaise utilisation</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <span class="badge bg">Procédure et valeurs par classe</span>
+  <h3>Ordre des étapes + tableau des valeurs</h3>
+  <ol>
+    <li><span class="hi">Définir classe de protection</span> : Classe I (terre), Classe II (double isolation ⬜⬜), Classe III (TBTS)</li>
+    <li><span class="hi">Examen visuel</span> : boîtier, cordon, oxydation, brûlures</li>
+    <li><span class="hi">Essai de fonctionnement</span></li>
+    <li><span class="hi">Continuité PE</span> (Classe I uniquement)</li>
+    <li><span class="hi">Mesure Riso</span></li>
+    <li><span class="hi">Courant PE / courant de fuite</span></li>
+  </ol>
+  <table style="margin-top:.5rem">
+    <tr><th>Mesure</th><th>Classe I</th><th>Classe II</th><th>Classe III</th></tr>
+    <tr><td>Continuité PE (≤5m)</td><td class="hi">≤0.3Ω (+0.1Ω/7.5m, max 1Ω)</td><td>N/A</td><td>N/A</td></tr>
+    <tr><td>Riso (500V DC)</td><td class="hi">≥1MΩ</td><td class="hi">≥2MΩ</td><td class="hi">≥0.25MΩ</td></tr>
+    <tr><td>Riso avec éléments chauffants</td><td>≥0.3MΩ (&lt;3.5kW)</td><td>—</td><td>—</td></tr>
+    <tr><td>Courant PE/fuite direct</td><td class="hi">≤3.5mA</td><td class="hi">≤0.5mA</td><td class="hi">≤1mA</td></tr>
+    <tr><td>Chauffage &gt;3.5kW</td><td class="hi">1mA/kW max 10mA</td><td>—</td><td>—</td></tr>
+    <tr><td>Courant de contact</td><td class="hi">≤0.5mA</td><td class="hi">≤0.5mA</td><td class="hi">≤0.5mA</td></tr>
+  </table>
+  <h4>Méthodes courant PE</h4>
+  <ul>
+    <li><span class="hi">Directe</span> = en série dans le conducteur PE</li>
+    <li><span class="hi">Différentielle</span> = pince sur L+N simultanément (mesure la différence)</li>
+  </ul>
+  <h4>Documentation obligatoire</h4>
+  <ul>
+    <li>Registre par appareil : marque, type, n° série, date achat, n° interne, périodicité</li>
+    <li>Protocole de contrôle avec toutes les mesures</li>
+    <li>Marquage sur l'appareil : n° et date du dernier contrôle</li>
+    <li>Disponibles pour l'ESTI si contrôle demandé</li>
+  </ul>
+</div>
+</div>
+</div>
+
+<!-- ===== M4.2b — Systèmes et Terre ===== -->
+<div id="m42b" class="mod">
+<div class="stabs">
+  <button class="stab on" onclick="S('sys42',this,'m42b')">🔀 Systèmes TN/TT</button>
+  <button class="stab" onclick="S('sect42',this,'m42b')">📐 Sections conducteurs</button>
+  <button class="stab" onclick="S('terre42',this,'m42b')">🌍 Mesure de terre ESTI</button>
+  <button class="stab" onclick="S('ea42',this,'m42b')">🔧 Remplacement EA</button>
+</div>
+<div id="sys42" class="sub on">
+<p class="stit">Systèmes de mise à la terre</p>
+<div class="card">
+  <span class="badge bb">Résistance corps humain + effets courant</span>
+  <h3>Physiologie (valeurs CERPE)</h3>
+  <div class="two">
+    <div>
+      <h4>Résistances du corps</h4>
+      <ul>
+        <li>Interne : <span class="hi">750Ω</span></li>
+        <li>Main gauche → main droite : <span class="hi">1000–3000Ω</span></li>
+        <li>Main → pied : <span class="hi">1000Ω</span></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Effets du courant</h4>
+      <table>
+        <tr><td class="ok">0.5mA</td><td>Aucun effet</td></tr>
+        <tr><td>3mA</td><td>Fourmillements</td></tr>
+        <tr><td class="wn">15mA</td><td>Seuil de lâcher</td></tr>
+        <tr><td class="wn">40mA</td><td>Crispations, difficultés respiratoires</td></tr>
+        <tr><td class="er">80mA</td><td>Fibrillation ventriculaire — MORTEL</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="info">💡 Comparaison : ampoule 40W = 174mA. Le courant mortel (80mA) = 2× moins qu'une ampoule !</div>
+  <h4>Exigences PIE 1960</h4>
+  <ul>
+    <li>Courant de contact 50Hz ≤ <span class="hi">0.5mA</span></li>
+    <li>Tension de défaut ≤ <span class="hi">50V</span></li>
+    <li>Tension &gt;50V ne doit pas se maintenir &gt; <span class="hi">0.4s</span> (ou 5s selon cas)</li>
+  </ul>
+</div>
+<div class="card">
+  <span class="badge ba">Les 4 systèmes de mise à la terre</span>
+  <h3>TT, TN-C, TN-S, TN-C-S</h3>
+  <table>
+    <tr><th>Système</th><th>Description</th><th>Particularité clé</th></tr>
+    <tr><td class="hi">TT</td><td>Neutre transfo mis à la terre T, masses raccordées à terre indépendante T</td><td>DDR obligatoire pour protection personnes</td></tr>
+    <tr><td class="er">TN-C</td><td>Conducteur PEN = PE+N combinés (ancien Sch. III)</td><td>DDR INTERDIT. Contrôle tous 5 ans. DANGEREUX.</td></tr>
+    <tr><td class="hi">TN-S</td><td>Conducteurs N et PE séparés</td><td>Standard actuel. DDR possible et recommandé.</td></tr>
+    <tr><td class="hi">TN-C-S</td><td>TN-C en amont (réseau), TN-S en aval (installation)</td><td>Transition obligatoire au coupe-surintensité général</td></tr>
+  </table>
+  <div class="warn">⚠️ TN-C (Sch. III) : rupture PEN → potentiel 115–230V sur les masses ! Risque mortel d'électrocution.</div>
+  <h4>Problème du PEN sectionné (CERPE)</h4>
+  <ul>
+    <li>Si PEN rompu → tension mesurée sur PE = <span class="hi">226V</span></li>
+    <li>Courant à travers corps → <span class="hi">113mA</span> → MORTEL</li>
+    <li>Solution : mettre à la terre le PE au point de transition réseau/installation</li>
+    <li>Pontage compteurs eau et gaz → indispensable pour réduire tension de contact</li>
+  </ul>
+</div>
+<div class="card">
+  <span class="badge bg">Liaison équipotentielle</span>
+  <h3>Types et applications</h3>
+  <ul>
+    <li><span class="hi">Principale (globale)</span> : relie TOUS les éléments conducteurs entrant dans le bâtiment</li>
+    <li><span class="hi">Complémentaire (locale)</span> : dans locaux spéciaux (SDB, piscine, écuries, zones Ex)</li>
+  </ul>
+  <div class="fm">Sans équipotentialité : ~200V tension de contact → DANGER<br>Avec équipotentialité : ~0V tension de contact → SÛRETÉ</div>
+  <h4>Éléments à inclure (équipotentialité principale)</h4>
+  <ul>
+    <li>Conducteur PE principal + conducteur de terre + électrode</li>
+    <li>Canalisations métalliques : eau, gaz, liquides entrant dans bâtiment</li>
+    <li>Éléments conducteurs de la construction (armatures, poutres)</li>
+    <li>Systèmes chauffage central et climatisation métalliques</li>
+    <li>Protection contre la foudre (si présente)</li>
+  </ul>
+</div>
+</div>
+<div id="sect42" class="sub">
+<p class="stit">Sections des conducteurs N, PE et équipotentialité</p>
+<div class="card">
+  <span class="badge bb">Tableau des sections NIBT</span>
+  <h3>À connaître parfaitement</h3>
+  <table>
+    <tr><th>Conducteur</th><th>Règle de dimensionnement</th><th>Min.</th><th>Max.</th></tr>
+    <tr><td class="hi">Neutre N</td><td>≤16mm² = section phase | &gt;16mm² selon NIBT 5.2.4.3</td><td>—</td><td>—</td></tr>
+    <tr><td class="hi">PE (protection)</td><td>≤16mm² = section phase | &gt;16mm² = 0.5× section phase</td><td>—</td><td>—</td></tr>
+    <tr><td class="hi">Conducteur de terre enterré</td><td>0.5× section conducteur extérieur</td><td class="hi">50mm² Cu</td><td>—</td></tr>
+    <tr><td class="hi">Conducteur de terre non enterré</td><td>0.5× section conducteur extérieur</td><td class="hi">16mm² Cu</td><td class="hi">50mm² Cu</td></tr>
+    <tr><td class="hi">Liaison équipotentielle principale</td><td>0.5× section PE de référence</td><td class="hi">6mm² Cu (10mm² si foudre)</td><td class="hi">25mm² Cu</td></tr>
+    <tr><td class="hi">Liaison équipotentielle complémentaire</td><td>Entre 2 masses = min. plus petit PE</td><td class="hi">2.5mm² Cu avec protect.</td><td>—</td></tr>
+  </table>
+</div>
+<div class="card">
+  <span class="badge ba">DDR et résistance de terre maximale (RE)</span>
+  <h3>Formule RE = UB / IΔn</h3>
+  <div class="fm">RE max = UB / IΔn = 50V / IΔn<br>UB = 50V (tension contact max. permanente)</div>
+  <table>
+    <tr><th>IΔn DDR</th><th>RE max (UB=50V)</th></tr>
+    <tr><td>10mA</td><td class="hi">5000Ω</td></tr>
+    <tr><td>30mA</td><td class="hi">1650Ω</td></tr>
+    <tr><td>100mA</td><td class="hi">500Ω</td></tr>
+    <tr><td>300mA</td><td class="hi">165Ω</td></tr>
+    <tr><td>500mA</td><td class="hi">100Ω</td></tr>
+  </table>
+  <div class="info">💡 En système TT : un DDR 30mA accepte une RE jusqu'à 1650Ω tout en maintenant la sécurité !</div>
+</div>
+</div>
+<div id="terre42" class="sub">
+<p class="stit">Mesure de la résistance de terre — ESTI 01/2021</p>
+<div class="card">
+  <span class="badge bb">Définition et obligation</span>
+  <h3>Résistance de terre (ESTI)</h3>
+  <ul>
+    <li>= Résistance de contact entre l'électrode et le sol</li>
+    <li>L'électrode elle-même : résistance &lt;1mΩ/m</li>
+    <li>C'est la <span class="hi">résistivité du sol</span> qui est déterminante</li>
+    <li>Facteurs : humidité, température, profondeur, nature du sol</li>
+    <li>Variations saisonnières : peuvent modifier la valeur de <span class="hi">±50%</span> !</li>
+    <li>Mesure obligatoire et à documenter dans RS ou PM</li>
+    <li>Fréquence non harmoniques utilisées (91–2083 Hz) pour éviter perturbations</li>
+  </ul>
+  <div class="warn">⚠️ La mesure est souvent omise en pratique — c'est une non-conformité selon l'ESTI !</div>
+</div>
+<div class="card">
+  <span class="badge ba">Valeurs limites ESTI</span>
+  <h3>Selon application</h3>
+  <table>
+    <tr><th>RE max</th><th>Application</th><th>Référence</th></tr>
+    <tr><td class="hi">≤0.44Ω</td><td>Bâtiment TN/TT + sous-station 30A (calcul 1.6/3.6)</td><td>OCF art. 54, 55, 61</td></tr>
+    <tr><td class="hi">≤1Ω</td><td>Continuité boucle équipotentielle</td><td>SNR 464022:2015 6.3.5</td></tr>
+    <tr><td class="hi">≤1.6Ω</td><td>Bâtiment avec sous-station, courant effacement 30A</td><td>OCF art. 54, 55, 61</td></tr>
+    <tr><td class="hi">≤10Ω</td><td>Protection foudre (terre fondation + paratonnerre)</td><td>SNR 464022:2015 6.3.5</td></tr>
+    <tr><td class="hi">≤20Ω</td><td>Recommandation générale sans sous-station</td><td>SNG 483755:2019 10.1.3</td></tr>
+    <tr><td class="hi">≤1650Ω</td><td>DDR 30mA système TT</td><td>NIBT 4.1.1.4</td></tr>
+  </table>
+</div>
+<div class="card">
+  <span class="badge bg">4 méthodes de mesure</span>
+  <h3>Comparaison</h3>
+  <table>
+    <tr><th>Méthode</th><th>Avantage</th><th>Inconvénient</th></tr>
+    <tr><td class="hi">Courant/tension (Image 5)</td><td>Une sonde, courant 5A depuis réseau</td><td>Sol neutre requis, dépend tension réseau. <span class="er">Impossible derrière DDR !</span></td></tr>
+    <tr><td class="hi">Wenner 3 points (Image 6)</td><td>Indépendant de la tension</td><td>2 sondes + sol neutre. Ville : mesure continuité &lt;1Ω</td></tr>
+    <tr><td class="hi">Boucle / pince (Image 7)</td><td>Fréq. non harm. (91–2083Hz), pas déconnecter conducteur terre</td><td>Mesure de BOUCLE ≠ résistance de terre. Toujours supérieure à RE réelle.</td></tr>
+    <tr><td class="hi">Tension réseau (Image 8)</td><td>230V disponible partout</td><td>RE = a – Ri/2 à soustraire. <span class="er">Impossible derrière DDR !</span></td></tr>
+  </table>
+  <div class="info">💡 Seule la méthode par boucle (pince) est utilisable derrière un DDR !</div>
+  <h4>Électrode de fondation — contrôle obligatoire</h4>
+  <ul>
+    <li>Expert doit contrôler <span class="hi">avant le remblayage</span> et <span class="hi">avant le bétonnage</span></li>
+    <li>Alternativement : photos en accord avec l'autorité</li>
+    <li>Installateur et architecte : se concerter à temps avant début construction</li>
+  </ul>
+</div>
+<div class="card">
+  <span class="badge br">Bâtiments existants — ESTI 09/2012</span>
+  <h3>Conducteurs de terre dans anciens bâtiments</h3>
+  <ul>
+    <li>Avant 1985 : conducteur de mise à la terre non obligatoire</li>
+    <li>Conduites d'eau en plastique → <span class="hi">ne peuvent plus servir d'électrode</span></li>
+    <li>Rupture PEN : potentiel de 115–230V sur PE !</li>
+  </ul>
+  <table style="margin-top:.5rem">
+    <tr><th>Situation</th><th>Solution</th></tr>
+    <tr><td>Fondation armée (fers ≥8mm)</td><td>Dégager 2 fers verticaux dans mur extérieur proche sol, raccorder au conducteur de terre</td></tr>
+    <tr><td>Sans fondation armée, cas normal</td><td>Renoncer à la mise à la terre de remplacement (accord GRD requis)</td></tr>
+    <tr><td>Raccordement extérieur, marge réseau, ou paratonnerre</td><td>Électrode spéciale OU bande de terre (70cm prof. min.) OU piquet 6–8m</td></tr>
+  </table>
+  <div class="warn">⚠️ Exemple réel ESTI : un bœuf mort électrocuté. Rupture PEN + conducteur de terre manquant → potentiel sur conduite d'eau → électrocution via dispositif d'attache métallique.</div>
+</div>
+</div>
+<div id="ea42" class="sub">
+<p class="stit">Remplacement d'un EA existant</p>
+<div class="card">
+  <span class="badge bb">Principe + cas pratiques</span>
+  <h3>Quelle norme s'applique ?</h3>
+  <ul>
+    <li>Remplacement EA = modification importante → normes actuelles pour les parties modifiées</li>
+    <li>Circuits existants NON touchés → normes de l'époque de réalisation</li>
+    <li>Toujours viser à augmenter le niveau de sécurité</li>
+  </ul>
+  <table style="margin-top:.5rem">
+    <tr><th>Question</th><th>Réponse</th></tr>
+    <tr><td>DDR si circuits en TN-S (Sch. I) ?</td><td class="ok">OUI — conducteur PE séparé présent → DDR possible et requis</td></tr>
+    <tr><td>DDR si circuits en Sch. III (TN-C) ?</td><td class="er">NON — DDR interdit en TN-C. Prévoir réserve pour future conversion.</td></tr>
+    <tr><td>Prises T12 (10A) avec disj. 16A (ancienne norme) ?</td><td>C13A max selon norme actuelle, si Icc corrects</td></tr>
+    <tr><td>Avis d'installation requis ?</td><td>Si comptage sur l'EA OU puissance augmentée &gt;3.6kVA → AI requis</td></tr>
+    <tr><td>Contrôle final requis ?</td><td>OUI — même sans AI. Si périodicité &lt;20 ans → contrôle réception aussi</td></tr>
+    <tr><td>Valeurs Riso : 1MΩ ou valeurs d'époque ?</td><td>Si reste non touché → valeurs de l'époque (visuel si Sch.III)</td></tr>
+    <tr><td>Temps de coupure 0.4s ?</td><td>Si reste non touché → temps de coupure de l'époque</td></tr>
+  </table>
+  <h4>Mesures OIBT obligatoires pour chaque circuit</h4>
+  <ul>
+    <li>Continuité PE aux équipotentielles + point le plus éloigné</li>
+    <li>Si TN-S/Sch. I → Riso</li>
+    <li>Icc au point le plus éloigné → vérifier temps de coupure</li>
+  </ul>
+</div>
+</div>
+</div>
+
+<!-- ===== M4.2c — IRVE ===== -->
+<div id="m42c" class="mod">
+<div class="stabs">
+  <button class="stab on" onclick="S('irve',this,'m42c')">🔋 Bornes VE / IRVE</button>
+  <button class="stab" onclick="S('pmev',this,'m42c')">📋 Protocole PM VE</button>
+</div>
+<div id="irve" class="sub on">
+<p class="stit">Bornes de recharge VE — IRVE complet</p>
+<div class="card">
+  <span class="badge bb">4 modes de recharge IEC 61851</span>
+  <h3>Classification complète</h3>
+  <table>
+    <tr><th>Mode</th><th>Description</th><th>Protection</th><th>Courant max</th></tr>
+    <tr><td class="hi">Mode 1</td><td>Prise standard sans protection — vélos, motos, trottinettes</td><td>Aucune spécifique</td><td>10A — éviter &gt;1h prise standard</td></tr>
+    <tr><td class="hi">Mode 2</td><td>Cordon avec boîtier ICCPD intégré, prise 230V</td><td>Protection dans le cordon</td><td>10A (recomm. prise CEE 16A)</td></tr>
+    <tr><td class="hi">Mode 3</td><td>Borne AC dédiée (wallbox) avec communication véhicule-borne</td><td>Borne dédiée avec contrôle</td><td>jusqu'à 22kW (32A tri)</td></tr>
+    <tr><td class="hi">Mode 4</td><td>Recharge rapide DC — charge directe batterie</td><td>Transfo séparation, haute protection</td><td>50kW+ (illimité théoriquement)</td></tr>
+  </table>
+  <div class="warn">⚠️ NIBT 7.22.5.5.101 : Prises T13, T15, T23, T25 NE SONT PAS appropriées pour VE !</div>
+</div>
+<div class="two">
+  <div class="card">
+    <span class="badge ba">Connecteurs normés Europe</span>
+    <h3>Types</h3>
+    <table>
+      <tr><th>Connecteur</th><th>Usage</th></tr>
+      <tr><td class="hi">Type 2 (Mennekes)</td><td>Standard EU obligatoire mode 3. Permet AC+DC+mixte. Seul polyvalent.</td></tr>
+      <tr><td class="hi">CCS2</td><td>Mode 3+4 DC (ajout 2 pins DC au Type 2)</td></tr>
+      <tr><td class="hi">CHAdeMO</td><td>Mode 4 DC Japonais (en déclin)</td></tr>
+      <tr><td class="hi">Tesla NACS</td><td>Standard Tesla, devient standard US</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <span class="badge bg">Signal CP — Communication véhicule ↔ borne</span>
+    <h3>États Mode 3 (signal 1000 Hz)</h3>
+    <table>
+      <tr><th>État</th><th>Tension CP</th><th>Signification</th></tr>
+      <tr><td class="hi">A</td><td>+12V / -12V</td><td>Aucun VE connecté</td></tr>
+      <tr><td class="hi">B</td><td>+9V / -12V</td><td>Connecté, pas prêt → verrouillage borne</td></tr>
+      <tr><td class="hi">C</td><td>+6V / -12V</td><td>Prêt pour charge SANS ventilation</td></tr>
+      <tr><td class="hi">D</td><td>+3V / -12V</td><td>Prêt pour charge AVEC ventilation</td></tr>
+      <tr><td class="hi">E</td><td>0V</td><td>Court-circuit VE → déclenchement IMMÉDIAT</td></tr>
+    </table>
+  </div>
+</div>
+<div class="card">
+  <span class="badge br">Exigences NIBT 7.22</span>
+  <h3>Règles d'installation obligatoires</h3>
+  <ul>
+    <li>DDR ≤30mA obligatoire pour <span class="hi">chaque point de raccordement</span></li>
+    <li>Si borne avec détection DC &gt;6mA → DDR type A 30mA suffisant</li>
+    <li>Si borne SANS détection DC → DDR type B 30mA obligatoire</li>
+    <li>Chaque point : son propre DDR + son propre disjoncteur</li>
+  </ul>
+  <h4>3 variantes NIBT 2025</h4>
+  <table>
+    <tr><th>Variante</th><th>Description</th></tr>
+    <tr><td class="hi">1</td><td>Coupe-surintensité dans tableau individuel pour chaque borne</td></tr>
+    <tr><td class="hi">2</td><td>Coupe-surintensité dans installation entre câble horizontal et chaque borne</td></tr>
+    <tr><td class="hi">3</td><td>Coupe-surintensité départ câble horizontal + limitation numérique du courant via gestion des bornes</td></tr>
+  </table>
+  <h4>Exigences GRD / PDIE</h4>
+  <ul>
+    <li>GRD peut limiter puissance à <span class="hi">3.7kVA</span> (mono ou tri)</li>
+    <li>GRD peut exiger délestage avec <span class="hi">fils pilotes</span></li>
+    <li>GRD se réserve le droit de piloter ou couper la borne</li>
+    <li>Systèmes "smart charging" privilégiés</li>
+  </ul>
+  <h4>Raccordement multi-bornes — phases</h4>
+  <ul>
+    <li>Répartir les phases ! Certains VE = monophasé uniquement</li>
+    <li>En dessous de 10A → certains VE passent automatiquement en mono</li>
+    <li>Plug-in hybrides = souvent monophasé</li>
+    <li>Rotation : L1→L2→L3→L1→L2→L3…</li>
+  </ul>
+  <h4>Installation extérieure — précautions</h4>
+  <ul>
+    <li>Éviter plastique et couleur noire (UV)</li>
+    <li>Éviter afficheurs LCD (condensation)</li>
+    <li>Prévoir aération selon fabricant</li>
+    <li>Cordon : ne pas traverser parois, ne pas tendre</li>
+  </ul>
+</div>
+<div class="card">
+  <span class="badge bb">Contrôle OIBT complet borne mode 3 AC</span>
+  <h3>Procédure détaillée avec appareil de test</h3>
+  <p style="font-size:12px;color:#666;margin-bottom:.5rem"><b>Conseil :</b> Ne pas faire mettre en service la borne par le monteur seul — faire le contrôle final en même temps.</p>
+  <ol>
+    <li>Contrôle visuel + documents (RCD, puissance, AC/DC, schémas)</li>
+    <li>Continuité PE sur borne + prise EV (alvéole central)</li>
+    <li>Riso alimentation de la borne</li>
+    <li>Icc max (tableau) + Icc min (borne)</li>
+    <li>Sélectionner courant ≥20A sur appareil de test</li>
+    <li>Position <span class="hi">A</span> : brancher → PAS de réaction</li>
+    <li>Position <span class="hi">B</span> : verrouillage doit se faire côté borne</li>
+    <li>Position <span class="hi">C</span> : attendre enclenchement tension. Si non → simuler charge avec récepteur</li>
+    <li>Test coupure PE : touche "coupure PE" → plus de communication → borne se coupe</li>
+    <li>Vérifier tensions L1, L2, L3/N</li>
+    <li>Icc L-N</li>
+    <li>Test DDR type A (si DDR type B dans borne) → faire repartir la borne</li>
+    <li>Test DDR type B ou test détection 6mA DC</li>
+    <li>Position <span class="hi">D</span> (DDR type A-EV) → avec ventilation</li>
+    <li>Position <span class="hi">E</span> → court-circuit VE → déclenchement IMMÉDIAT attendu</li>
+    <li>Rendre la borne opérationnelle</li>
+  </ol>
+  <h4>Borne DC Mode 4</h4>
+  <ul>
+    <li>Pas de mesures sur prise EV DC</li>
+    <li>Consulter documentation technique (transfo séparation, RCD)</li>
+    <li>Mesurer continuité terre, vérifier tensions, tester DDR/RCD</li>
+  </ul>
+  <h4>Périodicité contrôles VE</h4>
+  <ul>
+    <li>Bornes privées → selon périodicité du bâtiment</li>
+    <li>Bornes publiques → <span class="hi">5 ans</span> (évent. 1 an si environnement sévère)</li>
+  </ul>
+</div>
+</div>
+<div id="pmev" class="sub">
+<p class="stit">Protocole PM VE — ASCE officiel</p>
+<div class="card">
+  <span class="badge bb">Contenu du PM EV</span>
+  <h3>Points vérifiés dans le protocole officiel</h3>
+  <div class="two">
+    <div>
+      <h4>Contrôle visuel (liste à cocher)</h4>
+      <ul>
+        <li>Choix et mise en œuvre corrects des matériels</li>
+        <li>Protection contre contacts directs</li>
+        <li>Aucun dommage visible</li>
+        <li>IP conforme à l'environnement</li>
+        <li>Filtre ventilation dégagé et propre</li>
+        <li>Stabilité borne / fixation wallbox</li>
+        <li>Pose câbles (dimensionnement, mise en œuvre, identification)</li>
+        <li>Identification circuits, disjoncteurs</li>
+        <li>Accessibilité des matériels</li>
+        <li>Mode de protection (TN-S, TN-C…)</li>
+        <li>Liaison équipotentielle principale</li>
+        <li>Mise à la terre (fondation, eau…)</li>
+        <li>Liaison équipotentielle supplémentaire</li>
+        <li>Protection surtension disponible</li>
+        <li>Câble de recharge intact</li>
+        <li>Lignes communication disponibles</li>
+        <li>Documentation disponible et complète</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Essais et mesures</h4>
+      <ul>
+        <li>Continuité PE + liaison équipotentielle</li>
+        <li>Déclenchement automatique défaut</li>
+        <li>Champ tournant</li>
+        <li>Tension réseau (L1, L2, L3/N)</li>
+        <li>Essais DDR (courant différentiel)</li>
+        <li>Icc max et min L-PE</li>
+        <li>Icc max et min L-N</li>
+        <li>Riso [MΩ]</li>
+        <li>DDR : IN, type, IΔn [mA], temps décl. [ms]</li>
+      </ul>
+      <h4>Contrôle fonctionnement</h4>
+      <ul>
+        <li>Voyants sur station</li>
+        <li>Fonction de verrouillage</li>
+        <li>Statuts A, B, C, D, E vérifiés</li>
+        <li>EA : vérification individuelle ou CF</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<!-- ===== M4.3 ===== -->
+<div id="m43" class="mod">
+<div class="stabs">
+  <button class="stab on" onclick="S('phys43',this,'m43')">⚡ Dangers physiologiques</button>
+  <button class="stab" onclick="S('epi43',this,'m43')">🦺 EPI et sécurité</button>
+  <button class="stab" onclick="S('env43',this,'m43')">🌱 Environnement chantier</button>
+  <button class="stab" onclick="S('resp43',this,'m43')">⚖️ Responsabilités</button>
+</div>
+<div id="phys43" class="sub on">
+<p class="stit">Dangers physiologiques de l'électricité</p>
+<div class="card">
+  <span class="badge br">Seuils — à connaître par cœur</span>
+  <h3>Effets courant sur le corps (Biegelmeier)</h3>
+  <table>
+    <tr><th>Courant</th><th>Effet physiologique</th></tr>
+    <tr><td class="ok">0.5mA</td><td>Seuil de perception — picotement léger</td></tr>
+    <tr><td>3mA</td><td>Fourmillements</td></tr>
+    <tr><td class="wn">15mA</td><td>Seuil de lâcher — crispations, limite auto-libération</td></tr>
+    <tr><td class="wn">40mA</td><td>Crispations violentes, difficultés respiratoires, fibrillation possible</td></tr>
+    <tr><td class="er">80mA</td><td>Fibrillation ventriculaire — MORTEL</td></tr>
+    <tr><td class="er">1A</td><td>Brûlures sévères, arrêt cardiaque quasi-certain</td></tr>
+  </table>
+  <div class="warn">⚠️ Une ampoule 40W = 174mA. Le courant mortel = 80mA = 2× moins. Rappel : DDR 30mA protège car 30mA &lt; 40mA (fibrillation possible). Temps de coupure 0.4s aussi critique.</div>
+  <h4>3 types de dangers</h4>
+  <ul>
+    <li>1. <span class="hi">Physiologique</span> — fibrillation cardiaque (le plus mortel)</li>
+    <li>2. <span class="hi">Brûlure thermique</span> — arc électrique (énergie incidente en cal/cm²)</li>
+    <li>3. <span class="hi">Accident secondaire</span> — chute, mouvement involontaire</li>
+  </ul>
+  <h4>Effets à long terme — Risque 50 heures post-électrisation</h4>
+  <ul>
+    <li>Destruction tissus → bactéries → <span class="hi">septicémie</span></li>
+    <li>Perte de liquide → <span class="hi">insuffisance rénale</span></li>
+    <li>Électrolyse du sang → coagulation → <span class="hi">embolie pulmonaire</span></li>
+    <li><span class="hi">Dysfonctionnement organes vitaux pendant ~50h</span> même sans symptômes immédiats</li>
+  </ul>
+  <div class="warn">⚠️ Une personne électrisée doit être hospitalisée et surveillée même si elle semble aller bien !</div>
+</div>
+</div>
+<div id="epi43" class="sub">
+<p class="stit">EPI et sécurité au travail électrique</p>
+<div class="card">
+  <span class="badge bb">EPI selon risque</span>
+  <h3>Protection arc électrique + standard</h3>
+  <div class="two">
+    <div>
+      <h4>Protection arc électrique</h4>
+      <ul>
+        <li>Vêtements arc-flash (classe selon cal/cm²)</li>
+        <li>Visière faciale résistante à l'arc</li>
+        <li>Gants isolants (catégorie selon tension)</li>
+        <li>Casque isolant</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Protection standard</h4>
+      <ul>
+        <li>Casque de protection</li>
+        <li>Chaussures de sécurité isolantes</li>
+        <li>Lunettes de protection</li>
+        <li>Outillage isolé 1000V (CAT III min.)</li>
+        <li>Gants de protection appropriés</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <span class="badge ba">Définition travaux sur installations OIBT</span>
+  <h3>Travail sous tension vs hors tension</h3>
+  <p><span class="hi">N'est PAS</span> un travail sur installation : la commande à partir d'un emplacement sûr au moyen d'équipements construits à cet effet.</p>
+  <p style="margin-top:.5rem"><span class="hi">EST</span> un travail sur installation : toute activité nécessitant des mesures pour protéger les personnes ou les biens des risques liés au courant électrique.</p>
+</div>
+</div>
+<div id="env43" class="sub">
+<p class="stit">Environnement chantier — substances dangereuses</p>
+<div class="card">
+  <span class="badge br">Tableau complet substances dangereuses</span>
+  <h3>Amiante, PCB et autres</h3>
+  <table>
+    <tr><th>Substance</th><th>Identification</th><th>Action obligatoire</th><th>Référence</th></tr>
+    <tr><td class="hi">Amiante</td><td>Anciens EA (&lt;1990), plaques fibres, joints</td><td>NE PAS percer/couper. Entreprise spécialisée. Remplacer avant modification.</td><td>Directive CFST 6503, NIBT 3130-3134</td></tr>
+    <tr><td class="er">PCB confirmé (rouge)</td><td>Autocollant rouge sur condensateur</td><td>MISE HORS SERVICE IMMÉDIATE + déchets spéciaux par entreprise autorisée</td><td>ORRChim annexe 2.14, NIBT 3136</td></tr>
+    <tr><td class="wn">PCB suspecté (orange)</td><td>Autocollant orange</td><td>Informer office cantonal. 6 mois pour prouver &lt;50ppm sinon traiter comme confirmé.</td><td>ORRChim annexe 2.14, NIBT 3137</td></tr>
+    <tr><td class="ok">Sans PCB vérifié (vert)</td><td>Autocollant vert</td><td>Documenter dans le rapport</td><td>ORRChim annexe 2.14, NIBT 3139</td></tr>
+    <tr><td>Plomb (anciens câbles)</td><td>Gaine grise-bleue vieux câbles</td><td>EPI adaptés, déchets spéciaux</td><td>OIBT art. 3</td></tr>
+  </table>
+</div>
+</div>
+<div id="resp43" class="sub">
+<p class="stit">Responsabilités légales</p>
+<div class="card">
+  <span class="badge bb">Chef de projet — responsabilités</span>
+  <h3>Ce que dit la loi</h3>
+  <ul>
+    <li>Veiller au niveau de formation des employés sur les dangers de l'électricité</li>
+    <li>Faire respecter les règles SUVA et les 5+5 règles vitales</li>
+    <li><span class="hi">TOUT noter</span> : actions dangereuses, corrections, photos, dates</li>
+    <li>Garder copie de TOUS les documents — traçabilité indispensable</li>
+    <li>En cas d'accident → filière remontée et responsables désignés</li>
+    <li>Responsabilité engagée même pour travaux effectués par les monteurs</li>
+  </ul>
+  <div class="warn">⚠️ "C'est lors d'un accident que la filière est remontée et que les responsables sont désignés. Il nous incombe donc de tout noter les actions dangereuses, de faire corriger, de garder des photos et de sauvegarder le tout." — Cours M4.3 CERPE</div>
+</div>
+<div class="card">
+  <span class="badge ba">Propriétaire — obligations légales</span>
+  <h3>OIBT art. 3, 4 et 5</h3>
+  <ul>
+    <li>Maintenir l'installation en état de conformité</li>
+    <li>Conserver documentation pendant toute la durée de vie</li>
+    <li>Donner suite aux défauts signalés dans les délais</li>
+    <li>Responsable des accidents sur installation non entretenue</li>
+    <li>La mise à la terre = partie intégrante de l'installation électrique (responsabilité propriétaire)</li>
+  </ul>
+</div>
+</div>
+</div>
+
+<!-- ===== QUIZ ===== -->
+<div id="quiz" class="mod">
+<p class="stit">Quiz global — 50 questions niveau examen CERPE</p>
+<div class="info">💡 Cliquez sur chaque question pour révéler la réponse complète.</div>
+<h4 style="margin:.75rem 0 .5rem;font-size:13px;color:#1a3a5c;font-weight:700">M3M3</h4>
+<div class="qa"><div class="qq" onclick="Q(0)"><span>C13A monophasé et triphasé : quelle puissance dans le bilan ?</span><span class="ar" id="a0">›</span></div><div class="ra" id="r0">C13A mono → 3 kW (13A × 230V). C13A tri → 9 kW (13A × 400V × 1.732). C16A mono = 3.6 kW, C16A tri = 11 kW.</div></div>
+<div class="qa"><div class="qq" onclick="Q(1)"><span>Calculez I d'introduction : P=120kW, fs=0.5, cosφ=0.9.</span><span class="ar" id="a1">›</span></div><div class="ra" id="r1">I = (120000 × 0.5) / (400 × 1.732 × 0.9) = 60000 / 623.5 = 96.2 A → Introduction 100A.</div></div>
+<div class="qa"><div class="qq" onclick="Q(2)"><span>Sélectivité : groupe B40A, Icc=4.3kA, intro 80A. Sélectivité ? Solution ?</span><span class="ar" id="a2">›</span></div><div class="ra" id="r2">NON, pas de sélectivité. Solution : remplacer l'introduction 80A par un HPC 100A (selon tabelle constructeur).</div></div>
+<div class="qa"><div class="qq" onclick="Q(3)"><span>Citez tous les éléments obligatoires sur un schéma de distribution.</span><span class="ar" id="a3">›</span></div><div class="ra" id="r3">1. Nom GRD. 2. Système mise au neutre avant+après CSG. 3. Sections et nb conducteurs tous tronçons. 4. Mises à terre (électrode, PE, sections). 5. Protections (type B/C/D, In, DDR). 6. Numéros groupes avec désignation. 7. Éléments GRD : TC, protection TC, récepteur délesté, lignes pilotes. 8. Sections liaisons équipotentielles.</div></div>
+<div class="qa"><div class="qq" onclick="Q(4)"><span>Code couleur plan : éclairage normal / force / secours / KNX ?</span><span class="ar" id="a4">›</span></div><div class="ra" id="r4">Bleu = éclairage normal | Rouge = force, EP, électrode | Vert = secours, TT, informatique, CUC | Violet = Radio/TV, KNX.</div></div>
+<div class="qa"><div class="qq" onclick="Q(5)"><span>Max tubes/boîte ? Max appareils/groupe ? Prises doubles = combien ?</span><span class="ar" id="a5">›</span></div><div class="ra" id="r5">Max 8 tubes/boîte. Max 12-15 appareils/groupe (1200-1500W). Prise double ou triple = 1 seul appareil.</div></div>
+<div class="qa"><div class="qq" onclick="Q(6)"><span>Calcul éclairage : 8×10m, 300lux, 4000lm, η=0.5. Luminaires ? Répartition ?</span><span class="ar" id="a6">›</span></div><div class="ra" id="r6">N = (80×300)/(4000×0.5) = 24000/2000 = 12 luminaires. Sur 8m : marge=8/6=1.33m, espacement=8/3=2.67m. Sur 10m : marge=10/6=1.67m, espacement=10/3=3.33m. Répartition : 3 colonnes × 4 rangées = 12.</div></div>
+<div class="qa"><div class="qq" onclick="Q(7)"><span>Niveau signal TV requis ? Comment procéder au calcul ?</span><span class="ar" id="a7">›</span></div><div class="ra" id="r7">63 à 73 dBµV. Partir de la prise la plus éloignée (ex: 65 dBµV), remonter vers la tête en ajoutant les atténuations de chaque élément (câble, prises, répartiteurs). Distribution en étoile privilégiée.</div></div>
+<div class="qa"><div class="qq" onclick="Q(8)"><span>6 phases SIA 108 et rôle électricien dans chacune.</span><span class="ar" id="a8">›</span></div><div class="ra" id="r8">1. Définition objectifs = absent (DRT au GRD). 2. Études préliminaires = faisabilité, mandataires. 3. Projet = avant-projet, autorisation, schéma EA. 4. Appel d'offres = comparaison, adjudication. 5. Réalisation = exécution, mise en service. 6. Exploitation = maintenance, dossier révision, facture finale.</div></div>
+<div class="qa"><div class="qq" onclick="Q(9)"><span>Différence classeur de chantier vs dossier de révision ?</span><span class="ar" id="a9">›</span></div><div class="ra" id="r9">Classeur chantier = mis à dispo des TRAVAILLEURS pendant le chantier (PHS, plans, PV…). Dossier révision = remis au CLIENT en fin de chantier (RS, PM, plans as-built, fiches techniques, certificats conformité).</div></div>
+<div class="qa"><div class="qq" onclick="Q(10)"><span>7 principes fondamentaux Minergie.</span><span class="ar" id="a10">›</span></div><div class="ra" id="r10">1. Exploitation potentiel solaire (PV obligatoire toiture). 2. Monitoring énergétique (obligatoire >2000m² SRE). 3. Enveloppe isolée et étanche. 4. Protection thermique adaptée. 5. Renouvellement air automatique (double flux η≥80%). 6. Zéro CO₂ en exploitation. 7. Minimisation émissions grises.</div></div>
+<div class="qa"><div class="qq" onclick="Q(11)"><span>3 labels Minergie du moins au plus efficient + spécificités.</span><span class="ar" id="a11">›</span></div><div class="ra" id="r11">1. Minergie = base, bilan -25%, valeur bien +7%. 2. Minergie P = isolation max 70% MoPEC, étanchéité testée sur site. 3. Minergie A = production > consommation via PV, zéro net 2050.</div></div>
+<div class="qa"><div class="qq" onclick="Q(12)"><span>5 normes SIA et leur objet en une phrase.</span><span class="ar" id="a12">›</span></div><div class="ra" id="r12">SIA 108 = Honoraires et 6 phases projet. SIA 118 = CG construction (obligations, délais, défauts). SIA 118/380 = CG installations bâtiment. SIA 387/4 = Éclairage >1000m² SRE (2023). SIA 451 = Formats données BIM/CFC.</div></div>
+<div class="qa"><div class="qq" onclick="Q(13)"><span>DALI : participants, groupes, scénarios, longueur max ?</span><span class="ar" id="a13">›</span></div><div class="ra" id="r13">64 participants, 16 groupes, 16 scénarios par segment. Longueur max 300m. 2 brins, communication bidirectionnelle.</div></div>
+<h4 style="margin:.75rem 0 .5rem;font-size:13px;color:#1a3a5c;font-weight:700">M4.1</h4>
+<div class="qa"><div class="qq" onclick="Q(14)"><span>Différence contrôle final vs contrôle de réception ?</span><span class="ar" id="a14">›</span></div><div class="ra" id="r14">Contrôle final = entreprise ayant fait les travaux, autorisation I ou K. Contrôle de réception = entreprise N'AYANT PAS participé, autorisation K uniquement, dans les 6 mois, obligatoire si périodicité <20 ans.</div></div>
+<div class="qa"><div class="qq" onclick="Q(15)"><span>5 types de contrôles OIBT avec autorisations.</span><span class="ar" id="a15">›</span></div><div class="ra" id="r15">1. 1ère vérification = monteur, I. 2. Contrôle final = installateur, I ou K. 3. Contrôle réception = indépendant, K accrédité. 4. Contrôle périodique = indépendant, K. 5. Sporadique/ponctuel = indépendant, K.</div></div>
+<div class="qa"><div class="qq" onclick="Q(16)"><span>Autorisation K : que peut et ne peut pas faire cette entreprise ?</span><span class="ar" id="a16">›</span></div><div class="ra" id="r16">PEUT : contrôles finaux, périodiques, réception installations standards. NE PEUT PAS : locaux spéciaux (zones Ex, gares, locaux médicaux groupe 2). Ces derniers nécessitent entreprise accréditée ESTI.</div></div>
+<div class="qa"><div class="qq" onclick="Q(17)"><span>Ordre des mesures lors d'un contrôle. Pourquoi continuité PE en premier ?</span><span class="ar" id="a17">›</span></div><div class="ra" id="r17">1. Continuité PE (sans tension — OBLIGATOIREMENT EN PREMIER). 2. Riso (sans tension). 3. Test DDR (avec tension). 4. Icc. 5. Champ tournant. 6. Tension/fréquence. Raison : le PE est utilisé comme référence pour toutes les autres mesures. Si PE interrompu et non détecté → toutes les mesures suivantes sont faussées = DANGEREUX.</div></div>
+<div class="qa"><div class="qq" onclick="Q(18)"><span>5 défauts NIBT fréquents sur les EA.</span><span class="ar" id="a18">›</span></div><div class="ra" id="r18">1144 = couvercle manquant. 1162 = accessibilité insuffisante. 1312 = sectionneur neutre manquant. 3540 = schéma ne correspond pas. 3552 = documentation manquante. Aussi : 1282 = marquage Imax HPC absent. 3130-3134 = amiante. 3136 = PCB rouge.</div></div>
+<div class="qa"><div class="qq" onclick="Q(19)"><span>Défauts DDR les plus importants (codes + descriptions).</span><span class="ar" id="a19">›</span></div><div class="ra" id="r19">3320 = DDR type AC INTERDIT (→type A). 3310 = DDR 30mA manquant prises libres. 3312 = DDR 30mA manquant circuits luminaires habitation (NOUVEAU 2025). 3316 = DDR en TN-C (inadmissible). 3352 = DDR ponté (supprimer immédiatement). 3340 = DDR ne déclenche pas au test (remplacer). 3314 = DDR 300mA (→30mA).</div></div>
+<div class="qa"><div class="qq" onclick="Q(20)"><span>DDR obligatoire en salle de bains ? Et pour une borne VE ?</span><span class="ar" id="a20">›</span></div><div class="ra" id="r20">SDB : DDR ≤30mA pour TOUS les circuits (NIBT 7.01.4.1.5.1). Borne VE : DDR ≤30mA type B OU type A si borne avec détection DC intégrée >6mA. Chaque point de raccordement son propre DDR (NIBT 7.22.5.3.1.3.101).</div></div>
+<div class="qa"><div class="qq" onclick="Q(21)"><span>2 principales nouveautés DDR dans la NIBT 2025.</span><span class="ar" id="a21">›</span></div><div class="ra" id="r21">1. DDR type AC INTERDIT (code 3320 → type A minimum obligatoire pour tout nouveau DDR). 2. DDR ≤30mA obligatoire pour circuits luminaires dans pièces d'habitation (NIBT 4.1.1.3.4 — NOUVEAU dans NIBT 2025).</div></div>
+<h4 style="margin:.75rem 0 .5rem;font-size:13px;color:#1a3a5c;font-weight:700">M4.2 — Mesures</h4>
+<div class="qa"><div class="qq" onclick="Q(22)"><span>Riso : valeur min légale ? Tension test ? Appareils à déconnecter ?</span><span class="ar" id="a22">›</span></div><div class="ra" id="r22">Riso min = 1MΩ (installations ≥2010). Tension test = 500V DC pour 230/400V. Déconnecter : variateurs, ballasts électroniques, onduleurs, appareils IT, LED avec drivers → risque dommage par 500V DC.</div></div>
+<div class="qa"><div class="qq" onclick="Q(23)"><span>Différence erreur absolue vs relative. Exemple.</span><span class="ar" id="a23">›</span></div><div class="ra" id="r23">Absolue = valeur fixe inhérente à l'appareil (ex: ±4V sur calibre 400V à 1%). Relative = absolue/valeur mesurée×100% (ex: 4/250 = 1.6%). Plus l'appareil est précis (classe plus élevée), plus l'erreur absolue est faible.</div></div>
+<div class="qa"><div class="qq" onclick="Q(24)"><span>3 étapes test DDR complet + temps de déclenchement admis.</span><span class="ar" id="a24">›</span></div><div class="ra" id="r24">1. Bouton mécanique → déclenche. 2. 0.4×IΔn → NE DOIT PAS déclencher. 3. IΔn → DOIT déclencher en ≤0.4s pour circuits terminaux ≤32A avec prises.</div></div>
+<div class="qa"><div class="qq" onclick="Q(25)"><span>Types A, B, F de DDR : quelle différence ?</span><span class="ar" id="a25">›</span></div><div class="ra" id="r25">Type A = AC + courants pulsés continus → minimum obligatoire Suisse. Type F = AC + pulsés + fréquences mixtes ≤1kHz → variateurs monophasés, PAC. Type B = tous courants y.c. DC lisse → onduleurs PV, VE sans détection DC intégrée.</div></div>
+<div class="qa"><div class="qq" onclick="Q(26)"><span>SNR 462638 : ordre de contrôle + valeurs Riso par classe.</span><span class="ar" id="a26">›</span></div><div class="ra" id="r26">Ordre : 1. Classe de protection. 2. Visuel + fonctionnement. 3. Continuité PE (Cl.I, ≤0.3Ω/5m). 4. Riso (Cl.I ≥1MΩ, Cl.II ≥2MΩ, Cl.III ≥0.25MΩ). 5. Courant PE/fuite (Cl.I ≤3.5mA, Cl.II ≤0.5mA, Cl.III ≤1mA).</div></div>
+<div class="qa"><div class="qq" onclick="Q(27)"><span>RE max pour DDR 30mA système TT ? Et pour 300mA ?</span><span class="ar" id="a27">›</span></div><div class="ra" id="r27">RE = UB/IΔn = 50/0.03 = 1650Ω pour DDR 30mA. Pour DDR 300mA = 50/0.3 = 165Ω. Pour DDR 10mA = 50/0.01 = 5000Ω.</div></div>
+<div class="qa"><div class="qq" onclick="Q(28)"><span>Quelle méthode mesure de terre est utilisable derrière un DDR ?</span><span class="ar" id="a28">›</span></div><div class="ra" id="r28">Seule la méthode par boucle (pince de mesure, image 7 ESTI) est utilisable derrière un DDR. Les méthodes courant/tension (image 5) et tension réseau (image 8) NE peuvent pas être utilisées derrière un DDR car elles déclencheraient le DDR.</div></div>
+<h4 style="margin:.75rem 0 .5rem;font-size:13px;color:#1a3a5c;font-weight:700">M4.2 — Systèmes et Terre</h4>
+<div class="qa"><div class="qq" onclick="Q(29)"><span>Différence TN-C vs TN-S ? Risques TN-C ?</span><span class="ar" id="a29">›</span></div><div class="ra" id="r29">TN-C = conducteur PEN (N+PE combinés, Sch. III). TN-S = N et PE séparés (standard actuel). Risques TN-C : 1) DDR interdit. 2) Rupture PEN → 115-230V sur masses → mortel (bœuf ESTI). 3) Contrôle 5 ans. 4) Inversion N/PE possible.</div></div>
+<div class="qa"><div class="qq" onclick="Q(30)"><span>Sections conducteur de terre enterré et équipotentialité principale.</span><span class="ar" id="a30">›</span></div><div class="ra" id="r30">Conducteur de terre enterré : min. 50mm² Cu. Non enterré : min. 16mm², max 50mm². Équipotentialité principale : min. 6mm² Cu (10mm² si foudre), max 25mm², = 0.5× section PE de référence.</div></div>
+<div class="qa"><div class="qq" onclick="Q(31)"><span>Pourquoi la mesure de RE est obligatoire selon l'ESTI 01/2021 ?</span><span class="ar" id="a31">›</span></div><div class="ra" id="r31">L'électrode de terre est composant essentiel des mesures de protection TN/TT. Sa résistance doit être dans le RS ou PM selon art. 13 O-DETEC. Souvent omise en pratique = non-conformité. Les variations saisonnières peuvent modifier RE de ±50% → mesure nécessaire à chaque nouvelle installation ou modification.</div></div>
+<div class="qa"><div class="qq" onclick="Q(32)"><span>Comment créer une électrode de terre dans un bâtiment existant avec fondation armée ?</span><span class="ar" id="a32">›</span></div><div class="ra" id="r32">Dégager 2 fers à béton verticaux (≥8mm) dans le mur extérieur le plus proche du sol. Raccorder une languette de connexion aux fers dégagés. Sortir du béton et raccorder au système de terre. Refermer hermétiquement contre la corrosion. (NIBT 5.4.2.2.9, ESTI 09/2012).</div></div>
+<h4 style="margin:.75rem 0 .5rem;font-size:13px;color:#1a3a5c;font-weight:700">M4.2 — IRVE</h4>
+<div class="qa"><div class="qq" onclick="Q(33)"><span>4 modes de recharge VE + caractéristiques principales.</span><span class="ar" id="a33">›</span></div><div class="ra" id="r33">Mode 1 = prise standard, 10A max, vélos/motos. Mode 2 = cordon avec ICCPD, prise 230V, 10A. Mode 3 = borne AC dédiée (wallbox), jusqu'à 22kW (32A tri), communication véhicule-borne. Mode 4 = DC rapide, charge directe batterie, 50kW+.</div></div>
+<div class="qa"><div class="qq" onclick="Q(34)"><span>États CP (Control Pilot) et leurs tensions.</span><span class="ar" id="a34">›</span></div><div class="ra" id="r34">A = +12V/-12V : pas de VE. B = +9V/-12V : connecté, pas prêt → verrouillage borne. C = +6V/-12V : prêt, sans ventilation. D = +3V/-12V : prêt, avec ventilation. E = 0V : court-circuit VE → déclenchement IMMÉDIAT.</div></div>
+<div class="qa"><div class="qq" onclick="Q(35)"><span>Quel DDR pour borne VE ? Différence type A vs type B pour IRVE ?</span><span class="ar" id="a35">›</span></div><div class="ra" id="r35">DDR ≤30mA obligatoire pour chaque point. Type A suffisant si borne intègre détection DC >6mA. Type B obligatoire si borne sans détection DC intégrée. DDR type B 30mA est le "top" selon cours.</div></div>
+<div class="qa"><div class="qq" onclick="Q(36)"><span>Pourquoi répartir les phases pour plusieurs bornes VE ?</span><span class="ar" id="a36">›</span></div><div class="ra" id="r36">Certains VE ont des convertisseurs monophasés uniquement. En dessous de 10A certains VE passent automatiquement en mono. Plug-in hybrides = souvent monophasé. Si toutes les bornes sur la même phase → asymétrie de charge (pénalité GRD). Rotation : L1/L2/L3 → L2/L3/L1 → L3/L1/L2.</div></div>
+<div class="qa"><div class="qq" onclick="Q(37)"><span>Procédure contrôle OIBT borne mode 3 AC — étapes principales.</span><span class="ar" id="a37">›</span></div><div class="ra" id="r37">1. Visuel + docs. 2. Continuité PE + Riso + Icc. 3. Sélectionner ≥20A. 4. Position A → pas réaction. 5. Position B → verrouillage. 6. Position C → enclenchement. 7. Test coupure PE. 8. Vérifier tensions. 9. Icc L-N. 10. Test DDR type A + type B/6mA. 11. Position E → déclenchement immédiat. 12. Rendre opérationnelle.</div></div>
+<h4 style="margin:.75rem 0 .5rem;font-size:13px;color:#1a3a5c;font-weight:700">M4.3 — Sécurité</h4>
+<div class="qa"><div class="qq" onclick="Q(38)"><span>Seuil fibrillation ventriculaire ? Seuil de lâcher ?</span><span class="ar" id="a38">›</span></div><div class="ra" id="r38">Fibrillation ventriculaire : possible à 40mA (selon durée), quasi-certaine à 80mA → MORTEL. Seuil de lâcher : 15mA (crispations, impossible de lâcher). Seuil perception : 0.5mA. Rappel : DDR 30mA < 40mA → protection efficace.</div></div>
+<div class="qa"><div class="qq" onclick="Q(39)"><span>Pourquoi 30mA pour les DDR de protection des personnes ?</span><span class="ar" id="a39">›</span></div><div class="ra" id="r39">30mA est inférieur au seuil de fibrillation ventriculaire (40mA) avec une marge de sécurité. Le DDR coupe avant que le courant atteigne 80mA (seuil mortel). Le temps de coupure 0.4s est aussi critique pour limiter l'énergie transmise au corps.</div></div>
+<div class="qa"><div class="qq" onclick="Q(40)"><span>Condensateur avec autocollant orange : que faire ?</span><span class="ar" id="a40">›</span></div><div class="ra" id="r40">Autocollant orange = PCB suspecté (code 3137). Informer l'office cantonal des produits chimiques. Le propriétaire a 6 mois pour fournir preuve que teneur PCB &lt;50 ppm. Si impossible → traiter comme confirmé (rouge) = mise hors service immédiate + déchets spéciaux.</div></div>
+<div class="qa"><div class="qq" onclick="Q(41)"><span>5+5 règles vitales SUVA pour travail hors tension.</span><span class="ar" id="a41">›</span></div><div class="ra" id="r41">1. Mettre hors tension. 2. Condamner (cadenasser). 3. Vérifier absence de tension (VAT). 4. Mettre à la terre et en court-circuit. 5. Délimiter et couvrir pièces voisines sous tension. → Respect des 3 premières = éviterait ~50% des accidents.</div></div>
+<div class="qa"><div class="qq" onclick="Q(42)"><span>Pourquoi hospitaliser une personne électrisée même sans symptômes apparents ?</span><span class="ar" id="a42">›</span></div><div class="ra" id="r42">Risque de dysfonctionnement des organes vitaux pendant ~50h après électrisation. L'électrolyse du sang peut provoquer coagulation et embolie. La destruction des tissus peut entraîner septicémie. La perte de liquide peut provoquer insuffisance rénale. Surveillance obligatoire en milieu hospitalier.</div></div>
+<h4 style="margin:.75rem 0 .5rem;font-size:13px;color:#1a3a5c;font-weight:700">Questions de synthèse</h4>
+<div class="qa"><div class="qq" onclick="Q(43)"><span>Remplacement EA en TN-C (Sch. III) : doit-on installer des DDR sur circuits existants non touchés ?</span><span class="ar" id="a43">›</span></div><div class="ra" id="r43">NON. DDR impossibles en TN-C (NIBT 4.1.1.4.5). Normes de l'époque pour circuits non touchés. MAIS prévoir réserve pour future conversion TN-S. Nouveaux circuits dans le nouvel EA → normes actuelles s'appliquent.</div></div>
+<div class="qa"><div class="qq" onclick="Q(44)"><span>Contenu obligatoire du RS (Rapport de Sécurité).</span><span class="ar" id="a44">›</span></div><div class="ra" id="r44">Propriétaire + gestionnaire, installateur N° autorisation, organe contrôle N° K, adresse installation, type contrôle, périodicité, protection (fusible, emplacement, In), GRD, N° compteur, N° avis installation, système mise au neutre, signatures (installateur + contrôleur + dates), annexes (liste défauts, PM).</div></div>
+<div class="qa"><div class="qq" onclick="Q(45)"><span>Tableau résistance de terre maximale selon contexte.</span><span class="ar" id="a45">›</span></div><div class="ra" id="r45">≤0.44Ω = TN/TT + sous-station 30A. ≤1Ω = continuité boucle équipotentielle (référence). ≤1.6Ω = bâtiment avec sous-station 30A. ≤10Ω = protection foudre. ≤20Ω = recommandation générale. ≤1650Ω = DDR 30mA système TT.</div></div>
+<div class="qa"><div class="qq" onclick="Q(46)"><span>3 variantes NIBT 2025 pour coupe-surintensité bornes VE.</span><span class="ar" id="a46">›</span></div><div class="ra" id="r46">Variante 1 = disjoncteur dans tableau individuel pour chaque borne. Variante 2 = disjoncteur entre câble horizontal et chaque borne. Variante 3 = disjoncteur au départ câble horizontal + limitation numérique du courant via gestion intelligente des bornes.</div></div>
+<div class="qa"><div class="qq" onclick="Q(47)"><span>Quand mesurer RE ? Qui est responsable de la mise à la terre ?</span><span class="ar" id="a47">›</span></div><div class="ra" id="r47">Mesurer RE : lors de tout nouveau dispositif de mise à la terre ou modification. Avant remblayage/bétonnage (ou photos). Documenter dans RS ou PM. Responsable de la mise à la terre : le PROPRIÉTAIRE de l'installation (pas l'installateur). Travaux sur conduites d'eau remettant en cause la terre → accord propriétaire obligatoire.</div></div>
+<div class="qa"><div class="qq" onclick="Q(48)"><span>Différence sélectivité totale, partielle et filiation (back-up).</span><span class="ar" id="a48">›</span></div><div class="ra" id="r48">Totale = seul le disjoncteur en aval du défaut déclenche, toujours → continuité garantie. Partielle = sélective jusqu'à une valeur de Icc → au-dessus les deux déclenchent. Filiation = le disjoncteur amont protège l'aval contre surintensités trop élevées → mais les DEUX peuvent déclencher ensemble → pas de continuité garantie.</div></div>
+<div class="qa"><div class="qq" onclick="Q(49)"><span>Contenu obligatoire du classeur de chantier selon cours M3M3.</span><span class="ar" id="a49">›</span></div><div class="ra" id="r49">Plan hygiène et sécurité (PHS), numéros urgences et adresses, plan d'exécution (à jour), planning intentionnel, bulletins de livraison, notices de montage, PV de chantier. Mis à DISPOSITION DES TRAVAILLEURS sur le chantier — différent du dossier de révision remis au client.</div></div>
+</div>
+
+<script>
+function M(id,btn){
+  document.querySelectorAll('.mod').forEach(s=>s.classList.remove('on'));
+  document.querySelectorAll('.mtab').forEach(t=>t.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  btn.classList.add('on');
+}
+function S(id,btn,modId){
+  var mod=document.getElementById(modId);
+  mod.querySelectorAll('.sub').forEach(s=>s.classList.remove('on'));
+  mod.querySelectorAll('.stab').forEach(t=>t.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  btn.classList.add('on');
+}
+function Q(n){
+  var r=document.getElementById('r'+n);
+  var a=document.getElementById('a'+n);
+  var open=r.classList.contains('on');
+  document.querySelectorAll('.ra').forEach(x=>x.classList.remove('on'));
+  document.querySelectorAll('.ar').forEach(x=>x.classList.remove('on'));
+  if(!open){r.classList.add('on');a.classList.add('on');}
+}
+</script>
+</body>
+</html>
