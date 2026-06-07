@@ -300,6 +300,10 @@ tr:last-child td{border-bottom:none}
   .nibt-tab{ font-size:10px !important; padding:4px 8px !important }
   .stit{ font-size:14px !important }
 }
+
+.vid-player{width:100%;height:280px;border:none;display:block}
+@media(max-width:780px){.vid-player{height:220px}}
+@media(max-width:480px){.vid-player{height:190px}}
 </style>
 <style>
 /* ===== Mise en page structurée Codex ===== */
@@ -19668,9 +19672,16 @@ function xcToggleQ(qid){
 .vid-card{background:#fff;border-radius:10px;border:1px solid #e2e8f0;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.07);transition:box-shadow .15s}
 .vid-card:hover{box-shadow:0 6px 20px rgba(0,0,0,.12)}
 .vid-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(420px,100%),1fr));gap:1.2rem;margin:.8rem 0;align-items:start}
-@media(max-width:600px){.vid-grid{grid-template-columns:1fr}}
 .vf-btn{padding:6px 14px;border-radius:20px;border:1.5px solid #d0d9e8;background:#fff;color:#3a5572;font-size:12px;font-weight:700;cursor:pointer;transition:all .15s}
 .vf-btn:hover,.vf-btn.on{background:var(--vc,#1a3a5c);color:#fff;border-color:var(--vc,#1a3a5c)}
+.vid-player{width:100%;height:260px;border:none;display:block;background:#0f2238}
+@media(max-width:780px){
+  .vid-grid{grid-template-columns:1fr}
+  .vid-player{height:200px}
+}
+@media(max-width:480px){
+  .vid-player{height:180px}
+}
 </style>
 
 <div style="display:flex;flex-wrap:wrap;gap:.4rem;margin:.5rem 0 .8rem;align-items:center">
@@ -19689,14 +19700,15 @@ function xcToggleQ(qid){
         <div style="display:flex;flex-wrap:wrap;gap:.3rem"><span style="background:rgba(255,255,255,.15);color:#fff;font-size:10px;padding:2px 7px;border-radius:10px">Prix</span> <span style="background:rgba(255,255,255,.15);color:#fff;font-size:10px;padding:2px 7px;border-radius:10px">Calculation</span> <span style="background:rgba(255,255,255,.15);color:#fff;font-size:10px;padding:2px 7px;border-radius:10px">Offre</span></div>
       </div>
     </div>
-    <div style="position:relative;padding-bottom:56.25%;height:0;background:#0f2238">
-      <iframe src="https://drive.google.com/file/d/1J7wDC0-qZYwpvcwTr1JZomFQNiUd3Nsv/preview"
-        style="position:absolute;top:0;left:0;width:100%;height:100%;border:none"
-        allow="autoplay" allowfullscreen loading="lazy"></iframe>
-    </div>
-    <div style="padding:.5rem .9rem;font-size:11px;color:#6b89a8;background:#f8f9fc;display:flex;align-items:center;gap:.5rem">
-      <span style="background:#e8f0ff;border-radius:4px;padding:2px 7px;color:#1a3a5c;font-weight:700">M2 · Calculation</span>
-      <span>📁 Google Drive</span>
+    <iframe class="vid-player"
+      src="https://drive.google.com/file/d/1J7wDC0-qZYwpvcwTr1JZomFQNiUd3Nsv/preview"
+      allow="autoplay" allowfullscreen loading="lazy"></iframe>
+    <div style="padding:.5rem .9rem;font-size:11px;color:#6b89a8;background:#f8f9fc;display:flex;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:.5rem">
+        <span style="background:#e8f0ff;border-radius:4px;padding:2px 7px;color:#1a3a5c;font-weight:700">M2 · Calculation</span>
+        <span>📁 Google Drive</span>
+      </div>
+      <a href="https://drive.google.com/file/d/1J7wDC0-qZYwpvcwTr1JZomFQNiUd3Nsv/view" target="_blank" style="font-size:11px;color:#1a3a5c;font-weight:700;text-decoration:none;background:#e8f0ff;padding:3px 9px;border-radius:12px">⛶ Ouvrir</a>
     </div>
   </div>
   <div class="vid-card" data-mod="M2">
@@ -19707,14 +19719,15 @@ function xcToggleQ(qid){
         <div style="display:flex;flex-wrap:wrap;gap:.3rem"><span style="background:rgba(255,255,255,.15);color:#fff;font-size:10px;padding:2px 7px;border-radius:10px">Métrage</span> <span style="background:rgba(255,255,255,.15);color:#fff;font-size:10px;padding:2px 7px;border-radius:10px">Facturation</span> <span style="background:rgba(255,255,255,.15);color:#fff;font-size:10px;padding:2px 7px;border-radius:10px">Calcul</span></div>
       </div>
     </div>
-    <div style="position:relative;padding-bottom:56.25%;height:0;background:#0f2238">
-      <iframe src="https://drive.google.com/file/d/1KTnq2ww46tQYAOzadkiozaR7oyIVOWTH/preview"
-        style="position:absolute;top:0;left:0;width:100%;height:100%;border:none"
-        allow="autoplay" allowfullscreen loading="lazy"></iframe>
-    </div>
-    <div style="padding:.5rem .9rem;font-size:11px;color:#6b89a8;background:#f8f9fc;display:flex;align-items:center;gap:.5rem">
-      <span style="background:#e8f0ff;border-radius:4px;padding:2px 7px;color:#1a3a5c;font-weight:700">M2 · Métrage</span>
-      <span>📁 Google Drive</span>
+    <iframe class="vid-player"
+      src="https://drive.google.com/file/d/1KTnq2ww46tQYAOzadkiozaR7oyIVOWTH/preview"
+      allow="autoplay" allowfullscreen loading="lazy"></iframe>
+    <div style="padding:.5rem .9rem;font-size:11px;color:#6b89a8;background:#f8f9fc;display:flex;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:.5rem">
+        <span style="background:#e8f0ff;border-radius:4px;padding:2px 7px;color:#1a3a5c;font-weight:700">M2 · Métrage</span>
+        <span>📁 Google Drive</span>
+      </div>
+      <a href="https://drive.google.com/file/d/1KTnq2ww46tQYAOzadkiozaR7oyIVOWTH/view" target="_blank" style="font-size:11px;color:#1a3a5c;font-weight:700;text-decoration:none;background:#e8f0ff;padding:3px 9px;border-radius:12px">⛶ Ouvrir</a>
     </div>
   </div>
   <div class="vid-card" data-mod="M2">
@@ -19725,14 +19738,15 @@ function xcToggleQ(qid){
         <div style="display:flex;flex-wrap:wrap;gap:.3rem"><span style="background:rgba(255,255,255,.15);color:#fff;font-size:10px;padding:2px 7px;border-radius:10px">SIA</span> <span style="background:rgba(255,255,255,.15);color:#fff;font-size:10px;padding:2px 7px;border-radius:10px">Schéma</span> <span style="background:rgba(255,255,255,.15);color:#fff;font-size:10px;padding:2px 7px;border-radius:10px">Installation</span></div>
       </div>
     </div>
-    <div style="position:relative;padding-bottom:56.25%;height:0;background:#0f2238">
-      <iframe src="https://drive.google.com/file/d/1IecxAYYc4UZcIjJ0X6EP3Zbv0aVoW3hV/preview"
-        style="position:absolute;top:0;left:0;width:100%;height:100%;border:none"
-        allow="autoplay" allowfullscreen loading="lazy"></iframe>
-    </div>
-    <div style="padding:.5rem .9rem;font-size:11px;color:#6b89a8;background:#f8f9fc;display:flex;align-items:center;gap:.5rem">
-      <span style="background:#e8f0ff;border-radius:4px;padding:2px 7px;color:#1a3a5c;font-weight:700">M2 · Normes SIA</span>
-      <span>📁 Google Drive</span>
+    <iframe class="vid-player"
+      src="https://drive.google.com/file/d/1IecxAYYc4UZcIjJ0X6EP3Zbv0aVoW3hV/preview"
+      allow="autoplay" allowfullscreen loading="lazy"></iframe>
+    <div style="padding:.5rem .9rem;font-size:11px;color:#6b89a8;background:#f8f9fc;display:flex;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:.5rem">
+        <span style="background:#e8f0ff;border-radius:4px;padding:2px 7px;color:#1a3a5c;font-weight:700">M2 · Normes SIA</span>
+        <span>📁 Google Drive</span>
+      </div>
+      <a href="https://drive.google.com/file/d/1IecxAYYc4UZcIjJ0X6EP3Zbv0aVoW3hV/view" target="_blank" style="font-size:11px;color:#1a3a5c;font-weight:700;text-decoration:none;background:#e8f0ff;padding:3px 9px;border-radius:12px">⛶ Ouvrir</a>
     </div>
   </div>
   <div class="vid-card" data-mod="M2">
@@ -19743,14 +19757,15 @@ function xcToggleQ(qid){
         <div style="display:flex;flex-wrap:wrap;gap:.3rem"><span style="background:rgba(255,255,255,.15);color:#fff;font-size:10px;padding:2px 7px;border-radius:10px">Brevet</span> <span style="background:rgba(255,255,255,.15);color:#fff;font-size:10px;padding:2px 7px;border-radius:10px">Chef de projet</span> <span style="background:rgba(255,255,255,.15);color:#fff;font-size:10px;padding:2px 7px;border-radius:10px">BPEL</span></div>
       </div>
     </div>
-    <div style="position:relative;padding-bottom:56.25%;height:0;background:#0f2238">
-      <iframe src="https://drive.google.com/file/d/17ert6tGad7EsF2v-J_0FaxF2RkQw3V76/preview"
-        style="position:absolute;top:0;left:0;width:100%;height:100%;border:none"
-        allow="autoplay" allowfullscreen loading="lazy"></iframe>
-    </div>
-    <div style="padding:.5rem .9rem;font-size:11px;color:#6b89a8;background:#f8f9fc;display:flex;align-items:center;gap:.5rem">
-      <span style="background:#e8f0ff;border-radius:4px;padding:2px 7px;color:#1a3a5c;font-weight:700">M2 · Controlling</span>
-      <span>📁 Google Drive</span>
+    <iframe class="vid-player"
+      src="https://drive.google.com/file/d/17ert6tGad7EsF2v-J_0FaxF2RkQw3V76/preview"
+      allow="autoplay" allowfullscreen loading="lazy"></iframe>
+    <div style="padding:.5rem .9rem;font-size:11px;color:#6b89a8;background:#f8f9fc;display:flex;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:.5rem">
+        <span style="background:#e8f0ff;border-radius:4px;padding:2px 7px;color:#1a3a5c;font-weight:700">M2 · Controlling</span>
+        <span>📁 Google Drive</span>
+      </div>
+      <a href="https://drive.google.com/file/d/17ert6tGad7EsF2v-J_0FaxF2RkQw3V76/view" target="_blank" style="font-size:11px;color:#1a3a5c;font-weight:700;text-decoration:none;background:#e8f0ff;padding:3px 9px;border-radius:12px">⛶ Ouvrir</a>
     </div>
   </div>
   <div class="vid-card" data-mod="M2">
@@ -19761,14 +19776,15 @@ function xcToggleQ(qid){
         <div style="display:flex;flex-wrap:wrap;gap:.3rem"><span style="background:rgba(255,255,255,.15);color:#fff;font-size:10px;padding:2px 7px;border-radius:10px">Projet</span> <span style="background:rgba(255,255,255,.15);color:#fff;font-size:10px;padding:2px 7px;border-radius:10px">Gestion</span> <span style="background:rgba(255,255,255,.15);color:#fff;font-size:10px;padding:2px 7px;border-radius:10px">Controlling</span></div>
       </div>
     </div>
-    <div style="position:relative;padding-bottom:56.25%;height:0;background:#0f2238">
-      <iframe src="https://drive.google.com/file/d/1YxGgsPMi8MaEMBb5zU6wayfXJc5LpQj-/preview"
-        style="position:absolute;top:0;left:0;width:100%;height:100%;border:none"
-        allow="autoplay" allowfullscreen loading="lazy"></iframe>
-    </div>
-    <div style="padding:.5rem .9rem;font-size:11px;color:#6b89a8;background:#f8f9fc;display:flex;align-items:center;gap:.5rem">
-      <span style="background:#e8f0ff;border-radius:4px;padding:2px 7px;color:#1a3a5c;font-weight:700">M2 · Controlling</span>
-      <span>📁 Google Drive</span>
+    <iframe class="vid-player"
+      src="https://drive.google.com/file/d/1YxGgsPMi8MaEMBb5zU6wayfXJc5LpQj-/preview"
+      allow="autoplay" allowfullscreen loading="lazy"></iframe>
+    <div style="padding:.5rem .9rem;font-size:11px;color:#6b89a8;background:#f8f9fc;display:flex;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:.5rem">
+        <span style="background:#e8f0ff;border-radius:4px;padding:2px 7px;color:#1a3a5c;font-weight:700">M2 · Controlling</span>
+        <span>📁 Google Drive</span>
+      </div>
+      <a href="https://drive.google.com/file/d/1YxGgsPMi8MaEMBb5zU6wayfXJc5LpQj-/view" target="_blank" style="font-size:11px;color:#1a3a5c;font-weight:700;text-decoration:none;background:#e8f0ff;padding:3px 9px;border-radius:12px">⛶ Ouvrir</a>
     </div>
   </div>
 <div style="grid-column:1/-1;font-size:11px;font-weight:800;color:#065f46;text-transform:uppercase;letter-spacing:.08em;padding:.3rem 0 .1rem;border-bottom:2px solid #065f46;margin-bottom:-.3rem">M3</div>
@@ -19780,14 +19796,15 @@ function xcToggleQ(qid){
         <div style="display:flex;flex-wrap:wrap;gap:.3rem"><span style="background:rgba(255,255,255,.15);color:#fff;font-size:10px;padding:2px 7px;border-radius:10px">Projet</span> <span style="background:rgba(255,255,255,.15);color:#fff;font-size:10px;padding:2px 7px;border-radius:10px">Plans</span> <span style="background:rgba(255,255,255,.15);color:#fff;font-size:10px;padding:2px 7px;border-radius:10px">Puissance</span></div>
       </div>
     </div>
-    <div style="position:relative;padding-bottom:56.25%;height:0;background:#0f2238">
-      <iframe src="https://drive.google.com/file/d/1GW49vZ-hm0iq_SAF-DJbOCPNWt4Spf_k/preview"
-        style="position:absolute;top:0;left:0;width:100%;height:100%;border:none"
-        allow="autoplay" allowfullscreen loading="lazy"></iframe>
-    </div>
-    <div style="padding:.5rem .9rem;font-size:11px;color:#6b89a8;background:#f8f9fc;display:flex;align-items:center;gap:.5rem">
-      <span style="background:#e8f0ff;border-radius:4px;padding:2px 7px;color:#1a3a5c;font-weight:700">M3 · Projet</span>
-      <span>📁 Google Drive</span>
+    <iframe class="vid-player"
+      src="https://drive.google.com/file/d/1GW49vZ-hm0iq_SAF-DJbOCPNWt4Spf_k/preview"
+      allow="autoplay" allowfullscreen loading="lazy"></iframe>
+    <div style="padding:.5rem .9rem;font-size:11px;color:#6b89a8;background:#f8f9fc;display:flex;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:.5rem">
+        <span style="background:#e8f0ff;border-radius:4px;padding:2px 7px;color:#1a3a5c;font-weight:700">M3 · Projet</span>
+        <span>📁 Google Drive</span>
+      </div>
+      <a href="https://drive.google.com/file/d/1GW49vZ-hm0iq_SAF-DJbOCPNWt4Spf_k/view" target="_blank" style="font-size:11px;color:#1a3a5c;font-weight:700;text-decoration:none;background:#e8f0ff;padding:3px 9px;border-radius:12px">⛶ Ouvrir</a>
     </div>
   </div>
   <div class="vid-card" data-mod="M3">
@@ -19798,14 +19815,15 @@ function xcToggleQ(qid){
         <div style="display:flex;flex-wrap:wrap;gap:.3rem"><span style="background:rgba(255,255,255,.15);color:#fff;font-size:10px;padding:2px 7px;border-radius:10px">Armoire</span> <span style="background:rgba(255,255,255,.15);color:#fff;font-size:10px;padding:2px 7px;border-radius:10px">Schémas</span> <span style="background:rgba(255,255,255,.15);color:#fff;font-size:10px;padding:2px 7px;border-radius:10px">Projet</span></div>
       </div>
     </div>
-    <div style="position:relative;padding-bottom:56.25%;height:0;background:#0f2238">
-      <iframe src="https://drive.google.com/file/d/14dPMCO8sf60F9Krvy7ZCnwSRkG7AO1Yq/preview"
-        style="position:absolute;top:0;left:0;width:100%;height:100%;border:none"
-        allow="autoplay" allowfullscreen loading="lazy"></iframe>
-    </div>
-    <div style="padding:.5rem .9rem;font-size:11px;color:#6b89a8;background:#f8f9fc;display:flex;align-items:center;gap:.5rem">
-      <span style="background:#e8f0ff;border-radius:4px;padding:2px 7px;color:#1a3a5c;font-weight:700">M3 · Projet</span>
-      <span>📁 Google Drive</span>
+    <iframe class="vid-player"
+      src="https://drive.google.com/file/d/14dPMCO8sf60F9Krvy7ZCnwSRkG7AO1Yq/preview"
+      allow="autoplay" allowfullscreen loading="lazy"></iframe>
+    <div style="padding:.5rem .9rem;font-size:11px;color:#6b89a8;background:#f8f9fc;display:flex;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:.5rem">
+        <span style="background:#e8f0ff;border-radius:4px;padding:2px 7px;color:#1a3a5c;font-weight:700">M3 · Projet</span>
+        <span>📁 Google Drive</span>
+      </div>
+      <a href="https://drive.google.com/file/d/14dPMCO8sf60F9Krvy7ZCnwSRkG7AO1Yq/view" target="_blank" style="font-size:11px;color:#1a3a5c;font-weight:700;text-decoration:none;background:#e8f0ff;padding:3px 9px;border-radius:12px">⛶ Ouvrir</a>
     </div>
   </div>
 <div style="grid-column:1/-1;font-size:11px;font-weight:800;color:#4c1d95;text-transform:uppercase;letter-spacing:.08em;padding:.3rem 0 .1rem;border-bottom:2px solid #4c1d95;margin-bottom:-.3rem">M5</div>
@@ -19817,21 +19835,22 @@ function xcToggleQ(qid){
         <div style="display:flex;flex-wrap:wrap;gap:.3rem"><span style="background:rgba(255,255,255,.15);color:#fff;font-size:10px;padding:2px 7px;border-radius:10px">Leadership</span> <span style="background:rgba(255,255,255,.15);color:#fff;font-size:10px;padding:2px 7px;border-radius:10px">Management</span> <span style="background:rgba(255,255,255,.15);color:#fff;font-size:10px;padding:2px 7px;border-radius:10px">Outils</span></div>
       </div>
     </div>
-    <div style="position:relative;padding-bottom:56.25%;height:0;background:#0f2238">
-      <iframe src="https://drive.google.com/file/d/1wcjHAHfXjqHWW-8iiYV7-c72T22Kg_ED/preview"
-        style="position:absolute;top:0;left:0;width:100%;height:100%;border:none"
-        allow="autoplay" allowfullscreen loading="lazy"></iframe>
-    </div>
-    <div style="padding:.5rem .9rem;font-size:11px;color:#6b89a8;background:#f8f9fc;display:flex;align-items:center;gap:.5rem">
-      <span style="background:#e8f0ff;border-radius:4px;padding:2px 7px;color:#1a3a5c;font-weight:700">M5 · Management</span>
-      <span>📁 Google Drive</span>
+    <iframe class="vid-player"
+      src="https://drive.google.com/file/d/1wcjHAHfXjqHWW-8iiYV7-c72T22Kg_ED/preview"
+      allow="autoplay" allowfullscreen loading="lazy"></iframe>
+    <div style="padding:.5rem .9rem;font-size:11px;color:#6b89a8;background:#f8f9fc;display:flex;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:.5rem">
+        <span style="background:#e8f0ff;border-radius:4px;padding:2px 7px;color:#1a3a5c;font-weight:700">M5 · Management</span>
+        <span>📁 Google Drive</span>
+      </div>
+      <a href="https://drive.google.com/file/d/1wcjHAHfXjqHWW-8iiYV7-c72T22Kg_ED/view" target="_blank" style="font-size:11px;color:#1a3a5c;font-weight:700;text-decoration:none;background:#e8f0ff;padding:3px 9px;border-radius:12px">⛶ Ouvrir</a>
     </div>
   </div>
 
 </div>
 
 <div style="background:#e8f0ff;border-radius:8px;padding:.65rem 1rem;font-size:12px;color:#1a3a5c;margin-top:.5rem">
-  💡 Cliquez sur ⛶ dans le lecteur pour passer en plein écran.
+  💡 Sur mobile, appuyez sur <strong>⛶ Ouvrir</strong> pour voir la vidéo en plein écran dans Google Drive.
 </div>
 
 <script>
@@ -19839,15 +19858,14 @@ function filterVids(mod,btn){
   document.querySelectorAll('.vf-btn').forEach(function(b){b.classList.remove('on');});
   btn.classList.add('on');
   var cards=document.querySelectorAll('#vidGrid .vid-card');
-  var separators=document.querySelectorAll('#vidGrid div[style*="grid-column"]');
+  var seps=document.querySelectorAll('#vidGrid div[style*="grid-column"]');
   var count=0;
   cards.forEach(function(c){
     var show=mod==='all'||c.getAttribute('data-mod')===mod;
     c.style.display=show?'':'none';
     if(show)count++;
   });
-  // Masquer les séparateurs si filtre actif
-  separators.forEach(function(s){s.style.display=mod==='all'?'':'none';});
+  seps.forEach(function(s){s.style.display=mod==='all'?'':'none';});
   document.getElementById('vidCount').textContent=count+' vidéo'+(count>1?'s':'')+' affichée'+(count>1?'s':'');
 }
 </script>
@@ -19871,7 +19889,7 @@ function filterVids(mod,btn){
 }
 </style>
 <div class="app-footer">
-  © Nicolas Wälchli — Révision BPEL · Dernière modification : 07.06.2026 à 09:03
+  © Nicolas Wälchli — Révision BPEL · Dernière modification : 07.06.2026 à 09:10
 </div>
 
 <script>document.addEventListener('DOMContentLoaded',function(){
