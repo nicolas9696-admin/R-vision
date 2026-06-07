@@ -118,6 +118,26 @@ tr:last-child td{border-bottom:none}
   padding-left:.8rem !important;
 }
 .sb-m4-item:hover,.sb-m4-item.on{color:#fff !important}
+
+/* ===== RECHERCHE AVANCÉE ===== */
+.sb-search{
+  width:100%;
+  box-sizing:border-box;
+  padding:8px 28px 8px 10px;
+  border:1.5px solid #d0d9e8;
+  border-radius:8px;
+  font-size:12.5px;
+  outline:none;
+  background:#fff;
+  color:#1a1a1a;
+  transition:border .15s;
+  margin-bottom:.3rem;
+}
+.sb-search:focus{border-color:#1a3a5c;box-shadow:0 0 0 3px rgba(26,58,92,.1)}
+.sb-search::placeholder{color:#9aafc8}
+#searchResults::-webkit-scrollbar{width:5px}
+#searchResults::-webkit-scrollbar-thumb{background:#c8d4e8;border-radius:3px}
+.sr-item:last-child{border-bottom:none!important}
 </style>
 <style>
 /* ===== Mise en page structurée Codex ===== */
@@ -518,7 +538,15 @@ mark.bpel-hit{background:#fde68a;color:inherit;padding:0 2px;border-radius:2px}
     <h1>📚 Révision BPEL</h1>
     <p>Brevet Fédéral · Électricien Chef de Projet</p>
   </div>
-  <input type="text" class="sb-search" id="navSearch" placeholder="🔍 Rechercher…" oninput="filterNav(this.value)">
+  <div style="position:relative">
+    <input type="text" class="sb-search" id="navSearch" placeholder="🔍 Rechercher dans tout le contenu…" 
+      oninput="bpelSearch(this.value)" 
+      onkeydown="if(event.key==='Escape'){clearBpelSearch();this.value=''}"
+      autocomplete="off">
+    <span id="searchClearBtn" onclick="clearBpelSearch();document.getElementById('navSearch').value=''" 
+      style="position:absolute;right:8px;top:50%;transform:translateY(-50%);cursor:pointer;color:#6b89a8;font-size:14px;display:none">✕</span>
+  </div>
+  <div id="searchResults" style="display:none;background:#fff;border-radius:8px;border:1px solid #d0d9e8;margin:.3rem 0;max-height:60vh;overflow-y:auto;box-shadow:0 4px 16px rgba(0,0,0,.12)"></div>
 
   <!-- GROUPE : BREVET -->
   <div class="sb-group">
@@ -5270,6 +5298,199 @@ function toggleCM4Sec(head){
     </div>
   </div>
 
+
+  <div class="m5-sec">
+    <div class="m5-sec-head" onclick="toggleM5(this)">Cycle de développement — Vue complète <span>▶</span></div>
+    <div class="m5-sec-body">
+      <div class="m5-card"><strong>Le cycle tourne autour de 3 phases :</strong>
+        <table class="m5-table">
+          <tr><th>Phase</th><th>Contenu</th></tr>
+          <tr><td><strong>1. Point de départ</strong></td><td>Politique d'entreprise (mission, vision, valeurs) → Politique du personnel → Objectifs de développement</td></tr>
+          <tr><td><strong>2. Analyse &amp; choix</strong></td><td>Analyse et évaluation des besoins · Potentiel de développement · Choix des méthodologies et contenus</td></tr>
+          <tr><td><strong>3. Réalisation &amp; ROI</strong></td><td>Mise en place des mesures · Retour sur investissement · Évaluation → retour au point 1</td></tr>
+        </table>
+      </div>
+      <div class="m5-card"><strong>4 objectifs de la politique de développement :</strong>
+        <ul>
+          <li>Améliorer la <strong>compétitivité</strong> de l'entreprise</li>
+          <li>Avoir un meilleur <strong>retour sur investissement</strong> (fidélité, qualifications)</li>
+          <li>Avoir des collaborateurs <strong>flexibles, polyvalents et qualifiés</strong></li>
+          <li>Augmenter la <strong>motivation</strong> des collaborateurs</li>
+        </ul>
+      </div>
+      <div class="m5-card"><strong>CCT Art. 19 — Formation professionnelle :</strong><br>
+        La CCT donne les droits et obligations minimums. L'entreprise peut aller au-delà et l'indiquer dans son propre règlement en utilisant une phrase respectant le <em>marketing du personnel</em>.
+      </div>
+    </div>
+  </div>
+
+  <div class="m5-sec">
+    <div class="m5-sec-head" onclick="toggleM5(this)">Identifier les besoins — Analyse d'écart EST → DOIT <span>▶</span></div>
+    <div class="m5-sec-body">
+      <div class="m5-card"><strong>Principe fondamental :</strong> Comparer les qualifications actuelles avec les objectifs de développement souhaités.
+        <div style="display:flex;align-items:center;gap:1rem;margin:.6rem 0;flex-wrap:wrap">
+          <div style="background:#fee2e2;border-radius:8px;padding:.6rem 1rem;text-align:center;font-weight:700;color:#991b1b;flex:1">
+            EST<br><span style="font-size:11px;font-weight:400">Situation actuelle</span>
+          </div>
+          <div style="font-size:20px;color:#6b89a8">→</div>
+          <div style="background:#d5f5e3;border-radius:8px;padding:.6rem 1rem;text-align:center;font-weight:700;color:#065f46;flex:1">
+            DOIT<br><span style="font-size:11px;font-weight:400">Situation désirée</span>
+          </div>
+          <div style="font-size:20px;color:#6b89a8">→</div>
+          <div style="background:#dde8ff;border-radius:8px;padding:.6rem 1rem;text-align:center;font-weight:700;color:#1a3a5c;flex:1">
+            FORMATION<br><span style="font-size:11px;font-weight:400">Comble l'écart</span>
+          </div>
+        </div>
+      </div>
+      <div class="m5-card"><strong>Questions à se poser :</strong>
+        <ul>
+          <li>Thème de la formation · Objectifs d'apprentissage · Contenu de la formation</li>
+          <li>Est-ce que ce que vous vivez est réaliste vs la description sur orientation.ch ?</li>
+          <li>Quel est le changement attendu ? Qui l'attend ? Pourquoi est-ce attendu ?</li>
+        </ul>
+      </div>
+      <div class="m5-card"><strong>Planifier les carrières — 9 dimensions :</strong>
+        <div style="display:flex;flex-wrap:wrap;gap:.4rem;margin:.4rem 0">
+          <span style="background:#e8f0ff;border-radius:5px;padding:3px 10px;font-size:12px;color:#1a3a5c">📚 Contenu</span>
+          <span style="background:#e8f0ff;border-radius:5px;padding:3px 10px;font-size:12px;color:#1a3a5c">👥 Participants</span>
+          <span style="background:#e8f0ff;border-radius:5px;padding:3px 10px;font-size:12px;color:#1a3a5c">🔧 Méthode</span>
+          <span style="background:#e8f0ff;border-radius:5px;padding:3px 10px;font-size:12px;color:#1a3a5c">⏱️ Durée</span>
+          <span style="background:#e8f0ff;border-radius:5px;padding:3px 10px;font-size:12px;color:#1a3a5c">📅 Répartition</span>
+          <span style="background:#e8f0ff;border-radius:5px;padding:3px 10px;font-size:12px;color:#1a3a5c">👤 Formateur</span>
+          <span style="background:#e8f0ff;border-radius:5px;padding:3px 10px;font-size:12px;color:#1a3a5c">📍 Lieu</span>
+          <span style="background:#e8f0ff;border-radius:5px;padding:3px 10px;font-size:12px;color:#1a3a5c">💰 Budget</span>
+          <span style="background:#e8f0ff;border-radius:5px;padding:3px 10px;font-size:12px;color:#1a3a5c">🎯 Développement</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="m5-sec">
+    <div class="m5-sec-head" onclick="toggleM5(this)">7 Formes de développement (on/off the job) <span>▶</span></div>
+    <div class="m5-sec-body">
+      <table class="m5-table">
+        <tr><th>Forme</th><th>Traduction</th><th>Exemples concrets</th></tr>
+        <tr><td><strong>On the job</strong></td><td>Au poste</td><td>Remplacement d'un supérieur · élargissement des tâches · rotation sur plusieurs postes</td></tr>
+        <tr><td><strong>Into the job</strong></td><td>Entrée dans le poste</td><td>Initiations · stages dans un autre département</td></tr>
+        <tr><td><strong>Near the job</strong></td><td>Proche du poste</td><td>Cercle de qualité · groupe de réflexion</td></tr>
+        <tr><td><strong>Parallel to the job</strong></td><td>Parallèle au poste</td><td>Coaching (externe ou interne)</td></tr>
+        <tr><td><strong>Along the job</strong></td><td>Au long du poste</td><td>Planification de carrière</td></tr>
+        <tr><td><strong>Off the job</strong></td><td>En dehors du poste</td><td>Études de cas · formation continue · auto-formation · cours BPEL</td></tr>
+        <tr><td><strong>Out of the job</strong></td><td>Sortie du poste</td><td>Outplacement · accompagnement à la retraite</td></tr>
+      </table>
+      <div class="m5-note">ℹ️ La bonne forme dépend de l'objectif (court/moyen/long terme) et du type de compétence à développer (savoir → savoir-faire → savoir-être). Plus on va vers le savoir-être, plus il faut du temps et un accompagnement terrain.</div>
+    </div>
+  </div>
+
+  <div class="m5-sec">
+    <div class="m5-sec-head" onclick="toggleM5(this)">4 Types de compétences — Définitions officielles <span>▶</span></div>
+    <div class="m5-sec-body">
+      <table class="m5-table">
+        <tr><th>Compétence</th><th>Définition officielle (cours 5.16)</th></tr>
+        <tr><td><strong>🔧 Techniques</strong></td><td>Capacités, aptitudes et connaissances professionnelles résultant d'exigences spécifiques des tâches, des technologies et des connaissances requises. Peut inclure aptitudes motrices, connaissances techniques spécifiques et aptitudes cognitives.</td></tr>
+        <tr><td><strong>⚙️ Méthodologiques</strong></td><td>Capacités et connaissances professionnelles non liées à une activité spécifique. Inclut développement d'heuristiques, méthodes de structuration des problèmes, techniques de travail (PV, gestion de projets).</td></tr>
+        <tr><td><strong>🤝 Sociales</strong></td><td>Capacités communicatives et coopératives pour optimiser la qualité des processus d'interaction. Communication, maîtrise des conflits, résolution collective des problèmes, métacommunication sur les processus de groupe.</td></tr>
+        <tr><td><strong>👤 Personnelles</strong></td><td>Dispositions liées à la personnalité (valeurs, besoins, motivations, stratégies de maîtrise). Favorise auto-réflexion, autogestion, maîtrise du stress, aspects motivationnels et émotionnels.</td></tr>
+      </table>
+      <div class="m5-card"><strong>Carrière d'expert vs carrière de manager :</strong>
+        <div class="m5-grid2">
+          <div><strong>Carrière d'expert 🔧</strong><br>Développement en profondeur dans un domaine technique · Référent technique · ne gère pas forcément une équipe</div>
+          <div><strong>Carrière de manager 👥</strong><br>Développement en gestion d'équipe et leadership · prend des responsabilités hiérarchiques · Hersey S3-S4</div>
+        </div>
+        <div class="m5-note">ℹ️ Identifier tôt la voie souhaitée par le collaborateur → évite de promouvoir un expert technique qui ne veut pas gérer des personnes.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="m5-sec">
+    <div class="m5-sec-head" onclick="toggleM5(this)">Mesures individuelles — Job rotation, enlargement, enrichment <span>▶</span></div>
+    <div class="m5-sec-body">
+      <table class="m5-table">
+        <tr><th>Mesure</th><th>Définition</th><th>Exemple BPEL</th></tr>
+        <tr><td><strong>Job rotation</strong></td><td>Le collaborateur change de poste régulièrement (ex : matin poste 1, après-midi poste 2)</td><td>Alternance entre chantier résidentiel et chantier industriel pour développer la polyvalence</td></tr>
+        <tr><td><strong>Job enlargement</strong></td><td>Le poste reçoit plus de tâches de même niveau (élargissement horizontal)</td><td>Un monteur qui en plus de câbler, commence à faire les mises en service</td></tr>
+        <tr><td><strong>Job enrichment</strong></td><td>Le poste reçoit plus de responsabilités (élargissement vertical — préparation à une promotion)</td><td>Un chef d'équipe qui commence à préparer les offres → préparation à devenir chef de projet</td></tr>
+      </table>
+      <div class="m5-card"><strong>Groupe de travail semi-autonome :</strong> Plusieurs collaborateurs travaillent ensemble sans chef direct → développe l'autonomie collective et la prise de décision.</div>
+      <div class="m5-card"><strong>Cercle de qualité :</strong> Collaborateurs de différents postes se retrouvent en dehors du travail pour trouver des solutions à des problèmes communs → Near the job.</div>
+    </div>
+  </div>
+
+  <div class="m5-sec">
+    <div class="m5-sec-head" onclick="toggleM5(this)">Contrôler les mesures &amp; Mettre en pratique <span>▶</span></div>
+    <div class="m5-sec-body">
+      <div class="m5-card"><strong>4 types de contrôle des mesures de développement :</strong>
+        <table class="m5-table">
+          <tr><th>Contrôle</th><th>Ce qu'on mesure</th></tr>
+          <tr><td>Contrôle des <strong>savoirs</strong></td><td>Le contenu éducatif a-t-il été assimilé ? (test, examen, évaluation formative)</td></tr>
+          <tr><td>Contrôle du <strong>transfert</strong></td><td>Est-ce que le collaborateur applique sur le terrain ? (observation, évaluation manager)</td></tr>
+          <tr><td>Contrôle <strong>financier</strong></td><td>Les impacts sont-ils positifs pour l'entreprise ? (moins d'erreurs, gain de temps)</td></tr>
+          <tr><td>Contrôle du <strong>ROI</strong></td><td>Le coût de la formation est-il absorbé par l'augmentation des compétences ? (à court/moyen/long terme)</td></tr>
+        </table>
+      </div>
+      <div class="m5-card"><strong>5 principes du supérieur pour le transfert à la place de travail :</strong>
+        <ol>
+          <li>Le supérieur <strong>suit les progrès</strong> régulièrement</li>
+          <li>Le supérieur est <strong>ouvert aux apports nouveaux</strong> apportés par le collaborateur formé</li>
+          <li>Le supérieur et le collaborateur <strong>fixent de nouveaux objectifs</strong></li>
+          <li>Le supérieur <strong>communique ses attentes</strong> en termes de performance et qualité</li>
+          <li>Le supérieur <strong>accompagne</strong> le collaborateur dans ses nouvelles responsabilités</li>
+        </ol>
+      </div>
+      <div class="m5-imp">⚠️ Il est impératif de laisser les acquis se transférer à la place de travail pour valider les ancrages et obtenir un ROI. Sans application terrain = formation perdue.</div>
+    </div>
+  </div>
+
+  <div class="m5-sec">
+    <div class="m5-sec-head" onclick="toggleM5(this)">Formation initiale &amp; perfectionnement en entreprise <span>▶</span></div>
+    <div class="m5-sec-body">
+      <div class="m5-grid2">
+        <div class="m5-card"><strong>Formation initiale :</strong>
+          <ul>
+            <li>Une entreprise peut former dans plusieurs métiers</li>
+            <li>Elle doit avoir des <strong>formateurs en entreprise</strong></li>
+            <li>Suivi obligatoire du cours <strong>CFFE</strong> (Cours pour Formateurs en Entreprise)</li>
+          </ul>
+        </div>
+        <div class="m5-card"><strong>Perfectionnement :</strong>
+          <ul>
+            <li>Petits cours → diplômes fédéraux (BP, MAS, CAS)</li>
+            <li>L'entreprise soutient en : temps + argent + accès à des expériences professionnelles</li>
+            <li>Exemple : financer le BPEL tout en libérant le collaborateur pour les cours</li>
+          </ul>
+        </div>
+      </div>
+      <div class="m5-card"><strong>Choisir un organisme de formation externe :</strong>
+        <ul>
+          <li>Complexe — ne pas hésiter à comparer avant de signer !</li>
+          <li>Sources : votre réseau · orientation.ch · sites des associations · réseaux sociaux · sites des prestataires</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="m5-sec">
+    <div class="m5-sec-head" onclick="toggleM5(this)">Planification de la relève — Conditions de réussite <span>▶</span></div>
+    <div class="m5-sec-body">
+      <div class="m5-card"><strong>4 conditions incontournables :</strong>
+        <ul>
+          <li>La planification s'anticipe <strong>longtemps à l'avance</strong> pour assurer une passation en douceur</li>
+          <li>Le collaborateur pressenti <strong>doit en avoir envie</strong> — pas de promotion forcée</li>
+          <li>Les autres collaborateurs <strong>doivent être informés</strong> (éviter les rumeurs et jalousies)</li>
+          <li>Le responsable actuel doit <strong>progressivement lâcher son poste</strong> et faire confiance au successeur</li>
+        </ul>
+      </div>
+      <div class="m5-card"><strong>5 étapes de la planification de la relève :</strong>
+        <ol>
+          <li>Besoin de formation à court/long terme identifié</li>
+          <li>Plan de formation + identification des personnes à former</li>
+          <li>Organisation de la formation</li>
+          <li>Formation, accompagnement et développement des compétences</li>
+          <li>Suivi et soutien dans la prise de poste</li>
+        </ol>
+      </div>
+    </div>
+  </div>
 </div><!-- /t9 -->
 
 <div id="m5-t10" class="m5-panel">
@@ -6463,17 +6684,228 @@ function toggleSbGroup(title){
   var collapsed=items.classList.toggle('collapsed');
   if(arrow) arrow.style.transform=collapsed?'rotate(-90deg)':'rotate(0deg)';
 }
-function filterNav(q){
-  q=q.trim().toLowerCase();
+
+/* ===== SYSTÈME DE RECHERCHE AVANCÉ ===== */
+var bpelSearchIndex = null;
+var bpelSearchTimer = null;
+var bpelHighlightActive = false;
+
+// Construction de l'index au chargement
+function buildSearchIndex() {
+  var index = [];
+  document.querySelectorAll('.mod').forEach(function(mod) {
+    var modId = mod.id;
+    var modTitle = (document.querySelector('[onclick*="' + modId + '"]') || {}).textContent || modId;
+    
+    // Indexer chaque section accordéon
+    var sections = mod.querySelectorAll('.m5-sec, .xm-q, .nibt-sec, .xc-sect, .m5-card, .xc-item, [class*="-sec"], [class*="-card"]');
+    sections.forEach(function(sec) {
+      var heading = sec.querySelector('[class*="-head"], [class*="-num"], [class*="-text"], h3, h4, strong');
+      var title = heading ? heading.textContent.trim().substring(0, 80) : '';
+      var content = sec.textContent.trim();
+      if (content.length > 20) {
+        index.push({
+          modId: modId,
+          modTitle: modTitle.trim(),
+          title: title,
+          content: content,
+          element: sec
+        });
+      }
+    });
+    
+    // Si pas de sections, indexer le module entier
+    if (!sections.length) {
+      index.push({
+        modId: modId,
+        modTitle: modTitle.trim(),
+        title: modTitle.trim(),
+        content: mod.textContent.trim(),
+        element: mod
+      });
+    }
+  });
+  return index;
+}
+
+function bpelSearch(q) {
+  clearTimeout(bpelSearchTimer);
+  var btn = document.getElementById('searchClearBtn');
+  if (btn) btn.style.display = q ? 'block' : 'none';
+  
+  if (!q || q.trim().length < 2) {
+    clearBpelSearch();
+    return;
+  }
+  
+  bpelSearchTimer = setTimeout(function() {
+    _doSearch(q.trim());
+  }, 180);
+}
+
+function _doSearch(q) {
+  if (!bpelSearchIndex) bpelSearchIndex = buildSearchIndex();
+  
+  var terms = q.toLowerCase().split(/\s+/).filter(function(t){ return t.length >= 2; });
+  if (!terms.length) return;
+  
+  var results = [];
+  var seen = {};
+  
+  bpelSearchIndex.forEach(function(item) {
+    var text = item.content.toLowerCase();
+    var titleText = item.title.toLowerCase();
+    
+    // Calculer le score
+    var score = 0;
+    var allTermsFound = true;
+    terms.forEach(function(term) {
+      if (titleText.indexOf(term) >= 0) score += 10;
+      else if (text.indexOf(term) >= 0) score += 1;
+      else allTermsFound = false;
+    });
+    
+    if (allTermsFound && score > 0 && !seen[item.modId + item.title]) {
+      seen[item.modId + item.title] = true;
+      // Extraire un extrait contextuel
+      var excerpt = getExcerpt(item.content, terms[0]);
+      results.push({
+        score: score,
+        modId: item.modId,
+        modTitle: item.modTitle,
+        title: item.title,
+        excerpt: excerpt,
+        element: item.element
+      });
+    }
+  });
+  
+  // Trier par score
+  results.sort(function(a, b) { return b.score - a.score; });
+  results = results.slice(0, 12); // max 12 résultats
+  
+  showSearchResults(q, results);
+}
+
+function getExcerpt(text, term) {
+  var clean = text.replace(/\s+/g, ' ').trim();
+  var idx = clean.toLowerCase().indexOf(term.toLowerCase());
+  if (idx < 0) return clean.substring(0, 100) + '…';
+  var start = Math.max(0, idx - 40);
+  var end = Math.min(clean.length, idx + 80);
+  var excerpt = (start > 0 ? '…' : '') + clean.substring(start, end) + (end < clean.length ? '…' : '');
+  return excerpt;
+}
+
+function highlightTerms(text, terms) {
+  var result = text;
+  terms.forEach(function(term) {
+    var regex = new RegExp('(' + term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+    result = result.replace(regex, '<mark style="background:#fff176;border-radius:2px;padding:0 2px">$1</mark>');
+  });
+  return result;
+}
+
+function showSearchResults(q, results) {
+  var terms = q.toLowerCase().split(/\s+/).filter(function(t){ return t.length >= 2; });
+  var container = document.getElementById('searchResults');
+  if (!container) return;
+  
+  if (!results.length) {
+    container.style.display = 'block';
+    container.innerHTML = '<div style="padding:.7rem 1rem;font-size:12px;color:#6b89a8;text-align:center">Aucun résultat pour «' + q + '»</div>';
+    return;
+  }
+  
+  // Grouper par module
+  var byMod = {};
+  results.forEach(function(r) {
+    if (!byMod[r.modId]) byMod[r.modId] = { title: r.modTitle, items: [] };
+    byMod[r.modId].items.push(r);
+  });
+  
+  var html = '<div style="padding:.4rem .6rem;font-size:10px;font-weight:700;color:#6b89a8;background:#f0f4ff;border-bottom:1px solid #e8eef7;display:flex;justify-content:space-between;align-items:center">' +
+    '<span>🔍 ' + results.length + ' résultat' + (results.length > 1 ? 's' : '') + ' pour «' + q + '»</span>' +
+    '<span onclick="clearBpelSearch();document.getElementById(\'navSearch\').value=\'\'" style="cursor:pointer;color:#ef4444;font-size:11px">✕ Fermer</span>' +
+    '</div>';
+  
+  Object.keys(byMod).forEach(function(modId) {
+    var mod = byMod[modId];
+    html += '<div style="border-bottom:1px solid #f0f4ff">';
+    html += '<div style="padding:.4rem .8rem;font-size:10px;font-weight:800;color:#fff;background:#2c4a6e;letter-spacing:.04em">' + mod.title.substring(0, 50) + '</div>';
+    mod.items.forEach(function(r) {
+      var hlTitle = r.title ? highlightTerms(r.title.substring(0, 60), terms) : '';
+      var hlExcerpt = highlightTerms(r.excerpt, terms);
+      html += '<div class="sr-item" onclick="goToResult(\'' + modId + '\',this)" style="padding:.5rem .8rem;cursor:pointer;border-bottom:1px solid #f8f9fc" onmouseover="this.style.background=\'#f0f4ff\'" onmouseout="this.style.background=\'\'">' +
+        (hlTitle ? '<div style="font-size:12px;font-weight:700;color:#1a3a5c;margin-bottom:2px">' + hlTitle + '</div>' : '') +
+        '<div style="font-size:11px;color:#6b89a8;line-height:1.4">' + hlExcerpt + '</div>' +
+        '</div>';
+    });
+    html += '</div>';
+  });
+  
+  container.innerHTML = html;
+  container.style.display = 'block';
+}
+
+function goToResult(modId, clickedEl) {
+  // Naviguer vers le module
+  var modEl = document.getElementById(modId);
+  if (!modId || !modEl) return;
+  
+  document.querySelectorAll('.mod').forEach(function(m){ m.classList.remove('on'); });
+  document.querySelectorAll('.mtab').forEach(function(b){ b.classList.remove('on'); });
+  modEl.classList.add('on');
+  
+  // Marquer le bouton actif
+  var btn = document.querySelector('[onclick*="' + modId + '"]');
+  if (btn) btn.classList.add('on');
+  
+  // Ouvrir tous les accordéons du module
+  modEl.querySelectorAll('[class*="-sec-body"], [class*="-part-body"], [class*="-panel"]').forEach(function(b){
+    b.classList.add('open');
+    b.style.display = 'block';
+  });
+  
+  // Scroll vers le haut du module
+  setTimeout(function() {
+    modEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 100);
+  
+  // Fermer les résultats
+  clearBpelSearch();
+  document.getElementById('navSearch').value = '';
+}
+
+function clearBpelSearch() {
+  var container = document.getElementById('searchResults');
+  if (container) container.style.display = 'none';
+  var btn = document.getElementById('searchClearBtn');
+  if (btn) btn.style.display = 'none';
+  
+  // Remettre tous les boutons visibles
   document.querySelectorAll('.sidebar .mtab').forEach(function(b){
-    var match = b.textContent.toLowerCase().indexOf(q)>=0;
-    b.classList.toggle('hide', q.length>0 && !match);
+    b.classList.remove('hide');
   });
   document.querySelectorAll('.sb-group').forEach(function(g){
-    var any = Array.from(g.querySelectorAll('.mtab')).some(function(b){return !b.classList.contains('hide');});
-    g.style.display = any ? '' : 'none';
+    g.style.display = '';
   });
 }
+
+// Ancienne fonction pour compatibilité
+function filterNav(q) {
+  bpelSearch(q);
+}
+
+// Fermer résultats si clic en dehors
+document.addEventListener('click', function(e) {
+  var sr = document.getElementById('searchResults');
+  var inp = document.getElementById('navSearch');
+  if (sr && inp && !sr.contains(e.target) && e.target !== inp) {
+    sr.style.display = 'none';
+  }
+});
+
 window.addEventListener('DOMContentLoaded',function(){
   var first=document.querySelector('.sidebar .mtab');
   if(first) first.classList.add('on');
@@ -19071,7 +19503,7 @@ function xcToggleQ(qid){
 }
 </style>
 <div class="app-footer">
-  © Nicolas Wälchli — Révision BPEL · Dernière modification : 06.06.2026 à 13:50
+  © Nicolas Wälchli — Révision BPEL · Dernière modification : 07.06.2026 à 07:50
 </div>
 
 <script>document.addEventListener('DOMContentLoaded',function(){
