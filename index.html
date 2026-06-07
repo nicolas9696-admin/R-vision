@@ -138,6 +138,168 @@ tr:last-child td{border-bottom:none}
 #searchResults::-webkit-scrollbar{width:5px}
 #searchResults::-webkit-scrollbar-thumb{background:#c8d4e8;border-radius:3px}
 .sr-item:last-child{border-bottom:none!important}
+
+/* ============================================================
+   RESPONSIVE MOBILE — Révision BPEL
+   ============================================================ */
+
+/* ----- Layout principal ----- */
+@media(max-width:780px){
+  .app{ flex-direction:column }
+
+  /* Sidebar : menu compact en haut */
+  .sidebar{
+    width:100%;
+    height:auto;
+    position:static;
+    padding-bottom:.5rem;
+    border-bottom:2px solid #e2e8f0;
+  }
+  .sb-brand{ padding:.7rem 1rem .4rem }
+  .sb-brand h1{ font-size:15px }
+  .sb-brand p{ font-size:10px }
+
+  /* Groupes sidebar : compact */
+  .sb-group{ margin:.2rem .5rem }
+  .sb-group-title{ padding:.5rem .8rem; font-size:12px }
+  .sb-group-items{ padding:.2rem .4rem }
+
+  /* Boutons sidebar : flex wrap horizontal */
+  .mtab{
+    display:inline-block !important;
+    width:auto !important;
+    border-left:none !important;
+    border-radius:16px !important;
+    margin:2px 3px !important;
+    padding:5px 12px !important;
+    border:1.5px solid #d0d9e8 !important;
+    font-size:11px !important;
+    line-height:1.3 !important;
+  }
+  .mtab.on{
+    background:#1a3a5c !important;
+    color:#fff !important;
+  }
+  .sb-group-items{
+    display:flex;
+    flex-wrap:wrap;
+    gap:2px;
+  }
+
+  /* Champ de recherche */
+  .sb-search{ font-size:13px; padding:9px 12px }
+
+  /* Résultats de recherche : pleine largeur */
+  #searchResults{ max-height:50vh }
+
+  /* Zone principale */
+  .main{ padding:0 }
+}
+
+/* ----- Contenu général mobile ----- */
+@media(max-width:600px){
+
+  /* Module stit */
+  .stit{ font-size:15px !important; padding:.7rem .8rem !important }
+  .info{ font-size:11px !important; padding:.4rem .8rem !important }
+  .mod{ padding:.5rem !important }
+
+  /* Onglets M5 */
+  .m5-tabs{ gap:.25rem; padding:.3rem 0 }
+  .m5-tab{
+    padding:5px 10px;
+    font-size:11px;
+    border-radius:6px;
+  }
+
+  /* Sections accordéon */
+  .m5-sec-head, .xm-part-head, .nibt-sec-head{
+    font-size:12px !important;
+    padding:.5rem .7rem !important;
+  }
+  .m5-sec-body, .xm-part-body{ padding:.6rem .7rem !important }
+  .m5-card{ padding:.5rem .7rem !important; font-size:12px !important }
+  .m5-imp, .m5-note, .m5-ok, .m5-danger{ font-size:11.5px !important }
+
+  /* Tableaux : scroll horizontal */
+  .m5-table, .xm-tbl, .xc-tbl, .nibt-table{
+    display:block;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    font-size:11.5px;
+    white-space:nowrap;
+  }
+  .m5-table th, .m5-table td,
+  .xm-tbl th, .xm-tbl td,
+  .xc-tbl th, .xc-tbl td{
+    min-width:90px;
+    white-space:normal;
+    font-size:11.5px;
+    padding:.3rem .4rem;
+  }
+
+  /* Textareas examen */
+  .xm-ta{ font-size:13px !important; min-height:60px !important }
+  .xm-ta.sm{ min-height:44px !important }
+  .xm-q-text{ font-size:12.5px !important }
+  .xm-q-hd{ gap:.3rem }
+  .xm-part-head span:first-child{ font-size:12px !important }
+
+  /* QCM */
+  .xm-mcq-opt{ font-size:12.5px !important; padding:8px !important }
+  .qm5-choice{ font-size:12px !important; padding:8px 10px !important }
+
+  /* Boutons IA */
+  .xm-ai{ font-size:11.5px !important; padding:8px 14px !important }
+  .xc-btn{ font-size:11.5px !important; padding:7px 14px !important }
+
+  /* Contexte examen */
+  .xm-ctx{ padding:.8rem !important; border-radius:8px !important }
+  .xm-ctx h3{ font-size:13px !important }
+  .xm-total{ padding:.5rem .8rem !important }
+
+  /* Feedback */
+  .xm-fb{ font-size:12px !important; padding:.6rem .7rem !important }
+  .xc-sect{ padding:.6rem .7rem !important }
+  .xc-item{ font-size:12px !important }
+
+  /* NIBT */
+  .nibt-tabs{ gap:.2rem }
+  .nibt-tab{ padding:5px 10px; font-size:11px }
+  .nibt-search{ font-size:13px }
+
+  /* Quiz M5 */
+  .qm5-nav button{ padding:4px 10px; font-size:11px }
+  .qm5-question{ font-size:12.5px }
+
+  /* Calculateur */
+  .calc-row{ flex-direction:column }
+
+  /* Module vidéos */
+  .vid-grid{
+    grid-template-columns:1fr !important;
+    gap:.8rem;
+  }
+
+  /* Grille 2 colonnes → 1 colonne */
+  .m5-grid2{ grid-template-columns:1fr !important }
+
+  /* Scores et barres */
+  .xm-total{ flex-direction:column; gap:.3rem }
+  .xm-total-bar{ width:100%; margin:0 }
+  .xm-total-lbl{ font-size:12px }
+
+  /* Header de l'app */
+  .hdr{ padding:8px 12px }
+  .hdr h1{ font-size:15px }
+}
+
+/* ----- Très petit (375px iPhone SE) ----- */
+@media(max-width:400px){
+  .m5-tab{ font-size:10px !important; padding:4px 8px !important }
+  .nibt-tab{ font-size:10px !important; padding:4px 8px !important }
+  .stit{ font-size:14px !important }
+}
 </style>
 <style>
 /* ===== Mise en page structurée Codex ===== */
@@ -19505,7 +19667,7 @@ function xcToggleQ(qid){
 <style>
 .vid-card{background:#fff;border-radius:10px;border:1px solid #e2e8f0;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.07);transition:box-shadow .15s}
 .vid-card:hover{box-shadow:0 6px 20px rgba(0,0,0,.12)}
-.vid-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(420px,1fr));gap:1.2rem;margin:.8rem 0;align-items:start}
+.vid-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(420px,100%),1fr));gap:1.2rem;margin:.8rem 0;align-items:start}
 @media(max-width:600px){.vid-grid{grid-template-columns:1fr}}
 .vf-btn{padding:6px 14px;border-radius:20px;border:1.5px solid #d0d9e8;background:#fff;color:#3a5572;font-size:12px;font-weight:700;cursor:pointer;transition:all .15s}
 .vf-btn:hover,.vf-btn.on{background:var(--vc,#1a3a5c);color:#fff;border-color:var(--vc,#1a3a5c)}
@@ -19709,7 +19871,7 @@ function filterVids(mod,btn){
 }
 </style>
 <div class="app-footer">
-  © Nicolas Wälchli — Révision BPEL · Dernière modification : 07.06.2026 à 08:54
+  © Nicolas Wälchli — Révision BPEL · Dernière modification : 07.06.2026 à 09:03
 </div>
 
 <script>document.addEventListener('DOMContentLoaded',function(){
