@@ -6855,41 +6855,25 @@ function toggleSbGroup(title){
 /* ===== SYSTÈME DE RECHERCHE AVANCÉ ===== */
 var bpelSearchIndex = null;
 var bpelSearchTimer = null;
-var bpelHighlightActive = false;
 
-// Construction de l'index au chargement
 function buildSearchIndex() {
   var index = [];
   document.querySelectorAll('.mod').forEach(function(mod) {
     var modId = mod.id;
-    var modTitle = (document.querySelector('[onclick*="' + modId + '"]') || {}).textContent || modId;
-    
-    // Indexer chaque section accordéon
-    var sections = mod.querySelectorAll('.m5-sec, .xm-q, .nibt-sec, .xc-sect, .m5-card, .xc-item, [class*="-sec"], [class*="-card"]');
-    sections.forEach(function(sec) {
-      var heading = sec.querySelector('[class*="-head"], [class*="-num"], [class*="-text"], h3, h4, strong');
+    var modBtn = document.querySelector('.mtab[onclick="M(\''+modId+'\',this)"]');
+    var modTitle = modBtn ? modBtn.textContent.trim() : modId;
+    mod.querySelectorAll('.m5-sec, .xm-q, .nibt-sec, .m5-card, .xc-item').forEach(function(sec) {
+      var heading = sec.querySelector('.m5-sec-head, .xm-q-num, .xm-q-text, .nibt-sec-head');
       var title = heading ? heading.textContent.trim().substring(0, 80) : '';
       var content = sec.textContent.trim();
       if (content.length > 20) {
-        index.push({
-          modId: modId,
-          modTitle: modTitle.trim(),
-          title: title,
-          content: content,
-          element: sec
-        });
+        index.push({ modId:modId, modTitle:modTitle, title:title, content:content, element:sec });
       }
     });
-    
-    // Si pas de sections, indexer le module entier
-    if (!sections.length) {
-      index.push({
-        modId: modId,
-        modTitle: modTitle.trim(),
-        title: modTitle.trim(),
-        content: mod.textContent.trim(),
-        element: mod
-      });
+    // Module entier si pas de sections
+    var secs = mod.querySelectorAll('.m5-sec, .xm-q, .nibt-sec, .m5-card');
+    if (!secs.length) {
+      index.push({ modId:modId, modTitle:modTitle, title:modTitle, content:mod.textContent.trim(), element:mod });
     }
   });
   return index;
@@ -6897,193 +6881,175 @@ function buildSearchIndex() {
 
 function bpelSearch(q) {
   clearTimeout(bpelSearchTimer);
-  var btn = document.getElementById('searchClearBtn');
-  if (btn) btn.style.display = q ? 'block' : 'none';
-  
-  if (!q || q.trim().length < 2) {
-    clearBpelSearch();
-    return;
-  }
-  
-  bpelSearchTimer = setTimeout(function() {
-    _doSearch(q.trim());
-  }, 180);
+  var clearBtn = document.getElementById('searchClearBtn');
+  if (clearBtn) clearBtn.style.display = q ? 'block' : 'none';
+  if (!q || q.trim().length < 2) { clearBpelSearch(); return; }
+  bpelSearchTimer = setTimeout(function(){ _doSearch(q.trim()); }, 180);
 }
 
 function _doSearch(q) {
   if (!bpelSearchIndex) bpelSearchIndex = buildSearchIndex();
-  
   var terms = q.toLowerCase().split(/\s+/).filter(function(t){ return t.length >= 2; });
   if (!terms.length) return;
-  
-  var results = [];
-  var seen = {};
-  
-  bpelSearchIndex.forEach(function(item) {
+  var results = []; var seen = {};
+  bpelSearchIndex.forEach(function(item, idx) {
     var text = item.content.toLowerCase();
     var titleText = item.title.toLowerCase();
-    
-    // Calculer le score
-    var score = 0;
-    var allTermsFound = true;
-    terms.forEach(function(term) {
-      if (titleText.indexOf(term) >= 0) score += 10;
-      else if (text.indexOf(term) >= 0) score += 1;
-      else allTermsFound = false;
+    var score = 0; var allFound = true;
+    terms.forEach(function(t) {
+      if (titleText.indexOf(t) >= 0) score += 10;
+      else if (text.indexOf(t) >= 0) score += 1;
+      else allFound = false;
     });
-    
-    if (allTermsFound && score > 0 && !seen[item.modId + item.title]) {
-      seen[item.modId + item.title] = true;
-      // Extraire un extrait contextuel
-      var excerpt = getExcerpt(item.content, terms[0]);
-      results.push({
-        score: score,
-        modId: item.modId,
-        modTitle: item.modTitle,
-        title: item.title,
-        excerpt: excerpt,
-        element: item.element
-      });
+    var key = item.modId + '|' + item.title.substring(0,30);
+    if (allFound && score > 0 && !seen[key]) {
+      seen[key] = true;
+      results.push({ score:score, modId:item.modId, modTitle:item.modTitle,
+        title:item.title, excerpt:getExcerpt(item.content, terms[0]),
+        element:item.element, _idx:idx });
     }
   });
-  
-  // Trier par score
-  results.sort(function(a, b) { return b.score - a.score; });
-  results = results.slice(0, 12); // max 12 résultats
-  
+  results.sort(function(a,b){ return b.score - a.score; });
+  results = results.slice(0, 12);
   showSearchResults(q, results);
 }
 
 function getExcerpt(text, term) {
-  var clean = text.replace(/\s+/g, ' ').trim();
+  var clean = text.replace(/\s+/g,' ').trim();
   var idx = clean.toLowerCase().indexOf(term.toLowerCase());
-  if (idx < 0) return clean.substring(0, 100) + '…';
-  var start = Math.max(0, idx - 40);
-  var end = Math.min(clean.length, idx + 80);
-  var excerpt = (start > 0 ? '…' : '') + clean.substring(start, end) + (end < clean.length ? '…' : '');
-  return excerpt;
+  if (idx < 0) return clean.substring(0,100) + '…';
+  var s = Math.max(0, idx-40), e = Math.min(clean.length, idx+80);
+  return (s>0?'…':'') + clean.substring(s,e) + (e<clean.length?'…':'');
 }
 
 function highlightTerms(text, terms) {
-  var result = text;
-  terms.forEach(function(term) {
-    var regex = new RegExp('(' + term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
-    result = result.replace(regex, '<mark style="background:#fff176;border-radius:2px;padding:0 2px">$1</mark>');
+  var r = text;
+  terms.forEach(function(t) {
+    r = r.replace(new RegExp('('+t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi'),
+      '<mark style="background:#fff176;border-radius:2px;padding:0 2px">$1</mark>');
   });
-  return result;
+  return r;
 }
 
 function showSearchResults(q, results) {
-  var terms = q.toLowerCase().split(/\s+/).filter(function(t){ return t.length >= 2; });
+  var terms = q.toLowerCase().split(/\s+/).filter(function(t){ return t.length>=2; });
   var container = document.getElementById('searchResults');
   if (!container) return;
-  
   if (!results.length) {
     container.style.display = 'block';
-    container.innerHTML = '<div style="padding:.7rem 1rem;font-size:12px;color:#6b89a8;text-align:center">Aucun résultat pour «' + q + '»</div>';
+    container.innerHTML = '<div style="padding:.7rem 1rem;font-size:12px;color:#6b89a8;text-align:center">Aucun résultat pour «'+q+'»</div>';
     return;
   }
-  
-  // Grouper par module
   var byMod = {};
   results.forEach(function(r) {
-    if (!byMod[r.modId]) byMod[r.modId] = { title: r.modTitle, items: [] };
+    if (!byMod[r.modId]) byMod[r.modId] = { title:r.modTitle, items:[] };
     byMod[r.modId].items.push(r);
   });
-  
-  var html = '<div style="padding:.4rem .6rem;font-size:10px;font-weight:700;color:#6b89a8;background:#f0f4ff;border-bottom:1px solid #e8eef7;display:flex;justify-content:space-between;align-items:center">' +
-    '<span>🔍 ' + results.length + ' résultat' + (results.length > 1 ? 's' : '') + ' pour «' + q + '»</span>' +
-    '<span onclick="clearBpelSearch();document.getElementById(\'navSearch\').value=\'\'" style="cursor:pointer;color:#ef4444;font-size:11px">✕ Fermer</span>' +
-    '</div>';
-  
+  var h = '<div style="padding:.4rem .6rem;font-size:10px;font-weight:700;color:#6b89a8;background:#f0f4ff;border-bottom:1px solid #e8eef7;display:flex;justify-content:space-between;align-items:center">' +
+    '<span>🔍 '+results.length+' résultat'+(results.length>1?'s':'')+' pour «'+q+'»</span>' +
+    '<span onclick="clearBpelSearch();document.getElementById(\'navSearch\').value=\'\'" style="cursor:pointer;color:#ef4444;font-size:11px">✕ Fermer</span></div>';
   Object.keys(byMod).forEach(function(modId) {
     var mod = byMod[modId];
-    html += '<div style="border-bottom:1px solid #f0f4ff">';
-    html += '<div style="padding:.4rem .8rem;font-size:10px;font-weight:800;color:#fff;background:#2c4a6e;letter-spacing:.04em">' + mod.title.substring(0, 50) + '</div>';
+    h += '<div style="border-bottom:1px solid #f0f4ff">';
+    h += '<div style="padding:.35rem .8rem;font-size:10px;font-weight:800;color:#fff;background:#2c4a6e;letter-spacing:.04em">'+mod.title.substring(0,50)+'</div>';
     mod.items.forEach(function(r) {
-      var hlTitle = r.title ? highlightTerms(r.title.substring(0, 60), terms) : '';
-      var hlExcerpt = highlightTerms(r.excerpt, terms);
-      html += '<div class="sr-item" onclick="goToResult(\'' + modId + '\',this)" style="padding:.5rem .8rem;cursor:pointer;border-bottom:1px solid #f8f9fc" onmouseover="this.style.background=\'#f0f4ff\'" onmouseout="this.style.background=\'\'">' +
-        (hlTitle ? '<div style="font-size:12px;font-weight:700;color:#1a3a5c;margin-bottom:2px">' + hlTitle + '</div>' : '') +
-        '<div style="font-size:11px;color:#6b89a8;line-height:1.4">' + hlExcerpt + '</div>' +
-        '</div>';
+      var hlT = r.title ? highlightTerms(r.title.substring(0,60), terms) : '';
+      var hlE = highlightTerms(r.excerpt, terms);
+      h += '<div class="sr-item" onclick="goToResult(\''+r.modId+'\','+r._idx+')" ' +
+        'style="padding:.5rem .8rem;cursor:pointer;border-bottom:1px solid #f8f9fc" ' +
+        'onmouseover="this.style.background=\'#f0f4ff\'" onmouseout="this.style.background=\'\'">' +
+        (hlT ? '<div style="font-size:12px;font-weight:700;color:#1a3a5c;margin-bottom:2px">'+hlT+'</div>' : '') +
+        '<div style="font-size:11px;color:#6b89a8;line-height:1.4">'+hlE+'</div></div>';
     });
-    html += '</div>';
+    h += '</div>';
   });
-  
-  container.innerHTML = html;
+  container.innerHTML = h;
   container.style.display = 'block';
 }
 
-function goToResult(modId, clickedEl) {
+function goToResult(modId, targetIdx) {
   var modEl = document.getElementById(modId);
-  if (!modId || !modEl) return;
+  if (!modEl) return;
 
-  // Naviguer vers le module
+  // Activer le module
   document.querySelectorAll('.mod').forEach(function(m){ m.classList.remove('on'); });
-  document.querySelectorAll('.mtab').forEach(function(b){ b.classList.remove('on'); });
   modEl.classList.add('on');
 
-  // Marquer le bouton actif dans la sidebar
-  var btn = document.querySelector('[onclick*="' + modId + '"]');
+  // Activer le bon bouton sidebar (match exact)
+  document.querySelectorAll('.mtab').forEach(function(b){ b.classList.remove('on'); });
+  var btn = document.querySelector('.mtab[onclick="M(\''+modId+'\',this)"]');
   if (btn) {
     btn.classList.add('on');
-    // Ouvrir le groupe sidebar parent si collapsed
     var grp = btn.closest('.sb-group-items');
     if (grp) grp.classList.remove('collapsed');
   }
 
-  // Ouvrir les accordéons SIMPLES (sec-body, part-body)
-  // SANS toucher aux .m5-panel (onglets M5) ni aux .nibt-panel
-  modEl.querySelectorAll('.m5-sec-body, .xm-part-body, .nibt-sec-body').forEach(function(b){
-    b.classList.add('open');
-  });
+  // Récupérer l'élément cible
+  var target = (bpelSearchIndex && targetIdx >= 0) ? bpelSearchIndex[targetIdx] && bpelSearchIndex[targetIdx].element : null;
 
-  // Pour M5 : activer le 1er onglet par défaut si aucun n'est actif
-  var activePanels = modEl.querySelectorAll('.m5-panel.on');
-  if (activePanels.length === 0) {
-    var firstPanel = modEl.querySelector('.m5-panel');
-    var firstTab = modEl.querySelector('.m5-tab');
-    if (firstPanel) firstPanel.classList.add('on');
-    if (firstTab) firstTab.classList.add('on');
+  if (target) {
+    // Ouvrir le bon onglet M5
+    var panel = target.closest('.m5-panel');
+    if (panel) {
+      modEl.querySelectorAll('.m5-panel').forEach(function(p){ p.classList.remove('on'); });
+      modEl.querySelectorAll('.m5-tab').forEach(function(t){ t.classList.remove('on'); });
+      panel.classList.add('on');
+      var tabId = panel.id.replace('m5-','');
+      var tab = modEl.querySelector('.m5-tab[onclick*="showM5(\''+tabId+'\'"]');
+      if (tab) tab.classList.add('on');
+    }
+    // Ouvrir le bon onglet NIBT
+    var nibtPanel = target.closest('.nibt-panel');
+    if (nibtPanel) {
+      modEl.querySelectorAll('.nibt-panel').forEach(function(p){ p.classList.remove('on'); });
+      nibtPanel.classList.add('on');
+    }
+    // Ouvrir l'accordéon parent
+    var secBody = target.closest('.m5-sec-body, .nibt-sec-body, .xm-part-body');
+    if (!secBody && (target.classList.contains('m5-sec-body') || target.classList.contains('nibt-sec-body'))) secBody = target;
+    if (secBody) {
+      secBody.classList.add('open');
+      var head = secBody.previousElementSibling;
+      if (head) { var arr = head.querySelector('span:last-child'); if (arr) arr.textContent = '▼'; }
+    }
+  } else {
+    // Pas de cible → activer 1er onglet M5
+    if (!modEl.querySelector('.m5-panel.on')) {
+      var fp = modEl.querySelector('.m5-panel'); var ft = modEl.querySelector('.m5-tab');
+      if (fp) fp.classList.add('on'); if (ft) ft.classList.add('on');
+    }
   }
 
-  // Scroll vers le haut du module
+  // Scroll + highlight
   setTimeout(function() {
-    modEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }, 80);
+    var el = target || modEl;
+    el.scrollIntoView({ behavior:'smooth', block:'center' });
+    if (target) {
+      target.style.outline = '2px solid #f59e0b';
+      target.style.borderRadius = '6px';
+      setTimeout(function(){ target.style.outline=''; target.style.borderRadius=''; }, 2000);
+    }
+  }, 120);
 
   clearBpelSearch();
   document.getElementById('navSearch').value = '';
 }
 
 function clearBpelSearch() {
-  var container = document.getElementById('searchResults');
-  if (container) container.style.display = 'none';
-  var btn = document.getElementById('searchClearBtn');
-  if (btn) btn.style.display = 'none';
-  
-  // Remettre tous les boutons visibles
-  document.querySelectorAll('.sidebar .mtab').forEach(function(b){
-    b.classList.remove('hide');
-  });
-  document.querySelectorAll('.sb-group').forEach(function(g){
-    g.style.display = '';
-  });
+  var c = document.getElementById('searchResults');
+  if (c) c.style.display = 'none';
+  var b = document.getElementById('searchClearBtn');
+  if (b) b.style.display = 'none';
+  document.querySelectorAll('.sidebar .mtab').forEach(function(b){ b.classList.remove('hide'); });
+  document.querySelectorAll('.sb-group').forEach(function(g){ g.style.display = ''; });
 }
 
-// Ancienne fonction pour compatibilité
-function filterNav(q) {
-  bpelSearch(q);
-}
+function filterNav(q) { bpelSearch(q); }
 
-// Fermer résultats si clic en dehors
 document.addEventListener('click', function(e) {
   var sr = document.getElementById('searchResults');
   var inp = document.getElementById('navSearch');
-  if (sr && inp && !sr.contains(e.target) && e.target !== inp) {
-    sr.style.display = 'none';
-  }
+  if (sr && inp && !sr.contains(e.target) && e.target !== inp) sr.style.display = 'none';
 });
 
 window.addEventListener('DOMContentLoaded',function(){
@@ -19896,7 +19862,7 @@ function filterVids(mod,btn){
 }
 </style>
 <div class="app-footer">
-  © Nicolas Wälchli — Révision BPEL · Dernière modification : 07.06.2026 à 09:26
+  © Nicolas Wälchli — Révision BPEL · Dernière modification : 12.06.2026 à 07:18
 </div>
 
 <script>document.addEventListener('DOMContentLoaded',function(){
