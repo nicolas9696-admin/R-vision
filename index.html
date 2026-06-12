@@ -3683,6 +3683,7 @@ function toggleCM4Sec(head){
   <button class="m5-tab" onclick="showM5('t9',this)">📈 Développement du personnel</button>
   <button class="m5-tab" onclick="showM5('t10',this)">📋 Fin des rapports de travail</button>
   <button class="m5-tab" onclick="showM5('t11',this)">👥 Planification &amp; Sélection RH</button>
+  <button class="m5-tab" onclick="showM5('t12',this)" style="color:#b67d12;font-weight:700">📄 Fiche de révision</button>
 </div>
 
 <!-- ===== T1 GESTION DU TEMPS ===== -->
@@ -6222,6 +6223,952 @@ function toggleCM4Sec(head){
 
 </div><!-- /t11 -->
 
+<div id="m5-t12" class="m5-panel">
+<style>
+/* ===== Fiche révision M5 — styles résolus et scopés ===== */
+#m5-t12 {
+  background: #e9edf2;
+  padding: .5rem;
+  border-radius: 8px;
+}
+#m5-t12 .sheet {
+  max-width: 100%;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 0 0 2rem;
+  box-shadow: 0 2px 12px rgba(20,35,58,.08);
+  border-radius: 6px;
+  overflow: hidden;
+}
+#m5-t12{box-sizing:border-box} #m5-t12{-webkit-text-size-adjust:100%} #m5-t12{
+    margin:0;
+    background:#e9edf2;
+    color:#15243a;
+    font-family:"Segoe UI",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+    font-size:14px;
+    line-height:1.5;
+  } #m5-t12 .sheet{
+    max-width:920px;
+    margin:24px auto;
+    background:#ffffff;
+    padding:0 0 56px;
+    box-shadow:0 4px 28px rgba(20,35,58,.10);
+  } #m5-t12 /* ---- En-tête ---- */
+  .masthead{
+    background:#1a3a5c;
+    color:#fff;
+    padding:30px 40px 26px;
+    position:relative;
+    overflow:hidden;
+  } #m5-t12 .masthead::after{
+    content:"M5";
+    position:absolute;
+    right:24px;top:-18px;
+    font-family:Georgia,"Times New Roman",serif;
+    font-size:140px;
+    font-weight:700;
+    color:rgba(255,255,255,.07);
+    letter-spacing:-4px;
+  } #m5-t12 .eyebrow{
+    font-size:11px;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:#b67d12;
+    font-weight:700;
+    margin:0 0 6px;
+  } #m5-t12 .masthead h1{
+    font-family:Georgia,"Times New Roman",serif;
+    font-weight:700;
+    font-size:30px;
+    line-height:1.12;
+    margin:0 0 4px;
+    max-width:660px;
+  } #m5-t12 .masthead .sub{
+    color:#c7d6e6;
+    font-size:13px;
+    margin:0;
+  } #m5-t12 .examfacts{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:18px;
+  } #m5-t12 .fact{
+    background:rgba(255,255,255,.10);
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:7px;
+    padding:8px 13px;
+    font-size:12px;
+  } #m5-t12 .fact b{color:#fff} #m5-t12 .fact span{color:#acc1d8;display:block;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:1px} #m5-t12 /* ---- Logique de réponse ---- */
+  .logic{
+    margin:0 40px;
+    margin-top:-16px;
+    background:#fbf3e0;
+    border:1px solid #ecd9ab;
+    border-left:5px solid #b67d12;
+    border-radius:8px;
+    padding:14px 18px;
+    position:relative;
+    z-index:2;
+  } #m5-t12 .logic h2{
+    margin:0 0 6px;
+    font-size:13px;
+    color:#b67d12;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+  } #m5-t12 .logic-flow{
+    display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:#15243a
+  } #m5-t12 .logic-flow .step{background:#fff;border:1px solid #e3d4ad;border-radius:20px;padding:4px 11px} #m5-t12 .logic-flow .arr{color:#b67d12;font-weight:800} #m5-t12 /* ---- Contenu ---- */
+  .body{padding:8px 40px 0} #m5-t12 section{margin-top:26px;page-break-inside:auto} #m5-t12 .sec-head{
+    display:flex;align-items:baseline;gap:12px;
+    border-bottom:2px solid #1a3a5c;
+    padding-bottom:6px;margin-bottom:12px;
+  } #m5-t12 .sec-num{
+    font-family:Georgia,serif;
+    font-weight:700;
+    color:#b67d12;
+    font-size:15px;
+    letter-spacing:.04em;
+    min-width:34px;
+  } #m5-t12 .sec-head h2{
+    font-family:Georgia,"Times New Roman",serif;
+    font-size:20px;font-weight:700;color:#1a3a5c;margin:0;flex:1;
+  } #m5-t12 .sec-head .tag{font-size:11px;color:#5a6b7e;font-weight:600;letter-spacing:.04em} #m5-t12 .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px} #m5-t12 .grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px} #m5-t12 .card{
+    background:#f6f8fb;
+    border:1px solid #d6dee9;
+    border-radius:8px;
+    padding:11px 14px;
+    page-break-inside:avoid;
+  } #m5-t12 .card.full{grid-column:1/-1} #m5-t12 .card h3{
+    margin:0 0 7px;font-size:13px;color:#1a3a5c;
+    text-transform:uppercase;letter-spacing:.05em;
+    display:flex;align-items:center;gap:7px;
+  } #m5-t12 .card h3 .dot{width:7px;height:7px;border-radius:50%;background:#b67d12;flex:none} #m5-t12 .card p{margin:.2rem 0} #m5-t12 ul, #m5-t12 ol{margin:.3rem 0;padding-left:1.15rem} #m5-t12 li{margin:.12rem 0} #m5-t12 .lead{color:#15243a} #m5-t12 .mut{color:#5a6b7e;font-size:12.5px} #m5-t12 table{width:100%;border-collapse:collapse;margin:.3rem 0;font-size:12.3px} #m5-t12 th{background:#eaf0f7;color:#1a3a5c;text-align:left;font-weight:700;padding:5px 8px;border:1px solid #d6dee9;font-size:11.5px} #m5-t12 td{padding:5px 8px;border:1px solid #d6dee9;vertical-align:top} #m5-t12 td strong{color:#15243a} #m5-t12 .pill{display:inline-block;border-radius:5px;padding:1px 7px;font-size:11px;font-weight:700;color:#fff;white-space:nowrap} #m5-t12 .p-red{background:#b23b32} #m5-t12 .p-green{background:#2c7a55} #m5-t12 .p-amber{background:#b67d12} #m5-t12 .p-blue{background:#2c5282} #m5-t12 .p-grey{background:#6b7785} #m5-t12 .p-purple{background:#74508f} #m5-t12 .callout{
+    border-left:4px solid #b67d12;
+    background:#fbf3e0;
+    border-radius:0 6px 6px 0;
+    padding:7px 11px;margin:.45rem 0;font-size:12.3px;
+  } #m5-t12 .callout.warn{border-left-color:#b23b32;background:#fbeceb} #m5-t12 .callout.ok{border-left-color:#2c7a55;background:#e9f5ef} #m5-t12 .callout b{color:#15243a} #m5-t12 .formula{
+    background:#1a3a5c;color:#fff;border-radius:7px;
+    padding:9px 14px;text-align:center;font-size:13px;margin:.4rem 0;
+    font-family:"Consolas",monospace;
+  } #m5-t12 .formula .hl{color:#f0c969;font-weight:700} #m5-t12 .kbd{font-size:11px;color:#5a6b7e;font-weight:600} #m5-t12 footer{
+    margin:36px 40px 0;padding-top:12px;border-top:1px solid #d6dee9;
+    font-size:11px;color:#5a6b7e;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;
+  } @media (max-width:680px){#m5-t12 .sheet{margin:0} #m5-t12 .masthead, #m5-t12 .body, #m5-t12 .logic{padding-left:18px;padding-right:18px} #m5-t12 .logic{margin-left:18px;margin-right:18px} #m5-t12 .masthead h1{font-size:23px} #m5-t12 .grid, #m5-t12 .grid-3{grid-template-columns:1fr} #m5-t12 footer{margin-left:18px;margin-right:18px} 
+  } @media print{#m5-t12{background:#fff} #m5-t12 .sheet{box-shadow:none;margin:0;max-width:100%} #m5-t12 section{page-break-inside:auto} #m5-t12 .card, #m5-t12 table{page-break-inside:avoid} #m5-t12 .masthead::after{display:none} #m5-t12 .sec-head h2, #m5-t12 .masthead h1{-webkit-print-color-adjust:exact;print-color-adjust:exact} #m5-t12{-webkit-print-color-adjust:exact;print-color-adjust:exact} 
+  } 
+
+</style>
+
+<div class="sheet">
+
+  <div class="masthead">
+    <p class="eyebrow">Brevet fédéral · Électricien chef de projet · CERPE</p>
+    <h1>Module 5 — Leadership, communication &amp; gestion du personnel</h1>
+    <p class="sub">Fiche de révision complète établie d'après le classeur</p>
+    <div class="examfacts">
+      <div class="fact"><span>Barème</span><b>60 points</b></div>
+      <div class="fact"><span>Format</span><b>Open book — 2 pages A4 recto-verso manuscrites</b></div>
+      <div class="fact"><span>Réponses</span><b>En actions concrètes, jamais en théorie seule</b></div>
+    </div>
+  </div>
+
+  <div class="logic">
+    <h2>La logique de réponse M5 (à appliquer à chaque cas)</h2>
+    <div class="logic-flow">
+      <span class="step">1 · Analyser la situation &amp; les acteurs</span>
+      <span class="arr">→</span>
+      <span class="step">2 · Nommer le problème</span>
+      <span class="arr">→</span>
+      <span class="step">3 · Choisir l'outil adapté</span>
+      <span class="arr">→</span>
+      <span class="step">4 · Proposer 3 à 5 étapes concrètes</span>
+      <span class="arr">→</span>
+      <span class="step">5 · Prévoir une trace écrite (PV, objectif SMART, délai, responsable, suivi)</span>
+    </div>
+  </div>
+
+  <div class="body">
+
+  <!-- T1 -->
+  <section>
+    <div class="sec-head"><span class="sec-num">T1</span><h2>Gestion du temps &amp; de soi</h2><span class="tag">« Se diriger pour ne pas se faire diriger »</span></div>
+    <div class="grid">
+      <div class="card">
+        <h3><span class="dot"></span>ALPES — planifier sa journée</h3>
+        <table>
+          <tr><th>Lettre</th><th>Signification</th></tr>
+          <tr><td><strong>A</strong></td><td>Activités — tout lister par écrit</td></tr>
+          <tr><td><strong>L</strong></td><td>Longueur — estimer la durée (réaliste)</td></tr>
+          <tr><td><strong>P</strong></td><td>Plages de réserve — <strong>30 à 50 %</strong> pour les imprévus</td></tr>
+          <tr><td><strong>E</strong></td><td>Égrappage — priorités, déléguer</td></tr>
+          <tr><td><strong>S</strong></td><td>Surveillance — contrôle quotidien à annuel</td></tr>
+        </table>
+        <p class="mut">Affaire non résolue → à l'agenda du lendemain, jamais oubliée.</p>
+      </div>
+      <div class="card">
+        <h3><span class="dot"></span>Eisenhower &amp; ABC</h3>
+        <table>
+          <tr><th></th><th>Urgent</th><th>Pas urgent</th></tr>
+          <tr><td><strong>Important</strong></td><td><span class="pill p-red">A</span> Faire</td><td><span class="pill p-amber">B</span> Planifier</td></tr>
+          <tr><td><strong>Pas import.</strong></td><td><span class="pill p-grey">C</span> Déléguer</td><td><span class="pill p-green">D</span> Éliminer</td></tr>
+        </table>
+        <p class="mut" style="margin-top:6px">A : ~15 % des tâches = 65 % de la valeur. C : ~65 % des tâches = 15 % de la valeur.</p>
+        <div class="callout"><b>Importance = objective</b> · <b>Urgence = subjective</b></div>
+      </div>
+      <div class="card">
+        <h3><span class="dot"></span>Méthodes clés</h3>
+        <p><strong>Pareto 80/20</strong> — 20 % des efforts produisent 80 % des résultats.</p>
+        <p><strong>SMART</strong> — Spécifique · Mesurable · Atteignable · Réaliste · Temporel.</p>
+        <p><strong>PDCA (roue de Deming)</strong> — Plan · Do · Check · Act.</p>
+        <p><strong>Gantt</strong> — tâches sur une ligne de temps ; jalons = points de contrôle.</p>
+      </div>
+      <div class="card">
+        <h3><span class="dot"></span>Stress &amp; efficacité</h3>
+        <p><strong>Stress</strong> = discordance entre les besoins de l'individu et la réalité des conditions de travail. <strong>Eustress</strong> (positif) = motive, stimule · <strong>distress</strong> (négatif) = épuise, nuit à la santé.</p>
+        <p class="mut"><strong>Anti-stress :</strong> bien démarrer la journée · pauses (toutes les 90 min) · activité physique · gérer les dérangements · planifier la veille · déléguer.</p>
+        <p class="mut"><strong>6 idées pour gagner du temps :</strong> sans interruption · plages de tranquillité · respecter son chronotype · respecter le budget temps · sous-objectifs · faire aujourd'hui.</p>
+        <p class="mut"><strong>217 jours</strong> travaillés/an = 364 − 104 WE − 6 fériés − 27 vac. − 5 maladie − 5 accident.</p>
+      </div>
+      <div class="card">
+        <h3><span class="dot"></span>Déléguer efficacement</h3>
+        <table>
+          <tr><th>Je peux déléguer si…</th><th>Je ne délègue PAS si…</th></tr>
+          <tr><td>La personne a les compétences</td><td>La tâche est confidentielle</td></tr>
+          <tr><td>Je peux vérifier le résultat</td><td>Ma présence est juridiquement requise</td></tr>
+          <tr><td>La tâche est répétitive</td><td>Le collaborateur est D1 (non formé)</td></tr>
+          <tr><td>La personne veut progresser</td><td>Le risque d'erreur est critique</td></tr>
+        </table>
+        <p class="mut">Déléguer ≠ se débarrasser.</p>
+      </div>
+      <div class="card">
+        <h3><span class="dot"></span>Courbe de production (chronotype)</h3>
+        <ul>
+          <li><strong>9 h – 11 h 30</strong> : pic → tâches <strong>A</strong> complexes</li>
+          <li><strong>13 h – 14 h 30</strong> : creux → tâches <strong>C</strong> administratives</li>
+          <li><strong>15 h – 17 h</strong> : 2<sup>e</sup> pic → tâches <strong>B</strong> à planifier</li>
+        </ul>
+        <p class="mut">Caler les tâches importantes sur ses pics d'énergie.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- T2 -->
+  <section>
+    <div class="sec-head"><span class="sec-num">T2</span><h2>Information</h2><span class="tag">Communication à sens unique</span></div>
+    <div class="grid">
+      <div class="card">
+        <h3><span class="dot"></span>Définition &amp; critères</h3>
+        <p>Une <strong>information</strong> = communication à <strong>sens unique</strong> (pas d'échange en retour, contrairement à la communication).</p>
+        <p class="mut">Critères d'une bonne information : juste destinataire · contenu clair · bon moment · bon canal · confidentialité · traçabilité.</p>
+      </div>
+      <div class="card">
+        <h3><span class="dot"></span>Dette d'information</h3>
+        <table>
+          <tr><th>Type</th><th>Principe</th></tr>
+          <tr><td><strong>Portable</strong></td><td>C'est <strong>moi</strong> qui transmets l'information à l'autre.</td></tr>
+          <tr><td><strong>Quérable</strong></td><td>C'est à <strong>l'autre</strong> d'aller chercher l'information.</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- T3 -->
+  <section>
+    <div class="sec-head"><span class="sec-num">T3</span><h2>Communication</h2><span class="tag">Comprendre &amp; être compris</span></div>
+    <div class="grid">
+      <div class="card">
+        <h3><span class="dot"></span>3 formes (Mehrabian)</h3>
+        <table>
+          <tr><th>Forme</th><th>Part</th><th>Contenu</th></tr>
+          <tr><td>Verbale</td><td>7 %</td><td>Les mots, le contenu explicite</td></tr>
+          <tr><td>Para-verbale</td><td>38 %</td><td>Ton, rythme, volume, silences</td></tr>
+          <tr><td>Non-verbale</td><td>55 %</td><td>Gestes, regard, posture, distance</td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <h3><span class="dot"></span>4 oreilles (Schulz von Thun)</h3>
+        <p>Tout message s'entend sur 4 facettes :</p>
+        <ul>
+          <li><strong>Factuelle</strong> — le contenu objectif</li>
+          <li><strong>Révélation de soi</strong> — ce que l'émetteur dit de lui</li>
+          <li><strong>Relationnelle</strong> — ce qu'il pense de notre relation</li>
+          <li><strong>Appel</strong> — ce qu'il attend de moi</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3><span class="dot"></span>CNV — 4 étapes</h3>
+        <ol>
+          <li><strong>Observation</strong> — les faits, sans jugement</li>
+          <li><strong>Sentiment</strong> — l'émotion ressentie</li>
+          <li><strong>Besoin</strong> — le besoin derrière</li>
+          <li><strong>Demande</strong> — concrète et faisable</li>
+        </ol>
+        <p class="mut">Jamais de « tu es… » ni de jugement.</p>
+      </div>
+      <div class="card">
+        <h3><span class="dot"></span>Écoute active &amp; Johari</h3>
+        <p><strong>Écoute active :</strong> reformuler · questionner · valider · résumer.</p>
+        <p><strong>Fenêtre de Johari :</strong> 4 zones (publique, aveugle, cachée, inconnue). Le feedback vise à <strong>agrandir la zone publique</strong>.</p>
+        <div class="callout"><b>Feedback :</b> ne pas se justifier — on ne peut pas écouter et se défendre en même temps. Écouter, noter, demander un exemple, répondre plus tard.</div>
+      </div>
+      <div class="card full">
+        <h3><span class="dot"></span>Communication écrite &amp; émotions</h3>
+        <div class="grid" style="gap:10px">
+          <div>
+            <p><strong>Écrit efficace :</strong></p>
+            <ul>
+              <li>Message SMART, clair et concis</li>
+              <li>Langage adapté au destinataire</li>
+              <li>Objet/titre explicite · relire avant d'envoyer</li>
+              <li>Structure : <strong>contexte → message → action attendue</strong></li>
+              <li>Éviter « mais » → « et », « cependant »</li>
+            </ul>
+          </div>
+          <div>
+            <p><strong>Émotions :</strong></p>
+            <ul>
+              <li>Ne jamais envoyer un e-mail sous le coup de la colère</li>
+              <li>Prendre du recul (la nuit porte conseil)</li>
+              <li>Distinguer faits / émotions / besoins / demandes (CNV)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="card full">
+        <h3><span class="dot"></span>Watzlawick — 5 axiomes</h3>
+        <table>
+          <tr><th>#</th><th>Axiome</th><th>En clair</th></tr>
+          <tr><td>1</td><td>On ne peut pas <strong>ne pas</strong> communiquer</td><td>Même le silence, une posture = un message</td></tr>
+          <tr><td>2</td><td>Contenu <strong>ET</strong> relation</td><td>Le « quoi » est coloré par le « comment » (la relation)</td></tr>
+          <tr><td>3</td><td>Ma communication exprime ma réalité</td><td>Reflète mes valeurs, mon état émotionnel</td></tr>
+          <tr><td>4</td><td>Digitale <strong>ou</strong> analogique</td><td>Digitale = mots/logique · analogique = non-verbal/émotionnel</td></tr>
+          <tr><td>5</td><td>Symétrique <strong>ou</strong> complémentaire</td><td>Symétrique = même niveau · complémentaire = chef / employé</td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <h3><span class="dot"></span>Iceberg &amp; proxémique (E. T. Hall)</h3>
+        <p><strong>Iceberg :</strong> ~7 % visible (les mots) · ~93 % immergé (émotions, valeurs, culture). Le sens réel vient de la partie cachée.</p>
+        <table>
+          <tr><th>Zone</th><th>Distance</th></tr>
+          <tr><td>Intime</td><td>0–60 cm</td></tr>
+          <tr><td>Personnelle</td><td>60–150 cm</td></tr>
+          <tr><td>Sociale (pro)</td><td>150–400 cm</td></tr>
+          <tr><td>Publique</td><td>&gt; 400 cm</td></tr>
+        </table>
+        <p class="mut">Ces distances sont culturelles.</p>
+      </div>
+      <div class="card">
+        <h3><span class="dot"></span>Questions &amp; feedback</h3>
+        <p><strong>Types de questions :</strong> ouverte (fait parler) · fermée (oui/non, vérifie) · orientée · rhétorique. <strong>Technique du retour</strong> = reformuler pour valider.</p>
+        <p><strong>Feedback bref (tout en « je ») :</strong> évaluation globale → points positifs → points à améliorer → recommandations.</p>
+        <div class="callout"><b>RAQ :</b> Remercier · Argumenter · Questionner — relier avec « et / ensuite », jamais « mais » (qui coupe la communication).</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- T4 -->
+  <section>
+    <div class="sec-head"><span class="sec-num">T4</span><h2>Management &amp; Motivation — les modèles clés</h2><span class="tag">Le cœur de l'examen</span></div>
+    <div class="grid">
+
+      <div class="card full">
+        <h3><span class="dot"></span>Hersey &amp; Blanchard — leadership situationnel</h3>
+        <p class="mut" style="margin-top:0">On adapte le style à la <strong>maturité</strong> du collaborateur (capacité + motivation) — donc à la <strong>tâche</strong>, pas à la personne en général.</p>
+        <table>
+          <tr><th>Collaborateur</th><th>Style</th><th>Ce que je fais concrètement</th></tr>
+          <tr><td><strong>D1</strong> · nouveau, incapable + réticent</td><td><span class="pill p-red">S1</span> Directif</td><td>J'explique <strong>comment</strong> · je montre · je surveille de près</td></tr>
+          <tr><td><strong>D2</strong> · apprend, incapable + motivé</td><td><span class="pill p-amber">S2</span> Persuasif</td><td>J'explique <strong>pourquoi</strong> · je coache · j'encourage</td></tr>
+          <tr><td><strong>D3</strong> · capable + hésitant</td><td><span class="pill p-blue">S3</span> Participatif</td><td>Je partage la décision · j'implique · je rassure</td></tr>
+          <tr><td><strong>D4</strong> · expert, capable + motivé</td><td><span class="pill p-green">S4</span> Délégatif</td><td>Je délègue · je fais confiance · je n'interfère pas</td></tr>
+        </table>
+        <div class="callout warn"><b>Erreurs classiques :</b> gérer un D4 comme un D1 (perte de l'expert) · déléguer à un D1 (erreurs, abandon) · rester figé dans un seul style.</div>
+      </div>
+
+      <div class="card full">
+        <h3><span class="dot"></span>Blake &amp; Mouton — la grille managériale</h3>
+        <p class="mut" style="margin-top:0">2 axes notés de 1 à 9 : orientation <strong>résultats / production</strong> (X) et orientation <strong>personnes / humain</strong> (Y).</p>
+        <table>
+          <tr><th>Style (X,Y)</th><th>Nom</th><th>Profil</th></tr>
+          <tr><td><strong>(9,9)</strong></td><td><span class="pill p-green">Démocratique / Intégrateur</span></td><td>Fort résultats + fort humain — équipe engagée et performante → <strong>idéal</strong></td></tr>
+          <tr><td><strong>(9,1)</strong></td><td><span class="pill p-red">Autoritaire</span></td><td>Fort résultats, faible humain — « les ordres sont les ordres » → démotivation</td></tr>
+          <tr><td><strong>(1,9)</strong></td><td><span class="pill p-amber">Club Med / social</span></td><td>Fort humain, faibles résultats — bonne ambiance mais peu efficace</td></tr>
+          <tr><td><strong>(5,5)</strong></td><td><span class="pill p-grey">Intermédiaire</span></td><td>Compromis — ni très bon ni très mauvais → médiocrité</td></tr>
+          <tr><td><strong>(1,1)</strong></td><td><span class="pill p-grey">Laxiste / appauvri</span></td><td>Faible des deux côtés — désengagement total</td></tr>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3><span class="dot"></span>Maslow — pyramide des besoins</h3>
+        <table>
+          <tr><th>Niv.</th><th>Besoin</th><th>En entreprise</th></tr>
+          <tr><td>5</td><td>Réalisation de soi</td><td>Sens, accomplissement</td></tr>
+          <tr><td>4</td><td>Estime</td><td>Reconnaissance, statut</td></tr>
+          <tr><td>3</td><td>Appartenance</td><td>Équipe, intégration</td></tr>
+          <tr><td>2</td><td>Sécurité</td><td>Contrat stable, sécurité</td></tr>
+          <tr><td>1</td><td>Physiologiques</td><td>Salaire de subsistance, pauses</td></tr>
+        </table>
+        <p class="mut">Un niveau ne motive que si le précédent est satisfait. Sert à repérer le besoin non comblé derrière une démotivation.</p>
+      </div>
+
+      <div class="card">
+        <h3><span class="dot"></span>Motivation</h3>
+        <p><strong>3 motifs de base au travail :</strong> l'argent · le statut · le pouvoir.</p>
+        <p><strong>ADKAR</strong> (gérer le changement) : Awareness · Desire · Knowledge · Ability · Reinforcement.</p>
+        <p class="mut">Motiver = sens · reconnaissance · autonomie · progression · conditions correctes.</p>
+      </div>
+
+      <div class="card">
+        <h3><span class="dot"></span>MbO — management par objectifs</h3>
+        <p>Approche de <strong>Drucker</strong> : on fixe l'objectif final, puis le collaborateur et le responsable établissent <strong>ensemble</strong> le plan d'action.</p>
+        <p class="mut">Objectifs toujours <strong>SMART</strong> · suivi régulier · évaluation des résultats.</p>
+      </div>
+
+      <div class="card">
+        <h3><span class="dot"></span>Diriger le personnel — 4 axes</h3>
+        <table>
+          <tr><th>Axe</th><th>Contenu</th></tr>
+          <tr><td>Fonction de management</td><td>Leadership · décision · supervision</td></tr>
+          <tr><td>Orientation objectifs</td><td>Stratégie · performance · SMART</td></tr>
+          <tr><td>Influence comportement</td><td>Motivation · inspiration · communication</td></tr>
+          <tr><td>Structuration travail</td><td>Organisation · processus · rôles</td></tr>
+        </table>
+        <p class="mut"><strong>Direct</strong> = face à face · <strong>indirect</strong> = via culture, structure, règlements, contrats.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- T5 -->
+  <section>
+    <div class="sec-head"><span class="sec-num">T5</span><h2>Réunions &amp; Négociation</h2><span class="tag">Préparer · conduire · tracer</span></div>
+    <div class="grid">
+      <div class="card">
+        <h3><span class="dot"></span>Réunion : faut-il la tenir ?</h3>
+        <p><strong>Décisiomètre :</strong> utilité / plus-value · ratio coût-bénéfice · participants co-responsables · face à face ou tous ensemble ?</p>
+        <p><strong>Objectifs (6 R) :</strong> Recueillir · Résoudre · Décider · Sélectionner · Traiter · Planifier.</p>
+        <p class="mut">Préparer : objectif SMART · participants utiles · OdJ minuté · infrastructure testée · convocation à l'avance.</p>
+      </div>
+      <div class="card">
+        <h3><span class="dot"></span>Conduire la réunion</h3>
+        <p><strong>4 rôles :</strong> animateur · secrétaire (PV) · gardien du temps · participants.</p>
+        <p><strong>Démarrer :</strong> à l'heure · accueillir par le nom · brise-glace · annoncer règles &amp; rôles.</p>
+        <p><strong>Conduire :</strong> Recueillir → Sélectionner → Traiter → Planifier. <strong>Conclure :</strong> objectifs atteints ? · météo · remercier.</p>
+        <div class="callout warn"><b>Règle absolue :</b> commencer ET finir à l'heure.</div>
+      </div>
+      <div class="card">
+        <h3><span class="dot"></span>Le PV doit contenir</h3>
+        <ul>
+          <li>Date, heure, lieu, présents</li>
+          <li>Ordre du jour + résumé par point</li>
+          <li><strong>Décisions prises</strong> (qui décide quoi)</li>
+          <li><strong>Actions : qui fait quoi, pour quand</strong></li>
+          <li>Prochaine réunion</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3><span class="dot"></span>Personnalités difficiles</h3>
+        <p>4 techniques pour recadrer :</p>
+        <ul>
+          <li>Rappeler les règles de la réunion</li>
+          <li>Reformuler + question ouverte, puis redonner la parole</li>
+          <li>Relier l'intervention à l'objectif</li>
+          <li>Demander de justifier l'avis par des faits</li>
+        </ul>
+      </div>
+      <div class="card full">
+        <h3><span class="dot"></span>Négociation Harvard — 4 principes (+ MESORE)</h3>
+        <table>
+          <tr><th>Principe</th><th>Application</th></tr>
+          <tr><td><strong>Personne ≠ Problème</strong></td><td>Traiter le problème, pas attaquer la personne.</td></tr>
+          <tr><td><strong>Intérêts ≠ Positions</strong></td><td>Chercher le besoin réel derrière la position affichée.</td></tr>
+          <tr><td><strong>Options ≠ Sa solution</strong></td><td>Élargir le champ : plusieurs solutions possibles.</td></tr>
+          <tr><td><strong>Critères objectifs</strong></td><td>Décider sur des faits : normes, contrats, devis, tarifs.</td></tr>
+          <tr><td><strong>MESORE</strong> (BATNA)</td><td>Mon plan B si pas d'accord → définit le seuil de rupture et donne du pouvoir.</td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <h3><span class="dot"></span>Analyser l'autre partie — IPBM</h3>
+        <table>
+          <tr><td><strong>I</strong> Intérêts</td><td>Qu'est-ce qu'il veut vraiment ?</td></tr>
+          <tr><td><strong>P</strong> Préoccupations</td><td>Qu'est-ce qu'il craint / veut éviter ?</td></tr>
+          <tr><td><strong>B</strong> Besoins</td><td>Ses nécessités fondamentales ?</td></tr>
+          <tr><td><strong>M</strong> Motivations</td><td>Qu'est-ce qui le pousse à agir ?</td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <h3><span class="dot"></span>Préparer une négociation</h3>
+        <p class="mut">Que veut-on précisément ? · priorité absolue · zone de compromis · ce qu'on ne concède jamais · MESORE · importance de la relation · rapport de force ?</p>
+        <p class="mut">Après : objectifs atteints ? forces/faiblesses ? une autre négociation est-elle nécessaire ?</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- T7 -->
+  <section>
+    <div class="sec-head"><span class="sec-num">T7</span><h2>Conflits, Équipes &amp; Multiculturel</h2><span class="tag">Traiter avant l'escalade</span></div>
+    <div class="grid">
+      <div class="card">
+        <h3><span class="dot"></span>Degrés de tension</h3>
+        <table>
+          <tr><th>Niveau</th><th>Réponse</th></tr>
+          <tr><td><strong>Accrochage</strong> / désaccord</td><td>Éphémère, sans conséquence</td></tr>
+          <tr><td><strong>Résistance</strong></td><td>Signal précoce → dialoguer vite</td></tr>
+          <tr><td><strong>Conflit</strong></td><td>Opposition qui grandit jusqu'à l'éviction de l'autre</td></tr>
+        </table>
+        <div class="callout warn"><b>Art. 328 CO :</b> l'employeur doit protéger la santé et la sécurité des collaborateurs → obligation d'intervenir.</div>
+      </div>
+      <div class="card">
+        <h3><span class="dot"></span>Catégories &amp; sens</h3>
+        <p><strong>Catégories :</strong> interpersonnel · intrapersonnel · intragroupe (rôles, loyauté) · intra-organisation (services, pouvoir) · sur objectifs / valeurs / répartition / territoire.</p>
+        <p><strong>Nature (sens) :</strong> la difficulté est-elle <strong>personnelle</strong>, <strong>relationnelle</strong> ou <strong>situationnelle</strong> ?</p>
+        <div class="callout ok"><b>Le conflit est une opportunité :</b> voir les divergences, rétablir l'unité, orchestrer le changement.</div>
+      </div>
+      <div class="card">
+        <h3><span class="dot"></span>Résoudre — 4 étapes</h3>
+        <ol>
+          <li>Étudier la situation (prendre de la distance)</li>
+          <li>Laisser s'exprimer craintes et peurs</li>
+          <li>Comprendre les résistances</li>
+          <li>Chercher ensemble les solutions</li>
+        </ol>
+        <p class="mut">Bonne solution (Harvard) = <strong>juste · efficace · raisonnable · durable</strong>.</p>
+      </div>
+      <div class="card full">
+        <h3><span class="dot"></span>Glasl — 9 niveaux &amp; qui intervient</h3>
+        <table>
+          <tr><th>Zone</th><th>Niveaux</th><th>Qui résout</th></tr>
+          <tr><td><span class="pill p-green">Win-Win</span> (1–3)</td><td>Durcissement · Débats · Actes</td><td>Le manager direct / un collègue de confiance</td></tr>
+          <tr><td><span class="pill p-amber">Win-Lose</span> (4–6)</td><td>Coalitions · perte de face · menaces</td><td>Facilitateur impartial (RH, médiateur, coach)</td></tr>
+          <tr><td><span class="pill p-red">Lose-Lose</span> (7–9)</td><td>Destruction · éclatement · ensemble dans l'abîme</td><td>Instance officielle (prud'hommes, tribunal)</td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <h3><span class="dot"></span>Signaux avant-coureurs</h3>
+        <p><strong>Visibles :</strong> méfiance · clans / prise de parti · on ne se parle plus · chercher des coupables.</p>
+        <p><strong>Subtils :</strong> absentéisme en hausse · démotivation · rumeurs · erreurs inhabituelles · isolement (ne mangent plus ensemble).</p>
+        <p class="mut">Ces signes = résistance à traiter vite, ou conflit naissant.</p>
+      </div>
+      <div class="card">
+        <h3><span class="dot"></span>Analyser &amp; résoudre</h3>
+        <p><strong>4 questions :</strong> les humains sont-ils dissociés du problème ? les intérêts (pas les positions) sont-ils clairs ? plusieurs options envisagées ? des critères objectifs pour trancher ?</p>
+        <p class="mut"><strong>Conditions de réussite :</strong> empathie · flexibilité · gérer ses émotions · analyser objectivement · exprimer la colère sans agressivité. La « personne de confiance » est un outil (Art. 328 CO).</p>
+      </div>
+      <div class="card full">
+        <h3><span class="dot"></span>Thomas-Killmann — 5 stratégies</h3>
+        <p class="mut" style="margin-top:0"><strong>Stratégie</strong> = faire les bonnes choses (intentions) · <strong>Tactique</strong> = faire les choses correctement (actions).</p>
+        <table>
+          <tr><th>Stratégie</th><th>Résultat</th><th>Quand l'utiliser</th></tr>
+          <tr><td><span class="pill p-red">Imposer</span> (Compétition)</td><td>Gagnant / Perdant</td><td>Urgence absolue, décision non négociable</td></tr>
+          <tr><td><span class="pill p-green">Coopérer</span> (Collaboration)</td><td>Gagnant / Gagnant</td><td>Relation importante, problème complexe — <strong>idéal</strong></td></tr>
+          <tr><td><span class="pill p-amber">Compromis</span></td><td>Gagne un peu / perd un peu</td><td>Enjeux modérés, temps limité, forces égales</td></tr>
+          <tr><td><span class="pill p-grey">Éviter</span></td><td>Perdant / Perdant</td><td>Sujet mineur, mauvais moment, se calmer d'abord</td></tr>
+          <tr><td><span class="pill p-purple">Céder</span> (Accommoder)</td><td>Perdant / Gagnant</td><td>L'autre a raison, préserver la relation prime</td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <h3><span class="dot"></span>Tuckman — vie d'une équipe</h3>
+        <p><strong>4 phases :</strong> Forming (formation) → Storming (tensions) → Norming (règles) → Performing (performance). <span class="mut">[+ Adjourning : dissolution]</span></p>
+        <p class="mut">Mucchielli décrit 7 phases plus nuancées. En Storming, le manager gère les conflits sans prendre parti et recadre sur l'objectif.</p>
+      </div>
+      <div class="card full">
+        <h3><span class="dot"></span>Multiculturel — 6 indices de Hofstede</h3>
+        <table>
+          <tr><th>Indice</th><th>Bas</th><th>Élevé</th></tr>
+          <tr><td><strong>PDI</strong> distance hiérarchique</td><td>Égalitaire, décisions justifiées (Suisse)</td><td>Hiérarchie acceptée sans discussion</td></tr>
+          <tr><td><strong>IDV</strong> individualisme</td><td>Collectiviste : le groupe prime</td><td>Individualiste : chacun pour soi</td></tr>
+          <tr><td><strong>MAS</strong> masculinité</td><td>Coopération, modestie</td><td>Performance, récompenses</td></tr>
+          <tr><td><strong>UAI</strong> évitement incertitude</td><td>Pragmatique, accepte l'incertitude</td><td>Codes &amp; procédures stricts</td></tr>
+          <tr><td><strong>LTO</strong> orientation temps</td><td>Tradition, passé</td><td>Pragmatisme, long terme</td></tr>
+          <tr><td><strong>IVR</strong> indulgence</td><td>Normes restrictives</td><td>Accepte erreurs et désirs</td></tr>
+        </table>
+        <p class="mut"><strong>Gérer la diversité :</strong> clarifier le cadre · voir les complémentarités · clarifier les différences · communiquer &amp; observer.</p>
+      </div>
+      <div class="card">
+        <h3><span class="dot"></span>Cohésion d'équipe</h3>
+        <p>Une équipe soudée repose sur 3 piliers :</p>
+        <ul>
+          <li><strong>Sentiment d'appartenance</strong> — confiance, fierté du groupe</li>
+          <li><strong>Ambiance</strong> — respect, soutien, gestion des conflits</li>
+          <li><strong>Le dirigeant</strong> — facilitateur, motivateur, adaptatif</li>
+        </ul>
+        <p class="mut">Phase « équipe » : cadre clair · objectifs SMART communs · rôles définis · communication ouverte.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- T6 / T11 -->
+  <section>
+    <div class="sec-head"><span class="sec-num">T6·11</span><h2>Personnel, RH &amp; Recrutement</h2><span class="tag">De la stratégie aux opérations</span></div>
+    <div class="grid">
+      <div class="card">
+        <h3><span class="dot"></span>Planification des besoins</h3>
+        <div class="formula">Besoin brut − engagements en cours + départs = <span class="hl">Besoin net</span></div>
+        <p class="mut">Un besoin se définit en : compétences · quantité · temps · lieu. À ajuster selon le taux d'absence (heures d'absence / heures théoriques).</p>
+      </div>
+      <div class="card">
+        <h3><span class="dot"></span>Recruter &amp; intégrer</h3>
+        <p><strong>Recruter :</strong> définir le besoin et le profil · sélectionner objectivement · entretien structuré.</p>
+        <p><strong>Intégrer :</strong> accueil · sécurité · outils · référent · objectifs · feedback rapide.</p>
+        <div class="callout"><b>LPD :</b> respecter la confidentialité des données personnelles.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rémunération -->
+  <section>
+    <div class="sec-head"><span class="sec-num">€</span><h2>Rémunération &amp; charges sociales</h2><span class="tag">CCT électricité 2026–2029</span></div>
+    <div class="grid">
+      <div class="card">
+        <h3><span class="dot"></span>CCT électricité — repères</h3>
+        <ul>
+          <li><strong>Temps de travail :</strong> 2080 h/an (52 × 40 h) · 174 h/mois (base salaire horaire)</li>
+          <li><strong>Heures supp. :</strong> solde au 31.12 payé ou compensé · solde &gt; 100 h → payé à <strong>125 %</strong></li>
+          <li><strong>Vacances :</strong> CO = 20 j (25 j si &lt; 20 ans) · CCT = <strong>27 à 30 j</strong> selon ancienneté</li>
+          <li><strong>Formation :</strong> 5 jours payés/an (EIT.swiss, Unia, Syna)</li>
+        </ul>
+        <div class="callout"><b>Brevet fédéral (Art. 3.4.3.d) :</b> qui fait surtout planification, projets, calcul et offres → <strong>n'est plus soumis à la CCT</strong>, salaire négocié librement.</div>
+      </div>
+      <div class="card">
+        <h3><span class="dot"></span>Formes de salaire</h3>
+        <table>
+          <tr><th>Catégorie</th><th>Exemples</th></tr>
+          <tr><td>Au temps</td><td>Fixe mensuel · horaire</td></tr>
+          <tr><td>Variable / différé</td><td>13<sup>e</sup> salaire (déc., prorata) · prime · bonus</td></tr>
+          <tr><td>Au rendement</td><td>Commission (% CA) · salaire à la tâche</td></tr>
+          <tr><td>Avantages</td><td>Voiture de fonction (taxée) · parking · vacances suppl.</td></tr>
+        </table>
+        <p class="mut">Rémunération totale = fixe + variable + prestations sociales + avantages en nature + annexes.</p>
+      </div>
+      <div class="card">
+        <h3><span class="dot"></span>Déductions sociales</h3>
+        <table>
+          <tr><th>Assurance</th><th>Employé</th><th>Employeur</th></tr>
+          <tr><td>AVS/AI/APG</td><td>5,3 %</td><td>5,3 %</td></tr>
+          <tr><td>AC (chômage)</td><td>1,1 %</td><td>1,1 %</td></tr>
+          <tr><td>AAp (accident pro)</td><td>0 %</td><td>~1,5 %</td></tr>
+          <tr><td>AAnp (accident non pro)</td><td>~1,67 %</td><td>0 %</td></tr>
+          <tr><td>IJM (perte de gain mal.)</td><td>~2,2 %</td><td>~2,2 %</td></tr>
+          <tr><td>LPP (2<sup>e</sup> pilier)</td><td>3,5–9 %</td><td>3,5–9 %</td></tr>
+          <tr><td>Alloc. familiales</td><td>0 %</td><td>~2,63 %</td></tr>
+        </table>
+        <p class="mut">AAp = 100 % employeur · AAnp = 100 % employé (si &gt; 8 h/sem) · alloc. familiales = 100 % employeur.</p>
+      </div>
+      <div class="card">
+        <h3><span class="dot"></span>LPP par âge &amp; coût réel</h3>
+        <table>
+          <tr><th>Âge</th><th>Taux épargne (chacun)</th></tr>
+          <tr><td>25–34 ans</td><td>3,5 %</td></tr>
+          <tr><td>35–44 ans</td><td>5,0 %</td></tr>
+          <tr><td>45–54 ans</td><td>7,5 %</td></tr>
+          <tr><td>55–65 ans</td><td>9,0 %</td></tr>
+        </table>
+        <p class="mut">Seuil d'entrée CHF 22 680 · plafond CHF 90 720 · déduction de coordination CHF 26 460.</p>
+        <div class="callout"><b>Coût employeur ≈ 1,5 à 2× le salaire brut.</b> 3 piliers : AVS/AI (1<sup>er</sup>) · LPP (2<sup>e</sup>) · prévoyance privée (3<sup>e</sup>).</div>
+      </div>
+      <div class="card full">
+        <h3><span class="dot"></span>Exemple — du brut au net au coût employeur</h3>
+        <p class="mut" style="margin-top:0">Base 174 h à CHF 28.74/h, 30 ans, CFC :</p>
+        <table>
+          <tr><th>Étape</th><th>Montant</th></tr>
+          <tr><td>Salaire de base + suppl. vacances (11,59 %) + 13<sup>e</sup> (8,33 %)</td><td><strong>brut ≈ CHF 6 045</strong></td></tr>
+          <tr><td>− cotisations employé (AVS/AI/APG, AC, AAnp, IJM, LPP, CCT, retenue vac.)</td><td><strong>net ≈ CHF 4 563</strong></td></tr>
+          <tr><td>brut + charges employeur</td><td><strong>coût employeur ≈ CHF 7 106</strong></td></tr>
+        </table>
+        <p class="mut">L'employeur paie ~1,56× le net que touche l'employé.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recrutement & évaluation -->
+  <section>
+    <div class="sec-head"><span class="sec-num">RH</span><h2>Recrutement, sélection &amp; évaluation</h2><span class="tag">Chap. 16 à 19</span></div>
+    <div class="grid">
+      <div class="card">
+        <h3><span class="dot"></span>Outils de planification qualitative</h3>
+        <table>
+          <tr><th>Outil</th><th>Rôle</th></tr>
+          <tr><td><strong>Descriptif de poste</strong></td><td>Définit précisément ce qu'on cherche (responsabilités, tâches, compétences)</td></tr>
+          <tr><td><strong>Diagramme de fonction</strong></td><td>Flux de travail, hiérarchie, flux d'informations</td></tr>
+          <tr><td><strong>Profil d'exigences</strong></td><td>Critères objectifs pour réduire la subjectivité</td></tr>
+        </table>
+        <div class="callout warn"><b>À retenir :</b> on engage sur des compétences <b>techniques</b>, on licencie sur des compétences <b>sociales</b> — miser d'abord sur la personne.</div>
+      </div>
+      <div class="card">
+        <h3><span class="dot"></span>Recrutement interne vs externe</h3>
+        <table>
+          <tr><th></th><th>Avantages</th><th>Limites</th></tr>
+          <tr><td><strong>Interne</strong></td><td>On le connaît · fidélise · promeut les bons</td><td>« Pourquoi lui ? » · bon technicien ≠ bon chef</td></tr>
+          <tr><td><strong>Externe</strong></td><td>Sang neuf · nouvelles compétences</td><td>Coût · risque · temps d'intégration</td></tr>
+        </table>
+        <p class="mut">Canaux : ORP/AI · jobboards (Indeed, LinkedIn, Jobs.ch) · agence · cooptation · salons. Objectif : la bonne personne, au bon moment, bonnes compétences, bon potentiel, bon tarif.</p>
+      </div>
+      <div class="card">
+        <h3><span class="dot"></span>Annonce d'emploi — AIDA</h3>
+        <table>
+          <tr><td><strong>A</strong></td><td>Attention — titre accrocheur, visuel</td></tr>
+          <tr><td><strong>I</strong></td><td>Intérêt — poste &amp; entreprise</td></tr>
+          <tr><td><strong>D</strong></td><td>Désir — avantages, perspectives</td></tr>
+          <tr><td><strong>A</strong></td><td>Action — comment postuler, délai, contact</td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <h3><span class="dot"></span>Présélection des dossiers</h3>
+        <ul>
+          <li><strong>Lettre de motivation</strong> : Intro → Vous → Je → Nous → Conclusion (AIDA)</li>
+          <li><strong>CV</strong> : 90 % le lisent <strong>avant</strong> la lettre. Tri <strong>ABC</strong> (A = à rencontrer · B = plan B · C = ne correspond pas)</li>
+          <li><strong>Certificats</strong> : véridique · bienveillant · complet</li>
+          <li><strong>Références</strong> : uniquement avec l'accord du candidat</li>
+        </ul>
+      </div>
+      <div class="card full">
+        <h3><span class="dot"></span>Entretien d'embauche</h3>
+        <div class="grid" style="gap:10px">
+          <div>
+            <p><strong>Fil conducteur (~45 min) :</strong></p>
+            <ol>
+              <li>Entrée en matière (réduire le stress)</li>
+              <li>Présentation de l'entreprise</li>
+              <li>Discussion candidat (compétences tech + sociales)</li>
+              <li>Clôture (suite, délais, ses questions)</li>
+            </ol>
+            <p class="mut"><strong>STAR</strong> (questions comportementales) : Situation → Action → Résultat.</p>
+          </div>
+          <div>
+            <p><strong>Biais à éviter :</strong></p>
+            <ul>
+              <li><strong>Effet de halo</strong> — un trait influence tout</li>
+              <li><strong>Attente de rôle</strong> — juger sur l'apparence</li>
+              <li><strong>Généralisation</strong> — « il me ressemble »</li>
+              <li><strong>Égocentrisme</strong> — exiger son propre niveau</li>
+              <li><strong>Excès de sévérité</strong></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <h3><span class="dot"></span>Intégration &amp; période d'essai</h3>
+        <p><strong>Avant le 1<sup>er</sup> jour :</strong> confirmer par écrit · préparer le poste · informer l'équipe · fixer des objectifs SMART.</p>
+        <p><strong>1<sup>er</sup> jour :</strong> accueillir · présenter l'équipe et le parrain · montrer outils &amp; objectifs.</p>
+        <p class="mut">Période d'essai = 1 à 3 mois (335b). Entretien de fin d'essai : évaluer, donner appréciation + points d'amélioration, fixer la suite ou mettre fin.</p>
+      </div>
+      <div class="card full">
+        <h3><span class="dot"></span>Entretien d'évaluation</h3>
+        <div class="grid" style="gap:10px">
+          <div>
+            <p><strong>3 dimensions évaluées</strong> (niveaux <span class="kbd">e · s · p · i</span> = excellent / satisfaisant / partiel / insuffisant) :</p>
+            <ul>
+              <li>Comportement au travail (qualité, rythme, ponctualité, décision)</li>
+              <li>Présentation personnelle (créativité, confiance en soi)</li>
+              <li>Comportement envers autrui (communication, flexibilité, tolérance)</li>
+            </ul>
+            <p class="mut"><strong>4 temps :</strong> Remercier → Féliciter → Améliorer (SMART) → Encourager.</p>
+          </div>
+          <div>
+            <p><strong>Formes (360°) :</strong> par le supérieur · ascendante · par les collègues · auto-évaluation · 360°.</p>
+            <p><strong>Méthode :</strong> Bilan → Échelle → Explication / conseil → Objectifs futurs. Chaque point justifié par des faits.</p>
+            <p class="mut">Sert à : parcours, relève, récompenses, motivation, promotion, détection des potentiels.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- T9 -->
+  <section>
+    <div class="sec-head"><span class="sec-num">T9</span><h2>Développement du personnel</h2><span class="tag">Former &amp; faire grandir</span></div>
+    <div class="grid">
+      <div class="card full">
+        <h3><span class="dot"></span>SWOT individuel</h3>
+        <table>
+          <tr><th></th><th>Positif</th><th>Négatif</th></tr>
+          <tr><td><strong>Interne</strong></td><td><strong>S</strong> Forces — compétences, expertise, motivation</td><td><strong>W</strong> Faiblesses — lacunes, rigidités</td></tr>
+          <tr><td><strong>Externe</strong></td><td><strong>O</strong> Opportunités — nouvelles techno, formations, mobilité</td><td><strong>T</strong> Menaces — concurrence, obsolescence des compétences</td></tr>
+        </table>
+        <p class="mut">Outil clé de l'<strong>entretien annuel</strong> pour cibler les priorités de développement.</p>
+      </div>
+      <div class="card">
+        <h3><span class="dot"></span>Plan de formation — 10 éléments</h3>
+        <p class="mut">Thème · type (interne/externe/e-learning) · groupe-cible · temps prévu · budget · contenu · objectifs d'apprentissage · programme détaillé · transfert des acquis sur le terrain · remarques (prérequis, évaluation).</p>
+        <p class="mut">CCT électricité : droit à <strong>5 jours de formation payés/an</strong>.</p>
+      </div>
+      <div class="card">
+        <h3><span class="dot"></span>Plan de relève — 4 étapes</h3>
+        <ol>
+          <li>Évaluer les besoins en leadership</li>
+          <li>Identifier &amp; développer les talents internes</li>
+          <li>Élaborer le plan de relève</li>
+          <li>Communiquer de façon transparente</li>
+        </ol>
+        <div class="callout"><b>Réussite :</b> anticiper longtemps · le successeur doit en avoir envie · informer l'équipe · l'actuel lâche progressivement.</div>
+      </div>
+      <div class="card">
+        <h3><span class="dot"></span>Formes de développement</h3>
+        <p><strong>Internes :</strong> tutorat / mentorat · rotation de postes · coaching · partage de bonnes pratiques.</p>
+        <p><strong>Externes :</strong> cours (CERPE…) · certifications (NIBT, PV, domotique) · séminaires · e-learning.</p>
+        <p class="mut">Choisir un prestataire : recommandations, références, adéquation au besoin, qualité/prix.</p>
+      </div>
+      <div class="card full">
+        <h3><span class="dot"></span>Job rotation / enlargement / enrichment</h3>
+        <table>
+          <tr><th>Mesure</th><th>Principe</th><th>Exemple</th></tr>
+          <tr><td><strong>Job rotation</strong></td><td>Changer de poste régulièrement</td><td>Alterner chantier résidentiel / industriel</td></tr>
+          <tr><td><strong>Job enlargement</strong></td><td>Plus de tâches de même niveau (horizontal)</td><td>Le monteur câble + fait les mises en service</td></tr>
+          <tr><td><strong>Job enrichment</strong></td><td>Plus de responsabilités (vertical)</td><td>Le chef d'équipe prépare des offres → vers chef de projet</td></tr>
+        </table>
+        <p class="mut">Aussi : groupe semi-autonome (sans chef direct) · cercle de qualité (résolution de problèmes en transversal).</p>
+      </div>
+      <div class="card">
+        <h3><span class="dot"></span>4 familles de compétences</h3>
+        <p>(Roue des compétences de Claude Flück) :</p>
+        <ul>
+          <li><strong>Techniques</strong> — savoir-faire métier, méthodes</li>
+          <li><strong>Organisationnelles</strong> — auto-organisation, management</li>
+          <li><strong>Relationnelles / sociales</strong> — communication, conflits</li>
+          <li><strong>Adaptation</strong> — aux situations &amp; à l'évolution du métier</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3><span class="dot"></span>Carrière : expert vs manager</h3>
+        <p><strong>Expert</strong> 🔧 — approfondit un domaine technique, référent, ne gère pas forcément d'équipe.</p>
+        <p><strong>Manager</strong> 👥 — gestion d'équipe et leadership, responsabilités hiérarchiques.</p>
+        <div class="callout"><b>Clé :</b> identifier tôt la voie souhaitée — ne pas promouvoir manager un expert qui ne veut pas gérer des personnes.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- T10 -->
+  <section>
+    <div class="sec-head"><span class="sec-num">T10</span><h2>Fin des rapports de travail</h2><span class="tag">Code des obligations</span></div>
+    <div class="grid">
+      <div class="card">
+        <h3><span class="dot"></span>Délais de congé (Art. 335 CO)</h3>
+        <table>
+          <tr><th>Situation</th><th>Délai</th></tr>
+          <tr><td>Faute grave (Art. 337)</td><td><span class="pill p-red">0 jour</span></td></tr>
+          <tr><td>Temps d'essai (1–3 mois)</td><td>7 jours</td></tr>
+          <tr><td>1<sup>re</sup> année</td><td>1 mois (fin du mois)</td></tr>
+          <tr><td>2<sup>e</sup> à 9<sup>e</sup> année</td><td>2 mois (fin du mois)</td></tr>
+          <tr><td>Dès la 10<sup>e</sup> année</td><td>3 mois (fin du mois)</td></tr>
+        </table>
+        <p class="mut">Une CCT ou un contrat peut prévoir des délais plus longs — toujours vérifier.</p>
+      </div>
+      <div class="card">
+        <h3><span class="dot"></span>Cas spéciaux</h3>
+        <ul>
+          <li><strong>Retraite</strong> : ne met PAS fin au contrat automatiquement.</li>
+          <li><strong>Incapacité de travail</strong> : licenciement suspendu (Art. 336c).</li>
+          <li><strong>Décès employeur</strong> : contrat passe aux héritiers (338a).</li>
+          <li><strong>Transfert d'entreprise</strong> : contrats repris avec droits acquis.</li>
+          <li><strong>Congé abusif</strong> : sanction possible (Art. 336).</li>
+          <li><strong>Libération de travailler</strong> : document écrit obligatoire.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3><span class="dot"></span>Motifs &amp; types de fin</h3>
+        <p><strong>Motifs :</strong> crise / perte de marché · changements techniques · réorganisation · inadéquation (erreur de recrutement) · incapacité / décès · faillite.</p>
+        <p><strong>Types :</strong> fin de CDD (l'apprentissage est un CDD) · démission · licenciement ordinaire · abandon de poste (337d) · licenciement collectif (mesures d'accompagnement obligatoires).</p>
+      </div>
+      <div class="card">
+        <h3><span class="dot"></span>Alternatives au licenciement</h3>
+        <ul>
+          <li>Réduire le taux de travail (temps partiel)</li>
+          <li>Réorganiser / restructurer les tâches</li>
+          <li><strong>RHT</strong> — réduction de l'horaire de travail (chômage technique)</li>
+          <li>Retraite anticipée</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3><span class="dot"></span>Certificat de travail (Art. 330a)</h3>
+        <p><strong>Complet</strong> : nature + durée + qualité du travail + conduite. <strong>Simple</strong> (sur demande) : nature + durée seulement.</p>
+        <div class="callout warn"><b>Codes à repérer :</b> beaucoup de tâches mais peu d'évaluation = mauvais signe ; « s'est efforcé » = code négatif.</div>
+        <p class="mut">Le signataire doit être inscrit au Registre du commerce. Qualités : véridique · bienveillant · complet.</p>
+      </div>
+      <div class="card">
+        <h3><span class="dot"></span>Entretien de licenciement</h3>
+        <p class="mut"><strong>6 phases :</strong> accueil → annonce (droit au but, pause) → motivation factuelle → accueil de la réaction (sans jugement) → modalités pratiques → clôture (remercier).</p>
+        <div class="callout"><b>Cadre :</b> lieu confidentiel + un témoin. La signature de la lettre atteste la réception, pas l'accord. Accompagner les émotions (Kübler-Ross).</div>
+      </div>
+      <div class="card">
+        <h3><span class="dot"></span>Kübler-Ross — 5 stades du deuil</h3>
+        <p>Utile face à un changement subi (licenciement, restructuration) :</p>
+        <ol>
+          <li><strong>Déni</strong> — « ce n'est pas possible »</li>
+          <li><strong>Colère</strong> — « c'est injuste »</li>
+          <li><strong>Marchandage</strong></li>
+          <li><strong>Dépression / tristesse</strong></li>
+          <li><strong>Acceptation</strong></li>
+        </ol>
+        <p class="mut">Au stade du déni : ne pas argumenter, laisser un silence, expliquer seulement la suite concrète.</p>
+      </div>
+      <div class="card">
+        <h3><span class="dot"></span>Démission &amp; entretien de départ</h3>
+        <p><strong>Démission reçue :</strong> rester calme · vérifier le délai (CO/CCT) · accuser réception par écrit · décompte vacances/heures supp.</p>
+        <p><strong>Entretien de départ :</strong> faire parler sur les raisons (mieux ici qu'à l'extérieur), prendre des notes → axes d'amélioration, remercier.</p>
+        <div class="callout"><b>Règle d'or :</b> laisser parler, écouter sans se défendre.</div>
+      </div>
+      <div class="card">
+        <h3><span class="dot"></span>Prescriptions à retenir</h3>
+        <table>
+          <tr><th>Action</th><th>Délai</th></tr>
+          <tr><td>Créances du travailleur (Art. 128)</td><td>5 ans</td></tr>
+          <tr><td>Prescription générale (Art. 127)</td><td>10 ans</td></tr>
+        </table>
+        <p class="mut">Bonne pratique : conserver son certificat à vie.</p>
+      </div>
+      <div class="card">
+        <h3><span class="dot"></span>Assurances à la fin du contrat</h3>
+        <table>
+          <tr><th>Assurance</th><th>Fin de couverture / action</th></tr>
+          <tr><td><strong>LAA</strong> (accidents)</td><td>Couvert encore <strong>31 jours</strong> après la fin</td></tr>
+          <tr><td><strong>IJM</strong> (maladie)</td><td>S'arrête à la fin — continuation possible (primes à sa charge)</td></tr>
+          <tr><td><strong>LPP</strong> (2<sup>e</sup> pilier)</td><td>Après <strong>1 mois</strong> → nouvel employeur ou compte de libre passage</td></tr>
+        </table>
+        <p class="mut">L'employeur doit informer (par écrit) lors du départ.</p>
+      </div>
+      <div class="card">
+        <h3><span class="dot"></span>Prorata &amp; libération de travailler</h3>
+        <div class="formula">Droit annuel ÷ jours de travail annuels × jours travaillés = <span class="hl">vacances dues</span></div>
+        <p class="mut">Ex. : 27 ÷ 217 × 145 ≈ <strong>18 jours</strong>.</p>
+        <div class="callout"><b>Libération :</b> l'employeur peut exiger la reprise des heures supp., mais <b>ne peut pas imposer toutes les vacances</b> (le collaborateur cherche un emploi) — sauf s'il en a déjà retrouvé un.</div>
+        <p class="mut">13<sup>e</sup> contractuel : dû au prorata même en cas de faute grave.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Réflexe -->
+  <section>
+    <div class="sec-head"><span class="sec-num">★</span><h2>Réflexe d'examen — questions probables</h2><span class="tag">Réciter sans hésiter</span></div>
+    <div class="grid">
+      <div class="card">
+        <h3><span class="dot"></span>« Comment gérez-vous ce conflit ? »</h3>
+        <p>Faits (CNV) → écoute active → besoins de chacun → options → accord sur critères objectifs → trace écrite &amp; suivi. Situer avec Glasl, choisir une stratégie Thomas-Killmann.</p>
+      </div>
+      <div class="card">
+        <h3><span class="dot"></span>« Comment préparez-vous une réunion ? »</h3>
+        <p>Objectif (SMART) · participants · ordre du jour · durée · rôles · documents · décisions attendues → PV avec qui fait quoi pour quand.</p>
+      </div>
+      <div class="card">
+        <h3><span class="dot"></span>« Un collaborateur est démotivé »</h3>
+        <p>Identifier le besoin non satisfait (Maslow) · adapter le style (Hersey &amp; Blanchard) · feedback structuré · objectifs SMART · suivi.</p>
+      </div>
+      <div class="card">
+        <h3><span class="dot"></span>« Vous devez tout faire en même temps »</h3>
+        <p>ALPES (30–50 % de réserve) · prioriser avec Eisenhower / ABC · déléguer les tâches C · Pareto pour cibler les 20 % décisifs.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Fiche de révision — Module 5 · d'après le classeur (CERPE)</span>
+    <span>Brevet fédéral · Électricien chef de projet</span>
+  </footer>
+
+  </div><!-- /body -->
+</div><!-- /sheet -->
+
+</div><!-- /t12 --><!-- /t12 -->
+
 
 
 <script>
@@ -6975,9 +7922,13 @@ function goToResult(modId, targetIdx) {
   document.querySelectorAll('.mod').forEach(function(m){ m.classList.remove('on'); });
   modEl.classList.add('on');
 
-  // Activer le bon bouton sidebar (match exact)
+  // Activer le bon bouton sidebar via filtrage JS (querySelector avec quotes pose problème)
   document.querySelectorAll('.mtab').forEach(function(b){ b.classList.remove('on'); });
-  var btn = document.querySelector('.mtab[onclick="M(\''+modId+'\',this)"]');
+  var btn = null;
+  document.querySelectorAll('.mtab').forEach(function(b) {
+    var oc = b.getAttribute('onclick') || '';
+    if (oc.indexOf("'"+modId+"'") >= 0 || oc.indexOf('"'+modId+'"') >= 0) btn = b;
+  });
   if (btn) {
     btn.classList.add('on');
     var grp = btn.closest('.sb-group-items');
@@ -6985,7 +7936,8 @@ function goToResult(modId, targetIdx) {
   }
 
   // Récupérer l'élément cible
-  var target = (bpelSearchIndex && targetIdx >= 0) ? bpelSearchIndex[targetIdx] && bpelSearchIndex[targetIdx].element : null;
+  var target = (bpelSearchIndex && targetIdx >= 0 && bpelSearchIndex[targetIdx])
+    ? bpelSearchIndex[targetIdx].element : null;
 
   if (target) {
     // Ouvrir le bon onglet M5
@@ -6995,8 +7947,10 @@ function goToResult(modId, targetIdx) {
       modEl.querySelectorAll('.m5-tab').forEach(function(t){ t.classList.remove('on'); });
       panel.classList.add('on');
       var tabId = panel.id.replace('m5-','');
-      var tab = modEl.querySelector('.m5-tab[onclick*="showM5(\''+tabId+'\'"]');
-      if (tab) tab.classList.add('on');
+      modEl.querySelectorAll('.m5-tab').forEach(function(t) {
+        var oc = t.getAttribute('onclick') || '';
+        if (oc.indexOf("'"+tabId+"'") >= 0) t.classList.add('on');
+      });
     }
     // Ouvrir le bon onglet NIBT
     var nibtPanel = target.closest('.nibt-panel');
@@ -7006,17 +7960,19 @@ function goToResult(modId, targetIdx) {
     }
     // Ouvrir l'accordéon parent
     var secBody = target.closest('.m5-sec-body, .nibt-sec-body, .xm-part-body');
-    if (!secBody && (target.classList.contains('m5-sec-body') || target.classList.contains('nibt-sec-body'))) secBody = target;
+    if (!secBody && target.classList && (target.classList.contains('m5-sec-body') || target.classList.contains('nibt-sec-body'))) secBody = target;
     if (secBody) {
       secBody.classList.add('open');
       var head = secBody.previousElementSibling;
       if (head) { var arr = head.querySelector('span:last-child'); if (arr) arr.textContent = '▼'; }
     }
   } else {
-    // Pas de cible → activer 1er onglet M5
+    // Pas de cible → activer 1er onglet M5 si aucun actif
     if (!modEl.querySelector('.m5-panel.on')) {
-      var fp = modEl.querySelector('.m5-panel'); var ft = modEl.querySelector('.m5-tab');
-      if (fp) fp.classList.add('on'); if (ft) ft.classList.add('on');
+      var fp = modEl.querySelector('.m5-panel');
+      var ft = modEl.querySelector('.m5-tab');
+      if (fp) fp.classList.add('on');
+      if (ft) ft.classList.add('on');
     }
   }
 
@@ -19862,7 +20818,7 @@ function filterVids(mod,btn){
 }
 </style>
 <div class="app-footer">
-  © Nicolas Wälchli — Révision BPEL · Dernière modification : 12.06.2026 à 07:18
+  © Nicolas Wälchli — Révision BPEL · Dernière modification : 12.06.2026 à 08:01
 </div>
 
 <script>document.addEventListener('DOMContentLoaded',function(){
