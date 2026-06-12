@@ -6356,8 +6356,10 @@ function toggleCM4Sec(head){
     font-size:11px;color:#5a6b7e;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;
   } @media (max-width:680px){#m5-t12 .sheet{margin:0} #m5-t12 .masthead, #m5-t12 .body, #m5-t12 .logic{padding-left:18px;padding-right:18px} #m5-t12 .logic{margin-left:18px;margin-right:18px} #m5-t12 .masthead h1{font-size:23px} #m5-t12 .grid, #m5-t12 .grid-3{grid-template-columns:1fr} #m5-t12 footer{margin-left:18px;margin-right:18px} 
   } @media print{#m5-t12{background:#fff} #m5-t12 .sheet{box-shadow:none;margin:0;max-width:100%} #m5-t12 section{page-break-inside:auto} #m5-t12 .card, #m5-t12 table{page-break-inside:avoid} #m5-t12 .masthead::after{display:none} #m5-t12 .sec-head h2, #m5-t12 .masthead h1{-webkit-print-color-adjust:exact;print-color-adjust:exact} #m5-t12{-webkit-print-color-adjust:exact;print-color-adjust:exact} 
+  } #m5-t12 .three-col{ display: grid; grid-template-columns: 1fr 1fr 1fr; gap: .6rem; } @media(max-width:600px){#m5-t12 .three-col{ grid-template-columns: 1fr; } 
   } 
 
+  
 </style>
 
 <div class="sheet">
@@ -7164,10 +7166,267 @@ function toggleCM4Sec(head){
     <span>Brevet fédéral · Électricien chef de projet</span>
   </footer>
 
+
+
+  <!-- ===== ACCENT 1 : OFFRE D'EMPLOI AIDA ===== -->
+  <section>
+    <h2>📢 Structure d'une offre d'emploi — méthode AIDA</h2>
+
+    <div class="two-col">
+      <div class="card accent-soft">
+        <h3>A — Attention</h3>
+        <p>Titre accrocheur, visuel fort, mise en page distinctive. <em>Objectif : faire s'arrêter le candidat.</em></p>
+        <ul>
+          <li>Titre de poste précis et attractif</li>
+          <li>Logo/image de l'entreprise</li>
+          <li>Couleurs et format distinctifs</li>
+        </ul>
+      </div>
+      <div class="card accent-soft">
+        <h3>I — Intérêt</h3>
+        <p>Description du poste et de l'entreprise. <em>Objectif : donner envie d'en savoir plus.</em></p>
+        <ul>
+          <li>Présentation de l'entreprise (taille, secteur, valeurs)</li>
+          <li>Description des tâches principales</li>
+          <li>Contexte et environnement de travail</li>
+        </ul>
+      </div>
+      <div class="card accent-soft">
+        <h3>D — Désir</h3>
+        <p>Avantages, perspectives, culture. <em>Objectif : créer l'envie de postuler.</em></p>
+        <ul>
+          <li>Avantages (salaire, CCT, vacances, formation)</li>
+          <li>Perspectives d'évolution</li>
+          <li>Culture d'entreprise et ambiance</li>
+        </ul>
+      </div>
+      <div class="card accent-soft">
+        <h3>A — Action</h3>
+        <p>Comment postuler, délai, contact. <em>Objectif : déclencher la candidature.</em></p>
+        <ul>
+          <li>Lien/email/formulaire de candidature</li>
+          <li>Date limite clairement indiquée</li>
+          <li>Nom et contact de la personne RH</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="box warn">
+      <strong>⚠️ Ce qu'on évalue dans un dossier (tri ABC) :</strong>
+      <div class="three-col" style="margin-top:.5rem">
+        <div style="background:#d5f5e3;border-radius:6px;padding:.5rem .8rem;font-size:12px"><strong style="color:#065f46">A — Intéressant</strong><br>À rencontrer en priorité. Profil correspond.</div>
+        <div style="background:#fff3cd;border-radius:6px;padding:.5rem .8rem;font-size:12px"><strong style="color:#78350f">B — Plan B</strong><br>À garder en réserve. Peut convenir.</div>
+        <div style="background:#fee2e2;border-radius:6px;padding:.5rem .8rem;font-size:12px"><strong style="color:#991b1b">C — Écarté</strong><br>Ne correspond pas aux exigences.</div>
+      </div>
+    </div>
+
+    <div class="box tip">
+      <strong>💡 Rappel :</strong> 90% des recruteurs lisent le CV <em>avant</em> la lettre de motivation. Structure lettre : <strong>Introduction → Vous (entreprise) → Je (candidat) → Nous (adéquation) → Conclusion.</strong>
+    </div>
+  </section>
+
+  <!-- ===== ACCENT 2 : CERTIFICAT DE TRAVAIL ===== -->
+  <section>
+    <h2>📜 Structure d'un certificat de travail — Art. 330a CO</h2>
+
+    <div class="two-col">
+      <div>
+        <h3>Contenu obligatoire (certificat complet)</h3>
+        <table>
+          <thead><tr><th>#</th><th>Élément</th><th>Détail</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td><strong>Identité</strong></td><td>Nom, prénom + donnée d'identification (date de naissance ou N° AVS)</td></tr>
+            <tr><td>2</td><td><strong>Durée</strong></td><td>Date d'entrée et de sortie (période exacte)</td></tr>
+            <tr><td>3</td><td><strong>Taux d'occupation</strong></td><td>Pourcentage du poste (%)</td></tr>
+            <tr><td>4</td><td><strong>Poste(s) occupé(s)</strong></td><td>Intitulé(s) du ou des postes, tâches principales</td></tr>
+            <tr><td>5</td><td><strong>Qualité du travail</strong></td><td>Compétences, résultats, points forts</td></tr>
+            <tr><td>6</td><td><strong>Conduite</strong></td><td>Comportement envers collègues, supérieurs, clients</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <h3>Types de certificats</h3>
+        <div class="card" style="margin-bottom:.5rem">
+          <strong>Complet (art. 330a al.1 CO)</strong><br>
+          Tâches + durée + évaluation du travail + conduite
+        </div>
+        <div class="card" style="margin-bottom:.5rem">
+          <strong>Simple (à la demande du travailleur)</strong><br>
+          Uniquement nature et durée — sans évaluation
+        </div>
+        <div class="card">
+          <strong>Apprentissage (art. 346a CO)</strong><br>
+          Obligatoire à la fin du contrat — activité apprise + durée. Sur demande : aptitudes, travail et conduite.
+        </div>
+        <div class="box warn" style="margin-top:.5rem">
+          ⚠️ Signataire doit être inscrit au <strong>Registre du Commerce</strong> !<br>
+          Prescription : 5 ans (art. 128 CO) — mais conserver à vie en pratique.
+        </div>
+      </div>
+    </div>
+
+    <h3>Lire entre les lignes — codes et signaux</h3>
+    <table>
+      <thead><tr><th>Formulation</th><th>Signal</th><th>Interprétation</th></tr></thead>
+      <tbody>
+        <tr><td>«Nous regrettons vivement son départ»</td><td style="color:#2c7a55">✅ Positif</td><td>Collaborateur apprécié, départ non souhaité</td></tr>
+        <tr><td>«Nous lui souhaitons tout le succès»</td><td style="color:#b67d12">⚠️ Neutre/négatif</td><td>Formule de politesse sans regret exprimé</td></tr>
+        <tr><td>«S'est efforcé de…»</td><td style="color:#b23b32">❌ Négatif</td><td>L'effort était là mais le résultat pas au rendez-vous</td></tr>
+        <tr><td>Beaucoup de tâches, peu d'évaluation</td><td style="color:#b23b32">❌ Négatif</td><td>L'employeur évite de se prononcer sur la personne</td></tr>
+        <tr><td>«A accompli ses tâches à notre satisfaction»</td><td style="color:#2c7a55">✅ Positif</td><td>Travail correct et satisfaisant</td></tr>
+        <tr><td>«A toujours accompli ses tâches»</td><td style="color:#b67d12">⚠️ Moyen</td><td>Fait le minimum, sans plus</td></tr>
+      </tbody>
+    </table>
+
+    <div class="box tip">
+      <strong>💡 Règle des 3 qualités :</strong> Un bon certificat est <strong>Véridique · Bienveillant · Complet.</strong> Il est interdit de «coder» des messages négatifs cachés.
+    </div>
+  </section>
+
+  <!-- ===== ACCENT 3 : 7 FORMES DE DÉVELOPPEMENT ===== -->
+  <section>
+    <h2>🎓 Les 7 formes de développement du personnel</h2>
+
+    <table>
+      <thead>
+        <tr><th>Forme</th><th>Lieu</th><th>Description</th><th>Exemples concrets BPEL</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>On the job</strong></td>
+          <td>Au poste</td>
+          <td>Apprentissage directement dans le travail quotidien</td>
+          <td>Remplacement du supérieur · rotation de postes · élargissement des tâches · enrichissement du poste</td>
+        </tr>
+        <tr style="background:#f6f8fb">
+          <td><strong>Into the job</strong></td>
+          <td>Entrée dans le poste</td>
+          <td>Formation à l'entrée dans un nouveau rôle</td>
+          <td>Initiation · stage dans un autre département · programme d'intégration</td>
+        </tr>
+        <tr>
+          <td><strong>Near the job</strong></td>
+          <td>Proche du poste</td>
+          <td>Formation en lien direct avec le poste mais en dehors</td>
+          <td>Cercle de qualité · groupe de travail · groupe de réflexion</td>
+        </tr>
+        <tr style="background:#f6f8fb">
+          <td><strong>Parallel to the job</strong></td>
+          <td>Parallèle au poste</td>
+          <td>Accompagnement individuel en dehors du flux quotidien</td>
+          <td>Coaching (interne ou externe) · mentoring · supervision</td>
+        </tr>
+        <tr>
+          <td><strong>Along the job</strong></td>
+          <td>Au long du poste</td>
+          <td>Développement sur la durée, planification de carrière</td>
+          <td>Planification de carrière · plan de relève · entretien annuel MbO</td>
+        </tr>
+        <tr style="background:#f6f8fb">
+          <td><strong>Off the job</strong></td>
+          <td>En dehors du poste</td>
+          <td>Formation externe, déconnectée du quotidien</td>
+          <td>Cours BPEL · études de cas · formation continue · auto-formation · e-learning</td>
+        </tr>
+        <tr>
+          <td><strong>Out of the job</strong></td>
+          <td>Sortie du poste</td>
+          <td>Accompagnement en fin de carrière ou départ</td>
+          <td>Outplacement · accompagnement à la retraite · bilan de compétences</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="two-col" style="margin-top:.8rem">
+      <div class="box tip">
+        <strong>💡 Choisir la bonne forme :</strong>
+        <ul>
+          <li><strong>Savoirs théoriques</strong> → Off the job (cours, formation externe)</li>
+          <li><strong>Savoir-faire pratiques</strong> → On the job (terrain, rotation)</li>
+          <li><strong>Savoir-être / comportement</strong> → Parallel (coaching) ou Along (plan de carrière)</li>
+        </ul>
+      </div>
+      <div class="box warn">
+        <strong>⚠️ 5 principes du supérieur pour le transfert :</strong>
+        <ol>
+          <li>Suivre les progrès régulièrement</li>
+          <li>Être ouvert aux apports nouveaux</li>
+          <li>Fixer de nouveaux objectifs ensemble</li>
+          <li>Communiquer ses attentes clairement</li>
+          <li>Accompagner dans les nouvelles responsabilités</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ACCENT 4 : ÉTUDE DE CAS — TYPES D'EXAMENS ===== -->
+  <section>
+    <h2>🏢 Études de cas — Exemples types d'examen CERPE</h2>
+
+    <div class="box warn" style="margin-bottom:1rem">
+      <strong>📌 Format examen M5 :</strong> 60 pts · 60 min · 5 parties · Open Book 2 pages A4 · Minimum 36/60 · Toujours basé sur une situation d'entreprise concrète.
+    </div>
+
+    <h3>Cas type 1 — Licenciement (Série 7 · Juin 2025)</h3>
+    <div class="card accent-soft" style="margin-bottom:.5rem">
+      <strong>Contexte :</strong> ÉlectroRénov Sàrl · 33 collaborateurs · Rénovation 60 appts Lausanne · Conflit responsable projets vs Sophie (resp. technique)
+    </div>
+    <table>
+      <thead><tr><th>Question type</th><th>Compétence testée</th><th>Outils à mobiliser</th></tr></thead>
+      <tbody>
+        <tr><td>3 lignes d'action pour gérer les variations d'effectifs</td><td>Planification RH</td><td>Recrutement / Réduction / Planification prévisionnelle</td></tr>
+        <tr><td>4 compétences clés pour recruter un installateur-électricien</td><td>Recrutement</td><td>Techniques · Sociales · Organisationnelles · Sécurité</td></tr>
+        <tr><td>3 étapes pour intégrer les nouveaux collaborateurs</td><td>Intégration</td><td>Accueil · Accompagnement · Suivi période d'essai</td></tr>
+        <tr><td>4 oreilles sur le message de Sophie</td><td>Communication</td><td>Schulz von Thun : Factuel · Révélation · Relationnel · Appel</td></tr>
+        <tr><td>3 critères Harvard de résolution de conflits</td><td>Conflits / Négociation</td><td>Juste · Efficace · Raisonnable · Durable</td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="margin-top:1rem">Cas type 2 — Entretien de licenciement (mise en pratique 5.17)</h3>
+    <div class="card accent-soft" style="margin-bottom:.5rem">
+      <strong>Contexte :</strong> Électricien CFC · 11 mois · Objectifs non atteints · Retards chantiers · Délai congé : 1 mois · 10 jours de travail restants · 3j vacances + heures supp à reprendre
+    </div>
+    <table>
+      <thead><tr><th>Phase</th><th>Durée</th><th>Script clé</th></tr></thead>
+      <tbody>
+        <tr><td><strong>1. Accueil</strong></td><td>≈1 min</td><td>«J'ai une décision importante à vous communiquer, je vais aller directement à l'essentiel.»</td></tr>
+        <tr><td><strong>2. Annonce</strong></td><td>≈1–2 min</td><td>«La direction a décidé de mettre fin à votre contrat. Cette décision est prise.» → Pause.</td></tr>
+        <tr><td><strong>3. Motivation factuelle</strong></td><td>≈2–3 min</td><td>Faits objectifs, sans jugement de personne. Reconnaître les efforts.</td></tr>
+        <tr><td><strong>4. Accueil de la réaction</strong></td><td>Variable</td><td>Émotion → «Je comprends» · Contestation → «La décision est prise» · Colère → «Restons sur le pratique»</td></tr>
+        <tr><td><strong>5. Modalités pratiques</strong></td><td>≈3–5 min</td><td>Date fin contrat · jours travaillés · décompte · certificat de travail · restitution matériel</td></tr>
+        <tr><td><strong>6. Clôture</strong></td><td>≈1 min</td><td>Questions ? · Remercier · «Ma porte reste ouverte»</td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="margin-top:1rem">Réflexes examen — Ce qu'on oublie souvent</h3>
+    <div class="two-col">
+      <div class="card" style="border-left:3px solid #b23b32">
+        <strong>❌ Erreurs classiques :</strong>
+        <ul>
+          <li>Oublier le <strong>témoin</strong> lors de l'entretien de licenciement</li>
+          <li>Confondre <strong>gratification</strong> (usuelle → peut être due) et <strong>13ème</strong> (contractuel → toujours dû)</li>
+          <li>Penser que la retraite met fin au contrat automatiquement → <strong>FAUX</strong></li>
+          <li>Coder des messages négatifs dans un certificat → <strong>INTERDIT</strong></li>
+          <li>Délai congé 1 an = 1 mois · 2–9 ans = 2 mois · ≥10 ans = 3 mois</li>
+        </ul>
+      </div>
+      <div class="card" style="border-left:3px solid #2c7a55">
+        <strong>✅ Réflexes gagnants :</strong>
+        <ul>
+          <li>Toujours relier la réponse au <strong>contexte de l'entreprise</strong> donné</li>
+          <li>Structurer en points numérotés (grille de correction)</li>
+          <li>Utiliser les <strong>acronymes</strong> : SMART, AIDA, MESORE, CNV, IPBM</li>
+          <li>Citer les <strong>articles CO</strong> quand c'est demandé (335a, 330a, etc.)</li>
+          <li>Feedback toujours en <strong>JE</strong> → jamais «Tu as...»</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
   </div><!-- /body -->
 </div><!-- /sheet -->
 
-</div><!-- /t12 --><!-- /t12 -->
+</div><!-- /t12 --><!-- /t12 --><!-- /t12 -->
 
 
 
@@ -20818,7 +21077,7 @@ function filterVids(mod,btn){
 }
 </style>
 <div class="app-footer">
-  © Nicolas Wälchli — Révision BPEL · Dernière modification : 12.06.2026 à 08:01
+  © Nicolas Wälchli — Révision BPEL · Dernière modification : 12.06.2026 à 11:20
 </div>
 
 <script>document.addEventListener('DOMContentLoaded',function(){
