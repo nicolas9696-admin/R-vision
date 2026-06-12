@@ -6225,7 +6225,7 @@ function toggleCM4Sec(head){
 
 <div id="m5-t12" class="m5-panel">
 <style>
-/* Fiche révision M5 — styles scopés et variables résolues */
+/* Fiche révision M5 — styles scopés */
 #m5-t12 {
   background: #e9edf2;
   padding: .5rem;
@@ -6233,17 +6233,36 @@ function toggleCM4Sec(head){
 }
 #m5-t12 .sheet {
   max-width: 100%;
-  margin: 0 auto;
+  margin: 0;
   background: #ffffff;
   padding: 0 0 2rem;
   box-shadow: 0 2px 12px rgba(20,35,58,.08);
   border-radius: 6px;
   overflow: hidden;
 }
-/* Style pour les <details> */
-#m5-t12 details { margin:.5rem 0; }
-#m5-t12 details summary { list-style:none; }
-#m5-t12 details summary::-webkit-details-marker { display:none; }
+/* Details/Summary interactifs */
+#m5-t12 details {
+  margin: .5rem 0;
+  border-radius: 6px;
+  overflow: hidden;
+}
+#m5-t12 details summary {
+  list-style: none;
+  background: #1a3a5c;
+  color: #fff;
+  padding: .5rem .9rem;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#m5-t12 details summary::-webkit-details-marker { display: none; }
+#m5-t12 details summary::after { content: "▼"; font-size: 10px; margin-left: .5rem; transition: transform .2s; }
+#m5-t12 details[open] summary::after { transform: rotate(180deg); }
+#m5-t12 details[open] summary { border-radius: 6px 6px 0 0; }
 #m5-t12{box-sizing:border-box}
 #m5-t12{-webkit-text-size-adjust:100%}
 #m5-t12{
@@ -7241,23 +7260,48 @@ function toggleCM4Sec(head){
   <!-- ACCENT 1 : OFFRE D'EMPLOI AIDA -->
   <section>
     <h2>📢 Structure d'une offre d'emploi — AIDA</h2>
+
     <table>
-      <thead><tr><th>Lettre</th><th>Objectif</th><th>Contenu</th><th>Exemple BPEL</th></tr></thead>
+      <thead><tr><th style="width:15%">Lettre</th><th style="width:30%">Objectif</th><th>Contenu &amp; exemple BPEL</th></tr></thead>
       <tbody>
-        <tr><td><strong>A</strong> — Attention</td><td>Faire s'arrêter le candidat</td><td>Titre accrocheur · logo · mise en forme distinctive</td><td>«Chef de projet électrique — rejoignez une équipe PV &amp; domotique»</td></tr>
-        <tr><td><strong>I</strong> — Intérêt</td><td>Donner envie d'en savoir plus</td><td>Présentation entreprise · tâches · environnement</td><td>«ÉlectroRénov, 33 collaborateurs, chantiers résidentiels et tertiaires»</td></tr>
-        <tr><td><strong>D</strong> — Désir</td><td>Créer l'envie de postuler</td><td>Avantages · CCT · vacances · perspectives · culture</td><td>«27j vacances · formation prise en charge · ambiance familiale»</td></tr>
-        <tr><td><strong>A</strong> — Action</td><td>Déclencher la candidature</td><td>Lien/email · délai clair · nom du contact RH</td><td>«Postulez avant le 30.06 à rh@electrorénov.ch»</td></tr>
+        <tr>
+          <td><strong>A</strong><br><small>Attention</small></td>
+          <td>Faire s'arrêter le candidat</td>
+          <td>Titre accrocheur · logo · mise en forme distinctive<br><em>«Chef de projet électrique — rejoignez l'équipe PV»</em></td>
+        </tr>
+        <tr>
+          <td><strong>I</strong><br><small>Intérêt</small></td>
+          <td>Donner envie d'en savoir plus</td>
+          <td>Présentation entreprise · tâches principales · environnement<br><em>«ÉlectroRénov, 33 collaborateurs, chantiers résidentiels et tertiaires»</em></td>
+        </tr>
+        <tr>
+          <td><strong>D</strong><br><small>Désir</small></td>
+          <td>Créer l'envie de postuler</td>
+          <td>Avantages · CCT · vacances · perspectives · culture<br><em>«27j vacances · formation prise en charge · ambiance familiale»</em></td>
+        </tr>
+        <tr>
+          <td><strong>A</strong><br><small>Action</small></td>
+          <td>Déclencher la candidature</td>
+          <td>Lien / email · délai clair · nom du contact RH<br><em>«Postulez avant le 30.06 à rh@electrorénov.ch»</em></td>
+        </tr>
       </tbody>
     </table>
-    <div class="box tip"><strong>💡 Tri ABC :</strong> A = intéressant (convoquer) · B = plan B (garder) · C = écarté (refus poli). 90% des recruteurs lisent le CV avant la lettre. Structure lettre : Introduction → Vous → Je → Nous → Conclusion.</div>
+
+    <div class="box tip">
+      <strong>💡 Tri des dossiers — méthode ABC :</strong>
+      &nbsp; <strong style="color:#2c7a55">A = intéressant</strong> (convoquer en priorité) &nbsp;·&nbsp;
+      <strong style="color:#b67d12">B = plan B</strong> (garder en réserve) &nbsp;·&nbsp;
+      <strong style="color:#b23b32">C = écarté</strong> (refus poli)<br>
+      ⚠️ 90 % des recruteurs lisent le <strong>CV avant la lettre</strong>. Structure lettre : Introduction → Vous → Je → Nous → Conclusion.
+    </div>
   </section>
 
   <!-- ACCENT 2 : CERTIFICAT DE TRAVAIL -->
   <section>
     <h2>📜 Structure d'un certificat de travail — Art. 330a CO</h2>
+
     <table>
-      <thead><tr><th>#</th><th>Élément obligatoire</th><th>Détail</th></tr></thead>
+      <thead><tr><th style="width:5%">#</th><th style="width:28%">Élément obligatoire</th><th>Contenu attendu</th></tr></thead>
       <tbody>
         <tr><td>1</td><td><strong>Identité</strong></td><td>Nom, prénom + date de naissance ou N° AVS</td></tr>
         <tr><td>2</td><td><strong>Durée</strong></td><td>Date d'entrée et de sortie exactes</td></tr>
@@ -7267,126 +7311,149 @@ function toggleCM4Sec(head){
         <tr><td>6</td><td><strong>Conduite</strong></td><td>Comportement envers collègues, supérieurs, clients</td></tr>
       </tbody>
     </table>
-    <div class="box tip"><strong>🔍 Codes :</strong> «Regrettons vivement» ✅ · «Lui souhaitons le succès» ⚠️ · «S'est efforcé de» ❌ · Beaucoup de tâches, peu d'évaluation ❌ — Règle : Véridique · Bienveillant · Complet. Art. 346a CO = certificat apprentissage obligatoire. Prescription : 5 ans (Art. 128 CO).</div>
+
+    <h3 style="margin-top:.8rem">Lire entre les lignes</h3>
+    <table>
+      <thead><tr><th style="width:42%">Formulation</th><th style="width:15%">Signal</th><th>Vrai sens</th></tr></thead>
+      <tbody>
+        <tr><td>«Nous regrettons vivement son départ»</td><td style="color:#2c7a55"><strong>✅ Positif</strong></td><td>Collaborateur apprécié, départ non souhaité</td></tr>
+        <tr><td>«Nous lui souhaitons tout le succès»</td><td style="color:#b67d12"><strong>⚠️ Neutre</strong></td><td>Formule de politesse sans regret exprimé</td></tr>
+        <tr><td>«S'est efforcé de…»</td><td style="color:#b23b32"><strong>❌ Négatif</strong></td><td>L'effort était là mais le résultat insuffisant</td></tr>
+        <tr><td>Beaucoup de tâches, peu d'évaluation</td><td style="color:#b23b32"><strong>❌ Négatif</strong></td><td>L'employeur évite de se prononcer sur la personne</td></tr>
+      </tbody>
+    </table>
+
+    <div class="box tip">
+      Règle des 3 qualités : <strong>Véridique · Bienveillant · Complet</strong><br>
+      Art. 346a CO = certificat d'apprentissage obligatoire à la fin du contrat.<br>
+      Prescription : <strong>5 ans</strong> (Art. 128 CO) — mais conserver à vie en pratique. Signataire = inscrit au RC.
+    </div>
   </section>
 
   <!-- ACCENT 3 : 7 FORMES DE DÉVELOPPEMENT -->
   <section>
     <h2>🎓 Les 7 formes de développement du personnel</h2>
+
     <table>
-      <thead><tr><th>Forme</th><th>Lieu</th><th>Description</th><th>Exemples BPEL</th></tr></thead>
+      <thead><tr><th style="width:22%">Forme</th><th style="width:20%">Lieu</th><th>Description &amp; exemples BPEL</th></tr></thead>
       <tbody>
-        <tr><td><strong>On the job</strong></td><td>Au poste</td><td>Apprentissage dans le travail quotidien</td><td>Rotation · remplacement supérieur · élargissement tâches</td></tr>
-        <tr><td><strong>Into the job</strong></td><td>Entrée dans le poste</td><td>Formation à l'entrée dans un nouveau rôle</td><td>Initiation · stage dans un autre département</td></tr>
-        <tr><td><strong>Near the job</strong></td><td>Proche du poste</td><td>Formation liée au poste, hors flux quotidien</td><td>Cercle de qualité · groupe de réflexion</td></tr>
-        <tr><td><strong>Parallel to the job</strong></td><td>Parallèle</td><td>Accompagnement individuel</td><td>Coaching · mentoring</td></tr>
-        <tr><td><strong>Along the job</strong></td><td>Sur la durée</td><td>Développement de carrière</td><td>Plan de relève · MbO · entretien annuel</td></tr>
-        <tr><td><strong>Off the job</strong></td><td>Hors du poste</td><td>Formation externe</td><td>Cours BPEL · e-learning · auto-formation</td></tr>
-        <tr><td><strong>Out of the job</strong></td><td>Sortie du poste</td><td>Fin de carrière</td><td>Outplacement · accompagnement retraite</td></tr>
+        <tr><td><strong>On the job</strong></td><td>Au poste</td><td>Apprentissage dans le travail quotidien — rotation de postes · remplacement du supérieur · élargissement des tâches</td></tr>
+        <tr><td><strong>Into the job</strong></td><td>Entrée dans le poste</td><td>Formation à l'entrée dans un nouveau rôle — initiation · stage dans un autre département</td></tr>
+        <tr><td><strong>Near the job</strong></td><td>Proche du poste</td><td>Formation liée au poste, hors flux quotidien — cercle de qualité · groupe de réflexion</td></tr>
+        <tr><td><strong>Parallel to the job</strong></td><td>Parallèle</td><td>Accompagnement individuel — coaching interne ou externe · mentoring</td></tr>
+        <tr><td><strong>Along the job</strong></td><td>Sur la durée</td><td>Développement de carrière à long terme — plan de relève · entretien annuel MbO</td></tr>
+        <tr><td><strong>Off the job</strong></td><td>Hors du poste</td><td>Formation externe déconnectée du quotidien — cours BPEL · e-learning · auto-formation</td></tr>
+        <tr><td><strong>Out of the job</strong></td><td>Sortie du poste</td><td>Fin de carrière — outplacement · accompagnement à la retraite</td></tr>
       </tbody>
     </table>
-    <div class="box tip"><strong>💡</strong> Savoirs → Off the job · Savoir-faire → On the job · Savoir-être → Parallel ou Along the job</div>
+
+    <div class="box tip">
+      <strong>💡 Quelle forme choisir ?</strong><br>
+      Savoirs théoriques → <strong>Off the job</strong> &nbsp;·&nbsp;
+      Savoir-faire pratiques → <strong>On the job</strong> &nbsp;·&nbsp;
+      Savoir-être / comportement → <strong>Parallel</strong> ou <strong>Along the job</strong>
+    </div>
   </section>
 
   <!-- ACCENT 4 : CHECKLIST RÉUNION -->
   <section>
-    <h2>✅ Checklist — Préparer et conduire une réunion (cours 5.05)</h2>
+    <h2>✅ Checklist — Préparer et conduire une réunion</h2>
+
     <h3>Avant la réunion</h3>
     <table>
-      <thead><tr><th>☐</th><th>Étape</th><th>Détail officiel</th></tr></thead>
+      <thead><tr><th style="width:5%">☐</th><th style="width:28%">Étape</th><th>Détail (cours 5.05)</th></tr></thead>
       <tbody>
-        <tr><td>☐</td><td><strong>Objectif SMART</strong></td><td>Formuler l'objectif : Spécifique · Mesurable · Atteignable · Réaliste · Temporel</td></tr>
-        <tr><td>☐</td><td><strong>Décisiomètre</strong></td><td>Est-elle utile ? Plus-value ? Coût salarial vs bénéfice ? Participants co-responsables ?</td></tr>
-        <tr><td>☐</td><td><strong>Participants</strong></td><td>Choix utile et tactique — qui apporte quoi ?</td></tr>
+        <tr><td>☐</td><td><strong>Objectif SMART</strong></td><td>Spécifique · Mesurable · Atteignable · Réaliste · Temporel</td></tr>
+        <tr><td>☐</td><td><strong>Décisiomètre</strong></td><td>La réunion est-elle utile ? Plus-value ? Coût salarial vs bénéfice ? Participants co-responsables ?</td></tr>
+        <tr><td>☐</td><td><strong>Participants</strong></td><td>Choix utile et tactique — qui apporte quoi ? Qui est co-responsable ?</td></tr>
         <tr><td>☐</td><td><strong>Présidence + 4 rôles</strong></td><td>Animateur · gardien du temps · secrétaire PV · participants</td></tr>
-        <tr><td>☐</td><td><strong>Ordre du jour minuté</strong></td><td>Fil rouge détaillé avec durée par point</td></tr>
-        <tr><td>☐</td><td><strong>Infrastructure</strong></td><td>Salle · outils testés · préparation des sièges</td></tr>
-        <tr><td>☐</td><td><strong>Convocation CQQCOQP</strong></td><td>Envoyée avec OdJ · lieu · heure début ET fin</td></tr>
-        <tr><td>☐</td><td><strong>Se préparer soi-même</strong></td><td>Faits · enjeux · objectif personnel · rôle · craintes</td></tr>
+        <tr><td>☐</td><td><strong>Ordre du jour minuté</strong></td><td>Fil rouge détaillé avec durée prévue par point</td></tr>
+        <tr><td>☐</td><td><strong>Infrastructure</strong></td><td>Taille salle · lieu · outils testés avant · préparation des sièges</td></tr>
+        <tr><td>☐</td><td><strong>Convocation CQQCOQP</strong></td><td>Envoyée à l'avance avec OdJ · lieu · heure début ET fin</td></tr>
+        <tr><td>☐</td><td><strong>Se préparer soi-même</strong></td><td>Faits · enjeux · objectif personnel · rôle · craintes · décisions à prendre</td></tr>
       </tbody>
     </table>
+
     <h3>Pendant &amp; après</h3>
     <table>
-      <thead><tr><th>☐</th><th>Étape</th><th>Détail</th></tr></thead>
+      <thead><tr><th style="width:5%">☐</th><th style="width:28%">Étape</th><th>Détail</th></tr></thead>
       <tbody>
-        <tr><td>☐</td><td><strong>Débuter à l'heure (règle absolue !)</strong></td><td>Accueil · brise-glace · clarifier attentes et règles</td></tr>
-        <tr><td>☐</td><td><strong>4 phases de travail</strong></td><td>1. Recueillir · 2. Sélectionner · 3. Traiter · 4. Planifier (Qui/Quoi/Quand/Comment)</td></tr>
+        <tr><td>☐</td><td><strong>Débuter à l'heure !</strong></td><td>Règle absolue — accueil · brise-glace si besoin · clarifier attentes et règles</td></tr>
+        <tr><td>☐</td><td><strong>4 phases de travail</strong></td><td>1. Recueillir · 2. Sélectionner · 3. Traiter · 4. Planifier (Qui / Quoi / Quand / Comment)</td></tr>
         <tr><td>☐</td><td><strong>Personnalités difficiles</strong></td><td>Rappeler les règles · résumer + donner la parole ailleurs · demander le lien avec l'objectif</td></tr>
-        <tr><td>☐</td><td><strong>Conclure</strong></td><td>Vérifier objectif · météo de satisfaction · actions claires · remercier</td></tr>
-        <tr><td>☐</td><td><strong>PV dans les 24h</strong></td><td>Décisions + actions Qui/Quoi/Quand · distribué par le secrétaire</td></tr>
+        <tr><td>☐</td><td><strong>Conclure</strong></td><td>Vérifier l'atteinte de l'objectif · météo de satisfaction · remercier · finir à l'heure</td></tr>
+        <tr><td>☐</td><td><strong>PV dans les 24h</strong></td><td>Décisions + actions Qui/Quoi/Quand · distribué par le secrétaire à tous les participants</td></tr>
       </tbody>
     </table>
   </section>
 
-  <!-- ===== ÉTUDES DE CAS ===== -->
   <section>
     <h2>🏢 Études de cas — Entraînement type examen</h2>
     <div class="box warn">
-      <strong>📌 Comment utiliser ces cas :</strong> Lisez le contexte, répondez aux questions sur papier ou mentalement, puis dépliez le corrigé. Les modèles attendus sont indiqués pour chaque question.
+      <strong>📌 Mode d'emploi :</strong> Lisez le contexte · répondez mentalement ou sur papier · dépliez le corrigé pour comparer. Les modèles attendus sont indiqués.
     </div>
   </section>
 
   <!-- CAS 1 -->
   <section>
-    <h2>Cas 1 — ElectroBâle SA · Conflit &amp; Communication</h2>
-    <div class="box" style="background:#f6f8fb;border-left:4px solid #1a3a5c">
-      <strong>Contexte :</strong> ElectroBâle SA · 28 collaborateurs · Vous êtes chef de projet. Votre chef d'équipe <strong>Marco</strong> (D4, 12 ans d'expérience) et votre nouvelle cheffe d'équipe <strong>Léa</strong> (D2, 18 mois) ne s'entendent plus. Lors d'une réunion de chantier, Marco a dit devant toute l'équipe : <em>«Avec des méthodes pareilles, on va droit dans le mur.»</em> Léa est rentrée en larmes. L'ambiance est tendue depuis 3 semaines.
+    <h2>Cas 1 · ElectroBâle SA — Conflit &amp; Communication</h2>
+    <div class="box" style="background:#f6f8fb;border-left:4px solid #1a3a5c;margin-bottom:.5rem">
+      <strong>Contexte :</strong> 28 collaborateurs. Marco (chef d'équipe, D4, 12 ans) et Léa (cheffe d'équipe, D2, 18 mois) ne s'entendent plus. Lors d'une réunion, Marco a dit devant toute l'équipe : <em>«Avec des méthodes pareilles, on va droit dans le mur.»</em> Léa est rentrée en larmes. Ambiance tendue depuis 3 semaines.
     </div>
 
-    <details style="margin:.6rem 0">
-      <summary style="cursor:pointer;background:#1a3a5c;color:#fff;padding:.5rem .8rem;border-radius:6px;font-weight:700;font-size:13px">Q1 — Analysez ce conflit selon Glasl (3 pts)</summary>
-      <div style="padding:.7rem;border:1px solid #d6dee9;border-top:none;border-radius:0 0 6px 6px">
+    <details>
+      <summary>Q1 — Analysez le conflit selon Glasl · 3 pts</summary>
+      <div class="box" style="border-radius:0 0 6px 6px;margin-top:0">
         <table>
-          <thead><tr><th>Dimension</th><th>Réponse attendue</th></tr></thead>
+          <thead><tr><th style="width:30%">Dimension</th><th>Réponse attendue</th></tr></thead>
           <tbody>
-            <tr><td><strong>Niveau Glasl</strong></td><td>Stade <strong>3 — «Les actes remplacent les paroles»</strong> · Marco a agi publiquement pour humilier Léa → les coalitions commencent à se former · Win-Win encore possible avec intervention</td></tr>
-            <tr><td><strong>Nature</strong></td><td>Interpersonnel (Marco vs Léa) + intragroupe (clans en formation)</td></tr>
-            <tr><td><strong>Votre rôle</strong></td><td>Stade 3 = manager direct peut encore intervenir seul comme facilitateur · pas besoin de tiers externe</td></tr>
+            <tr><td><strong>Niveau Glasl</strong></td><td>Stade <strong>3</strong> — «Les actes remplacent les paroles». Marco a humilié Léa publiquement. Coalitions en formation. Win-Win encore possible avec intervention directe du manager.</td></tr>
+            <tr><td><strong>Nature</strong></td><td>Interpersonnel (Marco vs Léa) + intragroupe (clans qui se forment)</td></tr>
+            <tr><td><strong>Votre rôle</strong></td><td>Stade 3 → manager direct peut intervenir seul comme facilitateur. Pas besoin de tiers externe.</td></tr>
           </tbody>
         </table>
       </div>
     </details>
 
-    <details style="margin:.6rem 0">
-      <summary style="cursor:pointer;background:#1a3a5c;color:#fff;padding:.5rem .8rem;border-radius:6px;font-weight:700;font-size:13px">Q2 — Rédigez la phrase de Marco selon les 4 oreilles de Schulz von Thun (4 pts)</summary>
-      <div style="padding:.7rem;border:1px solid #d6dee9;border-top:none;border-radius:0 0 6px 6px">
-        <p style="font-style:italic;background:#f6f8fb;padding:.4rem .7rem;border-radius:4px;margin-bottom:.5rem">Message : «Avec des méthodes pareilles, on va droit dans le mur.»</p>
+    <details>
+      <summary>Q2 — Les 4 oreilles sur le message de Marco · 4 pts</summary>
+      <div class="box" style="border-radius:0 0 6px 6px;margin-top:0">
+        <p><em>Message : «Avec des méthodes pareilles, on va droit dans le mur.»</em></p>
         <table>
-          <thead><tr><th style="width:130px">Oreille</th><th>Ce que Marco communique</th></tr></thead>
+          <thead><tr><th style="width:28%">Oreille</th><th>Ce que Marco communique</th></tr></thead>
           <tbody>
             <tr><td>🔵 <strong>Factuelle</strong></td><td>Les méthodes actuelles créent des problèmes sur le chantier</td></tr>
-            <tr><td>🟢 <strong>Révélation de soi</strong></td><td>Marco est frustré, inquiet pour le projet, peut-être épuisé de voir des erreurs se répéter</td></tr>
-            <tr><td>🟡 <strong>Relationnelle</strong></td><td>Marco estime que Léa est incompétente et le fait savoir publiquement — manque de respect</td></tr>
-            <tr><td>🔴 <strong>Appel</strong></td><td>Marco veut que les méthodes changent — et implicitement que vous interveniez</td></tr>
-          </tbody>
-        </table>
-        <p style="margin-top:.5rem;font-size:12px;color:#5a6b7e">Modèle attendu : Schulz von Thun — 4 facettes. Toujours analyser les 4, même si l'une semble évidente.</p>
-      </div>
-    </details>
-
-    <details style="margin:.6rem 0">
-      <summary style="cursor:pointer;background:#1a3a5c;color:#fff;padding:.5rem .8rem;border-radius:6px;font-weight:700;font-size:13px">Q3 — Appliquez CNV pour que vous parliez à Marco (4 pts)</summary>
-      <div style="padding:.7rem;border:1px solid #d6dee9;border-top:none;border-radius:0 0 6px 6px">
-        <table>
-          <thead><tr><th style="width:130px">Niveau CNV</th><th>Votre phrase</th></tr></thead>
-          <tbody>
-            <tr><td><strong>1. Observation</strong></td><td>«Marco, j'ai observé que lors de la réunion de lundi, tu as fait un commentaire sur les méthodes de Léa devant toute l'équipe.»</td></tr>
-            <tr><td><strong>2. Sentiment</strong></td><td>«Cela m'a préoccupé, car j'ai vu que Léa a été très affectée et que l'ambiance s'est dégradée depuis.»</td></tr>
-            <tr><td><strong>3. Besoin</strong></td><td>«J'ai besoin que les membres de mon équipe se respectent mutuellement, y compris dans leurs désaccords professionnels.»</td></tr>
-            <tr><td><strong>4. Demande</strong></td><td>«Est-ce que tu peux t'engager à aborder tes critiques en privé avec Léa, ou directement avec moi, plutôt qu'en réunion ?»</td></tr>
+            <tr><td>🟢 <strong>Révélation de soi</strong></td><td>Marco est frustré, inquiet, peut-être épuisé de voir des erreurs se répéter</td></tr>
+            <tr><td>🟡 <strong>Relationnelle</strong></td><td>Marco estime que Léa est incompétente — il le fait savoir publiquement</td></tr>
+            <tr><td>🔴 <strong>Appel</strong></td><td>Marco veut que les méthodes changent et que vous interveniez</td></tr>
           </tbody>
         </table>
       </div>
     </details>
 
-    <details style="margin:.6rem 0">
-      <summary style="cursor:pointer;background:#1a3a5c;color:#fff;padding:.5rem .8rem;border-radius:6px;font-weight:700;font-size:13px">Q4 — Quel style Hersey pour Marco et Léa ? (3 pts)</summary>
-      <div style="padding:.7rem;border:1px solid #d6dee9;border-top:none;border-radius:0 0 6px 6px">
+    <details>
+      <summary>Q3 — CNV pour parler à Marco · 4 pts</summary>
+      <div class="box" style="border-radius:0 0 6px 6px;margin-top:0">
         <table>
-          <thead><tr><th>Collaborateur</th><th>Niveau D</th><th>Style S</th><th>Actions concrètes</th></tr></thead>
+          <thead><tr><th style="width:28%">Niveau CNV</th><th>Votre phrase (en JE)</th></tr></thead>
           <tbody>
-            <tr><td><strong>Marco</strong></td><td>D4 — Expert autonome, très expérimenté</td><td>S4 Délégatif</td><td>Déléguer les décisions techniques · ne pas micromanager · mais recadrer sur le comportement (CNV)</td></tr>
-            <tr><td><strong>Léa</strong></td><td>D2 — Compétence croissante mais peu confiante</td><td>S2 Persuasif</td><td>Expliquer le pourquoi · coacher · valoriser ses initiatives · entretiens réguliers</td></tr>
+            <tr><td><strong>1. Observation</strong></td><td>«Marco, j'ai observé que lors de la réunion de lundi, tu as commenté les méthodes de Léa devant toute l'équipe.»</td></tr>
+            <tr><td><strong>2. Sentiment</strong></td><td>«Cela m'a préoccupé — j'ai vu que Léa a été affectée et que l'ambiance s'est dégradée.»</td></tr>
+            <tr><td><strong>3. Besoin</strong></td><td>«J'ai besoin que les membres de mon équipe se respectent mutuellement, même dans leurs désaccords.»</td></tr>
+            <tr><td><strong>4. Demande</strong></td><td>«Peux-tu t'engager à aborder tes critiques en privé avec Léa ou avec moi, plutôt qu'en réunion ?»</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+
+    <details>
+      <summary>Q4 — Style Hersey pour Marco et Léa · 3 pts</summary>
+      <div class="box" style="border-radius:0 0 6px 6px;margin-top:0">
+        <table>
+          <thead><tr><th style="width:18%">Collaborateur</th><th style="width:22%">Niveau D → Style S</th><th>Actions concrètes</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Marco</strong></td><td>D4 → <strong>S4 Délégatif</strong></td><td>Déléguer les décisions techniques · ne pas micromanager · recadrer le comportement via CNV</td></tr>
+            <tr><td><strong>Léa</strong></td><td>D2 → <strong>S2 Persuasif</strong></td><td>Expliquer le pourquoi · coacher · valoriser ses initiatives · entretiens réguliers</td></tr>
           </tbody>
         </table>
       </div>
@@ -7395,51 +7462,49 @@ function toggleCM4Sec(head){
 
   <!-- CAS 2 -->
   <section>
-    <h2>Cas 2 — VoltGenève Sàrl · Recrutement &amp; Intégration</h2>
-    <div class="box" style="background:#f6f8fb;border-left:4px solid #1a3a5c">
-      <strong>Contexte :</strong> VoltGenève Sàrl · 41 collaborateurs · Forte croissance PV. Vous devez recruter <strong>2 installateurs-électriciens</strong> supplémentaires dans les 6 semaines. Besoin brut : 12 ETP · Engagements en cours : 10 ETP · Départ prévu : 1 ETP · Taux d'absence habituel : 4%.
+    <h2>Cas 2 · VoltGenève Sàrl — Recrutement &amp; Intégration</h2>
+    <div class="box" style="background:#f6f8fb;border-left:4px solid #1a3a5c;margin-bottom:.5rem">
+      <strong>Contexte :</strong> 41 collaborateurs · forte croissance PV. Besoin brut : 12 ETP · Engagements en cours : 10 ETP · Départ prévu : 1 ETP · Taux d'absence : 4%. À recruter dans 6 semaines.
     </div>
 
-    <details style="margin:.6rem 0">
-      <summary style="cursor:pointer;background:#1a3a5c;color:#fff;padding:.5rem .8rem;border-radius:6px;font-weight:700;font-size:13px">Q1 — Calculez le besoin net et choisissez recrutement interne ou externe (3 pts)</summary>
-      <div style="padding:.7rem;border:1px solid #d6dee9;border-top:none;border-radius:0 0 6px 6px">
+    <details>
+      <summary>Q1 — Calculez le besoin net · 3 pts</summary>
+      <div class="box" style="border-radius:0 0 6px 6px;margin-top:0">
         <table>
-          <thead><tr><th>Étape</th><th>Calcul</th><th>Résultat</th></tr></thead>
+          <thead><tr><th style="width:40%">Étape</th><th>Calcul</th><th>Résultat</th></tr></thead>
           <tbody>
-            <tr><td>Besoin brut</td><td>12 ETP</td><td>12</td></tr>
-            <tr><td>− Engagements en cours</td><td>−10 ETP</td><td>2</td></tr>
-            <tr><td>+ Départs prévus</td><td>+1 ETP</td><td>3</td></tr>
-            <tr><td>Ajustement absence (×1.04)</td><td>3 × 1.04</td><td><strong>≈ 3 ETP</strong></td></tr>
+            <tr><td>Besoin brut − Engagements + Départs</td><td>12 − 10 + 1</td><td>3 ETP</td></tr>
+            <tr><td>Ajustement absence (×1.04)</td><td>3 × 1.04</td><td><strong>≈ 3 ETP à recruter</strong></td></tr>
           </tbody>
         </table>
-        <p style="margin-top:.5rem;font-size:12px"><strong>Recommandation :</strong> Recrutement <strong>externe</strong> — pas de candidats internes évidents pour ce profil spécialisé PV · gain de sang neuf · pas de poste à combler en interne · délai serré (6 semaines) = agence de placement ou jobboard spécialisé.</p>
+        <p><strong>Recommandation :</strong> Recrutement externe — pas de candidats internes spécialisés PV · délai serré → agence de placement ou jobboard spécialisé.</p>
       </div>
     </details>
 
-    <details style="margin:.6rem 0">
-      <summary style="cursor:pointer;background:#1a3a5c;color:#fff;padding:.5rem .8rem;border-radius:6px;font-weight:700;font-size:13px">Q2 — Rédigez une offre d'emploi AIDA pour ce poste (4 pts)</summary>
-      <div style="padding:.7rem;border:1px solid #d6dee9;border-top:none;border-radius:0 0 6px 6px">
+    <details>
+      <summary>Q2 — Offre d'emploi AIDA · 4 pts</summary>
+      <div class="box" style="border-radius:0 0 6px 6px;margin-top:0">
         <table>
-          <thead><tr><th>Lettre</th><th>Contenu attendu</th></tr></thead>
+          <thead><tr><th style="width:15%">Lettre</th><th>Contenu de l'offre</th></tr></thead>
           <tbody>
-            <tr><td><strong>A — Attention</strong></td><td>«Installateur-électricien spécialisé PV (80–100%) — Rejoignez l'équipe solaire de Genève» + logo VoltGenève</td></tr>
-            <tr><td><strong>I — Intérêt</strong></td><td>VoltGenève Sàrl, 41 collaborateurs en forte croissance · Chantiers résidentiels et tertiaires · Spécialisation PV et domotique KNX</td></tr>
-            <tr><td><strong>D — Désir</strong></td><td>CCT électricité · 27j vacances · Formation continue prise en charge · Véhicule de chantier · Ambiance d'équipe soudée · Perspectives d'évolution</td></tr>
-            <tr><td><strong>A — Action</strong></td><td>Postulez avant le [date] à rh@voltgeneve.ch · Réf : PV-2026 · Questions : 022 XXX XX XX</td></tr>
+            <tr><td><strong>A</strong></td><td>«Installateur-électricien spécialisé PV (80–100%) — Rejoignez l'équipe solaire de Genève»</td></tr>
+            <tr><td><strong>I</strong></td><td>VoltGenève Sàrl · 41 collaborateurs en croissance · chantiers résidentiels et tertiaires · spécialisation PV et KNX</td></tr>
+            <tr><td><strong>D</strong></td><td>CCT électricité · 27j vacances · formation prise en charge · véhicule de chantier · perspectives d'évolution</td></tr>
+            <tr><td><strong>A</strong></td><td>Postulez avant le [date] à rh@voltgeneve.ch · Réf : PV-2026 · 022 XXX XX XX</td></tr>
           </tbody>
         </table>
       </div>
     </details>
 
-    <details style="margin:.6rem 0">
-      <summary style="cursor:pointer;background:#1a3a5c;color:#fff;padding:.5rem .8rem;border-radius:6px;font-weight:700;font-size:13px">Q3 — Proposez 3 étapes d'intégration avec justification (4.5 pts)</summary>
-      <div style="padding:.7rem;border:1px solid #d6dee9;border-top:none;border-radius:0 0 6px 6px">
+    <details>
+      <summary>Q3 — 3 étapes d'intégration · 4.5 pts</summary>
+      <div class="box" style="border-radius:0 0 6px 6px;margin-top:0">
         <table>
-          <thead><tr><th>Étape</th><th>Justification</th><th>Exemple concret</th></tr></thead>
+          <thead><tr><th style="width:28%">Étape</th><th>Justification</th><th>Exemple concret</th></tr></thead>
           <tbody>
-            <tr><td><strong>1. Accueil structuré (J1)</strong></td><td>Crée le sentiment d'appartenance dès le 1er jour · réduit l'anxiété · facilite l'intégration sociale</td><td>Visite des locaux · présentation à l'équipe · remise du règlement · déjeuner avec le chef d'équipe</td></tr>
-            <tr><td><strong>2. Tutorat (J1–J14)</strong></td><td>Transfert des savoir-faire spécifiques à l'entreprise · raccourcit la courbe d'apprentissage</td><td>Binôme avec installateur expérimenté PV les 2 premières semaines sur le chantier</td></tr>
-            <tr><td><strong>3. Entretien fin d'essai</strong></td><td>Valide l'intégration · donne un feedback constructif · fixe les objectifs pour la suite</td><td>Entretien formel à 1 mois avec objectifs SMART et à 3 mois avec bilan complet</td></tr>
+            <tr><td><strong>1. Accueil structuré (J1)</strong></td><td>Sentiment d'appartenance dès le 1er jour · réduit l'anxiété</td><td>Visite locaux · présentation équipe · remise règlement · déjeuner avec chef d'équipe</td></tr>
+            <tr><td><strong>2. Tutorat (J1–J14)</strong></td><td>Transfert des savoir-faire spécifiques · raccourcit la courbe d'apprentissage</td><td>Binôme avec installateur expérimenté PV pendant 2 semaines</td></tr>
+            <tr><td><strong>3. Entretien fin d'essai</strong></td><td>Valide l'intégration · feedback constructif · fixe objectifs</td><td>Entretien à 1 mois puis bilan à 3 mois avec objectifs SMART</td></tr>
           </tbody>
         </table>
       </div>
@@ -7448,53 +7513,53 @@ function toggleCM4Sec(head){
 
   <!-- CAS 3 -->
   <section>
-    <h2>Cas 3 — PowerVaud SA · Négociation &amp; Réunion</h2>
-    <div class="box" style="background:#f6f8fb;border-left:4px solid #1a3a5c">
-      <strong>Contexte :</strong> PowerVaud SA · Vous êtes responsable projets. Votre fournisseur principal de câbles (<strong>CâbleTop AG</strong>) annonce une hausse de <strong>+18%</strong> sur tous les tarifs dès le 1er du mois prochain, plus des frais de CHF 80.– pour toute commande inférieure à CHF 1'200.–. Vous devez négocier lors d'une réunion en face à face avec le directeur commercial de CâbleTop.
+    <h2>Cas 3 · PowerVaud SA — Négociation &amp; Réunion</h2>
+    <div class="box" style="background:#f6f8fb;border-left:4px solid #1a3a5c;margin-bottom:.5rem">
+      <strong>Contexte :</strong> Votre fournisseur CâbleTop AG annonce +18% sur tous les tarifs + CHF 80.– de frais pour commandes &lt; CHF 1'200.–. Vous devez négocier en face à face avec leur directeur commercial.
     </div>
 
-    <details style="margin:.6rem 0">
-      <summary style="cursor:pointer;background:#1a3a5c;color:#fff;padding:.5rem .8rem;border-radius:6px;font-weight:700;font-size:13px">Q1 — Préparez la négociation selon Harvard (4 aspects + MESORE) (5 pts)</summary>
-      <div style="padding:.7rem;border:1px solid #d6dee9;border-top:none;border-radius:0 0 6px 6px">
+    <details>
+      <summary>Q1 — Préparation Harvard (4 aspects + MESORE) · 5 pts</summary>
+      <div class="box" style="border-radius:0 0 6px 6px;margin-top:0">
         <table>
-          <thead><tr><th>Aspect Harvard</th><th>Application concrète</th></tr></thead>
+          <thead><tr><th style="width:32%">Aspect Harvard</th><th>Application concrète</th></tr></thead>
           <tbody>
-            <tr><td><strong>Personnes ≠ Problème</strong></td><td>Le directeur commercial n'est pas l'ennemi — c'est la hausse tarifaire qui pose problème. Traiter le problème sans attaquer la relation commerciale construite.</td></tr>
-            <tr><td><strong>Intérêts ≠ Positions</strong></td><td>Sa position : «+18%, c'est non négociable». Son intérêt réel : maintenir un client régulier, garder ses marges. Votre intérêt : maîtriser les coûts tout en maintenant la qualité et la relation.</td></tr>
-            <tr><td><strong>Options mutuellement avantageuses</strong></td><td>Volume garanti sur 12 mois (10% supplémentaire) en échange d'un plafond à +8% · suppression des frais si commande mensuelle groupée · paiement à 30 jours au lieu de 60</td></tr>
-            <tr><td><strong>Critères objectifs</strong></td><td>Indice des prix du cuivre (LME) · comparaison avec 2 autres fournisseurs · historique des commandes (volume annuel CHF) · statistiques sectorielles</td></tr>
-            <tr><td><strong>MESORE</strong></td><td>Consultation de 2 autres fournisseurs (Nexans, Prysmian) · appel d'offres en cours · si pas d'accord → transfert progressif de 30% du volume vers concurrent</td></tr>
+            <tr><td><strong>Personnes ≠ Problème</strong></td><td>Le directeur n'est pas l'ennemi. C'est la hausse tarifaire le problème. Préserver la relation commerciale.</td></tr>
+            <tr><td><strong>Intérêts ≠ Positions</strong></td><td>Sa position : «+18% non négociable». Son intérêt réel : garder un client régulier. Notre intérêt : maîtriser les coûts sans changer de fournisseur.</td></tr>
+            <tr><td><strong>Options mutuellement avantageuses</strong></td><td>Volume garanti +10% contre plafond à +8% · commandes groupées mensuelles pour supprimer les frais · paiement à 30j au lieu de 60j</td></tr>
+            <tr><td><strong>Critères objectifs</strong></td><td>Indice LME (cuivre) · comparaison 2 fournisseurs · historique des commandes (volume annuel CHF)</td></tr>
+            <tr><td><strong>MESORE</strong></td><td>Consultation Nexans et Prysmian déjà en cours · transfert progressif de 30% du volume si pas d'accord</td></tr>
           </tbody>
         </table>
       </div>
     </details>
 
-    <details style="margin:.6rem 0">
-      <summary style="cursor:pointer;background:#1a3a5c;color:#fff;padding:.5rem .8rem;border-radius:6px;font-weight:700;font-size:13px">Q2 — Appliquez la formule RAQ pour répondre à «Cette hausse est liée au prix du cuivre, c'est inévitable» (2 pts)</summary>
-      <div style="padding:.7rem;border:1px solid #d6dee9;border-top:none;border-radius:0 0 6px 6px">
+    <details>
+      <summary>Q2 — Formule RAQ · 2 pts</summary>
+      <div class="box" style="border-radius:0 0 6px 6px;margin-top:0">
+        <p><em>Argument du fournisseur : «Cette hausse est liée au prix du cuivre, c'est inévitable.»</em></p>
         <table>
-          <thead><tr><th>Lettre</th><th>Votre réponse</th></tr></thead>
+          <thead><tr><th style="width:18%">Lettre</th><th>Votre réponse</th></tr></thead>
           <tbody>
-            <tr><td><strong>R — Remercier</strong></td><td>«Je comprends tout à fait votre situation et je vous remercie de cette explication transparente.»</td></tr>
-            <tr><td><strong>A — Argumenter (ET/AUSSI)</strong></td><td>«ET selon l'indice LME que j'ai consulté ce matin, la hausse du cuivre sur 12 mois est de +6%, AUSSI notre volume annuel avec vous a augmenté de 15% cette année — ce qui représente une valeur supplémentaire pour votre entreprise.»</td></tr>
-            <tr><td><strong>Q — Questionner</strong></td><td>«Dans ce contexte, pensez-vous qu'une hausse de +8% au lieu de +18% serait envisageable pour maintenir notre partenariat ?»</td></tr>
+            <tr><td><strong>R</strong> — Remercier</td><td>«Je comprends votre situation et vous remercie de cette explication transparente.»</td></tr>
+            <tr><td><strong>A</strong> — Argumenter (ET/AUSSI)</td><td>«ET selon l'indice LME, la hausse du cuivre sur 12 mois est de +6% — AUSSI notre volume a augmenté de 15% cette année.»</td></tr>
+            <tr><td><strong>Q</strong> — Questionner</td><td>«Dans ce contexte, une hausse de +8% serait-elle envisageable pour maintenir notre partenariat ?»</td></tr>
           </tbody>
         </table>
-        <p style="font-size:12px;color:#5a6b7e;margin-top:.4rem">⚠️ Jamais «MAIS» — «mais» coupe la communication. Utiliser «ET», «AUSSI», «ENSUITE».</p>
+        <p><small>⚠️ Jamais «MAIS» — utiliser «ET», «AUSSI», «ENSUITE».</small></p>
       </div>
     </details>
 
-    <details style="margin:.6rem 0">
-      <summary style="cursor:pointer;background:#1a3a5c;color:#fff;padding:.5rem .8rem;border-radius:6px;font-weight:700;font-size:13px">Q3 — Préparez la réunion de négociation (objectif SMART + 4 rôles) (3 pts)</summary>
-      <div style="padding:.7rem;border:1px solid #d6dee9;border-top:none;border-radius:0 0 6px 6px">
+    <details>
+      <summary>Q3 — Préparer la réunion (SMART + 4 rôles) · 3 pts</summary>
+      <div class="box" style="border-radius:0 0 6px 6px;margin-top:0">
         <table>
-          <thead><tr><th>Élément</th><th>Contenu</th></tr></thead>
+          <thead><tr><th style="width:28%">Élément</th><th>Contenu</th></tr></thead>
           <tbody>
-            <tr><td><strong>Objectif SMART</strong></td><td>«D'ici la fin de cette réunion d'1h30, s'accorder sur un taux de hausse ≤ 10% et une suppression des frais de commande, formalisé par un accord écrit signé par les deux parties.»</td></tr>
-            <tr><td><strong>Animateur</strong></td><td>Vous — maintenez le fil de la négociation, gérez les émotions</td></tr>
-            <tr><td><strong>Gardien du temps</strong></td><td>Votre responsable achats (Pierre) — signal à 15 min de la fin</td></tr>
+            <tr><td><strong>Objectif SMART</strong></td><td>«D'ici la fin de cette réunion d'1h30, s'accorder sur une hausse ≤ 10% et la suppression des frais, formalisé par un accord écrit signé.»</td></tr>
+            <tr><td><strong>Animateur</strong></td><td>Vous — maintenez le fil, gérez les émotions</td></tr>
+            <tr><td><strong>Gardien du temps</strong></td><td>Pierre (resp. achats) — signal à 15 min de la fin</td></tr>
             <tr><td><strong>Secrétaire PV</strong></td><td>Pierre — note les propositions et l'accord final</td></tr>
-            <tr><td><strong>Participants</strong></td><td>Vous + Pierre (côté PowerVaud) · Directeur commercial + responsable compte (côté CâbleTop)</td></tr>
           </tbody>
         </table>
       </div>
@@ -7503,93 +7568,91 @@ function toggleCM4Sec(head){
 
   <!-- CAS 4 -->
   <section>
-    <h2>Cas 4 — SoleilRhône SA · Développement &amp; Évaluation</h2>
-    <div class="box" style="background:#f6f8fb;border-left:4px solid #1a3a5c">
-      <strong>Contexte :</strong> SoleilRhône SA · 55 collaborateurs · Vous êtes chef de projet. <strong>Ana</strong>, 35 ans, cheffe d'équipe depuis 4 ans, est excellente techniquement (D4 sur les installations électriques) mais présente des lacunes en management d'équipe depuis sa promotion (D1–D2). Elle souhaite évoluer vers un poste de responsable de chantier. Elle a aussi demandé une formation KNX avancée.
+    <h2>Cas 4 · SoleilRhône SA — Développement &amp; Évaluation</h2>
+    <div class="box" style="background:#f6f8fb;border-left:4px solid #1a3a5c;margin-bottom:.5rem">
+      <strong>Contexte :</strong> Ana, 35 ans, cheffe d'équipe depuis 4 ans. Excellente techniquement (D4 installations électriques), mais lacunes en management d'équipe depuis sa promotion (D1–D2). Elle souhaite évoluer vers responsable de chantier. Elle demande aussi une formation KNX avancée.
     </div>
 
-    <details style="margin:.6rem 0">
-      <summary style="cursor:pointer;background:#1a3a5c;color:#fff;padding:.5rem .8rem;border-radius:6px;font-weight:700;font-size:13px">Q1 — Proposez un plan de développement pour Ana avec les formes adaptées (4 pts)</summary>
-      <div style="padding:.7rem;border:1px solid #d6dee9;border-top:none;border-radius:0 0 6px 6px">
+    <details>
+      <summary>Q1 — Plan de développement avec formes adaptées · 4 pts</summary>
+      <div class="box" style="border-radius:0 0 6px 6px;margin-top:0">
         <table>
-          <thead><tr><th>Objectif</th><th>Forme développement</th><th>Action concrète</th><th>Délai</th></tr></thead>
+          <thead><tr><th style="width:30%">Objectif</th><th style="width:28%">Forme</th><th>Action concrète</th></tr></thead>
           <tbody>
-            <tr><td>Management d'équipe (D1→D3)</td><td><strong>Parallel to the job</strong></td><td>Coaching managérial externe · 8 séances sur 4 mois · objectifs définis ensemble</td><td>3 mois</td></tr>
-            <tr><td>Gestion des conflits dans l'équipe</td><td><strong>Near the job</strong></td><td>Groupe de réflexion avec 2 autres chefs d'équipe + vous · 1× par mois</td><td>6 mois</td></tr>
-            <tr><td>Formation KNX avancée</td><td><strong>Off the job</strong></td><td>Formation externe KNX niveau 2 chez EIT.swiss · 3 jours · financée à 100%</td><td>1 mois</td></tr>
-            <tr><td>Préparation poste resp. chantier</td><td><strong>Along the job</strong></td><td>Plan de carrière sur 2 ans · objectifs MbO trimestriels · planification de la relève</td><td>24 mois</td></tr>
+            <tr><td>Management d'équipe (D1→D3)</td><td><strong>Parallel to the job</strong></td><td>Coaching managérial externe · 8 séances sur 4 mois</td></tr>
+            <tr><td>Gestion des conflits</td><td><strong>Near the job</strong></td><td>Groupe de réflexion avec 2 autres chefs d'équipe · 1×/mois</td></tr>
+            <tr><td>Formation KNX avancée</td><td><strong>Off the job</strong></td><td>Formation KNX niveau 2 · 3 jours chez EIT.swiss · 100% financé</td></tr>
+            <tr><td>Préparation poste resp. chantier</td><td><strong>Along the job</strong></td><td>Plan de carrière 2 ans · objectifs MbO trimestriels</td></tr>
           </tbody>
         </table>
       </div>
     </details>
 
-    <details style="margin:.6rem 0">
-      <summary style="cursor:pointer;background:#1a3a5c;color:#fff;padding:.5rem .8rem;border-radius:6px;font-weight:700;font-size:13px">Q2 — Conduisez l'entretien d'évaluation annuelle d'Ana en 4 phases (4 pts)</summary>
-      <div style="padding:.7rem;border:1px solid #d6dee9;border-top:none;border-radius:0 0 6px 6px">
+    <details>
+      <summary>Q2 — Entretien d'évaluation en 4 phases · 4 pts</summary>
+      <div class="box" style="border-radius:0 0 6px 6px;margin-top:0">
         <table>
-          <thead><tr><th>Phase</th><th>Ce que vous dites (exemple)</th></tr></thead>
+          <thead><tr><th style="width:22%">Phase</th><th>Ce que vous dites (exemple en JE)</th></tr></thead>
           <tbody>
-            <tr><td><strong>1. Remercier</strong></td><td>«Ana, merci pour ton engagement cette année. Tu es une ressource précieuse pour notre équipe et ton expertise technique est reconnue de tous.»</td></tr>
-            <tr><td><strong>2. Féliciter</strong></td><td>«J'observe que tes chantiers sont livrés à temps dans 95% des cas, que ta maîtrise des installations PV est exemplaire et que tes clients te font régulièrement des retours positifs.»</td></tr>
-            <tr><td><strong>3. Points d'amélioration</strong></td><td>«J'observe que la gestion des tensions dans ton équipe représente encore un défi. J'aimerais qu'on travaille ensemble sur ce point — c'est d'ailleurs indispensable pour évoluer vers le poste de responsable chantier.»</td></tr>
-            <tr><td><strong>4. Encourager + objectifs</strong></td><td>«Je suis convaincu que tu as le potentiel pour y arriver. Voici les 3 objectifs SMART pour les 6 prochains mois : [liste]. Je serai à tes côtés pour t'accompagner.»</td></tr>
+            <tr><td><strong>1. Remercier</strong></td><td>«Ana, merci pour ton engagement cette année. Tu es une ressource précieuse et ton expertise technique est reconnue de tous.»</td></tr>
+            <tr><td><strong>2. Féliciter</strong></td><td>«J'observe que tes chantiers sont livrés à temps dans 95% des cas et que les retours clients sont excellents.»</td></tr>
+            <tr><td><strong>3. Point d'amélioration</strong></td><td>«J'observe que la gestion des tensions dans ton équipe est encore un défi — c'est indispensable pour évoluer vers responsable chantier.»</td></tr>
+            <tr><td><strong>4. Encourager + objectifs</strong></td><td>«Je suis convaincu que tu as le potentiel. Voici les 3 objectifs SMART pour les 6 prochains mois. Je serai à tes côtés.»</td></tr>
           </tbody>
         </table>
-        <p style="font-size:12px;color:#5a6b7e;margin-top:.4rem">⚠️ Toujours en JE · jamais de TU accusateur · points positifs AVANT négatifs · terminer sur une note d'encouragement avec objectifs concrets.</p>
+        <p><small>⚠️ Toujours en JE · jamais de TU accusateur · positif AVANT négatif · terminer sur encouragement.</small></p>
       </div>
     </details>
   </section>
 
   <!-- CAS 5 -->
   <section>
-    <h2>Cas 5 — NordElec AG · Fin de contrat &amp; Gestion du temps</h2>
-    <div class="box" style="background:#f6f8fb;border-left:4px solid #1a3a5c">
-      <strong>Contexte :</strong> NordElec AG · 38 collaborateurs · Vous êtes responsable projets. Situation A : <strong>Julien</strong>, électricien CFC, 7 ans de service, vient de remettre sa démission pour un poste chez un concurrent. Situation B : Vous gérez simultanément 4 chantiers avec un total de 320h de tâches prévues pour les 38 jours ouvrables restants de l'année.
+    <h2>Cas 5 · NordElec AG — Fin de contrat &amp; Gestion du temps</h2>
+    <div class="box" style="background:#f6f8fb;border-left:4px solid #1a3a5c;margin-bottom:.5rem">
+      <strong>Contexte A :</strong> Julien, électricien CFC, 7 ans de service, démissionne pour un poste chez un concurrent.<br>
+      <strong>Contexte B :</strong> Vous avez 320h de tâches planifiées pour les 38 jours ouvrables restants.
     </div>
 
-    <details style="margin:.6rem 0">
-      <summary style="cursor:pointer;background:#1a3a5c;color:#fff;padding:.5rem .8rem;border-radius:6px;font-weight:700;font-size:13px">Q1 — Procédure complète pour la démission de Julien (5 pts)</summary>
-      <div style="padding:.7rem;border:1px solid #d6dee9;border-top:none;border-radius:0 0 6px 6px">
+    <details>
+      <summary>Q1 — Procédure démission Julien · 5 pts</summary>
+      <div class="box" style="border-radius:0 0 6px 6px;margin-top:0">
         <table>
-          <thead><tr><th>#</th><th>Action</th><th>Détail légal / pratique</th></tr></thead>
+          <thead><tr><th style="width:5%">#</th><th style="width:32%">Action</th><th>Détail légal / pratique</th></tr></thead>
           <tbody>
             <tr><td>1</td><td><strong>Accueillir la nouvelle</strong></td><td>Pas de réaction émotionnelle · remercier de la transparence · garder son calme</td></tr>
-            <tr><td>2</td><td><strong>Vérifier le délai légal</strong></td><td>7 ans de service = entre 2ème et 9ème année → <strong>2 mois</strong> (Art. 335c al.1 CO + CCT art. 56-57). Vérifier si CCT prévoit plus.</td></tr>
-            <tr><td>3</td><td><strong>Accuser réception</strong></td><td>Lettre écrite : «Nous accusons réception de votre démission du [date]. Votre contrat prend fin le [date fin + 2 mois].»</td></tr>
-            <tr><td>4</td><td><strong>Décompte vacances + heures supp</strong></td><td>Vacances restantes au prorata · heures supplémentaires à payer ou compenser · 13ème prorata · informer sur fin LAA (31 jours), IJM (immédiat), LPP (1 mois)</td></tr>
-            <tr><td>5</td><td><strong>Entretien de départ</strong></td><td>Au dernier jour · laisser parler Julien · noter ses retours sur ambiance, management, outils, formation · remercier sincèrement</td></tr>
-            <tr><td>6</td><td><strong>Certificat de travail</strong></td><td>Art. 330a CO · Contenu : identité + durée + taux + poste + qualité + conduite · signataire inscrit au RC</td></tr>
+            <tr><td>2</td><td><strong>Vérifier le délai légal</strong></td><td>7 ans = entre 2ème et 9ème année → <strong>2 mois</strong> (Art. 335c CO + CCT art. 56-57)</td></tr>
+            <tr><td>3</td><td><strong>Accuser réception</strong></td><td>Lettre : «Nous accusons réception de votre démission du [date]. Contrat prend fin le [date+2 mois].»</td></tr>
+            <tr><td>4</td><td><strong>Décompte financier</strong></td><td>Vacances restantes au prorata · heures supp à payer · 13ème prorata · fin LAA (31j) · IJM (immédiat) · LPP (1 mois)</td></tr>
+            <tr><td>5</td><td><strong>Entretien de départ</strong></td><td>Au dernier jour · laisser parler · noter les retours · remercier sincèrement</td></tr>
+            <tr><td>6</td><td><strong>Certificat de travail</strong></td><td>Art. 330a CO · 6 éléments obligatoires · signataire inscrit au RC</td></tr>
           </tbody>
         </table>
       </div>
     </details>
 
-    <details style="margin:.6rem 0">
-      <summary style="cursor:pointer;background:#1a3a5c;color:#fff;padding:.5rem .8rem;border-radius:6px;font-weight:700;font-size:13px">Q2 — Analysez votre planning selon ALPES et Eisenhower (4 pts)</summary>
-      <div style="padding:.7rem;border:1px solid #d6dee9;border-top:none;border-radius:0 0 6px 6px">
+    <details>
+      <summary>Q2 — Analyse ALPES + Eisenhower · 4 pts</summary>
+      <div class="box" style="border-radius:0 0 6px 6px;margin-top:0">
         <table>
-          <thead><tr><th>Problème identifié</th><th>Analyse ALPES</th><th>Action corrective</th></tr></thead>
+          <thead><tr><th style="width:35%">Problème</th><th style="width:30%">Analyse ALPES</th><th>Action corrective</th></tr></thead>
           <tbody>
-            <tr><td>320h sur 38 jours = <strong>8.4h/jour</strong> sans marge</td><td><strong>P — Plages de réserve manquantes</strong> · ALPES recommande 30–50% de marge · ici 0% de marge</td><td>Réduire à max 6h de tâches planifiées/jour → laisser 2–2.5h pour imprévus</td></tr>
-            <tr><td>Toutes les tâches traitées pareil</td><td><strong>E — Égrappage absent</strong> · Pas de priorisation ABC/Eisenhower</td><td>Classer chaque tâche : A (urgent + important → faire soi-même) · B (important → planifier) · C (ni l'un ni l'autre → déléguer ou éliminer)</td></tr>
-            <tr><td>Pas de délégation visible</td><td><strong>A — Activités</strong> · certaines tâches peuvent être déléguées aux chefs d'équipe D4</td><td>Déléguer les tâches C aux chefs d'équipe expérimentés (Ana, Marco) · libérer 30–40h sur la période</td></tr>
+            <tr><td>320h sur 38 jours = 8.4h/jour sans marge</td><td><strong>P</strong> — Plages de réserve absentes · ALPES = 30–50% de marge</td><td>Max 6h planifiées/jour → 38 × 6h = 228h max · déléguer ou reporter 92h</td></tr>
+            <tr><td>Toutes les tâches traitées pareil</td><td><strong>E</strong> — Égrappage absent</td><td>Classer ABC/Eisenhower · A = faire soi-même · B = planifier · C = déléguer ou éliminer</td></tr>
+            <tr><td>Aucune délégation visible</td><td><strong>A</strong> — Activités à confier aux D4</td><td>Déléguer les tâches C aux chefs d'équipe expérimentés (Hersey S4)</td></tr>
           </tbody>
         </table>
-        <div class="box tip" style="margin-top:.5rem">
-          <strong>Calcul :</strong> 38 jours × 6h planifiables = <strong>228h max</strong> (avec marge). Il reste donc <strong>92h à déléguer ou à reporter</strong> après le 31.12.
-        </div>
       </div>
     </details>
 
-    <details style="margin:.6rem 0">
-      <summary style="cursor:pointer;background:#1a3a5c;color:#fff;padding:.5rem .8rem;border-radius:6px;font-weight:700;font-size:13px">Q3 — Stade de deuil de Julien et comment l'accompagner (2 pts)</summary>
-      <div style="padding:.7rem;border:1px solid #d6dee9;border-top:none;border-radius:0 0 6px 6px">
-        <p>Julien part de son propre chef → il est probablement en stade <strong>5 — Acceptation</strong> (il a déjà pris sa décision et rebondit). Il peut cependant traverser un moment de <strong>4 — Mélancolie</strong> dans les dernières semaines (attachement à ses collègues, projets en cours).</p>
-        <table style="margin-top:.5rem">
-          <thead><tr><th>Stade</th><th>Signal</th><th>Comment réagir</th></tr></thead>
+    <details>
+      <summary>Q3 — Stade de deuil de Julien (Kübler-Ross) · 2 pts</summary>
+      <div class="box" style="border-radius:0 0 6px 6px;margin-top:0">
+        <p>Julien part volontairement → il est en <strong>stade 5 — Acceptation</strong> (décision prise, il rebondit). Il peut traverser un moment de <strong>stade 4 — Mélancolie</strong> dans ses dernières semaines.</p>
+        <table>
+          <thead><tr><th style="width:28%">Stade</th><th style="width:30%">Signal</th><th>Comment réagir</th></tr></thead>
           <tbody>
-            <tr><td><strong>5 — Acceptation</strong></td><td>Parle sereinement de son nouveau poste, aide à la passation</td><td>Encourager · valoriser ses 7 ans · organiser un pot de départ · entretien de départ positif</td></tr>
-            <tr><td><strong>4 — Mélancolie</strong></td><td>Baisse de moral les dernières semaines, détachement</td><td>Ne pas forcer · reconnaître l'attachement · maintenir le lien professionnel positif</td></tr>
+            <tr><td><strong>5 — Acceptation</strong></td><td>Parle sereinement de son nouveau poste · aide à la passation</td><td>Encourager · valoriser ses 7 ans · organiser un pot · entretien de départ positif</td></tr>
+            <tr><td><strong>4 — Mélancolie</strong></td><td>Baisse de moral les dernières semaines</td><td>Ne pas forcer · reconnaître l'attachement · maintenir le lien professionnel</td></tr>
           </tbody>
         </table>
       </div>
@@ -7599,7 +7662,7 @@ function toggleCM4Sec(head){
   </div><!-- /body -->
 </div><!-- /sheet -->
 
-</div><!-- /t12 --><!-- /t12 --><!-- /t12 --><!-- /t12 --><!-- /t12 -->
+</div><!-- /t12 --><!-- /t12 --><!-- /t12 --><!-- /t12 --><!-- /t12 --><!-- /t12 -->
 
 
 
@@ -21250,7 +21313,7 @@ function filterVids(mod,btn){
 }
 </style>
 <div class="app-footer">
-  © Nicolas Wälchli — Révision BPEL · Dernière modification : 12.06.2026 à 11:34
+  © Nicolas Wälchli — Révision BPEL · Dernière modification : 12.06.2026 à 11:48
 </div>
 
 <script>document.addEventListener('DOMContentLoaded',function(){
