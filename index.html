@@ -795,6 +795,7 @@ mark.bpel-hit{background:#fde68a;color:inherit;padding:0 2px;border-radius:2px}
       <button class="mtab" onclick="M('m2_full',this)">M2 · Installations &amp; métrés</button>
       <button class="mtab" onclick="M('m3_full',this)">M3 · Planification</button>
       <button class="mtab" onclick="M('m3m3',this)">M3 · Étude &amp; projet</button>
+      <button class="mtab" onclick="M('m3spec_mod',this)">M3 · Spécialités techniques</button>
       <button class="mtab" onclick="M('m4_full',this)">M4 · Contrôle &amp; sécurité</button>
       <button class="mtab" onclick="M('m5_full',this)">M5 · Conduite &amp; RH</button>
     </div>
@@ -1007,6 +1008,1289 @@ mark.bpel-hit{background:#fde68a;color:inherit;padding:0 2px;border-radius:2px}
 </div>
 
 
+
+<!-- ===== M3 SPÉCIALITÉS TECHNIQUES (contenu issu des cours) ===== -->
+<div id="m3spec_mod" class="mod">
+<p class="stit">Module 3 — Spécialités techniques</p>
+<div class="info">Contenu extrait de tes supports de cours officiels (2.M3). 12 spécialités.</div>
+<div class="stabs">
+  <button class="stab on" onclick="S('ms_electrotechnique',this,'m3spec_mod')">⚡ Électrotechnique</button>
+  <button class="stab" onclick="S('ms_moteurs',this,'m3spec_mod')">⚙️ Moteurs & transfo</button>
+  <button class="stab" onclick="S('ms_pv',this,'m3spec_mod')">☀️ Photovoltaïque</button>
+  <button class="stab" onclick="S('ms_eclairage',this,'m3spec_mod')">💡 Éclairage</button>
+  <button class="stab" onclick="S('ms_knx',this,'m3spec_mod')">🏠 KNX</button>
+  <button class="stab" onclick="S('ms_domotique',this,'m3spec_mod')">🎚️ Domotique</button>
+  <button class="stab" onclick="S('ms_api',this,'m3spec_mod')">🤖 API</button>
+  <button class="stab" onclick="S('ms_telematique',this,'m3spec_mod')">🌐 Télématique</button>
+  <button class="stab" onclick="S('ms_fibre',this,'m3spec_mod')">🔆 Fibre optique</button>
+  <button class="stab" onclick="S('ms_coaxial',this,'m3spec_mod')">📡 Coaxial</button>
+  <button class="stab" onclick="S('ms_detection',this,'m3spec_mod')">🔥 Détection incendie</button>
+  <button class="stab" onclick="S('ms_mesure',this,'m3spec_mod')">📐 Appareils de mesure</button>
+</div>
+<div id="ms_electrotechnique" class="sub on">
+<p class="stit">⚡ Électrotechnique — courants alternatifs</p>
+
+<div class="card"><span class="badge bb">Grandeurs</span><h3>Le courant alternatif sinusoïdal</h3>
+  <ul>
+    <li>Courant alternatif = change <span class="hi">de grandeur ET de sens</span> périodiquement ; forme sinusoïdale : <span class="hi">i = Î·sin(ω·t)</span>.</li>
+    <li>Période <span class="hi">T</span> en secondes ; fréquence <span class="hi">f = 1/T</span> en hertz (nb de périodes/seconde).</li>
+    <li>Pulsation <span class="hi">ω = 2π·f = 2π/T</span> (angle en rad/s parcouru par le vecteur tournant).</li>
+    <li>Réseau de distribution : <span class="hi">f = 50 Hz → T = 0,02 s</span>.</li>
+    <li>Courant alternatif symétrique : valeur moyenne sur une période <span class="hi">= 0</span>.</li>
+  </ul>
+  <div class="fm">f = 1/T &nbsp;·&nbsp; ω = 2π·f &nbsp;·&nbsp; i = Î·sin(ω·t)</div>
+</div>
+
+<div class="card"><span class="badge bg">Méthode</span><h3>Valeur moyenne et valeur efficace</h3>
+  <ul>
+    <li>Valeur <span class="hi">efficace</span> = courant continu qui dissiperait la même chaleur dans la même résistance (racine quadratique moyenne, TRMS).</li>
+    <li>Pour une sinusoïde : <span class="hi">I_eff = Î/√2 = 0,707·Î</span> et U_eff = Û/√2 = 0,707·Û.</li>
+    <li>Valeur <span class="hi">moyenne</span> d'un courant sinusoïdal redressé (sur ½ période) : <span class="hi">I_moy = 2·Î/π = 0,636·Î</span>.</li>
+    <li>FEM induite (alternateur / transformateur) : <span class="hi">E = 4,44·f·N·φ̂</span> (N = nb de spires, φ̂ = flux max).</li>
+  </ul>
+  <div class="fm">I_eff = Î / √2 = 0,707·Î &nbsp;·&nbsp; E = 4,44·f·N·φ̂</div>
+</div>
+
+<div class="card"><span class="badge bb">Récepteurs</span><h3>Résistance pure (R)</h3>
+  <ul>
+    <li>Tension et courant <span class="hi">en phase</span> (déphasage nul) : φ = 0°.</li>
+    <li>Puissance <span class="hi">entièrement transformée en chaleur</span> (effet Joule) : P = R·I² = U·I.</li>
+    <li>La valeur de R <span class="hi">n'est pas influencée par la fréquence</span>.</li>
+    <li>Conductance G = 1/R exprimée en <span class="hi">siemens</span>.</li>
+  </ul>
+</div>
+
+<div class="card"><span class="badge br">Examen</span><h3>Bobine (self) en régime sinusoïdal</h3>
+  <ul>
+    <li>Bobine pure : le courant est <span class="hi">en retard de 90° sur la tension</span>.</li>
+    <li>Réactance d'induction : <span class="hi">X_L = 2π·f·L</span> [Ω] ; elle <span class="hi">augmente avec la fréquence</span> ; aucun effet Joule.</li>
+    <li>Bobine pure : Z = X_L, aucune puissance active ; puissance réactive <span class="hi">P_Q = X_L·I²</span> [var].</li>
+    <li>Bobine réelle = <span class="hi">R ohmique en série avec self pure L</span> : U aux bornes = somme vectorielle de U_R et U_L.</li>
+  </ul>
+  <div class="fm">X_L = 2π·f·L &nbsp;·&nbsp; Z = √(R² + X_L²) &nbsp;·&nbsp; tan φ = X_L/R &nbsp;·&nbsp; cos φ = R/Z</div>
+  <div class="warn">⚠️ Ne pas confondre <span class="hi">U_L</span> (aux bornes de la self seule) et <span class="hi">U</span> (aux bornes du circuit R-L).</div>
+</div>
+
+<div class="card"><span class="badge bb">Récepteurs</span><h3>Condensateur en régime sinusoïdal</h3>
+  <ul>
+    <li>Condensateur pur : le courant est <span class="hi">en avance de 90° sur la tension</span> (2 charges et 2 décharges par période).</li>
+    <li>Réactance de capacité : <span class="hi">X_C = 1/(2π·f·C)</span> [Ω] ; elle <span class="hi">diminue quand la fréquence augmente</span>.</li>
+    <li>Courant : I_C = U/X_C = U·2π·f·C ; aucune transformation d'énergie, P_Q = X_C·I².</li>
+    <li>Un condensateur est une <span class="hi">source d'énergie réactive</span> (utilisé pour compenser le cos φ).</li>
+  </ul>
+  <div class="fm">X_C = 1 / (2π·f·C)</div>
+</div>
+
+<div class="card"><span class="badge br">Examen</span><h3>Impédance, puissances et facteur de puissance</h3>
+  <ul>
+    <li>Impédance <span class="hi">Z = U/I</span> [Ω] : résistance apparente d'un récepteur en alternatif.</li>
+    <li>Trois puissances : active <span class="hi">P [W]</span>, réactive <span class="hi">Q [var]</span>, apparente <span class="hi">S [VA]</span>.</li>
+    <li><span class="hi">cos φ = P/S</span> = facteur de puissance (toujours ≤ 1).</li>
+    <li>Récepteur inductif : courant en retard ; récepteur capacitif : courant en avance.</li>
+  </ul>
+  <table>
+    <tr><th>Puissance</th><th>Formule (monophasé)</th><th>Unité</th></tr>
+    <tr><td>Active P</td><td>U·I·cos φ</td><td>W</td></tr>
+    <tr><td>Réactive Q</td><td>U·I·sin φ</td><td>var</td></tr>
+    <tr><td>Apparente S</td><td>U·I = √(P² + Q²)</td><td>VA</td></tr>
+  </table>
+</div>
+
+<div class="card"><span class="badge ba">Attention</span><h3>Résonance série R-L-C</h3>
+  <ul>
+    <li>Résonance quand <span class="hi">X_L = X_C</span> : la tension et le courant sont en phase.</li>
+    <li>Fréquence de résonance : <span class="hi">f₀ = 1/(2π·√(L·C))</span>.</li>
+    <li>À f₀ : impédance <span class="hi">Z = R (minimale)</span>, courant <span class="hi">I = U/R maximal</span>, cos φ = 1 (φ = 0°).</li>
+    <li>U_L = U_C et U_R = U → forte <span class="hi">surtension</span> aux bornes de L et de C.</li>
+    <li>Avant f₀ le circuit est capacitif (X_C > X_L), après f₀ il est inductif.</li>
+  </ul>
+  <div class="fm">À la résonance : X_L = X_C &nbsp;→&nbsp; f₀ = 1 / (2π·√(L·C))</div>
+</div>
+
+<div class="card"><span class="badge br">Examen</span><h3>Système triphasé : couplages étoile et triangle</h3>
+  <ul>
+    <li>Tension <span class="hi">simple</span> = entre phase et neutre ; tension <span class="hi">composée</span> = entre deux phases.</li>
+    <li>Relation générale : <span class="hi">U_composée = √3 · U_simple</span> (ex. 230 V → 400 V).</li>
+    <li>Puissance triphasée (U composée, I de ligne) : <span class="hi">P = √3·U·I·cos φ</span> — identique en étoile ou en triangle.</li>
+  </ul>
+  <table>
+    <tr><th>Couplage</th><th>Tension sur une phase</th><th>Courant de ligne</th></tr>
+    <tr><td>Étoile (Y)</td><td>U_ph = U/√3</td><td>I_ligne = I_phase</td></tr>
+    <tr><td>Triangle (Δ)</td><td>U_ph = U (composée)</td><td>I_ligne = √3·I_phase</td></tr>
+  </table>
+  <div class="info">Étoile symétrique : la somme des 3 courants est nulle → le <span class="hi">conducteur neutre est inutile</span>. S'il est déséquilibré, le neutre conduit la somme géométrique des 3 courants.</div>
+  <div class="warn">⚠️ Harmoniques de rang 3 (et multiples impairs de 3) : ils <span class="hi">s'additionnent dans le neutre</span>, qui peut conduire plus que le conducteur polaire le plus chargé.</div>
+</div>
+
+<div class="card"><span class="badge bg">Méthode</span><h3>Boucherot & compensation du cos φ</h3>
+  <ul>
+    <li>Méthode de Boucherot (ensemble de récepteurs) : puissances <span class="hi">actives P s'ajoutent arithmétiquement</span>, <span class="hi">réactives Q algébriquement</span> (inductif +, capacitif −), <span class="hi">apparentes S géométriquement</span>.</li>
+    <li>Un mauvais cos φ augmente le courant pour la même puissance active → pertes et surdimensionnement ; le distributeur impose <span class="hi">cos φ > 0,9</span>.</li>
+    <li>Compensation par condensateurs : énergie réactive produite sur place. Puissance à compenser <span class="hi">Q_C = P·(tan φ₁ − tan φ₂)</span>.</li>
+    <li>Capacité (monophasé) : C = Q_C / (U²·2π·f).</li>
+  </ul>
+  <div class="fm">Q_C = P · (tan φ₁ − tan φ₂)</div>
+  <div class="warn">⚠️ Compenser jusqu'à cos φ = 1 est à éviter : coûteux et risque de <span class="hi">résonance</span>. Compensation individuelle d'un moteur : Q_C ≤ 0,3 × P_nominale (sinon auto-excitation).</div>
+</div>
+</div>
+<div id="ms_moteurs" class="sub">
+<p class="stit">⚙️ Moteurs électriques & transformateur</p>
+
+<div class="card"><span class="badge bb">Principe</span><h3>Constitution et principe de base</h3>
+  <ul>
+    <li>Un conducteur parcouru par un courant dans un champ magnétique subit une <span class="hi">force (force de Laplace)</span> : c'est le principe du moteur.</li>
+    <li><span class="hi">Stator</span> (partie fixe) = inducteur : génère le champ magnétique.</li>
+    <li><span class="hi">Rotor</span> (partie mobile) = induit : cadre en rotation traversé par un courant.</li>
+    <li>Champ à direction constante → moteur à courant continu ; champ tournant → moteur à courant alternatif.</li>
+  </ul>
+</div>
+
+<div class="card"><span class="badge bb">Typologie</span><h3>Les grands types de moteurs</h3>
+  <ul>
+    <li><span class="hi">Moteur CC</span> : réglage de vitesse facile (point fort), mais collecteur et balais s'usent (point faible).</li>
+    <li><span class="hi">Moteur asynchrone (CA)</span> : robuste et simple ; le plus répandu.</li>
+    <li><span class="hi">Moteur pas à pas</span> : petit moteur de précision, positionnement en boucle ouverte, commande par impulsions.</li>
+    <li><span class="hi">Moteur universel</span> : structure proche d'un CC série, rendement faible (20 à 40 %), électroménager.</li>
+  </ul>
+  <div class="info">Point de fonctionnement = <span class="hi">intersection</span> de la caractéristique couple/vitesse du moteur et de celle de la charge. Types de couple résistant : constant, linéaire, parabolique (ventilateur), hyperbolique (enrouleur).</div>
+</div>
+
+<div class="card"><span class="badge br">Examen</span><h3>Vitesse synchrone et glissement</h3>
+  <ul>
+    <li>Vitesse de synchronisme du champ tournant : <span class="hi">N_s = 60·f/p</span> [tr/min] (p = nb de paires de pôles).</li>
+    <li>En rad/s : ω_s = 2π·f/p ; en tr/s : n_s = f/p.</li>
+    <li>Cette vitesse <span class="hi">n'est jamais atteinte</span> par un moteur asynchrone (à induction) ; elle l'est exactement par un moteur synchrone.</li>
+    <li>Glissement : <span class="hi">g = (N_s − N_rotor) / N_s</span>.</li>
+  </ul>
+  <div class="fm">N_s = 60·f / p &nbsp;·&nbsp; g = (N_s − N_m) / N_s</div>
+  <div class="info">Exemple : N_s = 3000 tr/min et glissement 5 % → N_rotor = 2850 tr/min.</div>
+</div>
+
+<div class="card"><span class="badge bg">Puissances</span><h3>Rendement et bilan de puissance</h3>
+  <ul>
+    <li>Rendement = <span class="hi">η = P_utile / P_absorbée</span> (toujours ≤ 1).</li>
+    <li>Rendement global = produit <span class="hi">η = η_rotor · η_stator</span> → intérêt de garder un <span class="hi">glissement faible</span>.</li>
+    <li>Pertes : pertes Joule et pertes fer dans le stator.</li>
+    <li>Puissance active → fait tourner le moteur et crée le couple ; puissance réactive → consommée dans le champ magnétique.</li>
+  </ul>
+</div>
+
+<div class="card"><span class="badge ba">Attention</span><h3>Facteur de puissance d'un moteur</h3>
+  <ul>
+    <li>Facteur de puissance <span class="hi">FP = cos φ</span>, φ = déphasage du courant par rapport à la tension.</li>
+    <li>Le cos φ <span class="hi">diminue quand la charge diminue</span>.</li>
+    <li>Conséquence pratique : <span class="hi">éviter d'installer un moteur surdimensionné</span>, qui fonctionnerait avec un cos φ non optimal.</li>
+  </ul>
+</div>
+
+<div class="card"><span class="badge br">Examen</span><h3>Moteur asynchrone à cage d'écureuil</h3>
+  <ul>
+    <li>Rotor à conducteurs <span class="hi">câblés en court-circuit</span> (cage).</li>
+    <li><b>Avantages :</b> robuste, branchement facile, changement de sens simple, <span class="hi">cos φ > 0,8</span>, bon rendement nominal, encombrement et prix réduits.</li>
+    <li><b>Inconvénients :</b> gamme de vitesse restreinte au-dessus de 1000 tr/min, <span class="hi">fort courant au démarrage (I_d jusqu'à 8 × I_n)</span>, ne supporte pas les démarrages longs (durée max ≈ 5 s).</li>
+  </ul>
+  <div class="info">Couplage du stator réglable au bornier (étoile ou triangle). Ex. : enroulement 230 V branché en <span class="hi">étoile</span> sur un réseau 230/400 V.</div>
+</div>
+
+<div class="card"><span class="badge bb">Démarrage</span><h3>Moteur asynchrone à rotor bobiné (à bagues)</h3>
+  <ul>
+    <li>Permet d'adapter le <span class="hi">couple de démarrage</span> à la machine entraînée.</li>
+    <li>Réduction maximale de l'appel de courant au démarrage : <span class="hi">I_d de 1,5 à 2 × I_n</span>.</li>
+    <li>Supporte les démarrages longs ou fréquents.</li>
+    <li><b>Inconvénients :</b> balais (entretien et surveillance), nécessite un <span class="hi">rhéostat de démarrage</span>, encombrement et prix plus élevés que la cage.</li>
+  </ul>
+</div>
+
+<div class="card"><span class="badge ba">Attention</span><h3>Moteur asynchrone monophasé</h3>
+  <ul>
+    <li>Le champ pulsatif du stator équivaut à <span class="hi">deux champs tournants opposés</span> → le <span class="hi">couple de démarrage est nul</span>.</li>
+    <li>Procédés de démarrage : <span class="hi">bague de déphasage</span>, enroulement auxiliaire de démarrage, ou moteur à condensateur.</li>
+    <li>Par rapport au triphasé : puissance massique plus faible, facteur de puissance plus faible, rendement inférieur.</li>
+    <li>Réservé aux moteurs de <span class="hi">moins de 10 kW</span>.</li>
+  </ul>
+</div>
+
+<div class="card"><span class="badge bo">Pratique</span><h3>Lecture d'une plaque / fiche technique (moteur ABB 30 kW)</h3>
+  <ul>
+    <li>Moteur triphasé asynchrone à cage, S1 (service continu), classe d'isolation <span class="hi">F / échauffement B</span>, IP55.</li>
+    <li>4 pôles, 50 Hz → N_s = 1500 tr/min ; vitesse nominale <span class="hi">1486 tr/min</span> (glissement ≈ 0,9 %).</li>
+    <li>Courant de démarrage élevé : <span class="hi">I_s/I_n = 9,3</span> ; couple de décollage T_s/T_n = 3,5 ; couple max T_max/T_n = 3,8.</li>
+  </ul>
+  <table>
+    <tr><th>Grandeur</th><th>Valeur</th></tr>
+    <tr><td>Puissance P_N</td><td>30 kW</td></tr>
+    <tr><td>Tension U_N (couplage Δ)</td><td>400 V</td></tr>
+    <tr><td>Courant nominal I_N</td><td>53,9 A</td></tr>
+    <tr><td>Courant à vide</td><td>19,6 A</td></tr>
+    <tr><td>Couple nominal T_N</td><td>193 Nm</td></tr>
+    <tr><td>cos φ (100 % / 75 % / 50 %)</td><td>0,84 / 0,81 / 0,72</td></tr>
+    <tr><td>Rendement η (à P_N)</td><td>95,1 % (IE4)</td></tr>
+  </table>
+  <div class="info">La fiche confirme la théorie : le <span class="hi">cos φ chute avec la charge</span> (0,84 → 0,72 à mi-charge) et le courant de démarrage vaut près de 9 fois le courant nominal.</div>
+</div>
+</div>
+<div id="ms_pv" class="sub">
+<p class="stit">☀️ Photovoltaïque</p>
+
+<div class="card"><span class="badge bb">Définitions</span><h3>Vocabulaire harmonisé de l'installation PV</h3><ul>
+<li><span class="hi">Cellule PV</span> : dispositif fondamental pouvant générer de l'électricité.</li>
+<li><span class="hi">Module PV</span> : plus petit ensemble de cellules interconnectées, complètement protégé contre l'environnement.</li>
+<li><span class="hi">Chaîne / string PV</span> : circuit série de modules PV.</li>
+<li><span class="hi">Groupe PV</span> : ensemble mécanique et électrique de modules et autres composants.</li>
+<li><span class="hi">Générateur PV</span> : ensemble de tous les groupes PV reliés côté continu (DC).</li>
+</ul></div>
+
+<div class="card"><span class="badge br">Point critique examen</span><h3>Conditions STC et grandeurs clés</h3><ul>
+<li><span class="hi">STC</span> (norme EN 60904-3) : rayonnement <span class="hi">1000 W/m²</span>, température <span class="hi">25 °C</span>, spectre solaire <span class="hi">AM 1,5</span>.</li>
+<li><span class="hi">kWp / kWc</span> : puissance maximale pouvant être fournie dans les conditions STC.</li>
+<li><span class="hi">U<sub>OC</sub></span> : tension en circuit ouvert (continu non chargé, STC).</li>
+<li><span class="hi">I<sub>SC</sub></span> : courant de court-circuit dans les conditions STC.</li>
+</ul>
+<div class="info">Retenir STC : 1000 W/m² – 25 °C – AM 1,5. Base de toute donnée catalogue module.</div>
+</div>
+
+<div class="card"><span class="badge bg">Technique</span><h3>Module standard et technologies</h3><ul>
+<li>Composition : verre de protection, couche <span class="hi">EVA</span> transparente, cellules Si mono/multi-cristallin raccordées, feuilles synthétiques, boîtier de raccordement, cadre aluminium.</li>
+<li>Technologie industrialisée principale : <span class="hi">silicium monocristallin</span> (croissance Czochralski, lingot ~30 cm).</li>
+<li>Plaquettes (wafers) sciées à épaisseur ~200 µm, briques 15,6 × 15,6 cm.</li>
+<li>Connecteur à fiche : enfichable, <span class="hi">IP65</span>, tension continue max <span class="hi">1000 V</span>, courant max <span class="hi">20 A</span>, résistant UV.</li>
+</ul></div>
+
+<div class="card"><span class="badge bg">Technique</span><h3>Comportement de la cellule et onduleurs</h3><ul>
+<li>Plus le <span class="hi">rayonnement augmente</span>, plus l'intensité (courant) augmente.</li>
+<li>Plus la <span class="hi">température augmente</span>, plus la tension diminue → <span class="hi">diminution de la puissance</span>.</li>
+<li>Types d'onduleurs : micro-onduleur, onduleur avec optimiseur, onduleur central.</li>
+<li>Onduleur sans transfo : création de l'alternance par modulation de largeur d'impulsions (<span class="hi">MLI / PWM</span>) + filtre de lissage (inductance).</li>
+</ul>
+<div class="warn">⚠️ Attention à ne pas surdimensionner l'onduleur (perte de rendement).</div>
+</div>
+
+<div class="card"><span class="badge ba">Conception</span><h3>Rayonnement solaire et orientation</h3><ul>
+<li><span class="hi">Extraterrestre</span> : à la limite de l'atmosphère.</li>
+<li><span class="hi">Direct</span> : dépend de la position du soleil, provoque des ombres portées.</li>
+<li><span class="hi">Diffus</span> : réflexion sur nuages, montagnes, lacs (pas d'ombre portée).</li>
+<li><span class="hi">Global</span> : mesuré sur surface horizontale = direct + diffus.</li>
+<li>Hauteur du soleil (zénith) : 21 juin <span class="hi">67°</span> · 21 mars/sept <span class="hi">44°</span> · 21 déc <span class="hi">20°</span>.</li>
+</ul></div>
+
+<div class="card"><span class="badge br">Point critique examen</span><h3>Calcul de la production (pour 1 kWp)</h3>
+<p>Production idéale E<sub>idéal</sub> = <span class="hi">1250 kWh</span> → réelle E<sub>réel</sub> = <span class="hi">1005 kWh</span> après pertes cumulées :</p>
+<table>
+<tr><th>Poste de perte</th><th>%</th></tr>
+<tr><td>Écart de spécification fabricant</td><td>4,5 %</td></tr>
+<tr><td>Salissures du module</td><td>2,0 %</td></tr>
+<tr><td>Température du module</td><td>3,5 %</td></tr>
+<tr><td>Ombre partielle</td><td>2,0 %</td></tr>
+<tr><td>Mismatching et pertes côté DC</td><td>3,0 %</td></tr>
+<tr><td>Erreur de réglage MPP</td><td>1,5 %</td></tr>
+<tr><td>Pertes d'onduleur</td><td>3,0 %</td></tr>
+<tr><td>Pertes côté AC, compteur</td><td>2,0 %</td></tr>
+</table>
+</div>
+
+<div class="card"><span class="badge bp">Finances</span><h3>Prix et rentabilité</h3><ul>
+<li>Prix indicatif : env. <span class="hi">CHF 2'500.–/kWc</span>.</li>
+<li>Exemple : 7,5 kWc → ~CHF 18'750.– HT (~20'200.– TTC).</li>
+<li>Rentabilité dépend de : investissement, subventions, économie fiscale, énergie produite, prix achat/revente, <span class="hi">taux d'autoconsommation</span>, entretien.</li>
+<li>Investissement fiscalement déductible (rentre dans le cadre de l'entretien).</li>
+</ul></div>
+
+<div class="card"><span class="badge br">Point critique examen</span><h3>NIBT – Dimensionnement et facteur Tk (DC)</h3><ul>
+<li>Courant admissible : <span class="hi">I<sub>G SC STC</sub> = I<sub>M SC STC</sub> × N × 1,25</span> (E+C 7.12.5.2.1.1).</li>
+<li>Tension assignée : <span class="hi">U<sub>nDC</sub> = U<sub>G</sub> × N × Kt</span> (7.12.5.1.2.2).</li>
+</ul>
+<div class="fm">Facteur de correction Tk sur U<sub>OC</sub> : ×1,15 jusqu'à 800 m · ×1,20 de 800 à 1500 m · ×1,25 au-delà de 1500 m</div>
+<div class="info">Si U avec Tk dépasse légèrement 1000 V : recalculer selon le coefficient de température (0°C, −5°C, −15°C ou −25°C selon altitude/inclinaison).</div>
+</div>
+
+<div class="card"><span class="badge br">Point critique examen</span><h3>NIBT – Protections côté DC/AC</h3><ul>
+<li>Seul le système <span class="hi">TN-S</span> peut être utilisé (7.12.4.1.1.4).</li>
+<li>Onduleur sans séparation galvanique → <span class="hi">DDR 30 mA type B</span> en amont côté AC, OU côté DC en <span class="hi">classe II</span> (7.12.4.1.1.3.2).</li>
+<li>Onduleur et commandes installés entre <span class="hi">40 cm et 2 m</span> de hauteur (7.12.5.1.3).</li>
+<li>Protection surcharge omise si courant admissible du câble ≥ <span class="hi">1,25 × I<sub>M SC STC</sub></span> (7.12.4.3.3.1).</li>
+<li>Courant global de chaînes parallèles : <span class="hi">I<sub>chaîne</sub> × (N<sub>chaîne</sub> − 1)</span>.</li>
+</ul></div>
+
+<div class="card"><span class="badge bo">NIBT – Terre & surtensions</span><h3>Équipotentialité, paratonnerre, parafoudres</h3><ul>
+<li>Liaison équipotentielle de protection : min <span class="hi">10 mm²</span> (<span class="hi">16 mm²</span> pour parafoudres).</li>
+<li>Longueur de ligne critique L<sub>crit</sub> (DC non blindée intérieure) : <span class="hi">Sud de la Suisse 20 m</span>, reste de la Suisse <span class="hi">30 m</span> → au-delà, protection surtension obligatoire.</li>
+<li>Section raccordement terre parafoudre : <span class="hi">T1 = 16 mm²</span>, <span class="hi">T2 = 6 mm²</span> ; ligne d'amenée L1+L2 ≤ <span class="hi">50 cm</span>.</li>
+<li>Paratonnerre pas nécessaire en principe après pose PV ; si le bâtiment en est équipé, intégrer le PV au concept (préavis ECA en cas de doute).</li>
+</ul></div>
+
+<div class="card"><span class="badge bo">Sectionnement & contrôle</span><h3>Coupure, identification, vérifications</h3><ul>
+<li>Moyens de coupure requis pour la maintenance côté <span class="hi">DC et AC</span> (7.12.5.3.7.1).</li>
+<li>Sectionnement DC remplaçable par une fiche si ≤ <span class="hi">10 A</span> et ≤ <span class="hi">2 kW/fiche</span> et ≤ <span class="hi">6 kW/onduleur</span>.</li>
+<li>Vérifications : contrôle visuel DC, conducteur de protection (<span class="hi">valeur limite 1 Ω</span>), tension à vide et polarité, I<sub>SC</sub> et courant de service, isolation, essais fonctionnels, dossier technique.</li>
+</ul></div>
+
+<div class="card"><span class="badge bp">Administratif</span><h3>Autorisations et démarches</h3><ul>
+<li>Autorisation <span class="hi">générale</span> (OIBT art. 9, maîtrisé engagé) : tout, du tableau au champ solaire.</li>
+<li>Autorisation <span class="hi">limitée</span> (OIBT art. 14) : à partir de l'interrupteur AC alimentant l'onduleur (pas de travaux sur le tableau).</li>
+<li>Avant travaux : autorisation de construire (annonce si LAT), <span class="hi">DRT</span> (demande de raccordement technique), avis d'installation au gestionnaire de réseau.</li>
+<li>Installations <span class="hi">&gt; 30 kVA AC</span> : demande d'approbation des plans à l'<span class="hi">ESTI</span>.</li>
+<li>Mise en service : protocole → enregistrement chez <span class="hi">Pronovo</span> (subventions).</li>
+</ul></div>
+</div>
+<div id="ms_eclairage" class="sub">
+<p class="stit">💡 Éclairage</p>
+
+<div class="card"><span class="badge bb">Base</span><h3>La lumière et le spectre visible</h3><ul>
+<li>La lumière est un <span class="hi">rayonnement électromagnétique</span> (rayonnement visible).</li>
+<li>Spectre visuel : entre <span class="hi">400 nm et 700 nm</span>.</li>
+<li>La lumière blanche du soleil = mélange de toutes les radiations lumineuses.</li>
+</ul>
+<div class="fm">λ = c/ν &nbsp;·&nbsp; ν = c/λ &nbsp;·&nbsp; c = ν·λ &nbsp;·&nbsp; ν = 1/T &nbsp;·&nbsp; T = λ/c</div>
+</div>
+
+<div class="card"><span class="badge bg">Vision</span><h3>L'œil : cônes, bâtonnets, adaptation</h3><ul>
+<li>Rétine : <span class="hi">6 à 8 millions de cônes</span> (vision colorée) et <span class="hi">~130 millions de bâtonnets</span> (vision noir/blanc).</li>
+<li>En faible éclairement, seuls les bâtonnets agissent → perception noir et blanc.</li>
+<li>Temps d'adaptation : sombre→clair ~<span class="hi">0,05 s</span> ; clair→sombre jusqu'à <span class="hi">25 min</span>.</li>
+<li>Acuité visuelle : diminue avec l'âge, augmente avec la luminance et le contraste ; meilleure dans le jaune-vert.</li>
+</ul>
+<div class="info">Scintillement le plus gênant entre 6 et 10 Hz ; fusion (lumière constante perçue) au-dessus de 50–60 Hz. Variations dues à la tension = effet Flicker.</div>
+</div>
+
+<div class="card"><span class="badge br">Point critique examen</span><h3>Les 4 grandeurs photométriques</h3>
+<table>
+<tr><th>Grandeur</th><th>Symbole</th><th>Unité</th></tr>
+<tr><td>Flux lumineux</td><td>Φ</td><td>lumen (lm)</td></tr>
+<tr><td>Intensité lumineuse</td><td>I</td><td>candela (cd = lm/sr)</td></tr>
+<tr><td>Éclairement lumineux</td><td>E</td><td>lux (lx = lm/m²)</td></tr>
+<tr><td>Luminance</td><td>L</td><td>cd/m²</td></tr>
+</table>
+<div class="fm">Efficacité lumineuse : η = Φ / P &nbsp; (lm/W)</div>
+</div>
+
+<div class="card"><span class="badge br">Point critique examen</span><h3>Intensité, éclairement, luminance</h3><ul>
+<li><span class="hi">Intensité I = Φ / Ω</span> : propriété d'une source ponctuelle, dépend de l'angle, <span class="hi">ne dépend pas de la distance</span>.</li>
+<li><span class="hi">Éclairement E = Φ / A</span> : lié à la surface réceptrice, dépend de la position et de l'angle d'incidence.</li>
+<li><span class="hi">Luminance L = I / A</span> : propriété d'une source étendue, indépendante de la distance ; <span class="hi">un système optique ne peut pas l'augmenter</span>.</li>
+<li>Angle solide Ω = A / r² en <span class="hi">stéradian (sr)</span>.</li>
+</ul>
+<div class="info">Candela (SI) : source émettant à 540×10¹² Hz (≈ 555 nm), intensité énergétique 1/683 W/sr.</div>
+</div>
+
+<div class="card"><span class="badge br">Point critique examen</span><h3>Loi photométrique (carré de la distance)</h3>
+<p>Pour une <span class="hi">source ponctuelle</span>, l'éclairement diminue avec le carré de la distance :</p>
+<div class="fm">E = I / d² &nbsp;·&nbsp; surface inclinée : E = (I / d²)·cos θ</div>
+<ul>
+<li>Une source de <span class="hi">1 cd</span> produit à <span class="hi">1 m</span> un éclairement de <span class="hi">1 lx</span>.</li>
+<li>Source isotrope : I = Φ / 4π &nbsp;·&nbsp; source lambertienne : I(ε) = I₀·cos ε.</li>
+<li>Loi photométrique applicable si distance &gt; <span class="hi">5 × diamètre</span> de la source (lambertienne).</li>
+</ul>
+<div class="warn">⚠️ Distances de mesure : phare voiture ~25 m, luminaire intérieur 10–25 m, phare marin ~300 m.</div>
+</div>
+
+<div class="card"><span class="badge ba">Qualité de la lumière</span><h3>Température de couleur et rendu (IRC)</h3><ul>
+<li>Standards : 2700 · 3000 · 3500 · 4000 · 4500 · 5000 K.</li>
+<li><span class="hi">&lt; 3300 K</span> = blanc chaud · <span class="hi">3300–5000 K</span> = blanc neutre · <span class="hi">&gt; 5000 K</span> = blanc froid.</li>
+<li><span class="hi">IRC / CRI / Ra</span> : varie de <span class="hi">0 à 100</span> (référence = 100), toujours lié à une température de couleur.</li>
+<li>Ra = moyenne des 8 premières couleurs : <span class="hi">Ra = ΣRi / 8</span>, avec Ri = 100 − 4,6·ΔE.</li>
+<li>Marquage abrégé : <span class="hi">830</span> = Ra &gt; 80 et 3000 K.</li>
+</ul></div>
+
+<div class="card"><span class="badge bg">Sources</span><h3>Modes de production de la lumière</h3><ul>
+<li><span class="hi">Thermorayonnement</span> : incandescence (excitation thermique) → spectre continu (corps noir, loi de Stefan-Boltzmann, loi de Wien).</li>
+<li><span class="hi">Électrorayonnement</span> : décharge par choc d'électrons/ions → nécessite une impédance série (<span class="hi">ballast</span>) ; spectre de lignes propre à chaque gaz.</li>
+<li><span class="hi">Photorayonnement</span> : photoluminescence (fluorescence, phosphorescence).</li>
+<li><span class="hi">Électroluminescence</span> à la jonction de 2 semi-conducteurs (LED) : lumière monochromatique, le band gap fixe λ.</li>
+</ul>
+<div class="info">Flux min garanti : toute lampe doit présenter au moins <span class="hi">90 %</span> de sa valeur catalogue. Durée de vie utile : 85 % (incand./fluo), 70 % (décharge), 70–90 % (LED).</div>
+</div>
+
+<div class="card"><span class="badge bo">Technologie LED</span><h3>Fonctionnement et lumière blanche</h3><ul>
+<li>LED = <span class="hi">Light Emitting Diode</span>, semi-conducteur (~4 mm², SSL). Pilotée en <span class="hi">courant constant</span> (pas en tension) pour maintenir flux et couleur.</li>
+<li>3 méthodes de blanc : RGB (mélange additif, bon IRC) ; <span class="hi">LED bleue + phosphore jaune</span> (la plus courante, IRC 75–85, TC froide) ; UV + 3 phosphores (IRC jusqu'à 96).</li>
+<li>Efficacité (2020) : <span class="hi">6000 K jusqu'à 200 lm/W</span>, 4000 K jusqu'à 180 lm/W ; le blanc froid est 10–15 % plus efficace que le blanc chaud.</li>
+<li>Allumage instantané (&lt; 0,1 ms), dimming facile, température de couleur stable.</li>
+</ul>
+<div class="warn">⚠️ La température est le paramètre principal à contrôler (influe sur flux ET durée de vie) → dissipateur thermique indispensable.</div>
+</div>
+
+<div class="card"><span class="badge bo">Technologie LED</span><h3>Durée de vie, binning, risques</h3><ul>
+<li>Codes de durée de vie : <span class="hi">L</span> = % de dépréciation du flux, <span class="hi">B</span> = % de LED en dessous. Ex. médiane <span class="hi">L70B50</span> ; L80B15 = 15 % des LED sous 80 % du flux initial.</li>
+<li><span class="hi">Binning</span> : tri obligatoire des LED en flux, chromaticité et tension/courant (constance de qualité).</li>
+<li>Risques photobiologiques (IEC 62471-2) : <span class="hi">RG0</span> (aucun) à <span class="hi">RG3</span> (danger même en exposition courte).</li>
+<li>Effets temporels (TLA) : Flicker (3–80 Hz), effet stroboscopique (~80–2000 Hz), phantom array.</li>
+</ul></div>
+
+<div class="card"><span class="badge br">Point critique examen</span><h3>Normes d'éclairagisme (applications)</h3>
+<table>
+<tr><th>Norme</th><th>Domaine</th></tr>
+<tr><td>EN 12464-1/2</td><td>Éclairage des lieux de travail</td></tr>
+<tr><td>EN 1838</td><td>Éclairage de sécurité</td></tr>
+<tr><td>EN 12193</td><td>Installations sportives</td></tr>
+<tr><td>EN 13201</td><td>Éclairage public</td></tr>
+<tr><td>IEC 62776</td><td>Tubes LED rétrofit (sécurité)</td></tr>
+</table>
+<div class="info">Tube LED rétrofit : doit respecter IEC 62776 (sécurité) ET le recalcul selon EN 12464. Sans recalcul (simple relamping), contrôler in situ les niveaux min d'éclairement et l'uniformité.</div>
+</div>
+</div>
+<div id="ms_knx" class="sub">
+<p class="stit">🏠 KNX</p>
+
+<div class="card">
+<span class="badge bb">Définition & historique</span>
+<h3>Qu'est-ce que KNX ?</h3>
+<ul>
+<li>Standard mondial ouvert pour la <span class="hi">domotique et la gestion technique du bâtiment</span> (smart home & building).</li>
+<li>Association KNX créée en <span class="hi">1990</span> à Bruxelles (ex « EIBA »), promouvait alors le système EIB.</li>
+<li>En <span class="hi">1999</span>, fusion avec BCI (France, Batibus) et EHSA (Pays-Bas, EHS) ; en <span class="hi">2006</span> décision de ne promouvoir qu'un seul système : KNX.</li>
+<li>KNX est <span class="hi">rétrocompatible avec EIB</span> : les produits peuvent porter le logo KNX ou EIB. En 30 ans, aucune rupture de compatibilité.</li>
+<li>Chaque participant possède sa <span class="hi">propre intelligence (microcontrôleur)</span> : système décentralisé, pas d'unité centrale obligatoire.</li>
+</ul>
+<div class="info">Normalisation : CENELEC EN 50090 (2003), CEN EN 13321-1/-2, mondiale ISO/IEC 14543-3 (2006), Chine GB/T 20965 (2013), USA ANSI/ASHRAE 135. KNX IP Secure = EN ISO 22510 (2019).</div>
+</div>
+
+<div class="card">
+<span class="badge bg">Médias & configuration</span>
+<h3>Médias de transmission et modes</h3>
+<ul>
+<li><span class="hi">TP (paire torsadée)</span> : câble de commande séparé — média le plus utilisé ; nouvelles installations, rénovations, fiabilité élevée.</li>
+<li><span class="hi">RF (radiofréquence)</span> : ligne radio, quand aucun câble ne peut être posé.</li>
+<li><span class="hi">IP (KNX IP)</span> : Ethernet/Wi-Fi ; grandes installations, transmission rapide, communication avec appareils mobiles.</li>
+<li>Pour relier plusieurs médias → <span class="hi">coupleur de médias</span>. Le média d'un produit est indiqué sur son étiquette.</li>
+</ul>
+<table>
+<tr><th>Mode</th><th>Outil</th><th>Public</th></tr>
+<tr><td>E-Mode</td><td>Sans PC (contrôleur central, poussoirs)</td><td>Installateurs ; fonctions limitées, petites/moyennes install.</td></tr>
+<tr><td>S-Mode (système)</td><td>Logiciel ETS sur PC</td><td>Concepteurs & installateurs certifiés ; tout type d'install.</td></tr>
+</table>
+<div class="info">ETS = outil unique multi-fabricant, rétrocompatible. Versions : ETS Professional (projets illimités), ETS Lite (≤20 participants), Pack ETS (3 licences Pro), ETS Home (1 projet, max 64 participants). LTE = Logical Tag Extended.</div>
+</div>
+
+<div class="card">
+<span class="badge ba">Topologie TP</span>
+<h3>Segment, ligne et zone</h3>
+<ul>
+<li>Plus petite unité = le <span class="hi">segment de ligne</span> ; chaque segment nécessite sa propre alimentation.</li>
+<li>Depuis 2019 : jusqu'à <span class="hi">256 participants TP par ligne</span> (produits « TP-256 ») sans répéteur. Avant 2018 : 64 participants/segment, extension par 3 répéteurs de ligne → ligne = max 4 segments.</li>
+<li>Une <span class="hi">zone</span> = jusqu'à <span class="hi">15 lignes</span> reliées à une ligne principale (main line = ligne 0) via des <span class="hi">coupleurs de ligne (CL)</span>.</li>
+<li>Les zones se raccordent à une <span class="hi">backbone line</span> via des <span class="hi">coupleurs de zone (CZ)</span>.</li>
+<li>Structures autorisées : <span class="hi">étoile, ligne (bus), arborescence</span> (et combinaisons). L'anneau/boucle est interdit.</li>
+</ul>
+<div class="info">Abréviations : CZ = coupleur de zone (backbone coupler), CL = coupleur de ligne, RL = répéteur de ligne, Pt = participant, Alim/Self = alimentation avec self. Un RL est le même matériel qu'un coupleur ; c'est le programme + l'adresse individuelle qui définissent son rôle.</div>
+</div>
+
+<div class="card">
+<span class="badge br">Adressage — point clé examen</span>
+<h3>Adresse individuelle & adresse de groupe</h3>
+<ul>
+<li><span class="hi">Adresse individuelle</span> (= adresse physique) : unique, identifie chaque participant ; sert aux télégrammes de programmation via ETS. Attribution via <span class="hi">bouton + LED de programmation</span>.</li>
+<li>Structure fixe sur <span class="hi">16 bits</span> : <span class="hi">Zone.Ligne.Appareil</span>.</li>
+<li><span class="hi">Adresse de groupe</span> : communication fonctionnelle normale entre participants (ex. allumé/éteint). Structure libre au choix du concepteur.</li>
+</ul>
+<div class="fm">Adresse individuelle = ZONE (0…15) . LIGNE (0…15) . APPAREIL (0…255)</div>
+<div class="fm">Adresse de groupe 3 niveaux = Principal (0…31) / Médian (0…7) / Sous (0…255)<br>2 niveaux = Principal (0…31) / Sous (0…2047)  ·  Libre = 1…65535</div>
+<ul>
+<li><span class="hi">65 535</span> adresses de groupe disponibles (à partir d'ETS5).</li>
+</ul>
+<div class="warn">⚠️ Une adresse de groupe ne peut pas être 0 : « 0/0/0 » n'est pas autorisée car réservée à la diffusion (broadcast), utilisée pour l'assignation des adresses individuelles. Après la mise en service, la communication se fait exclusivement via les adresses de groupe.</div>
+</div>
+
+<div class="card">
+<span class="badge bp">Objet de groupe & télégramme</span>
+<h3>Communication de données</h3>
+<ul>
+<li><span class="hi">Objet de groupe</span> (= objet de communication) : emplacement mémoire d'un participant ; une touche d'un poussoir ou une sortie d'actionneur = un objet de groupe.</li>
+<li>Taille d'un objet : de <span class="hi">1 bit à 14 octets</span>, définie par le fabricant selon la fonction (1 bit pour une commutation On/Off).</li>
+<li>ETS ne relie que des objets de groupe de <span class="hi">même taille</span>.</li>
+<li>Les données échangées sont typées par un <span class="hi">DPT (Data Point Type)</span> standardisé, ex. On/Off = DPT 1.001.</li>
+</ul>
+<div class="fm">Télégramme TP : Champ de contrôle · Adresse source · Adresse cible · Compteur de routage · Longueur · Donnée utile (1 bit…14 octets) · Octet de vérification</div>
+<div class="info">Exemple : appui touche → écrit « 1 » dans l'objet de groupe → télégramme « adresse de groupe 5/2/66, écriture, valeur 1 » envoyé sur le bus → tous les participants abonnés à 5/2/66 reçoivent le « 1 » et agissent.</div>
+</div>
+
+<div class="card">
+<span class="badge bo">Participants & composants</span>
+<h3>Structure d'un participant de bus</h3>
+<ul>
+<li>Un participant opérationnel comprend 3 parties : <span class="hi">coupleur de bus (BCU)</span> + <span class="hi">module d'application (AM)</span> + <span class="hi">programme d'application (AP)</span>.</li>
+<li>Liaison BCU ↔ AM via l'interface <span class="hi">PEI</span> (Physical External Interface) : échange de messages + alimentation limitée du module.</li>
+<li>Électronique interne : un <span class="hi">émetteur-récepteur</span> (transceiver, couplage au média) + un <span class="hi">microcontrôleur</span> + un circuit applicatif.</li>
+<li>Connexion au bus TP par le <span class="hi">connecteur standard (bornes rouge / gris foncé)</span>.</li>
+<li>3 catégories selon la fonction : <span class="hi">capteurs, actionneurs, contrôleurs</span> (un contrôleur régule sans E/S physiques, ex. module logique).</li>
+</ul>
+<div class="info">Installation minimale TP = alimentation KNX (30 V DC) avec self + 1 capteur + 1 actionneur + câble de bus. Capteurs et actionneurs sont alimentés par le bus.</div>
+</div>
+
+<div class="card">
+<span class="badge ba">Transmission & accès au bus</span>
+<h3>Signal TP et gestion des collisions</h3>
+<ul>
+<li>Transmission <span class="hi">symétrique</span> sur les 2 fils de la paire torsadée ; aucun fil connecté à la terre ; le participant évalue la <span class="hi">différence de tension AC</span> → immunité aux perturbations (qui affectent les 2 fils également).</li>
+<li>Codage du bit : logique <span class="hi">« 0 » = courant (chute de tension sur 30 V)</span>, logique <span class="hi">« 1 » = pas de courant</span>. Le « 0 » est dominant.</li>
+<li>Accès au bus par <span class="hi">CSMA/CA</span> (Carrier Sense Multiple Access with Collision Avoidance) : pas de maître/esclave, accès aléatoire si le bus est libre.</li>
+<li>En cas d'émission simultanée, celui qui envoie « 1 » mais lit « 0 » sur le bus arrête d'émettre → <span class="hi">pas de perte de données</span>. La priorité du télégramme peut imposer l'ordre.</li>
+</ul>
+<div class="fm">Débit TP : 104 µs par bit = 9 600 bit/s</div>
+<div class="info">L'alimentation délivre 30 V DC via une self (choke) : la self empêche le régulateur de corriger la tension de signal AC et génère la demi-alternance positive de l'impulsion.</div>
+</div>
+
+<div class="card">
+<span class="badge br">Longueurs de câble — point clé examen</span>
+<h3>Limites TP à respecter</h3>
+<table>
+<tr><th>Distance</th><th>Limite max</th></tr>
+<tr><td>Alimentation (self) ↔ participant</td><td>350 m</td></tr>
+<tr><td>Entre 2 participants</td><td>700 m (retard tₐ < 10 µs)</td></tr>
+<tr><td>Longueur totale de câble par ligne/segment</td><td>1 000 m</td></tr>
+<tr><td>Ligne étendue par 3 répéteurs (avant 2019)</td><td>4 000 m au total</td></tr>
+</table>
+<div class="warn">⚠️ Le nombre de participants par segment dépend de la consommation totale : la somme des consommations ne doit pas dépasser le courant de sortie de l'alimentation installée. Ordre de grandeur (≈10 mA/participant) : 160 mA ≈ 16 part., 320 mA ≈ 32, 640 mA ≈ 64, 1280 mA ≈ 128.</div>
+<div class="info">KNX Secure : KNX IP Secure (accès sécurisé via IP) et KNX Data Secure (communication chiffrée entre périphériques) protègent contre les manipulations ; participants reconnaissables à leur étiquette.</div>
+</div>
+
+<div class="card">
+<span class="badge bg">Avantages uniques</span>
+<h3>Pourquoi choisir KNX</h3>
+<ul>
+<li><span class="hi">Interopérabilité</span> : produits de fabricants différents « parlent la même langue » et communiquent sans obstacle ; un produit défectueux se remplace par un équivalent d'un autre fabricant.</li>
+<li><span class="hi">Outil de configuration unique</span> (ETS) pour tous les domaines et fabricants ; documentation complète de l'installation.</li>
+<li>Large gamme de produits et vaste réseau d'intégrateurs certifiés ; <span class="hi">rétrocompatibilité</span> totale.</li>
+<li><span class="hi">Efficacité énergétique</span> : synchronisation éclairage/ombrage/chauffage, adaptation aux conditions (station météo), mesure au niveau de la fonction → retour sur investissement rapide.</li>
+<li><span class="hi">Confort accru</span> et flexibilité : adaptations simples lors d'un changement d'usage ou de locataire.</li>
+</ul>
+</div>
+</div>
+<div id="ms_domotique" class="sub">
+<p class="stit">🏢 Domotique Niveau 2 — Bus de terrain & GTB</p>
+
+<div class="card">
+<span class="badge bb">GTB — fondamentaux</span>
+<h3>Gestion technique du bâtiment</h3>
+<ul>
+<li>La GTB peut réduire la consommation d'énergie : <span class="hi">jusqu'à 40 % d'économies</span> possibles (chauffage, refroidissement, ventilation, eau chaude…).</li>
+<li>Avantages : réduction des dépenses énergétiques, <span class="hi">diminution des coûts d'exploitation</span>, amélioration de la sécurité et du contrôle d'accès.</li>
+<li>Fiabilisation et <span class="hi">surveillance 24h/24 - 7j/7</span>, intervention à distance (moins de déplacements).</li>
+<li>Diagnostic des anomalies : transmission automatique des <span class="hi">alarmes par SMS, mail, serveur local</span>.</li>
+<li><span class="hi">Interopérabilité</span> entre systèmes : chauffage, ventilation, climatisation, intrusion, contrôle d'accès, éclairage, interphonie…</li>
+</ul>
+</div>
+
+<div class="card">
+<span class="badge bg">Définitions & modèle OSI</span>
+<h3>Qu'est-ce qu'un bus de terrain ?</h3>
+<ul>
+<li>Système de <span class="hi">communication numérique dédié</span> respectant le modèle OSI (ISO 7498-1983), entre capteurs, calculateurs, automates, actionneurs… dans une <span class="hi">zone géographique limitée</span>.</li>
+<li><span class="hi">Terrain</span> = espace géographique limité ; <span class="hi">Bus</span> = conducteurs communs échangeant des données selon un protocole ; <span class="hi">Réseau</span> = ensemble de bus sur un terrain.</li>
+<li>Basé sur un <span class="hi">modèle restreint à 3 couches</span> (couches 3 à 6 vides) : physique, liaison de données, application — gain de performance.</li>
+<li>But initial : remplacer les <span class="hi">boucles analogiques 4-20 mA</span>, déporter l'intelligence jusqu'au capteur, décentraliser contrôle/alarmes/diagnostics.</li>
+</ul>
+<div class="info">Avantages : câblage simplifié (1 seul câble), installation/mise en service rapides, maintenance facilitée, modularité (hot-plug), interopérabilité. Inconvénients : technologie plus complexe, outils spécialisés coûteux, manque de normalisation (bus incompatibles).</div>
+</div>
+
+<div class="card">
+<span class="badge ba">Classification & niveaux</span>
+<h3>Pyramide CIM et types de bus</h3>
+<ul>
+<li>Pyramide du <span class="hi">CIM</span> (Computer Integrated Manufacturing), 4 niveaux : <span class="hi">niveau 0</span> capteurs/actionneurs, <span class="hi">niveau 1</span> automatismes, niveau 2 gestion, niveau 3 ERP. Un niveau supérieur décide, un niveau inférieur exécute.</li>
+</ul>
+<table>
+<tr><th>Type</th><th>Données / Temps</th><th>Distance</th></tr>
+<tr><td>Data bus (RLI, Ethernet)</td><td>Fichiers / 1 à 10 s</td><td>Longue distance</td></tr>
+<tr><td>Field bus (unités de traitement)</td><td>&lt; 256 octets / &lt; 100 ms</td><td>&lt; 1 km</td></tr>
+<tr><td>Sensor bus (capteur/actionneur)</td><td>Niveau bit / &lt; 10 ms</td><td>&lt; 100 m</td></tr>
+</table>
+</div>
+
+<div class="card">
+<span class="badge br">Topologies & accès au médium — point clé examen</span>
+<h3>Comment les équipements partagent le bus</h3>
+<ul>
+<li>Topologies de câblage : <span class="hi">maille, bus, anneau, étoile</span> (nœud central, ajout de nœud en fonctionnement).</li>
+<li>Un bus de terrain doit répondre à 2 critères : <span class="hi">sécurité de l'information</span> et <span class="hi">déterminisme</span> (transférer les données dans un temps donné ; bande passante limitée ~1 Mbit/s pour réduire les erreurs).</li>
+</ul>
+<table>
+<tr><th>Mécanisme</th><th>Type</th><th>Exemples</th></tr>
+<tr><td>Maître-esclave</td><td>Déterministe</td><td>Modbus, Profibus, AS-i</td></tr>
+<tr><td>Bus à jeton (Token ring, 802.4)</td><td>Déterministe</td><td>Modbus Plus</td></tr>
+<tr><td>CSMA/CD (802.3)</td><td>Non déterministe</td><td>Ethernet</td></tr>
+</table>
+<div class="warn">⚠️ CSMA/CD (Ethernet) : en cas de collision, nouvelle tentative après une attente aléatoire → peu déterministe, risque de blocage si la charge du réseau est élevée.</div>
+</div>
+
+<div class="card">
+<span class="badge bp">Protocoles ouverts du bâtiment</span>
+<h3>KNX, LonWorks, BACnet</h3>
+<ul>
+<li><span class="hi">KNX</span> : issu de l'EIB (1987), interopérabilité « terrain à terrain » (peer to peer) ; convergence Batibus-EIB-EHS → Konnex (1997) ; 3 modes de config <span class="hi">A (Automatic), E (Easy), S (System)</span> ; normalisé ISO/CEI 14543 et EN 13321.</li>
+<li><span class="hi">LonWorks</span> (Echelon, 1988) : protocole <span class="hi">LonTalk</span>, nœuds intelligents décentralisés, échange déclenché par événement ; LON = Local Operating Network ; ISO/CEI 14908 ; label LonMark.</li>
+<li><span class="hi">BACnet</span> (ASHRAE, 1988) : orienté CVC, <span class="hi">interopérabilité verticale</span> (automation → supervision) ; supports TCP/IP et MS/TP (maître-esclave à passage de jeton) ; certification BTL.</li>
+</ul>
+</div>
+
+<div class="card">
+<span class="badge bo">Protocoles de la CVC & comptage</span>
+<h3>Profibus, Modbus, MP-Bus, M-Bus</h3>
+<ul>
+<li><span class="hi">Profibus</span> : transmission RS485, débit <span class="hi">9,6 kbit/s à 12 Mbit/s</span>, max <span class="hi">32 stations/segment</span>, jusqu'à 9 segments par répéteurs (126 équipements) ; terminaison active aux 2 extrémités ; structure linéaire. Profibus-DP : max 125 esclaves, 100 à 1200 m sans répéteur.</li>
+<li><span class="hi">Modbus</span> (Modicon, 1979) : couche 7 (applicatif), maître/esclave, domaine public ; RS-232/422/485 ; <span class="hi">Modbus TCP</span> (Ethernet, client/serveur). Trame = adresse + fonction + donnée.</li>
+<li><span class="hi">MP-Bus</span> : commande des servomoteurs CVC (volets, vannes VAV) ; jusqu'à <span class="hi">8 entraînements par maître</span> ; topologie libre (étoile, cercle, arborescence).</li>
+<li><span class="hi">M-Bus (Meter-Bus)</span> : relevé des consommations (chaleur, eau, élec, gaz) ; 2 fils, jusqu'à <span class="hi">250 esclaves par segment</span>.</li>
+</ul>
+</div>
+
+<div class="card">
+<span class="badge ba">Protocoles d'éclairage</span>
+<h3>DALI & DMX</h3>
+<ul>
+<li><span class="hi">DALI</span> (Digital Addressable Lighting Interface, CEI 62386) : remplace la gradation analogique 1-10 V ; un maître pilote jusqu'à <span class="hi">64 appareils</span>, chacun affectable à <span class="hi">16 groupes</span> et <span class="hi">16 scénarios</span>.</li>
+<li>DALI : <span class="hi">2 brins</span>, bidirectionnel (messages d'état), topologie ligne/arborescente/étoile/mixte, conducteur jusqu'à 300 m ; souvent intégré via KNX, BACnet ou Modbus.</li>
+<li><span class="hi">DMX</span> (Digital Multiplex, DMX512) : commande d'éclairage scénique/RGB ; basé sur <span class="hi">RS-485</span>, connecteurs XLR 3 pôles.</li>
+<li>DMX : transmission série, <span class="hi">unidirectionnelle</span> et asynchrone, <span class="hi">250 000 bits/s</span>, mots de 8 bits, maximum <span class="hi">512 canaux</span> par trame.</li>
+</ul>
+</div>
+
+<div class="card">
+<span class="badge bg">Sans fil & CAN</span>
+<h3>EnOcean, CANopen, EasyBus</h3>
+<ul>
+<li><span class="hi">EnOcean</span> : <span class="hi">energy harvesting</span> (piézoélectrique, lumière, température) → sans pile ni entretien ; fréquence <span class="hi">868 MHz</span> (Europe) ; portée 300 m en champ libre, 30 m en bâtiment ; bidirectionnel ; ISO/IEC 14543-3-10.</li>
+<li><span class="hi">CANopen</span> : basé sur le bus <span class="hi">CAN</span> (Controller Area Network, origine automobile) ; jusqu'à <span class="hi">1 Mbit/s</span>, max <span class="hi">127 nœuds</span>, multi-maîtres ; paire torsadée différentielle (CAN H / CAN L) terminée par <span class="hi">résistances 120 Ω</span> ; non déterministe.</li>
+<li><span class="hi">EasyBus</span> : communication par <span class="hi">CPL</span> (courant porteur, CENELEC EN 50065-1) : 230 VAC + signaux sur un même câble 2 fils ; master/slave ; bus max 1000 m, 128 esclaves max.</li>
+</ul>
+<div class="info">Ethernet « terrain » : ProfiNet IO (RT/IRT, Siemens), EtherNet/IP (CIP, Rockwell), Ethernet Powerlink (CANopen, half-duplex déterministe), EtherCAT (Beckhoff, adressage topologique automatique).</div>
+</div>
+
+<div class="card">
+<span class="badge br">Choisir un bus — point clé examen</span>
+<h3>Questions à se poser</h3>
+<ul>
+<li>Standard <span class="hi">international</span> ou « de fait » ? Solution d'un organisme indépendant ? Spécifications publiées ?</li>
+<li>Y a-t-il des <span class="hi">royalties / licences</span> à payer ? L'<span class="hi">interopérabilité</span> est-elle totale ?</li>
+<li>Caractéristiques techniques : <span class="hi">topologie, médium, longueur max, nombre max de nœuds, technique d'adressage</span>, temps de réponse.</li>
+<li>Possibilité de <span class="hi">multi-maître</span> ? Redondance du médium ? Usage de répéteurs ? Immunité au bruit ?</li>
+<li>Charge de travail pour configurer, ajouter/enlever un nœud, et influence de cet ajout/retrait.</li>
+</ul>
+<div class="info">Protocoles propriétaires fréquents (origine CVC) : N1/N2 (JCI), Novanet (Sauter), CCN (Carrier), C-bus (Honeywell). Ouverts & interopérables : KNX, Modbus, M-Bus, BACnet, LonWorks. Supervision/hypervision : OPC UA, oBIX. IoT longue portée faible débit : LoRa, SigFox.</div>
+</div>
+</div>
+<div id="ms_api" class="sub">
+<p class="stit">⚙️ API — Automate Programmable</p>
+
+<div class="card">
+<span class="badge bb">Câblé vs programmable</span>
+<h3>Deux logiques de commande</h3>
+<ul>
+<li><span class="hi">Automatisme câblé</span> : caractérisé par des liaisons matérielles (câblage) entre les éléments de commutation ; bloc logique câblé avec séquenceur.</li>
+<li><span class="hi">Automatisme programmable</span> : la fonction est définie par un <span class="hi">programme introduit en mémoire</span> de l'automate.</li>
+<li>Choix de la logique : <span class="hi">câblée</span> si besoin de rapidité ; <span class="hi">programmable</span> si possibilités de modification ou d'extension du système.</li>
+</ul>
+<div class="info">L'automate comporte : horloge, mémoire, processeur (ou microprocesseur), relié à un pupitre de commande, aux capteurs (information sur l'état) et aux actionneurs (commandes).</div>
+</div>
+
+<div class="card">
+<span class="badge bg">Définition & types</span>
+<h3>Qu'est-ce qu'un API ?</h3>
+<ul>
+<li><span class="hi">API = Automate Programmable Industriel</span> : appareil électronique comportant une mémoire, programmable à l'aide d'un langage adapté, qui permet de <span class="hi">commander des équipements électrotechniques</span>.</li>
+<li>Adapté pour : le stockage interne des instructions, <span class="hi">la mesure, la commande, le contrôle</span>.</li>
+</ul>
+<table>
+<tr><th>Catégorie</th><th>Exemple</th></tr>
+<tr><td>Micro AP</td><td>Logo</td></tr>
+<tr><td>Mini AP</td><td>S7-200</td></tr>
+<tr><td>API</td><td>S7-300</td></tr>
+</table>
+<div class="info">Avantages : programmable et reprogrammable, simple au dépannage, modulaire, robuste, fiable, adapté aux besoins actuels, facile à installer.</div>
+</div>
+
+<div class="card">
+<span class="badge ba">Architecture</span>
+<h3>Éléments constitutifs & équipement de base</h3>
+<ul>
+<li>Équipement de base : <span class="hi">unité centrale</span>, entrées/sorties <span class="hi">digitales</span>, entrées/sorties <span class="hi">analogiques</span>, système d'<span class="hi">alimentation</span>.</li>
+<li>Alimentation : <span class="hi">220 V / 24 V (AC / DC)</span>, plus une tension continue interne <span class="hi">5 V</span>.</li>
+<li>Bus internes = supports d'échange entre le processeur et les modules E/S : <span class="hi">bus d'adresses, de données, de commande</span>.</li>
+</ul>
+<div class="info">Fonctionnement du bus : l'adresse appelle le module, la donnée transmet l'état des signaux, la commande assure la gestion et la surveillance du flux d'informations.</div>
+</div>
+
+<div class="card">
+<span class="badge bo">Entrées & sorties</span>
+<h3>Modules E/S</h3>
+<ul>
+<li><span class="hi">Module d'entrée</span> : entrée 24 V avec <span class="hi">séparation galvanique</span>, entrée 230 V, consommation 5 à 10 mA ; entrées analogiques <span class="hi">0-10 V ; 0-20 mA ; 4-20 mA</span>.</li>
+<li><span class="hi">Module de sortie</span> : sortie continue avec séparation galvanique, courant <span class="hi">0,5 à 2 A</span>, possibilité courant alternatif ou à relais ; sortie <span class="hi">TOR</span>, sorties analogiques 0-10 V / 0-20 mA / 4-20 mA.</li>
+<li>Les états de <span class="hi">8 entrées</span> sont groupés dans un « octet d'entrée » (idem pour les sorties) ; l'API traite simultanément les 8 bits de l'octet.</li>
+</ul>
+</div>
+
+<div class="card">
+<span class="badge br">Fonctionnement cyclique — point clé examen</span>
+<h3>Le cycle de l'automate</h3>
+<ul>
+<li>La commande électronique traite le programme stocké en mémoire : elle <span class="hi">scrute l'état des entrées</span>, exécute les instructions, puis <span class="hi">commande les sorties</span> selon le résultat.</li>
+<li>L'<span class="hi">instruction</span> est la plus petite entité d'un programme utilisateur.</li>
+</ul>
+<div class="fm">Cycle (3 phases) : 1. Acquisition des entrées → 2. Phase de traitement → 3. Émission des sorties</div>
+<ul>
+<li>Le temps pour parcourir ce cycle = <span class="hi">temps de cycle</span>.</li>
+<li>Fonctions internes : opérations logiques (ET, OU, NON…), relais intermédiaires <span class="hi">M</span>, compteurs <span class="hi">Z / C</span>, temporisateurs <span class="hi">T</span>.</li>
+</ul>
+</div>
+
+<div class="card">
+<span class="badge bp">Adressage & signaux</span>
+<h3>Signaux binaires et notation</h3>
+<ul>
+<li>Au sein de l'automate, on ne trouve que des <span class="hi">signaux binaires TOR</span> (Tout Ou Rien) : 1 ou 0.</li>
+<li>État <span class="hi">« 0 » = absence de tension / arrêt</span> ; état <span class="hi">« 1 » = présence de tension / marche</span>.</li>
+<li>Adressage : adresse de bit et adresse d'octet (ex. <span class="hi">E3.0</span>).</li>
+</ul>
+<table>
+<tr><th>Allemand</th><th>Anglais</th><th>Français</th></tr>
+<tr><td>E (Eingang)</td><td>I (Input)</td><td>Entrée</td></tr>
+<tr><td>A (Ausgang)</td><td>O (Output)</td><td>Sortie (S)</td></tr>
+</table>
+</div>
+
+<div class="card">
+<span class="badge ba">Les mémoires</span>
+<h3>Types de mémoire</h3>
+<table>
+<tr><th>Mémoire</th><th>Type</th><th>Effacement / Rémanence</th></tr>
+<tr><td>RAM</td><td>Vive (lue et écrite)</td><td>Perte des infos à chaque coupure → besoin d'une batterie-tampon</td></tr>
+<tr><td>EPROM</td><td>Morte effaçable</td><td>Effacement par rayons UV ; contenu maintenu sans batterie</td></tr>
+<tr><td>EEPROM</td><td>Morte à effacement électrique</td><td>Contenu maintenu sans batterie</td></tr>
+<tr><td>ROM</td><td>Morte (par masque en fabrication)</td><td>Impossible à modifier ; contenu maintenu sans batterie</td></tr>
+</table>
+<div class="info">Chaque instruction est rangée dans une cellule de la mémoire programme. L'outil de programmation (PC) convertit le programme en langage machine et le transfère dans la mémoire de l'automate.</div>
+</div>
+
+<div class="card">
+<span class="badge bg">Langages de programmation</span>
+<h3>Représentations du programme</h3>
+<ul>
+<li>Un programme décrit les opérations de façon <span class="hi">séquentielle</span> (faire ceci, faire cela) ou <span class="hi">conditionnelle</span> (si… alors… sinon…).</li>
+<li><span class="hi">Logigramme</span> / schéma de référence (blocs logiques).</li>
+<li><span class="hi">Schéma à contacts (Ladder)</span>.</li>
+<li><span class="hi">Liste d'instructions</span> (ex. U E1.0 / U E1.1 / O / = A4.0).</li>
+</ul>
+<div class="info">Étude d'un automatisme : le Grafcet permet de décrire le déroulement séquentiel.</div>
+</div>
+
+<div class="card">
+<span class="badge bo">Applications & fiabilité</span>
+<h3>Où et avec quelle sûreté</h3>
+<ul>
+<li>Domaines : <span class="hi">domotique et technique du bâtiment</span>, interopérabilité MCR bâtiment, industrie, machine-outil.</li>
+<li>Possibilité de <span class="hi">visualisation / supervision</span> et de connexion à distance.</li>
+<li>La <span class="hi">fiabilité est supérieure</span> à celle d'une logique câblée traditionnelle.</li>
+</ul>
+<div class="warn">⚠️ Perturbations possibles à considérer : physiques (chocs, vibrations, variations de température), chimiques (milieu acide, gazeux), électriques (rayonnement, électrostatique).</div>
+</div>
+</div>
+<div id="ms_telematique" class="sub">
+<p class="stit">🌐 Télématique &amp; réseaux</p>
+
+<div class="card"><span class="badge bb">Modèles de référence</span><h3>Modèle OSI &amp; modèle TCP/IP</h3>
+<ul>
+<li><span class="hi">OSI = 7 couches</span> (proposé par l'ISO) : modèle <b>théorique</b>, jamais mis en pratique, aide à la compréhension.</li>
+<li><span class="hi">TCP/IP = 4 couches</span> (couches 5/6/7 groupées) : modèle de <b>la pratique</b>, celui d'Internet, le plus utilisé.</li>
+<li>Couche 1 physique · 2 liaison de données · 3 réseau · 4 transport · 5-6-7 application.</li>
+</ul>
+<table>
+<tr><th>Couche</th><th>Rôle</th><th>Protocoles</th></tr>
+<tr><td>1 Physique</td><td>Transmission des signaux</td><td>100/1000BaseT, WiFi, ADSL</td></tr>
+<tr><td>2 Liaison</td><td>Machines adjacentes</td><td>Ethernet, ARP</td></tr>
+<tr><td>3 Réseau</td><td>Routage, adressage (proche en proche)</td><td>IP, ICMP</td></tr>
+<tr><td>4 Transport</td><td>Bout en bout entre processus</td><td>TCP, UDP</td></tr>
+<tr><td>5-6-7 Application</td><td>Services réseau</td><td>HTTP(S), SMTP, POP3, FTP, SSH</td></tr>
+</table>
+</div>
+
+<div class="card"><span class="badge bg">Matériel</span><h3>Composants réseau &amp; couche OSI</h3>
+<ul>
+<li><b>Hub (concentrateur)</b> : couche 1, répète sur tous les ports → beaucoup de collisions. <span class="hi">Obsolète, remplacé par le switch</span>.</li>
+<li><b>Switch (commutateur)</b> : <span class="hi">couche 2</span>, utilise les <b>adresses MAC</b> pour commuter la trame sur le seul port de destination. Topologie étoile.</li>
+<li><b>Routeur</b> : <span class="hi">couche 3</span>, route les paquets entre réseaux IP différents en utilisant les adresses IP.</li>
+<li><b>Access point (WLAN)</b> : couche 2, pont entre une interface filaire et une interface radio. Diffuse un <b>SSID</b> (nom du réseau).</li>
+<li><b>Firewall (pare-feu)</b> : fonctionne comme un routeur mais filtre les paquets jusqu'à la couche application (ports, @IP, @MAC).</li>
+</ul>
+<div class="info">La « box » d'un opérateur contient : routeur (NAT activé) + firewall + switch (4 ports) + access point.</div>
+</div>
+
+<div class="card"><span class="badge br">Point critique examen</span><h3>Adressage IPv4</h3>
+<ul>
+<li>Adresse codée sur <span class="hi">32 bits</span> = 4 octets de 8 bits, écrite en décimal (ex. 230.47.34.234). Chaque octet : <b>0 à 255</b>.</li>
+<li>Espace total : 2³² = <span class="hi">4 294 967 296</span> adresses (stock épuisé → IPv6 sur 128 bits).</li>
+<li>Le <b>masque de réseau</b> sépare la partie <b>réseau</b> (255) de la partie <b>hôte</b> (0).</li>
+<li>Partie hôte à <b>0</b> → <span class="hi">adresse réseau</span> (jamais attribuée à un PC).</li>
+<li>Partie hôte à <b>1</b> (255) → <span class="hi">adresse de broadcast</span> (diffusion à tous les hôtes).</li>
+</ul>
+<div class="fm">Nombre d'hôtes adressables = <b>2ⁿ − 2</b> &nbsp;(n = bits de la partie hôte ; on retire l'adresse réseau et le broadcast)</div>
+</div>
+
+<div class="card"><span class="badge ba">Classes</span><h3>Les classes d'adresses IP</h3>
+<table>
+<tr><th>Classe</th><th>Masque</th><th>Plage réseau</th><th>Hôtes/réseau</th></tr>
+<tr><td>A</td><td>255.0.0.0</td><td>1.0.0.0 → 126.255.255.255</td><td>2²⁴−2 = 16 777 214</td></tr>
+<tr><td>B</td><td>255.255.0.0</td><td>128.0.0.0 → 191.255.255.255</td><td>2¹⁶−2 = 65 534</td></tr>
+<tr><td>C</td><td>255.255.255.0</td><td>192.0.0.0 → 223.255.255.255</td><td>2⁸−2 = 254</td></tr>
+</table>
+<div class="info">Aujourd'hui la notion de classe n'est plus utilisée : c'est le masque de sous-réseau qui indique le nombre de bits de la partie réseau.</div>
+</div>
+
+<div class="card"><span class="badge br">Point critique examen</span><h3>Adresses privées / publiques &amp; NAT</h3>
+<ul>
+<li><b>Publiques</b> : uniques, routables sur Internet (ex. 185.145.34.212).</li>
+<li><b>Privées</b> : réseaux internes seulement, <span class="hi">non routables sur Internet</span>. Plages à connaître :</li>
+</ul>
+<table>
+<tr><th>Plage privée</th><th>Masque</th></tr>
+<tr><td>10.0.0.0 → 10.255.255.255</td><td>255.0.0.0</td></tr>
+<tr><td>172.16.0.0 → 172.31.255.255</td><td>255.255.0.0</td></tr>
+<tr><td>192.168.0.0 → 192.168.255.255</td><td>255.255.255.0</td></tr>
+</table>
+<li><span class="hi">NAT</span> (Network Address Translation) : activé sur le routeur, remplace l'@IP privée source par l'@IP publique du routeur pour accéder à Internet.</li>
+</div>
+
+<div class="card"><span class="badge bp">Transport</span><h3>Ports, TCP vs UDP &amp; protocoles</h3>
+<ul>
+<li>Port = numéro identifiant une application, codé sur <span class="hi">16 bits (0 à 65 535)</span>. Ports <b>0–1023</b> réservés (well-known), <b>1024–65535</b> libres pour les clients.</li>
+<li><b>TCP</b> : fiable, négociation, moins rapide (web). <b>UDP</b> : non fiable, rapide, sans négociation (voix/vidéo temps réel).</li>
+</ul>
+<table>
+<tr><th>Protocole</th><th>Rôle</th><th>Port</th></tr>
+<tr><td>HTTP / HTTPS</td><td>Pages web / web sécurisé</td><td>TCP 80 / 443</td></tr>
+<tr><td>FTP</td><td>Transfert de fichiers</td><td>TCP 20 &amp; 21</td></tr>
+<tr><td>SMTP / POP3</td><td>Envoi / réception e-mail</td><td>TCP 25 / 110</td></tr>
+<tr><td>Telnet / SSH</td><td>Config distante / sécurisée</td><td>TCP 23 / 22</td></tr>
+<tr><td>DHCP / DNS</td><td>Attribution @IP / résolution nom</td><td>UDP 67-68 / 53</td></tr>
+</table>
+</div>
+
+<div class="card"><span class="badge bo">Services</span><h3>DHCP, DNS &amp; outils ICMP</h3>
+<ul>
+<li><b>DHCP</b> (Dynamic Host Configuration Protocol) : distribue automatiquement @IP, masque, passerelle, @DNS. Échange : <span class="hi">Discover → Offer → Request → Acknowledge</span> (UDP 67/68).</li>
+<li><b>DNS</b> (Domain Name System) : trouve l'@IP à partir d'un nom (UDP 53). Commande : <span class="hi">nslookup</span>.</li>
+<li><b>ICMP</b> (couche 3) : contrôle de transmission. Commandes <span class="hi">ping</span> et <span class="hi">tracert</span> (traceroute).</li>
+<li>Config Windows : <b>ipconfig</b>, ipconfig /all, /renew, /release.</li>
+</ul>
+</div>
+
+<div class="card"><span class="badge bg">Sans-fil &amp; filaire</span><h3>WiFi, chiffrage &amp; Ethernet</h3>
+<ul>
+<li>WiFi (IEEE 802.11) : b/g/n (2,4 GHz) · a/n/ac/ax (5 GHz). <span class="hi">802.11ax = WiFi 6</span> ; 802.11be = WiFi 7 (6 GHz).</li>
+<li>Chiffrage : WEP et WPA <b>désuets</b> → <span class="hi">WPA2 à privilégier</span>, WPA3 (2018).</li>
+<li>Modes WPA : <b>Personal (PSK)</b> clé partagée (privé) · <b>Entreprise (802.1x / RADIUS)</b> identifiants par utilisateur.</li>
+<li>Ethernet cuivre : 10/100/1000BaseT sur <span class="hi">UTP, RJ-45, max 100 m</span>. Adresse MAC = 48 bits (6 octets hexa), 24 bits fabricant + 24 bits carte.</li>
+</ul>
+</div>
+
+<div class="card"><span class="badge ba">Étendue</span><h3>Types de réseaux &amp; familles</h3>
+<ul>
+<li><b>LAN</b> (Local) : une organisation, petite zone, Ethernet, 10 Mbps → 10 Gbps.</li>
+<li><b>MAN</b> (Metropolitan) : interconnecte des LAN proches (qq dizaines de km), liens fibre.</li>
+<li><b>WAN</b> (Wide) : grandes distances via routeurs ; le plus connu = <span class="hi">Internet</span>.</li>
+<li><b>WLAN</b> : LAN sans fil (WiFi), portée ~100 m.</li>
+</ul>
+<div class="info">Deux familles historiques : commutation de <b>circuits</b> (RTC/RNIS, taxation au temps, hors service) et commutation de <b>paquets</b> (IP, taxation au volume).</div>
+</div>
+</div>
+<div id="ms_fibre" class="sub">
+<p class="stit">💡 Fibre optique</p>
+
+<div class="card"><span class="badge bb">Principe</span><h3>Transmission par fibre optique</h3>
+<ul>
+<li>On transforme un <b>signal électrique</b> d'entrée en <b>signal lumineux</b> injecté dans la fibre ; à l'autre extrémité on le retransforme en signal électrique.</li>
+<li>Onde utilisée : <span class="hi">infrarouge</span>, fréquence ≈ 10¹⁴ Hz, longueur d'onde λ proche du micromètre.</li>
+<li>Longueurs d'onde télécom : <span class="hi">850 / 1310 / 1550 nm</span> (relation f = c / λ).</li>
+</ul>
+<div class="info"><b>Avantages FO vs cuivre :</b> petites dimensions · très hauts débits · grande réserve de capacité · insensibilité aux parasites EM · affaiblissement très faible · pas de diaphonie. Débit non lié à la distance.</div>
+</div>
+
+<div class="card"><span class="badge bg">Structure</span><h3>Constitution de la fibre</h3>
+<ul>
+<li><b>Cœur (core)</b> : silice, propage la lumière — Ø <span class="hi">9 / 50 / 62,5 µm</span>.</li>
+<li><b>Gaine optique (cladding)</b> : même matériau dopé différemment, confine la lumière dans le cœur — Ø <span class="hi">125 µm</span>.</li>
+<li><b>Revêtement de protection (coating)</b> : protection mécanique, sans fonction de propagation — Ø 250 µm.</li>
+</ul>
+<div class="fm">Notation <b>50/125 µm</b> = Ø cœur (n1) / Ø gaine optique (n2). Indice du cœur 62,5/125 ≈ 1,5. Plus n est élevé, plus l'onde est lente.</div>
+<div class="info">Diamètres successifs : fibre nue 250 µm → serrée 900 µm (0,9 mm) → cordon 3 mm (aramide + manteau).</div>
+</div>
+
+<div class="card"><span class="badge br">Point critique examen</span><h3>Types de fibre : monomode vs multimode</h3>
+<table>
+<tr><th>Type</th><th>Cœur</th><th>Usage</th></tr>
+<tr><td>Multimode saut d'indice</td><td>gros</td><td>courtes distances</td></tr>
+<tr><td>Multimode gradient d'indice</td><td>50 ou 62,5 µm</td><td>courtes distances</td></tr>
+<tr><td>Monomode (single-mode)</td><td>9 µm</td><td>longues distances</td></tr>
+</table>
+<ul>
+<li><b>Multimode</b> : la première utilisée, facile mais <span class="hi">bande passante limitée</span>, réservée aux courtes distances. Source LED, 850/1300 nm.</li>
+<li><b>Monomode</b> : <span class="hi">bande passante très élevée</span>, solution universelle longues distances, composants chers. Source laser, 1310/1550 nm.</li>
+</ul>
+</div>
+
+<div class="card"><span class="badge ba">Classes</span><h3>Classes de fibres (OM / OS)</h3>
+<table>
+<tr><th>Classe</th><th>Fibre</th><th>1 Gbps</th><th>10 Gbps</th></tr>
+<tr><td>OM1</td><td>62,5/125</td><td>2 à 220 m</td><td>2 à 33 m</td></tr>
+<tr><td>OM2</td><td>50/125</td><td>2 à 550 m</td><td>2 à 82 m</td></tr>
+<tr><td>OM3</td><td>50/125 (VCSEL 850)</td><td>2 à 900 m</td><td>2 à 300 m</td></tr>
+<tr><td>OS1</td><td>monomode (G652)</td><td>2 m à 100 km</td><td>2 m à 40 km</td></tr>
+</table>
+<div class="info">OM = multimode · OS = monomode. OS1 (G652) = la fibre la plus courante des réseaux télécom.</div>
+</div>
+
+<div class="card"><span class="badge bp">Sources optiques</span><h3>Émetteurs &amp; longueurs d'onde</h3>
+<ul>
+<li><b>LED</b> : multimode 850/1300 nm, large spectre (~50 nm), peu coûteuse.</li>
+<li><b>LASER</b> (Fabry-Perot, DFB) : monomode 1310/1550 nm, spectre étroit (~1 nm), forte puissance, plus coûteux.</li>
+<li><b>VCSEL</b> : multimode 850 nm, applications Gigabit Ethernet.</li>
+<li><b>EDFA</b> : amplificateur optique à fibre dopée erbium, autour de 1550 nm.</li>
+</ul>
+<div class="info">Multiplexage en longueur d'onde : WDM (1310 &amp; 1550) · CWDM (canaux de 20 nm, 18 canaux ITU G.694.2) · DWDM (dense, coûteux).</div>
+</div>
+
+<div class="card"><span class="badge bo">Raccordement</span><h3>Épissures &amp; connecteurs</h3>
+<ul>
+<li><b>Épissure</b> = raccordement <span class="hi">non démontable</span> : par <b>fusion</b> (fibres clivées, fondues aux électrodes, protégée par gaine thermo) ou <b>mécanique</b> (gel d'indice, raccord en 30 s).</li>
+<li><b>Connecteur</b> = raccordement <span class="hi">démontable</span>, caractérisé par les <b>pertes d'insertion</b> et la <b>réflectance</b>.</li>
+<li>Polissage : contact physique sans angle (PC) ou <span class="hi">avec angle 8° (APC)</span>.</li>
+</ul>
+<div class="warn">⚠️ Connecter un connecteur avec angle (APC) à un sans angle (PC) → atténuation ≈ 3-4 dB et réflexions. À réserver aux urgences.</div>
+</div>
+
+<div class="card"><span class="badge bg">Phénomènes</span><h3>Dispersion &amp; atténuation</h3>
+<ul>
+<li><b>Dispersion matériau</b> : la source n'est pas monochromatique ; chaque λ se propage à vitesse différente → l'impulsion s'étale.</li>
+<li><b>Dispersion guide</b> : le champ déborde dans la gaine, d'autant plus que λ est grande.</li>
+<li><span class="hi">À 1310 nm les deux dispersions se compensent</span> → dispersion chromatique nulle (avantage de la 2ᵉ fenêtre).</li>
+<li>Monomode : atténuation constante quelle que soit la fréquence ; seule la dispersion limite la bande passante.</li>
+</ul>
+<div class="fm">Causes d'affaiblissement : couplage, absorption &amp; diffusion, défaut de gaine, courbure, jonction, pertes de Fresnel (réflexion).</div>
+</div>
+
+<div class="card"><span class="badge br">Sécurité &amp; mesures</span><h3>Risques et instruments</h3>
+<ul>
+<li><span class="hi">Ne jamais regarder dans une fibre</span> : le rayon infrarouge (invisible) peut provoquer des brûlures de la rétine — dégâts irréversibles en une fraction de seconde. Signalisation obligatoire.</li>
+<li>Déchets de fibre après clivage : dangereux (peuvent pénétrer sous la peau) → collecteur / récipient à fibre obligatoire.</li>
+<li>Classes laser : Classe 1 sans danger → Classe 4 (&gt; 500 mW / &gt; 27 dBm) très dangereux yeux et peau.</li>
+</ul>
+<div class="info"><b>Mesures :</b> réflectomètre <span class="hi">OTDR</span> (visualise la fibre, localise le défaut) · power-mètre (niveau) · identificateur de signal · source visible 650 nm (continuité, portée 5 km). Mesure clé à la mise en service = l'<b>atténuation</b>.</div>
+</div>
+</div>
+<div id="ms_coaxial" class="sub">
+<p class="stit">📺 Coaxial &amp; CATV</p>
+
+<div class="card"><span class="badge br">Point critique examen</span><h3>Impédance 75 Ω &amp; adaptation</h3>
+<ul>
+<li>En CATV on travaille avec une impédance de <span class="hi">75 Ω</span>. Tous les composants du système doivent avoir la même impédance.</li>
+<li>Transfert de puissance optimal : résistance interne de la source (Ri) = résistance de charge (RL) → en fin de liaison il faut toujours une <span class="hi">résistance de terminaison de 75 Ω</span>.</li>
+<li>Si l'impédance n'est pas identique → <b>ondes stationnaires</b> (ondulation) qui déforment le signal : <b>défaut d'adaptation</b>.</li>
+</ul>
+<div class="warn">⚠️ Terminaison manquante, câble 60 Ω, court-circuit ou prise mal montée = mauvaise adaptation. Les canaux numériques sont perturbés avant les analogiques.</div>
+</div>
+
+<div class="card"><span class="badge bb">Notions de base</span><h3>Le décibel (dB)</h3>
+<ul>
+<li>Le dB est l'unité usuelle des télécoms pour pertes et gains <b>relatifs</b> : les valeurs en dB s'additionnent et se soustraient facilement.</li>
+<li><span class="hi">En tension → coefficient 20</span> · <span class="hi">en puissance → coefficient 10</span>.</li>
+</ul>
+<div class="fm">Atténuation (tension) = <b>20 · log(Us/Ue)</b> &nbsp;|&nbsp; Atténuation (puissance) = <b>10 · log(Ps/Pe)</b> &nbsp;|&nbsp; <b>dBm</b> = 10 · log(Pout / 1 mW)</div>
+<table>
+<tr><th>Unité</th><th>Référence</th></tr>
+<tr><td>dBmV</td><td>niveau de sortie pour 1 mV d'entrée</td></tr>
+<tr><td>dBµV</td><td>niveau de sortie pour 1 µV d'entrée</td></tr>
+</table>
+<div class="info">Relation : 1 dBmV + 60 = 1 dBµV. La puissance absolue se mesure en <b>dBm</b>.</div>
+</div>
+
+<div class="card"><span class="badge ba">Calcul dB</span><h3>Règles de 3 et de 10</h3>
+<ul>
+<li><b>Règle de 10</b> : chaque +10 dB multiplie la puissance par 10 ; −10 dB la divise par 10.</li>
+<li><b>Règle de 3</b> : chaque +3 dB double la puissance (×2) ; −3 dB la divise par 2 (×0,5).</li>
+</ul>
+<table>
+<tr><th>dB (tension)</th><th>Facteur</th></tr>
+<tr><td>0 dB</td><td>×1</td></tr>
+<tr><td>+3 dB</td><td>×2</td></tr>
+<tr><td>+6 dB</td><td>×4</td></tr>
+<tr><td>+10 dB</td><td>×10</td></tr>
+<tr><td>+20 dB</td><td>×100</td></tr>
+<tr><td>+30 dB</td><td>×1000</td></tr>
+<tr><td>−3 dB</td><td>×½</td></tr>
+</table>
+<div class="fm">On combine par addition : 12 dB = 6+6 → 4×4 = ×16 · 30 dB = 20+10 → 100×10 = ×1000. Un ampli de 20 dB amplifie la tension ×100 ; un distributeur −3 dB réduit de moitié.</div>
+</div>
+
+<div class="card"><span class="badge bg">Spectre CATV</span><h3>Occupation des fréquences</h3>
+<ul>
+<li><b>Voie retour</b> (upstream, Internet montant) : bande basse <span class="hi">5 à 65 MHz</span> (ou 5-30/5-45 selon réseau).</li>
+<li><b>Voie aller</b> (downstream, TV + Internet descendant) : bande haute jusqu'à <span class="hi">600 / 860 MHz / 1 GHz</span> selon le réseau.</li>
+<li>Bande OUC (UKW / FM) : 88-108 MHz.</li>
+<li>Grille des canaux : <span class="hi">7 MHz</span> (bandes I/III, VHF) ou <span class="hi">8 MHz</span> (bandes IV/V, UHF, numérique DVB-C).</li>
+</ul>
+</div>
+
+<div class="card"><span class="badge bp">Qualité signal</span><h3>Analogique vs numérique</h3>
+<ul>
+<li><b>Analogique</b> : composantes visibles à l'analyseur de spectre (porteuse image, 2 porteuses audio, sous-porteuse chrominance).</li>
+<li><b>Numérique (DVB-C)</b> : apparaît comme une « cloche de bruit » de largeur 7 ou 8 MHz ; forme identique avec ou sans contenu.</li>
+</ul>
+<table>
+<tr><th>Qualité</th><th>MER</th><th>BER avant FEC</th></tr>
+<tr><td>Optimale</td><td>&gt; 40 dB</td><td>&lt; 1,0 E-9</td></tr>
+<tr><td>Suffisante</td><td>&gt; 32 dB</td><td>&lt; 1,0 E-6</td></tr>
+<tr><td>Mauvaise</td><td>&lt; 28 dB</td><td>&gt; 1,0 E-4</td></tr>
+</table>
+<div class="info">La qualité numérique se contrôle via la <b>constellation</b> (MER = Modulation Error Ratio, BER = Bit Error Rate).</div>
+</div>
+
+<div class="card"><span class="badge bo">Dépannage</span><h3>Détection des défauts</h3>
+<ul>
+<li><b>Réflectomètre à impulsions</b> : localise précisément les défauts le long du câble. Prise <b>ouverte</b> → impulsion vers le haut ; <b>court-circuit</b> → impulsion vers le bas.</li>
+<li><b>Mauvais contact</b> (conducteur trop court, fiche-F trop pressée, corrosion/eau) : effet capacitif qui <span class="hi">atténue les basses fréquences et Internet</span>, jusqu'au blocage.</li>
+<li><b>Prise montée à l'envers</b> (In/Out inversés) : signal réduit d'environ 20 dB.</li>
+<li><b>Vieux composants</b> (ampli, dérivateur) limités à 300 MHz : les canaux supérieurs sont bruités dès 600 MHz.</li>
+</ul>
+</div>
+
+<div class="card"><span class="badge br">Point critique examen</span><h3>Ingress (perturbations entrantes)</h3>
+<ul>
+<li><span class="hi">Ingress</span> = rayonnement extérieur qui pénètre dans le réseau par la <b>voie retour (5-65 MHz)</b> et se cumule dans la structure arborescente (chaque installation est une source potentielle).</li>
+<li><b>Sources</b> : radioamateurs (28-29,7 MHz), CB, DECT, moteurs à balais, dimmers, néons défectueux, machines-outils, vélomoteurs…</li>
+<li><b>Causes</b> : câbles mal blindés ou blindage abîmé, connecteurs F mal montés, mauvais contact de masse, composants corrodés, prises 2 trous.</li>
+</ul>
+<div class="info">Architecture HFC : fibre optique jusqu'au quartier (50 à 1000 abonnés/cellule) puis réseau coaxial jusqu'à l'abonné.</div>
+</div>
+</div>
+<div id="ms_detection" class="sub">
+<p class="stit">🔥 Détection incendie</p>
+
+<div class="card">
+  <span class="badge bb">Le constat & histoire</span>
+  <h3>Pourquoi détecter : chiffres et évolution</h3>
+  <ul>
+    <li>En Suisse chaque année : plus de <span class="hi">20'000 incendies</span> de bâtiments et <span class="hi">600 millions de francs</span> de dommages (source Cipi).</li>
+    <li>Jusqu'à <span class="hi">40 morts</span> et en moyenne <span class="hi">200 blessés</span> par an.</li>
+    <li>Détection <span class="hi">ionique</span> découverte en 1941 : américium, &lt; 1 microgramme (10 millions de fois plus radioactif que l'uranium).</li>
+    <li>Évolution des tensions : <span class="hi">220 V → 48 V → 24 V</span>.</li>
+    <li>En <span class="hi">1984</span> : microprocesseurs + principe d'<span class="hi">adressage</span> (localisation précise de l'alarme) ; depuis : détecteurs <span class="hi">multicritères</span> et intelligents (moins de fausses alarmes).</li>
+    <li>Objectifs : sécurité des personnes/animaux/biens, prévenir incendies et explosions, limiter la propagation (flammes, chaleur, fumées) aux ouvrages voisins.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <span class="badge br">Normes AEAI — point critique examen</span>
+  <h3>Hiérarchie des normes & prescriptions</h3>
+  <ul>
+    <li><span class="hi">AEAI</span> (Association des Établissements Cantonaux d'Assurance Incendie) créée en <span class="hi">1903</span> ; élabore les normes et directives, forme les spécialistes (www.vkg.ch/fr).</li>
+    <li>Hiérarchie : <span class="hi">Norme de protection incendie (NPI)</span> → <span class="hi">Directives de protection incendie</span> → <span class="hi">État de la technique</span>.</li>
+    <li>Les Prescriptions de Protection Incendie (PPI) = <span class="hi">1 Norme + 19 Directives AEAI + 1 État de la technique</span>.</li>
+    <li>La NPI (art. 39) liste les équipements de PI : extinction (postes/extincteurs/sprinklers), détection d'incendie, extraction fumée/chaleur, mise en surpression, protection foudre, éclairages/alimentations de sécurité, ascenseurs pompiers, protection explosions, asservissements.</li>
+    <li>La directive fixe les exigences générales et <span class="hi">dans quels cas</span> équiper ; l'état de la technique régit conception, montage, exploitation, maintenance et contrôle.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <span class="badge bg">Types de surveillance</span>
+  <h3>Étendue de surveillance & chronologie du feu</h3>
+  <ul>
+    <li><span class="hi">Totale</span> : tout le bâtiment surveillé, sauf les locaux humides.</li>
+    <li><span class="hi">Partielle</span> : une partie seulement, sauf locaux humides.</li>
+    <li><span class="hi">Volontaire</span> : à l'initiative du maître d'ouvrage.</li>
+    <li>Rappel : « il n'y a jamais deux sites identiques ».</li>
+    <li>Chronologie d'un sinistre : <span class="hi">Découverte (t1) → Alarme (t2) → Intervention (t3) = T total</span> ; plus la détection est précoce, plus T total est court.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <span class="badge ba">SDAI & ECS</span>
+  <h3>Architecture du système</h3>
+  <ul>
+    <li>SDAI = Système de Détection et d'Alarme Incendie ; l'<span class="hi">ECS</span> (Équipement de Contrôle et de Signalisation) en est le cœur (entrées = détecteurs/DM ; sorties = sirènes, transmission, feu-flash, asservissements).</li>
+    <li>Généralités de câblage : <span class="hi">1 boucle = 128 détecteurs</span> ; <span class="hi">1 ECS = 4 boucles</span>.</li>
+    <li>L'emplacement de l'ECS doit être <span class="hi">surveillé par un détecteur automatique</span> et un <span class="hi">déclencheur manuel</span> installé à proximité directe.</li>
+    <li>ECS en autoprotection : détecteur, DM, <span class="hi">batteries/accu</span>.</li>
+    <li>Autonomie des accus selon la distance de l'entreprise de maintenance : <span class="hi">&lt; 100 km ou 2 h → 12 h + 30 min en alarme</span> ; <span class="hi">&gt; 100 km ou 2 h → 24 h + 30 min en alarme</span>.</li>
+    <li>Local des centrales : lieu sûr et accessible, compartiment coupe-feu surveillé ; local séparé <span class="hi">EI 30</span> minimum, portes <span class="hi">EI 30</span>.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <span class="badge bo">Choisir le bon détecteur</span>
+  <h3>Phénomènes & critères de choix</h3>
+  <ul>
+    <li>Phénomènes détectables : <span class="hi">odeurs/gaz de combustion</span>, <span class="hi">fumées</span> (particules), <span class="hi">flammes</span>, <span class="hi">élévation de température</span>.</li>
+    <li>Critères de choix : type d'incendie probable et propagation, <span class="hi">hauteur du local</span>, conditions environnementales (température, mouvement d'air, vibrations, humidité, champ électromagnétique, rayonnement), <span class="hi">sources d'alarmes intempestives</span>, concept de PI.</li>
+    <li>Bonne planification : définir l'objectif de protection → choisir le type → déterminer surface et positionnement → régler sensibilité/comportement → configurer les asservissements (<span class="hi">matrice incendie</span>).</li>
+  </ul>
+</div>
+
+<div class="card">
+  <span class="badge bb">Les types de détecteurs</span>
+  <h3>Technologies et usages</h3>
+  <table>
+    <tr><th>Détecteur</th><th>Détecte</th><th>Type de feu</th></tr>
+    <tr><td>Optique ponctuel</td><td>Fumées visibles claires</td><td>Évolution lente</td></tr>
+    <tr><td>Multicapteur / combiné</td><td>Fumées ± élévation de T°</td><td>Lente et/ou vifs</td></tr>
+    <tr><td>Optique multiponctuel (aspirant)</td><td>Fumées &lt; 10 µm</td><td>Évolution lente</td></tr>
+    <tr><td>Thermostatique</td><td>Élévation lente de T°</td><td>Vifs, chaleur intense</td></tr>
+    <tr><td>Thermo-vélocimétrique</td><td>Élévation rapide/lente de T°</td><td>Vifs, montée rapide</td></tr>
+    <tr><td>Optique linéaire</td><td>Fumées claires/sombres</td><td>Grands volumes</td></tr>
+    <tr><td>Flammes IR</td><td>Flammes visibles</td><td>Vifs ± fumée</td></tr>
+    <tr><td>Flammes UV</td><td>Flammes visibles</td><td>Vifs sans fumée</td></tr>
+  </table>
+  <div class="info">Perturbateurs à éviter selon le type : poussières, humidité, condensation, vapeur d'eau, ambiance corrosive, T° extrêmes, rayons solaires/gamma/UV/IR, arcs électriques, vibrations.</div>
+</div>
+
+<div class="card">
+  <span class="badge br">Aires de surveillance — point critique examen</span>
+  <h3>Implantation des détecteurs</h3>
+  <ul>
+    <li>Jamais à <span class="hi">moins de 0,5 m</span> d'un mur ou d'un obstacle (« ne pas oublier les murs »).</li>
+    <li>Surface et distance max entre 2 détecteurs dépendent de l'angle de la toiture (<span class="hi">seuil 20°</span>) et du type de détecteur.</li>
+    <li>Dans les circulations horizontales de largeur <span class="hi">&lt; 3 m</span>, seule la distance D est prise en compte.</li>
+    <li>Surveiller aussi les <span class="hi">faux plafonds / faux planchers</span> ; y reporter l'alarme via un <span class="hi">indicateur d'action (IA)</span>.</li>
+    <li>Déclencheur manuel (DM) : modèles en saillie, encastré, avec capot, IP65.</li>
+    <li>Les détecteurs sont regroupés en <span class="hi">zones / groupes de détection</span>.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <span class="badge bg">L'évacuation</span>
+  <h3>Alarme, temporisation et transmission</h3>
+  <ul>
+    <li><span class="hi">Tableau répétiteur (TR)</span> et <span class="hi">platine pompier (PSP)</span> : installés en lieu sûr et accessible pour l'intervention.</li>
+    <li>Temporisation <span class="hi">3 min / 5 min</span> : T1 = 3 min (prise en compte de l'alarme) puis T2 = 5 min (lever de doute) ; en mode nuit/absence, pas de temporisation.</li>
+    <li>Sirènes d'évacuation + <span class="hi">feu flash</span> ; cas spéciaux (hôpitaux, prisons…).</li>
+    <li>Transmetteur (ATS) — fréquence max du test de ligne : <span class="hi">tous bâtiments 25 h</span> ; cas particuliers (taux d'occupation élevé, industrie chimique, hôpital) <span class="hi">90 / 180 s</span>.</li>
+    <li><span class="hi">Feu flash pompier</span> : à l'extérieur, visible depuis la route, devant chaque point de pénétration pompiers.</li>
+    <li>Asservissements (AI) : <span class="hi">commande collective</span> (tout simultanément) ou <span class="hi">sélective</span> (par zones, via la grille) ; modules adressables 2E/1S, 2E/2S, 4E/4S. SPB (Sprinkler Box) et Waterflow remontent les infos sprinkler.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <span class="badge ba">Autorités & garde-fous</span>
+  <h3>Annonce, maintenance, révision</h3>
+  <ul>
+    <li>Avant travaux : formulaire <span class="hi">« Annonce d'installations de détection »</span> à soumettre à l'autorité de PI pour : nouvelles installations, extensions/modifications touchant <span class="hi">&gt; 10 détecteurs</span> ou une surface <span class="hi">&gt; 600 m²</span>.</li>
+    <li>Mise hors service &gt; 24 h : à annoncer <span class="hi">3 jours à l'avance</span> à l'autorité de PI et aux sapeurs-pompiers (formulaire AEAI) ; interruption imprévue &gt; 24 h signalée immédiatement ; remise en service à signaler.</li>
+    <li>Arrêt définitif / démontage : <span class="hi">autorisation préalable</span> de l'autorité de PI, puis signalisation claire que l'installation n'est plus opérationnelle.</li>
+    <li>Maintenance : à la charge du propriétaire/exploitant, par une entreprise <span class="hi">reconnue AEAI</span> ; défaut à signaler par écrit.</li>
+    <li>Révision : après <span class="hi">15 ans</span> de service, évaluation (conception, disponibilité technologique, efficacité selon changements d'affectation) et mise à l'état de la technique.</li>
+  </ul>
+  <div class="warn">⚠️ Les installations de détection incendie ne doivent en principe <span class="hi">jamais</span> être mises hors service ; toute coupure prévisible &gt; 24 h doit être annoncée à l'avance.</div>
+</div>
+</div>
+<div id="ms_mesure" class="sub">
+<p class="stit">📟 Appareils de mesure</p>
+
+<div class="card">
+  <span class="badge bb">Mesurer & étalonner</span>
+  <h3>Définitions et sortes d'instruments</h3>
+  <ul>
+    <li><span class="hi">Mesurer</span> = comparer avec une grandeur fondamentale déterminée.</li>
+    <li><span class="hi">Étalonner</span> = comparer avec une norme d'étalonnage.</li>
+    <li>On mesure des grandeurs électriques : <span class="hi">courants, tensions, fréquences, puissances, flux magnétiques</span>, etc.</li>
+    <li>3 sortes d'instruments de mesure : <span class="hi">conventionnels, de précision, étalons</span>.</li>
+    <li>Distinction qualité : appareils <span class="hi">significatifs</span> (valeur de référence/garantie, étiquette fond blanc/écriture noire, étalonnés régulièrement) vs <span class="hi">indicatifs</span> (valeur indicative, pas d'étiquette, pas d'étalonnage exigé).</li>
+  </ul>
+</div>
+
+<div class="card">
+  <span class="badge br">Catégories de surtension — point critique examen</span>
+  <h3>CAT I à CAT IV</h3>
+  <table>
+    <tr><th>Catégorie</th><th>Zone d'utilisation</th></tr>
+    <tr><td>CAT I</td><td>Applications électroniques</td></tr>
+    <tr><td>CAT II</td><td>Installations domestiques</td></tr>
+    <tr><td>CAT III</td><td>Industrie, machine et distribution</td></tr>
+    <tr><td>CAT IV</td><td>Ensemble d'appareillage, mesure de réseau</td></tr>
+  </table>
+  <ul>
+    <li>Plus on remonte vers la source, plus la catégorie est élevée : un appareil <span class="hi">CAT II ne peut pas</span> être utilisé en toute sécurité en zone CAT III.</li>
+    <li>Un niveau de tension est aussi noté : ex. <span class="hi">CAT III 600 V</span> ≠ CAT III 1000 V (ne pas dépasser la tension assignée).</li>
+  </ul>
+  <div class="warn">⚠️ À mesure que les charges se complexifient (moteurs, condensateurs, variateurs, foudre), les <span class="hi">surtensions transitoires</span> invisibles augmentent : la sécurité doit être intégrée à l'instrument.</div>
+</div>
+
+<div class="card">
+  <span class="badge bg">Analogique vs numérique</span>
+  <h3>Avantages et inconvénients</h3>
+  <ul>
+    <li><span class="hi">Numérique</span> (+) : moins d'erreurs mécaniques, pas de faute de lecture, grande impédance d'entrée, mesure indépendante de la position, moins cher, mémorisation. (−) : nécessite une tension, n'affiche que des mesures stabilisées.</li>
+    <li><span class="hi">Analogique</span> (+) : variation des valeurs plus facile à surveiller (comparaison, surveillance continue), réaction rapide aux variations, pas de tension auxiliaire. (−) : lecture (parallaxe, bonne échelle), production coûteuse, charge la mesure, sensible aux secousses.</li>
+  </ul>
+  <div class="info">Précision rapportée à la pleine échelle : erreur fixe de ±1,5 V → 10 V = 15 %, 50 V = 3 %, 100 V = 1,5 %. On mesure donc plus juste en fin d'échelle.</div>
+</div>
+
+<div class="card">
+  <span class="badge ba">Genres de courant</span>
+  <h3>AC, DC et valeurs efficaces</h3>
+  <ul>
+    <li>Genres de courant : <span class="hi">AC</span>, <span class="hi">AC régulé</span>, <span class="hi">AC + DC composé</span>.</li>
+    <li>Modes de valeur : <span class="hi">AVG</span> (moyenne), <span class="hi">RMS</span> (efficace sur signal sinusoïdal), <span class="hi">TRMS</span> / True RMS (valeur efficace vraie, correcte même avec harmoniques).</li>
+    <li>Choisir l'appareil selon la mesure : fréquences hautes des transfos électroniques, convertisseurs, variateurs de fréquence, selfs électroniques → appareil adapté (TRMS).</li>
+  </ul>
+</div>
+
+<div class="card">
+  <span class="badge bo">Normes & marquage</span>
+  <h3>IEC 61010-1 sur le multimètre</h3>
+  <ul>
+    <li>Norme <span class="hi">IEC 61010-1</span> : marquage obligatoire sur l'appareil.</li>
+    <li>Face avant (près des bornes) : <span class="hi">tension assignée phase/terre</span>, logo « lire le mode d'emploi », marquage CE.</li>
+    <li>Face arrière : <span class="hi">catégorie d'installation</span>, <span class="hi">degré de pollution</span>, double isolement, nature d'alimentation, type(s) de fusible(s).</li>
+    <li>Lecture d'un marquage type : <span class="hi">IEC 61010-1 – Cat. III 600 V – 2</span> → catégorie de surtension / tension assignée phase-terre / degré de pollution.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <span class="badge bb">Instruments & méthodes</span>
+  <h3>Résistance, tension, courant, pinces</h3>
+  <ul>
+    <li><span class="hi">Résistance</span> : bien calibrer avant mesure (R mesurée hors tension).</li>
+    <li><span class="hi">Tension</span> et <span class="hi">courant</span> : choisir le bon calibre et le bon genre (AC/DC).</li>
+    <li><span class="hi">Pinces ampèremétriques</span> AC (série C, mini, Amplex, Rogowski) et DC ; avantages : sécurité de la personne (pas de contact), de l'appareil (courants élevés non destructifs) et de l'installation (<span class="hi">pas de coupure de tension</span>).</li>
+    <li>Autres mesures : <span class="hi">thermographie</span>, <span class="hi">tachymétrie</span>, champs électriques (CEM), pinces de puissance/harmoniques (W, VA, var, cos φ).</li>
+  </ul>
+</div>
+
+<div class="card">
+  <span class="badge bp">Harmoniques</span>
+  <h3>Perturbations réseau</h3>
+  <ul>
+    <li>Un signal déformé se décompose en fondamentale et harmoniques : <span class="hi">H1 = 50 Hz</span>, H3 = 150 Hz, H5 = 250 Hz, H7 = 350 Hz, H9 = 450 Hz.</li>
+    <li><span class="hi">THD</span> (Total Harmonic Distortion) : rapport des harmoniques à la fondamentale.</li>
+    <li><span class="hi">DF</span> (Distortion Factor) : rapport de l'ensemble des harmoniques à la valeur efficace du signal.</li>
+    <li>Les harmoniques individuelles sont généralement données <span class="hi">en % du fondamental</span>.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <span class="badge br">Sécurité des mesures — point critique examen</span>
+  <h3>Danger du courant & niveaux d'EPI</h3>
+  <ul>
+    <li>Résistance du corps ≈ <span class="hi">1000 Ω</span> (main-main ou main-pied) : sous 230 V → 230 V / 1000 Ω = <span class="hi">200 mA</span>, très dangereux.</li>
+    <li>Courant <span class="hi">&gt; 50 mA pendant 0,4 s = danger de mort</span>.</li>
+    <li><span class="hi">ESTI 407</span> : activités sur/à proximité d'installations électriques, à appliquer dans tous les cas ; en principe travailler hors tension (règles <span class="hi">SUVA 5+5</span>), sous tension seulement après analyse des risques, par 2 personnes compétentes.</li>
+    <li>Tableau <span class="hi">≥ IP2X</span> : EPI non obligatoire ; tableau <span class="hi">&lt; IP2X</span> = considéré comme travail sous tension → EPI (gants isolants rouges + sous-gants kevlar, pointes 4 mm max).</li>
+    <li>Niveau d'EPI selon le courant de court-circuit (ICC) / fusibles amont : &lt; 1 kA / &gt; 1–7 kA (16–80 A diazed/NH) / &gt; 7–15 kA (80–200 A NH) / &gt; 15 kA (200–315 A).</li>
+  </ul>
+  <div class="warn">⚠️ Si ICC <span class="hi">&gt; 20 kA ou &gt; 315 A (NH)</span> : METTRE HORS TENSION, ou ne pas travailler selon l'analyse des risques.</div>
+</div>
+
+<div class="card">
+  <span class="badge ba">Contrôle des appareils</span>
+  <h3>Contrôle de sécurité électrique</h3>
+  <ul>
+    <li>Norme d'absence de tension : <span class="hi">EN 61243-3</span> (appareil sans piles, pas de sélecteur, cordons fixes).</li>
+    <li>Classes d'appareils : <span class="hi">Classe I</span> = borne de terre ; <span class="hi">Classe II</span> = double isolation ; <span class="hi">Classe III</span> = TBTS (Udc &lt; 50 V, Uac &lt; 30 V).</li>
+    <li>Contrôle des appareils électriques (norme DIN/VDE 701-702, désormais <span class="hi">EN 62638</span>), 5 étapes : 1) contrôle visuel, 2) résistance du PE, 3) résistance d'isolement, 4) courant de fuite, 5) contrôle de fonctionnement.</li>
+    <li>Repères : résistance du fil de terre <span class="hi">R &lt; 300 mΩ</span> (câble max 5 m) ; résistance interne d'un appareil de mesure ≈ <span class="hi">10 MΩ</span>.</li>
+    <li>Test de substitution du courant de fuite exigé pour les appareils de classe I à résistance de chauffage dont l'isolement est <span class="hi">&lt; 0,5 MΩ</span>.</li>
+  </ul>
+</div>
+</div>
+</div>
 
 <!-- ===== M3M3 ===== -->
 <div id="m3m3" class="mod">
