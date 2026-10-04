@@ -18458,14 +18458,9 @@ html[data-theme="dark"] .plan-chip{ background:#141f2d; color:#9fc0e6; border-co
 #rvx-top{ opacity:0; pointer-events:none; transition:opacity .25s; }
 #rvx-top.show{ opacity:1; pointer-events:auto; }
 
-/* ---------- Curseur custom (pointeur fin uniquement) ---------- */
-#rvx-cursor{
-  position:fixed; top:0; left:0; width:26px; height:26px; margin:-13px 0 0 -13px; border-radius:50%;
-  border:1.5px solid #fff; mix-blend-mode:difference; pointer-events:none; z-index:10001;
-  transition:width .16s var(--ease), height .16s var(--ease), margin .16s var(--ease), opacity .2s, background .16s;
-  opacity:0;
-}
-#rvx-cursor.hot{ width:44px; height:44px; margin:-22px 0 0 -22px; background:rgba(255,255,255,.12); }
+/* ---------- Footer : statique, discret (plus de barre fixe en bas) ---------- */
+.app-footer{ position:static !important; left:auto !important; right:auto !important; bottom:auto !important; border-top:1px solid var(--hair) !important; background:transparent !important; }
+html[data-theme="dark"] .app-footer{ border-top-color:rgba(120,160,210,.14) !important; }
 
 /* ═══════════════ MODE SOMBRE (instrument) ═══════════════ */
 html[data-theme="dark"] body{
@@ -18562,19 +18557,6 @@ html[data-theme="dark"] .warn{ background:#231c0c !important; border-color:#5a47
         card.style.transform='perspective(760px) rotateX('+(-py*3.2).toFixed(2)+'deg) rotateY('+(px*3.6).toFixed(2)+'deg) translateY(-2px)';
       }, {passive:true});
       main && main.addEventListener('pointerleave', function(){ if(cur){cur.style.transform='';cur=null;} }, {passive:true});
-    }
-
-    /* ---- Curseur custom (pointeur fin) ---- */
-    if(fine && !reduce){
-      var cursor=document.createElement('div'); cursor.id='rvx-cursor'; document.body.appendChild(cursor);
-      document.body.classList.add('rvx-cursor-on');
-      var cx=innerWidth/2, cy=innerHeight/2, tx=cx, ty=cy;
-      window.addEventListener('pointermove',function(e){ tx=e.clientX; ty=e.clientY; cursor.style.opacity='1'; },{passive:true});
-      window.addEventListener('pointerdown',function(){ cursor.classList.add('hot'); });
-      window.addEventListener('pointerup',function(){ cursor.classList.remove('hot'); });
-      document.addEventListener('pointerover',function(e){ if(e.target.closest('a,button,.mtab,.stab,.qq,input,.rvx-fab,summary')) cursor.classList.add('hot'); },{passive:true});
-      document.addEventListener('pointerout',function(e){ if(e.target.closest('a,button,.mtab,.stab,.qq,input,.rvx-fab,summary')) cursor.classList.remove('hot'); },{passive:true});
-      (function loop(){ cx+=(tx-cx)*.2; cy+=(ty-cy)*.2; cursor.style.transform='translate('+cx+'px,'+cy+'px)'; requestAnimationFrame(loop); })();
     }
 
     /* ---- Boutons magnétiques (FAB) ---- */
