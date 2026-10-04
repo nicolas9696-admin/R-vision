@@ -10840,22 +10840,45 @@ var bpelSearchTimer = null;
 
 function buildSearchIndex() {
   var index = [];
+  // titre lisible d'un module depuis son bouton sidebar
+  var modTitleMap = {};
+  document.querySelectorAll('.sidebar .mtab').forEach(function(b){
+    var oc = b.getAttribute('onclick') || '';
+    var m = oc.match(/'([^']+)'/);
+    if (m) modTitleMap[m[1]] = b.textContent.trim();
+  });
   document.querySelectorAll('.mod').forEach(function(mod) {
     var modId = mod.id;
-    var modBtn = document.querySelector('.mtab[onclick="M(\''+modId+'\',this)"]');
-    var modTitle = modBtn ? modBtn.textContent.trim() : modId;
-    mod.querySelectorAll('.m5-sec, .xm-q, .nibt-sec, .m5-card, .xc-item').forEach(function(sec) {
-      var heading = sec.querySelector('.m5-sec-head, .xm-q-num, .xm-q-text, .nibt-sec-head');
-      var title = heading ? heading.textContent.trim().substring(0, 80) : '';
-      var content = sec.textContent.trim();
-      if (content.length > 20) {
-        index.push({ modId:modId, modTitle:modTitle, title:title, content:content, element:sec });
+    var modTitle = modTitleMap[modId] || modId;
+    // carte des titres d'onglets (tous systèmes) pour donner le contexte
+    var tabMap = {};
+    mod.querySelectorAll('.stab, .m5-tab, .cm4-tab, .nibt-tab').forEach(function(b){
+      var oc = b.getAttribute('onclick') || '';
+      var m = oc.match(/'([^']+)'/);
+      if (m) tabMap[m[1]] = b.textContent.trim();
+    });
+    // unités recherchables : chaque carte / section / Q-R
+    var units = mod.querySelectorAll('.card, .m5-sec, .xm-q, .nibt-sec, .qa');
+    var added = 0;
+    units.forEach(function(sec) {
+      // ne pas ré-indexer une unité imbriquée dans une autre unité déjà couverte
+      if (sec.parentElement && sec.parentElement.closest('.card, .m5-sec, .xm-q, .nibt-sec')) return;
+      var h = sec.querySelector('h3, h4, .m5-sec-head, .xm-q-text, .nibt-sec-head, .qq, .badge');
+      var title = h ? h.textContent.trim().substring(0, 90) : '';
+      var sub = sec.closest('.sub, .m5-panel, .cm4-panel, .nibt-panel');
+      var subTitle = '';
+      if (sub && sub.id) {
+        subTitle = tabMap[sub.id] || tabMap[sub.id.replace(/^m5-/,'')] || tabMap[sub.id.replace(/^cm4-/,'')] || '';
+      }
+      var content = sec.textContent.replace(/\s+/g,' ').trim();
+      if (content.length > 15) {
+        index.push({ modId:modId, modTitle:modTitle, subTitle:subTitle, title:title, content:content, element:sec });
+        added++;
       }
     });
-    // Module entier si pas de sections
-    var secs = mod.querySelectorAll('.m5-sec, .xm-q, .nibt-sec, .m5-card');
-    if (!secs.length) {
-      index.push({ modId:modId, modTitle:modTitle, title:modTitle, content:mod.textContent.trim(), element:mod });
+    // Module entier si aucune unité
+    if (!added) {
+      index.push({ modId:modId, modTitle:modTitle, subTitle:'', title:modTitle, content:mod.textContent.replace(/\s+/g,' ').trim(), element:mod });
     }
   });
   return index;
@@ -10873,26 +10896,33 @@ function _doSearch(q) {
   if (!bpelSearchIndex) bpelSearchIndex = buildSearchIndex();
   var terms = q.toLowerCase().split(/\s+/).filter(function(t){ return t.length >= 2; });
   if (!terms.length) return;
+  var phrase = q.toLowerCase();
   var results = []; var seen = {};
   bpelSearchIndex.forEach(function(item, idx) {
     var text = item.content.toLowerCase();
-    var titleText = item.title.toLowerCase();
+    var titleText = (item.title||'').toLowerCase();
+    var subText = (item.subTitle||'').toLowerCase();
     var score = 0; var allFound = true;
     terms.forEach(function(t) {
-      if (titleText.indexOf(t) >= 0) score += 10;
+      if (titleText.indexOf(t) >= 0) score += 12;
+      else if (subText.indexOf(t) >= 0) score += 6;
       else if (text.indexOf(t) >= 0) score += 1;
       else allFound = false;
     });
-    var key = item.modId + '|' + item.title.substring(0,30);
-    if (allFound && score > 0 && !seen[key]) {
+    if (!allFound || score === 0) return;
+    // bonus : phrase exacte, et match en début de titre
+    if (terms.length > 1 && (titleText.indexOf(phrase) >= 0 || text.indexOf(phrase) >= 0)) score += 8;
+    if (titleText.indexOf(terms[0]) === 0) score += 4;
+    var key = item.modId + '|' + idx;
+    if (!seen[key]) {
       seen[key] = true;
-      results.push({ score:score, modId:item.modId, modTitle:item.modTitle,
+      results.push({ score:score, modId:item.modId, modTitle:item.modTitle, subTitle:item.subTitle,
         title:item.title, excerpt:getExcerpt(item.content, terms[0]),
         element:item.element, _idx:idx });
     }
   });
   results.sort(function(a,b){ return b.score - a.score; });
-  results = results.slice(0, 12);
+  results = results.slice(0, 18);
   showSearchResults(q, results);
 }
 
@@ -10935,11 +10965,13 @@ function showSearchResults(q, results) {
     h += '<div style="border-bottom:1px solid #f0f4ff">';
     h += '<div style="padding:.35rem .8rem;font-size:10px;font-weight:800;color:#fff;background:#2c4a6e;letter-spacing:.04em">'+mod.title.substring(0,50)+'</div>';
     mod.items.forEach(function(r) {
-      var hlT = r.title ? highlightTerms(r.title.substring(0,60), terms) : '';
+      var hlT = r.title ? highlightTerms(r.title.substring(0,70), terms) : '';
       var hlE = highlightTerms(r.excerpt, terms);
+      var subTag = r.subTitle ? '<span style="display:inline-block;font-size:9.5px;color:#2c4a6e;background:#eef3fb;border-radius:4px;padding:1px 6px;margin-bottom:3px">›&nbsp;'+r.subTitle.substring(0,36)+'</span>' : '';
       h += '<div class="sr-item" onclick="goToResult(\''+r.modId+'\','+r._idx+')" ' +
         'style="padding:.5rem .8rem;cursor:pointer;border-bottom:1px solid #f8f9fc" ' +
         'onmouseover="this.style.background=\'#f0f4ff\'" onmouseout="this.style.background=\'\'">' +
+        subTag +
         (hlT ? '<div style="font-size:12px;font-weight:700;color:#1a3a5c;margin-bottom:2px">'+hlT+'</div>' : '') +
         '<div style="font-size:11px;color:#6b89a8;line-height:1.4">'+hlE+'</div></div>';
     });
@@ -10952,48 +10984,58 @@ function showSearchResults(q, results) {
 function goToResult(modId, targetIdx) {
   var modEl = document.getElementById(modId);
   if (!modEl) return;
-
-  // Activer le module
-  document.querySelectorAll('.mod').forEach(function(m){ m.classList.remove('on'); });
-  modEl.classList.add('on');
-
-  // Activer le bon bouton sidebar via filtrage JS (querySelector avec quotes pose problème)
-  document.querySelectorAll('.mtab').forEach(function(b){ b.classList.remove('on'); });
-  var btn = null;
-  document.querySelectorAll('.mtab').forEach(function(b) {
-    var oc = b.getAttribute('onclick') || '';
-    if (oc.indexOf("'"+modId+"'") >= 0 || oc.indexOf('"'+modId+'"') >= 0) btn = b;
-  });
-  if (btn) {
-    btn.classList.add('on');
-    var grp = btn.closest('.sb-group-items');
-    if (grp) grp.classList.remove('collapsed');
-  }
-
-  // Récupérer l'élément cible
   var target = (bpelSearchIndex && targetIdx >= 0 && bpelSearchIndex[targetIdx])
     ? bpelSearchIndex[targetIdx].element : null;
 
+  // 1) Activer le module via son bouton sidebar (réutilise M + surlignage nav)
+  var btn = null;
+  document.querySelectorAll('.sidebar .mtab').forEach(function(b) {
+    if ((b.getAttribute('onclick') || '').indexOf("'"+modId+"'") >= 0) btn = b;
+  });
+  if (btn) {
+    var grp = btn.closest('.sb-group-items');
+    if (grp) grp.classList.remove('collapsed');
+    btn.click();
+  } else {
+    document.querySelectorAll('.mod').forEach(function(m){ m.classList.remove('on'); });
+    modEl.classList.add('on');
+  }
+
+  // 2) Ouvrir le bon sous-onglet contenant la cible (tous les systèmes)
   if (target) {
-    // Ouvrir le bon onglet M5
-    var panel = target.closest('.m5-panel');
-    if (panel) {
+    // a) Onglets génériques .sub (fonction S)
+    var sub = target.closest('.sub');
+    if (sub && sub.id) {
+      var tb = null;
+      modEl.querySelectorAll('.stab').forEach(function(b){ if ((b.getAttribute('onclick')||'').indexOf("'"+sub.id+"'") >= 0) tb = b; });
+      if (tb && !sub.classList.contains('on')) tb.click();
+      else if (!tb) { modEl.querySelectorAll('.sub').forEach(function(x){ x.classList.remove('on'); }); sub.classList.add('on'); }
+    }
+    // b) Onglets M5
+    var m5p = target.closest('.m5-panel');
+    if (m5p) {
       modEl.querySelectorAll('.m5-panel').forEach(function(p){ p.classList.remove('on'); });
       modEl.querySelectorAll('.m5-tab').forEach(function(t){ t.classList.remove('on'); });
-      panel.classList.add('on');
-      var tabId = panel.id.replace('m5-','');
-      modEl.querySelectorAll('.m5-tab').forEach(function(t) {
-        var oc = t.getAttribute('onclick') || '';
-        if (oc.indexOf("'"+tabId+"'") >= 0) t.classList.add('on');
-      });
+      m5p.classList.add('on');
+      var tid = m5p.id.replace('m5-','');
+      modEl.querySelectorAll('.m5-tab').forEach(function(t){ if ((t.getAttribute('onclick')||'').indexOf("'"+tid+"'") >= 0) t.classList.add('on'); });
     }
-    // Ouvrir le bon onglet NIBT
-    var nibtPanel = target.closest('.nibt-panel');
-    if (nibtPanel) {
+    // c) Onglets M4 (cm4)
+    var c4 = target.closest('.cm4-panel');
+    if (c4) {
+      var cid = c4.id.replace('cm4-','');
+      var ctb = null; modEl.querySelectorAll('.cm4-tab').forEach(function(t){ if ((t.getAttribute('onclick')||'').indexOf("'"+cid+"'") >= 0) ctb = t; });
+      if (typeof showCM4 === 'function' && ctb) showCM4(cid, ctb);
+      else { modEl.querySelectorAll('.cm4-panel').forEach(function(p){ p.classList.remove('on'); }); c4.classList.add('on'); }
+    }
+    // d) Onglets NIBT
+    var np = target.closest('.nibt-panel');
+    if (np) {
       modEl.querySelectorAll('.nibt-panel').forEach(function(p){ p.classList.remove('on'); });
-      nibtPanel.classList.add('on');
+      np.classList.add('on');
+      modEl.querySelectorAll('.nibt-tab').forEach(function(t){ if ((t.getAttribute('onclick')||'').indexOf("'"+np.id+"'") >= 0) { modEl.querySelectorAll('.nibt-tab').forEach(function(x){x.classList.remove('on');}); t.classList.add('on'); } });
     }
-    // Ouvrir l'accordéon parent
+    // e) Accordéons (M5 / NIBT / examens)
     var secBody = target.closest('.m5-sec-body, .nibt-sec-body, .xm-part-body');
     if (!secBody && target.classList && (target.classList.contains('m5-sec-body') || target.classList.contains('nibt-sec-body'))) secBody = target;
     if (secBody) {
@@ -11001,29 +11043,27 @@ function goToResult(modId, targetIdx) {
       var head = secBody.previousElementSibling;
       if (head) { var arr = head.querySelector('span:last-child'); if (arr) arr.textContent = '▼'; }
     }
-  } else {
-    // Pas de cible → activer 1er onglet M5 si aucun actif
-    if (!modEl.querySelector('.m5-panel.on')) {
-      var fp = modEl.querySelector('.m5-panel');
-      var ft = modEl.querySelector('.m5-tab');
-      if (fp) fp.classList.add('on');
-      if (ft) ft.classList.add('on');
+    // f) Q/R repliées (.qa) : ouvrir la réponse
+    if (target.classList && target.classList.contains('qa')) {
+      var ra = target.querySelector('.ra'); if (ra) ra.classList.add('on');
+      var ar = target.querySelector('.ar'); if (ar) ar.classList.add('on');
     }
   }
 
-  // Scroll + highlight
+  // 3) Scroll + surlignage
   setTimeout(function() {
     var el = target || modEl;
     el.scrollIntoView({ behavior:'smooth', block:'center' });
     if (target) {
-      target.style.outline = '2px solid #f59e0b';
-      target.style.borderRadius = '6px';
-      setTimeout(function(){ target.style.outline=''; target.style.borderRadius=''; }, 2000);
+      target.style.outline = '3px solid #f5a623';
+      target.style.outlineOffset = '2px';
+      target.style.borderRadius = '8px';
+      setTimeout(function(){ target.style.outline=''; target.style.outlineOffset=''; }, 2200);
     }
-  }, 120);
+  }, 220);
 
   clearBpelSearch();
-  document.getElementById('navSearch').value = '';
+  var inp = document.getElementById('navSearch'); if (inp) inp.value = '';
 }
 
 function clearBpelSearch() {
