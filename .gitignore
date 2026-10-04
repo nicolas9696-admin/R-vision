@@ -1,0 +1,17 @@
+# Google Drive
+desktop.ini
+.tmp.drivedownload/
+.tmp.driveupload/
+
+# Sauvegardes locales (l'historique git les remplace)
+index.backup-*.html
+
+# Fichiers temporaires OS / éditeurs
+Thumbs.db
+~$*
+*.tmp
+*.swp
+.DS_Store
+
+# Outillage local Claude Code (spécifique machine)
+.claude/settings.local.json
