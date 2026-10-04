@@ -784,45 +784,44 @@ mark.bpel-hit{background:#fde68a;color:inherit;padding:0 2px;border-radius:2px}
   </div>
   <div id="searchResults" style="display:none;background:#fff;border-radius:8px;border:1px solid #d0d9e8;margin:.3rem 0;max-height:60vh;overflow-y:auto;box-shadow:0 4px 16px rgba(0,0,0,.12)"></div>
 
-  <!-- GROUPE : BREVET -->
+  <!-- GROUPE : MODULES DU BREVET -->
   <div class="sb-group">
     <div class="sb-group-title" onclick="toggleSbGroup(this)">
-      <span>🎓 BREVET</span><span class="sb-arrow" style="transform:rotate(0deg)">▼</span>
+      <span>🎓 MODULES DU BREVET</span><span class="sb-arrow" style="transform:rotate(0deg)">▼</span>
     </div>
     <div class="sb-group-items">
+      <button class="mtab" onclick="M('plan_mod',this)">🗺️ Plan de révision</button>
       <button class="mtab" onclick="M('m1_full',this)">M1 · Bases techniques</button>
-      <button class="mtab" onclick="M('m2_full',this)">M2 · Installations</button>
+      <button class="mtab" onclick="M('m2_full',this)">M2 · Installations &amp; métrés</button>
       <button class="mtab" onclick="M('m3_full',this)">M3 · Planification</button>
-      <button class="mtab" onclick="M('m3m3',this)">M3M3 · Étude &amp; projet</button>
-      <div style="display:flex;align-items:stretch;gap:2px;margin:1px 0">
-        <button class="mtab" onclick="M('m4_full',this)" style="flex:1;text-align:left">M4 · Contrôle &amp; sécurité</button>
-        <button id="m4Arr" onclick="toggleM4()" style="flex-shrink:0;width:26px;background:transparent;border:none;color:#6b89a8;font-size:9px;cursor:pointer;border-radius:6px;display:flex;align-items:center;justify-content:center;padding:0;line-height:1" title="Sous-modules">▼</button>
-      </div>
-      <div id="m4Items" style="display:none;border-left:3px solid #2c4a6e;margin-left:1rem;padding-left:.2rem">
-        <button class="mtab" onclick="M('defauts_mod',this)" style="font-size:11.5px;color:#93b5d6;padding-left:.5rem">🔍 Défauts réels</button>
-        <button class="mtab" onclick="M('icc_mod',this)" style="font-size:11.5px;color:#93b5d6;padding-left:.5rem">⚡ Icc détaillé</button>
-        <button class="mtab" onclick="M('epi_mod',this)" style="font-size:11.5px;color:#93b5d6;padding-left:.5rem">🦺 EPI 407</button>
-        <button class="mtab" onclick="M('normes_mod',this)" style="font-size:11.5px;color:#93b5d6;padding-left:.5rem">🏛️ Anciennes normes</button>
-        <button class="mtab" onclick="M('hager_mod',this)" style="font-size:11.5px;color:#93b5d6;padding-left:.5rem">🔬 Hager protection</button>
-      </div>
+      <button class="mtab" onclick="M('m3m3',this)">M3 · Étude &amp; projet</button>
+      <button class="mtab" onclick="M('m4_full',this)">M4 · Contrôle &amp; sécurité</button>
       <button class="mtab" onclick="M('m5_full',this)">M5 · Conduite &amp; RH</button>
-      <button class="mtab" onclick="M('videos_mod',this)" style="color:#7c3aed;font-weight:700">🎬 Vidéos</button>
     </div>
   </div>
 
-  <!-- GROUPE : OUTILS & RÉFÉRENCES -->
+  <!-- GROUPE : RÉVISION & RÉFÉRENCES -->
   <div class="sb-group">
     <div class="sb-group-title" onclick="toggleSbGroup(this)">
-      <span>🛠️ OUTILS &amp; RÉFÉRENCES</span><span class="sb-arrow" style="transform:rotate(-90deg)">▼</span>
+      <span>📚 RÉVISION &amp; RÉFÉRENCES</span><span class="sb-arrow" style="transform:rotate(-90deg)">▼</span>
     </div>
     <div class="sb-group-items collapsed">
-      <button class="mtab" onclick="M('nibt_mod',this)">📖 NIBT 2025 — Norme complète</button>
-      <button class="mtab" onclick="M('calc_mod',this)">🧮 Calculateur électrotechnique</button>
+      <button class="mtab" onclick="M('final_m1m5',this)">🏁 Révision finale M1–M5</button>
+      <div class="sb-subhead">Approfondissements M4</div>
+      <button class="mtab" onclick="M('defauts_mod',this)">🔍 Défauts réels</button>
+      <button class="mtab" onclick="M('icc_mod',this)">⚡ Icc détaillé</button>
+      <button class="mtab" onclick="M('epi_mod',this)">🦺 EPI · ESTI 407</button>
+      <button class="mtab" onclick="M('normes_mod',this)">🏛️ Anciennes normes</button>
+      <button class="mtab" onclick="M('hager_mod',this)">🔬 Hager · protection</button>
+      <div class="sb-subhead">Normes &amp; outils</div>
+      <button class="mtab" onclick="M('nibt_mod',this)">📖 NIBT 2025</button>
       <button class="mtab" onclick="M('aeai_mod',this)">🔥 AEAI · Protection incendie</button>
       <button class="mtab" onclick="M('pdie_mod',this)">📡 PDIE-CH 2021</button>
-      <button class="mtab" onclick="M('schemas_mod',this)">⚡ Schémas</button>
       <button class="mtab" onclick="M('min_deep',this)">🌿 Minergie</button>
+      <button class="mtab" onclick="M('calc_mod',this)">🧮 Calculateur électrotechnique</button>
+      <button class="mtab" onclick="M('schemas_mod',this)">⚡ Schémas</button>
       <button class="mtab" onclick="M('memo_mod',this)">📝 Fiches mémo</button>
+      <button class="mtab" onclick="M('videos_mod',this)">🎬 Vidéos</button>
     </div>
   </div>
 
@@ -833,20 +832,180 @@ mark.bpel-hit{background:#fde68a;color:inherit;padding:0 2px;border-radius:2px}
     </div>
     <div class="sb-group-items collapsed">
       <button class="mtab" onclick="M('quiz_hub',this)">📋 Tous les questionnaires</button>
-      <button class="mtab" onclick="M('quiz',this)" style="padding-left:1.8rem;font-size:11.5px;color:#6b89a8">↳ 🎯 Quiz · 50 questions</button>
-      <button class="mtab" onclick="M('quiz_m5_mod',this)" style="padding-left:1.8rem;font-size:11.5px;color:#e67e22;font-weight:700">↳ 🧠 Questionnaire M5 · 100 q.</button>
-      <button class="mtab" onclick="M('exam_m5_mod',this)" style="padding-left:1.8rem;font-size:11.5px;color:#e74c3c;font-weight:700">↳ 📝 Examen M5 · Série 7</button>
-      <button class="mtab" onclick="M('quiz_m5b_mod',this)" style="padding-left:1.8rem;font-size:11.5px;color:#27ae60;font-weight:700">↳ ✍️ Série B</button>
-      <button class="mtab" onclick="M('quiz_m5c_mod',this)" style="padding-left:1.8rem;font-size:11.5px;color:#2980b9;font-weight:700">↳ 📋 Série C</button>
-      <button class="mtab" onclick="M('quiz_m5d_mod',this)" style="padding-left:1.8rem;font-size:11.5px;color:#8b5cf6;font-weight:700">↳ 🎯 Série D</button>
-      <button class="mtab" onclick="M('quiz_m5e_mod',this)" style="padding-left:1.8rem;font-size:11.5px;color:#dc2626;font-weight:700">↳ 🏆 Série E</button>
-      <button class="mtab" onclick="M('quiz_m4_mod',this)" style="padding-left:1.8rem;font-size:11.5px;color:#c0392b;font-weight:700">↳ 🔬 Questionnaire M4 · 120</button>
-      <button class="mtab" onclick="M('final_m1m5',this)" style="padding-left:1.8rem;font-size:11.5px;color:#6b89a8">↳ 🏁 Révision finale M1–M5</button>
+      <button class="mtab" onclick="M('quiz',this)">🎯 Quiz général · 50 q.</button>
+      <button class="mtab" onclick="M('quiz_m4_mod',this)">🔬 M4 · 120 q.</button>
+      <div class="sb-subhead">M5 — séries d'entraînement</div>
+      <button class="mtab" onclick="M('quiz_m5_mod',this)">🧠 Questionnaire · 100 q.</button>
+      <button class="mtab" onclick="M('exam_m5_mod',this)">📝 Examen · Série 7</button>
+      <button class="mtab" onclick="M('quiz_m5b_mod',this)">✍️ Série B</button>
+      <button class="mtab" onclick="M('quiz_m5c_mod',this)">📋 Série C</button>
+      <button class="mtab" onclick="M('quiz_m5d_mod',this)">🎯 Série D</button>
+      <button class="mtab" onclick="M('quiz_m5e_mod',this)">🏆 Série E</button>
     </div>
   </div>
 
 </nav>
 <div class="main">
+
+<!-- ===== PLAN DE RÉVISION — carte complète du brevet ===== -->
+<div id="plan_mod" class="mod">
+  <p class="stit">Plan de révision — carte complète du brevet</p>
+  <div class="info">Vue d'ensemble des <b>5 modules</b> du Brevet fédéral d'électricien chef de projet, structurée d'après tes cours officiels. Clique sur <b>« Réviser »</b> pour ouvrir le module correspondant.</div>
+
+  <!-- M1 -->
+  <div class="card">
+    <span class="badge bb">Module 1</span>
+    <h3>M1 · Bases techniques &amp; règles</h3>
+    <div class="two">
+      <div>
+        <div class="plan-sub">M1.2 — Technique des systèmes électriques</div>
+        <ul>
+          <li>Disjoncteurs de canalisation (classes, courbes)</li>
+          <li>Fusibles — classes de fonctionnement</li>
+          <li>Sélectivité des protections</li>
+        </ul>
+      </div>
+      <div>
+        <div class="plan-sub">M1.3 — Règles techniques (NIBT) · thèmes d'examen</div>
+        <ol>
+          <li>Pyramide des lois (LIE, OIBT, OCF, ESTI 221)</li>
+          <li>Champ d'application, but, principes (généralités NIBT)</li>
+          <li>Systèmes de liaison à la terre (TN, TT, IT)</li>
+          <li>Protection contre décharge électrique (base + coupure auto)</li>
+          <li>Mise à la terre &amp; liaison équipotentielle de protection</li>
+          <li>Protection sans conducteur PE (séparation, classe II)</li>
+          <li>Influences extérieures (IP, marquages, contacts)</li>
+          <li>Influences thermiques (éclairage, chaudières, ventilateurs)</li>
+          <li>Sectionnement et coupure</li>
+          <li>Combustibilité (tuyaux, boîtiers, locaux à risque)</li>
+          <li>DBO — ensembles d'appareillages</li>
+          <li>Vérification initiale</li>
+          <li>Dangers de l'électricité (ESTI 407)</li>
+        </ol>
+      </div>
+    </div>
+    <button class="jbtn" onclick="GO('m1_full')">Réviser M1 →</button>
+  </div>
+
+  <!-- M2 -->
+  <div class="card">
+    <span class="badge bg">Module 2</span>
+    <h3>M2 · Installations &amp; métrés</h3>
+    <div class="plan-chips">
+      <span class="plan-chip">Calculation</span>
+      <span class="plan-chip">Métrage</span>
+      <span class="plan-chip">Normes SIA</span>
+    </div>
+    <button class="jbtn" onclick="GO('m2_full')">Réviser M2 →</button>
+  </div>
+
+  <!-- M3 -->
+  <div class="card">
+    <span class="badge bp">Module 3</span>
+    <h3>M3 · Planification</h3>
+    <div class="plan-sub">1.M3 — Normes &amp; sécurité</div>
+    <div class="plan-chips">
+      <span class="plan-chip">EPE</span>
+      <span class="plan-chip">Normes NIBT</span>
+      <span class="plan-chip">Norme 61439</span>
+      <span class="plan-chip">Sécurité au travail</span>
+    </div>
+    <div class="plan-sub">2.M3 — Spécialités techniques</div>
+    <div class="plan-chips">
+      <span class="plan-chip">API</span>
+      <span class="plan-chip">Appareils de mesure</span>
+      <span class="plan-chip">Coaxial</span>
+      <span class="plan-chip">Câblage universel</span>
+      <span class="plan-chip">Domotique (niv. 2)</span>
+      <span class="plan-chip">Détection incendie (AEAI / SES)</span>
+      <span class="plan-chip">Éclairage</span>
+      <span class="plan-chip">Électrotechnique</span>
+      <span class="plan-chip">Fibre optique</span>
+      <span class="plan-chip">KNX</span>
+      <span class="plan-chip">Moteurs &amp; transfo</span>
+      <span class="plan-chip">Photovoltaïque</span>
+      <span class="plan-chip">Sécurité &amp; anti-intrusion (SAI, AC, VS, SSS, ATS)</span>
+      <span class="plan-chip">Télématique / réseaux (switch, routeur, DHCP, DNS…)</span>
+    </div>
+    <div class="plan-sub">3.M3 — Étude &amp; projet</div>
+    <div class="plan-chips">
+      <span class="plan-chip">Labels Minergie</span>
+      <span class="plan-chip">Ordonnances</span>
+      <span class="plan-chip">Plan</span>
+      <span class="plan-chip">Projet</span>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <button class="jbtn" onclick="GO('m3_full')">Réviser M3 →</button>
+      <button class="jbtn" onclick="GO('m3m3')">Étude &amp; projet →</button>
+    </div>
+  </div>
+
+  <!-- M4 -->
+  <div class="card">
+    <span class="badge ba">Module 4</span>
+    <h3>M4 · Contrôle &amp; sécurité</h3>
+    <div class="plan-sub">M4.1</div>
+    <div class="plan-chips">
+      <span class="plan-chip">Bases du contrôle</span>
+      <span class="plan-chip">Anciennes normes</span>
+    </div>
+    <div class="plan-sub">M4.2</div>
+    <div class="plan-chips">
+      <span class="plan-chip">Procédure de contrôle</span>
+      <span class="plan-chip">Mesures OIBT</span>
+      <span class="plan-chip">Photovoltaïque</span>
+    </div>
+    <div class="plan-sub">M4.3</div>
+    <div class="plan-chips">
+      <span class="plan-chip">Rapport de sécurité &amp; vérification</span>
+    </div>
+    <button class="jbtn" onclick="GO('m4_full')">Réviser M4 →</button>
+  </div>
+
+  <!-- M5 -->
+  <div class="card">
+    <span class="badge br">Module 5</span>
+    <h3>M5 · Conduite &amp; ressources humaines</h3>
+    <div class="two">
+      <ol class="plan-ol">
+        <li>5.01 — Gestion de soi</li>
+        <li>5.03 — Information (annexe LPD)</li>
+        <li>5.04 — Communication (4 oreilles, émotions)</li>
+        <li>5.05 — Réunions (icebreakers)</li>
+        <li>5.07 — Management : style de direction &amp; motivation</li>
+        <li>5.08 — Planification &amp; recherche de personnel</li>
+        <li>5.09 — Sélection &amp; intégration (Europass)</li>
+      </ol>
+      <ol class="plan-ol" start="8">
+        <li>5.10 — Feedback &amp; évaluation</li>
+        <li>5.11 — Négociation</li>
+        <li>5.12 — Rémunération</li>
+        <li>5.14 — Gestion des conflits</li>
+        <li>5.15 — Management multiculturel</li>
+        <li>5.16 — Développement</li>
+        <li>5.17 — Fin des rapports de travail</li>
+      </ol>
+    </div>
+    <button class="jbtn" onclick="GO('m5_full')">Réviser M5 →</button>
+  </div>
+
+  <!-- Références -->
+  <div class="card">
+    <span class="badge bo">Références</span>
+    <h3>Normes &amp; outils transversaux</h3>
+    <div class="plan-chips">
+      <span class="plan-chip">NIBT 2025 (complète + par chapitre)</span>
+      <span class="plan-chip">AEAI — protection incendie</span>
+      <span class="plan-chip">Calculateur électrotechnique</span>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <button class="jbtn" onclick="GO('nibt_mod')">NIBT 2025 →</button>
+      <button class="jbtn" onclick="GO('aeai_mod')">AEAI →</button>
+      <button class="jbtn" onclick="GO('calc_mod')">Calculateur →</button>
+    </div>
+  </div>
+</div>
+
 
 
 <!-- ===== M3M3 ===== -->
@@ -18148,6 +18307,7 @@ body{
 }
 .sb-search::placeholder{ color:#67788c !important; }
 .sb-search:focus{ border-color:var(--elec) !important; box-shadow:0 0 0 3px rgba(46,125,246,.22) !important; background:rgba(255,255,255,.06) !important; }
+.sb-subhead{ font-family:var(--font-mono); font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:#5f7390; padding:.6rem .2rem .25rem 1rem; opacity:.85; }
 
 /* ---------- Titres de section ---------- */
 .stit{
@@ -18246,6 +18406,15 @@ tr:hover td{ background:rgba(46,125,246,.05); }
 /* ---------- Encadrés ---------- */
 .info{ border:1px solid #bcd4fb !important; border-left:3px solid var(--elec) !important; border-radius:8px !important; background:#f0f6ff !important; }
 .warn{ border:1px solid #f2dda3 !important; border-left:3px solid var(--amber) !important; border-radius:8px !important; background:#fff8e9 !important; }
+
+/* ---------- Bouton « Réviser » (plan de révision) ---------- */
+.jbtn{ display:inline-flex; align-items:center; gap:.4rem; margin-top:1rem; font-family:var(--font-disp); font-weight:600; font-size:12.5px; color:#fff; background:linear-gradient(135deg,#1a3a5c,#2f6bb0); border:0; border-radius:8px; padding:8px 16px; cursor:pointer; transition:transform .15s var(--ease), box-shadow .2s; box-shadow:0 6px 16px -8px rgba(26,58,92,.6); }
+.jbtn:hover{ transform:translateY(-2px); box-shadow:0 10px 22px -8px rgba(46,125,246,.6); }
+.plan-sub{ font-family:var(--font-mono); font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); margin:.1rem 0 .4rem; }
+.plan-chips{ display:flex; flex-wrap:wrap; gap:6px; margin:.3rem 0 .2rem; }
+.plan-chip{ font-family:var(--font-mono); font-size:11px; color:#2c4a6e; background:#eef3fb; border:1px solid var(--hair-strong); border-radius:6px; padding:3px 9px; }
+html[data-theme="dark"] .jbtn{ background:linear-gradient(135deg,#1c3a5e,#2f6bb0); }
+html[data-theme="dark"] .plan-chip{ background:#141f2d; color:#9fc0e6; border-color:#26364a; }
 
 /* ---------- Footer ---------- */
 .app-footer{ font-family:var(--font-mono); font-size:10.5px; letter-spacing:.04em; color:var(--muted); text-align:center; padding:1.6rem 1rem 2.2rem; }
@@ -18348,6 +18517,15 @@ html[data-theme="dark"] .warn{ background:#231c0c !important; border-color:#5a47
     if(typeof window.M==='function'){ var _M=window.M; window.M=function(id,btn){ var r=_M.apply(this,arguments); window.scrollTo({top:0,behavior:reduce?'auto':'smooth'}); reveal(document.getElementById(id)); return r; }; }
     if(typeof window.S==='function'){ var _S=window.S; window.S=function(id,btn,m){ var r=_S.apply(this,arguments); reveal(document.getElementById(id)); return r; }; }
     var act=document.querySelector('.mod.on'); if(act) reveal(act);
+
+    /* ---- GO(id) : ouvre un module en activant le bon onglet de la sidebar ---- */
+    window.GO=function(id){
+      var btns=document.querySelectorAll('.sidebar .mtab');
+      for(var i=0;i<btns.length;i++){
+        if((btns[i].getAttribute('onclick')||'').indexOf("'"+id+"'")>=0){ btns[i].click(); return; }
+      }
+      if(typeof window.M==='function'){ window.M(id,{classList:{add:function(){}}}); }
+    };
 
     /* ---- Parallax 3D des cartes (pointeur fin) ---- */
     if(fine && !reduce){
