@@ -3453,6 +3453,7 @@ e. <b>protéger</b> contre les parties voisines restées sous tension.</div>
   <button class="stab on" onclick="S('m1_vue',this,'m1_full')">Vue d'ensemble</button>
   <button class="stab" onclick="S('m1_lois',this,'m1_full')">Lois et ordonnances</button>
   <button class="stab" onclick="S('m1_nibt',this,'m1_full')">NIBT et protections</button>
+<button class="stab" onclick="S('m1_technique',this,'m1_full')">⚙️ Technique (disj. &amp; fusibles)</button>
   <button class="stab" onclick="S('m1_slt',this,'m1_full')">TN / TT / IT</button>
   <button class="stab" onclick="S('m1_ea',this,'m1_full')">EA / DBO / 61439</button>
   <button class="stab" onclick="S('m1_pdie',this,'m1_full')">PDIE / annonces</button>
@@ -3888,6 +3889,26 @@ e. <b>protéger</b> contre les parties voisines restées sous tension.</div>
     <tr><td>Comment traiter un doute PDIE ?</td><td>Consulter prescriptions GRD, demander DRT/accord si puissance, comptage ou réseau concernés.</td></tr>
   </table>
 </div>
+</div>
+
+<div id="m1_technique" class="sub">
+<p class="stit">Module 1.2 — Technique : disjoncteurs &amp; fusibles</p>
+<div class="info">📚 Extrait du support de cours M1.2 « Technique des systèmes électriques ».</div>
+<div class="card"><span class="badge br">Point critique examen</span><h3>Disjoncteurs de canalisation : courbes B / C / D</h3><ul><li>La courbe (lettre) définit le <span class="hi">seuil de déclenchement magnétique</span> (court-circuit), exprimé en multiples du courant assigné I<sub>n</sub>.</li><li><b>Courbe B</b> : déclenchement magnétique <span class="hi">3 à 5 × I<sub>n</sub></span> — lignes résistives, grandes longueurs.</li><li><b>Courbe C</b> : <span class="hi">5 à 10 × I<sub>n</sub></span> — usage général, prises, éclairage (la plus courante).</li><li><b>Courbe D</b> : <span class="hi">10 à 20 × I<sub>n</sub></span> — charges à forte pointe d'enclenchement (moteurs, transfos, tubes fluo).</li></ul><div class="info">Les courbes K et Z ne figurent pas dans le support.</div></div>
+
+<div class="card"><span class="badge bb">Déclencheurs</span><h3>Thermique + magnétique : deux fonctions</h3><ul><li><b>Déclencheur thermique</b> (bilame) → protection contre les <span class="hi">surcharges</span> : temporisé, courbe douce décroissante.</li><li><b>Déclencheur magnétique</b> (bobine) → protection contre les <span class="hi">courts-circuits</span> : instantané, dès le seuil B/C/D atteint.</li><li>Zone thermique bornée par deux courants conventionnels (× I<sub>n</sub>) :</li></ul><table><tr><th>Courant</th><th>× I<sub>n</sub></th><th>Rôle</th></tr><tr><td>Non-déclenchement</td><td>1,13</td><td>ne doit PAS couper</td></tr><tr><td>Déclenchement</td><td>1,45</td><td>doit couper (temps conv.)</td></tr></table></div>
+
+<div class="card"><span class="badge ba">Choix du coupe-surintensité</span><h3>Double vérification + pointes transitoires</h3><ul><li>Vérifier qu'il coupe assez vite pour protéger la <span class="hi">ligne (surcharge)</span> ET les <span class="hi">personnes (court-circuit)</span>.</li><li>Mais qu'il ne déclenche PAS sur une surcharge transitoire (démarrage moteur, enclenchement tubes fluo).</li><li>Pour éviter les déclenchements intempestifs :<ul><li>Limiter le courant de démarrage (démarreur électronique, étoile-triangle, cascade).</li><li>Passer d'une courbe <span class="hi">C à D</span> : le courant de CC minimal assurant la coupure passe alors de 10 à 20 × I<sub>n</sub>.</li><li>Augmenter l'intensité assignée (souvent sans changer la section de ligne).</li></ul></li></ul></div>
+
+<div class="card"><span class="badge bb">Fusibles</span><h3>Classes de fonctionnement gG/gL, NH, gH</h3><ul><li>Caractéristique <span class="hi">temps-courant</span> : plus le courant est élevé, plus la fusion est rapide (courbe décroissante).</li><li><b>Diazed gG / gL</b> : fusibles à usage général (protection ligne + court-circuit), calibres 2 à 100 A.</li><li><b>NH / gH</b> : fusibles à couteaux (type HPC), fortes intensités, calibres 2 à 160 A et +.</li><li>Les deux lettres : 1<sup>re</sup> = plage de coupure (g = plage complète), 2<sup>e</sup> = objet protégé (G/L = général/ligne).</li></ul><div class="info">Chaque calibre a sa propre courbe de fusion (bande min/max).</div></div>
+
+<div class="card"><span class="badge bo">Fusibles HPC</span><h3>Coupe-circuit HPC : règles d'emploi</h3><ul><li>HPC au coupe-surintensité général ou sur lignes terminales : admis <span class="hi">uniquement avec accès réservé aux personnes initiées</span>.</li><li>Pouvoir de coupure élevé → adaptés aux courants de court-circuit importants (têtes d'installation).</li><li>Comme coupe-surintensité d'abonné : coupe-circuit à fusibles <span class="hi">type 500 V, plombables</span>, ou disjoncteurs plombables en positions « enclenché » et « déclenché ».</li></ul></div>
+
+<div class="card"><span class="badge ba">Lecture plaque</span><h3>Plaque signalétique d'un disjoncteur</h3><ul><li>Exemple Legrand <span class="hi">C 16</span> : type de courbe C, courant assigné 16 A, tension 230 V~.</li><li><b>Pouvoir de coupure</b> : courant de CC max que l'appareil peut interrompre — valeur dans le rectangle (<span class="hi">4500 A</span> ici ; 6 kA fréquent en RCBO).</li><li>Norme de référence : <span class="hi">NF EN 60898</span> (≈ CEI). Si le pouvoir de coupure < courant de CC présumé → placer un fusible en amont.</li><li>Schéma indiqué : pôle N sectionné, pôle Ph protégé.</li></ul></div>
+
+<div class="card"><span class="badge bp">I²t — limitation d'énergie</span><h3>Classes de limitation (sélectivité CEI)</h3><ul><li>Au moment de la coupure d'un CC, une énergie <span class="hi">I²·t (intégrale Joule, A²s)</span> passe encore et sollicite l'appareil amont.</li><li><b>Classe 1</b> : aucune valeur fixée — coupe au prochain passage à zéro (anciens disjoncteurs).</li><li><b>Classe 2</b> : laisse passer ≤ <span class="hi">1/3</span> de l'énergie d'une alternance 50 Hz.</li><li><b>Classe 3</b> : ≤ <span class="hi">1/6</span> de l'énergie → disjoncteurs <b>limiteurs de courant</b>.</li></ul><div class="fm">W = R · I² · t</div></div>
+
+<div class="card"><span class="badge bg">Départ moteur</span><h3>Coordination disjoncteur-contacteur : catégories AC</h3><ul><li>La catégorie d'emploi du contacteur fixe sa tenue en cadence/endurance selon la charge.</li></ul><table><tr><th>Cat.</th><th>Charge</th><th>Application</th></tr><tr><td>AC1</td><td>non-inductive (cosφ 0,8)</td><td>chauffage, distribution</td></tr><tr><td>AC2</td><td>moteur à bague</td><td>démarrage + freinage</td></tr><tr><td>AC3</td><td>moteur à cage, coupe I<sub>n</sub></td><td>pompes, ascenseurs <span class="hi">(85% des cas)</span></td></tr><tr><td>AC4</td><td>coupe le courant de démarrage</td><td>à-coups, contre-courant</td></tr></table><div class="warn">⚠️ Démarrage étoile-triangle : à vide, moteur marqué 400/690 V sur le réseau public.</div></div>
 </div>
 </div>
 
