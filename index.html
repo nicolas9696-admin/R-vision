@@ -1026,6 +1026,7 @@ mark.bpel-hit{background:#fde68a;color:inherit;padding:0 2px;border-radius:2px}
   <button class="stab" onclick="S('ms_coaxial',this,'m3spec_mod')">📡 Coaxial</button>
   <button class="stab" onclick="S('ms_detection',this,'m3spec_mod')">🔥 Détection incendie</button>
   <button class="stab" onclick="S('ms_mesure',this,'m3spec_mod')">📐 Appareils de mesure</button>
+  <button class="stab" onclick="S('ms_securite',this,'m3spec_mod')">🛡️ Sécurité &amp; AV</button>
 </div>
 <div id="ms_electrotechnique" class="sub on">
 <p class="stit">⚡ Électrotechnique — courants alternatifs</p>
@@ -2290,6 +2291,190 @@ mark.bpel-hit{background:#fde68a;color:inherit;padding:0 2px;border-radius:2px}
   </ul>
 </div>
 </div>
+
+<div id="ms_securite" class="sub">
+<p class="stit">🛡️ Sécurité &amp; anti-intrusion / alarmes</p>
+
+<div class="card"><span class="badge bb">SAI</span><h3>Concept de protection — de l'extérieur vers l'intérieur</h3>
+  <ul>
+    <li>Principe « pelure d'oignon » : protection <span class="hi">de l'extérieur vers l'intérieur</span>, si possible 2 détections ou plus en direction des valeurs.</li>
+    <li>Les 7 niveaux : <span class="hi">A</span> périmètre · <span class="hi">B</span> périphérique (enveloppe) · <span class="hi">C</span> volumétrique (local) · <span class="hi">D</span> ponctuelle (objet) · <span class="hi">E</span> appel à l'aide · <span class="hi">F</span> contrôle d'accès · <span class="hi">G</span> vidéosurveillance.</li>
+    <li>« Concept intrusion » = <span class="hi">A à E</span> ; + F et G = « concept global sûreté » (2 couches de sécurité électronique supplémentaires).</li>
+    <li>SAI (selon SES) = <span class="hi">I&amp;HAS</span> (selon CEI/EN) : Intrusion &amp; Hold-up Alarm System.</li>
+    <li>Structure : détecteurs → centrale <span class="hi">CAI</span> (ECS) → organe d'alarme + transmission. Ligne <span class="hi">collective</span> (1 affichage) ou <span class="hi">adressée</span> (4 fils : 2 données + 2 alim, emplacement individuel).</li>
+  </ul>
+  <div class="warn">⚠️ Les TIC (wifi, smartphone, écrans tactiles) sont des technos de « confort » qui dégradent le niveau de sécurité → risque de déclassement du grade.</div>
+</div>
+
+<div class="card"><span class="badge bb">SAI</span><h3>Systèmes passifs / actifs &amp; détection volumétrique</h3>
+  <ul>
+    <li><span class="hi">Passif</span> : perçoit un phénomène physique (rayonnement IR/chaleur, ondes sismiques, force mécanique) sans rien émettre.</li>
+    <li><span class="hi">Actif</span> : émetteur + récepteur dans un circuit ; détecte un changement (masse, fréquence, coupure d'un rayon).</li>
+    <li><span class="hi">DMIR</span> = détecteur de mouvement infrarouge passif (PIR) : capteur pyroélectrique double, sensibilité max aux mouvements <span class="hi">perpendiculaires</span> aux zones ; intérieur uniquement (standard).</li>
+    <li><span class="hi">DMMO</span> = micro-onde / hyperfréquence (actif, effet <span class="hi">Doppler</span>) ; <span class="hi">DMUS</span> = ultrasons (en fin de vie).</li>
+    <li>Bi-technologie <span class="hi">DMIR &amp; DMMO</span> : alarme seulement si les 2 technologies détectent simultanément → immunité aux fausses alarmes.</li>
+    <li>Optique miroir zoom : distingue un petit animal (pas d'alarme) d'une personne.</li>
+  </ul>
+  <div class="info">Détection optimale = mouvement perpendiculaire (⊥) aux faisceaux ; moins bonne = tangentiel.</div>
+</div>
+
+<div class="card"><span class="badge bb">SAI</span><h3>Détecteurs : périphérie, périmètre &amp; objets</h3>
+  <ul>
+    <li>Périphérie — <span class="hi">Contact magnétique (CM)</span> : reed + aimant ; sur support ferromagnétique distance de commutation <span class="hi">÷ ~2</span>. <span class="hi">Contact d'ouverture (CO)</span> : microrupteur, jamais seul (sabotable).</li>
+    <li><span class="hi">Bris de verre acoustique passif (DBGA)</span> : piézo, 2 niveaux (choc + verre au sol), rayon ~2 m/vitre 2 mm. <span class="hi">Vibration (CV)</span> : portée <span class="hi">3 m verre/métal/bois, 2 m brique, 1 m béton</span>.</li>
+    <li><span class="hi">Verre alarme (VA)</span> : boucle sérigraphiée sur verre trempé ESG. <span class="hi">Protection de surface (SS/FD1)</span> : fil Cu, boucles ≤ 10 cm, ~30 m/m², min 3 boucles.</li>
+    <li>Périmètre (extérieur) : barrière <span class="hi">IR</span>, barrière <span class="hi">micro-ondes 10 GHz</span>, <span class="hi">câble rayonnant HF enterré</span> (invisible), <span class="hi">scanner laser</span> (20 m, 180°).</li>
+    <li>Objets : <span class="hi">détecteur sismique (DS)</span> ; coffre moderne mini = <span class="hi">1 DS porte + 1 DS manteau + 1 serrure électronique</span>. Vitrine VM-3, 3D, capacitif, RFID.</li>
+    <li><span class="hi">Générateur de brouillard (DBr)</span> : positionnement <span class="hi">EN 50131-8</span> (min 2,5 m). <span class="hi">Détecteur d'eau FLD</span> : IP68, conductivité ≥ <span class="hi">150 µS</span>.</li>
+  </ul>
+</div>
+
+<div class="card"><span class="badge br">SAI · point examen</span><h3>Grades de sécurité, anti-masquage &amp; pièges</h3>
+  <ul>
+    <li>Normes : directives SES basées sur la série <span class="hi">EN 50131</span>. 3 grades définis par les assureurs :</li>
+  </ul>
+  <table>
+    <tr><th>Grade EN-CH</th><th>Risques</th><th>Objectif</th></tr>
+    <tr><td>Grade 2</td><td>Accrus</td><td>Dissuader</td></tr>
+    <tr><td>Grade 3</td><td>Élevés</td><td>Retarder</td></tr>
+    <tr><td>Grade 4</td><td>Très élevés</td><td>Empêcher</td></tr>
+  </table>
+  <ul>
+    <li><span class="hi">Anti-masquage</span> (inventé par Siemens) : détecte chapeau/spray/carton/mousse jusqu'à <span class="hi">25 cm</span> ; obligatoire en <span class="hi">grade 3</span>.</li>
+    <li>Les « 5+1 règles vitales » de planification : exploiter les propriétés de détection, tenir compte des perturbations, respecter les specs produit, appareils en secteur protégé, résistances de boucle dans le détecteur.</li>
+  </ul>
+  <div class="warn">⚠️ Ne jamais corriger une erreur de planification en augmentant la sensibilité → multiplie les alarmes intempestives. Conformité EN50131 lisible sur l'emballage, le manuel ET la plaque signalétique.</div>
+</div>
+
+<div class="card"><span class="badge bg">Contrôle d'accès</span><h3>Structure &amp; 3 familles d'identification</h3>
+  <ul>
+    <li>Rôle : définir <span class="hi">qui</span> peut entrer <span class="hi">où</span> et <span class="hi">quand</span> + traçabilité. Toujours couplé à un SAI en sécurité ; AC = EACS (selon EN) ou AC.</li>
+    <li>Les 3 familles : <span class="hi">ce qu'on possède</span> (clé, carte, badge) · <span class="hi">ce qu'on sait</span> (code NIP) · <span class="hi">ce qu'on est</span> (biométrie).</li>
+    <li>Pyramide du + simple au + sûr : code NIP < badge < badge + NIP < biométrie < combinaison de 3 procédés / 2 personnes.</li>
+    <li>Structure terrain → <span class="hi">lecteur</span> → unité d'asservissement porte (Controller) → centrale/serveur/stations.</li>
+    <li>Sa résistance = <span class="hi">celle du maillon le plus faible</span> ; un système d'accès diminue la résistance mécanique de la porte.</li>
+    <li>Sécurité = <span class="hi">Security</span> (protection des biens) + <span class="hi">Safety</span> (évacuation / vies humaines) : intérêts opposés sur les voies d'évacuation.</li>
+  </ul>
+</div>
+
+<div class="card"><span class="badge bg">Contrôle d'accès</span><h3>Technologies de cartes &amp; badges</h3>
+  <ul>
+    <li>Format carte standard <span class="hi">ISO/IEC 7810</span> (85,6 × 54 mm).</li>
+    <li>Badge inductif <span class="hi">BF 125 kHz</span> : n° de série, codé d'usine, <span class="hi">lecture seule</span> (non réinscriptible).</li>
+    <li>Badge inductif <span class="hi">HF 13,56 MHz</span> : secteurs mémoire, <span class="hi">lecture + écriture</span>, authentification mutuelle (Mifare, Legic, Hitag).</li>
+    <li>Distance de lecture : proximité <span class="hi">3–20 cm</span> ; mains-libres / longue distance jusqu'à ~10 m.</li>
+    <li>Niveau de sécurité faible : code-barres, piste magnétique (ISO 7811, max 3 pistes, copiable), carte à trous.</li>
+  </ul>
+  <div class="info">Influence mutuelle des lecteurs et surface métallique (absorbe le champ) : respecter les distances d'installation.</div>
+</div>
+
+<div class="card"><span class="badge bg">Contrôle d'accès</span><h3>Biométrie — performances &amp; modes</h3>
+  <ul>
+    <li>Indicateurs : <span class="hi">FAR</span> (fausse acceptation) · <span class="hi">FRR</span> (faux rejet) · <span class="hi">EER</span> (taux d'égale erreur) · FTE/FTA (rejet enrôlement/acquisition).</li>
+    <li>Compromis : ↓FAR = +sécurité ; ↓FRR = +confort. L'EER est le point d'équilibre.</li>
+    <li><span class="hi">Identification</span> (1:n) = confort d'exploitation ; <span class="hi">Vérification</span> (1:1, badge/NIP + biométrie) = sécurité d'exploitation, plus sûre.</li>
+    <li>Empreinte digitale = technique la + utilisée ; nb de points : <span class="hi">CH = 28, USA = 7</span>. Iris/rétine/empreinte distinguent les vrais jumeaux (pas la main ni le visage).</li>
+  </ul>
+  <table>
+    <tr><th>Biométrie</th><th>FAR</th><th>FRR</th></tr>
+    <tr><td>Iris</td><td>0,0001 %</td><td>0,2 %</td></tr>
+    <tr><td>Empreinte</td><td>1 %</td><td>0,1 %</td></tr>
+    <tr><td>Visage</td><td>1 %</td><td>10 %</td></tr>
+    <tr><td>Voix</td><td>2 %</td><td>10 %</td></tr>
+  </table>
+  <div class="info">Prévoir toujours un fonctionnement en mode dégradé (sans biométrie). « L'ergonomie, c'est la sécurité ».</div>
+</div>
+
+<div class="card"><span class="badge bg">Contrôle d'accès</span><h3>Fonctions logiques, portes &amp; serrures</h3>
+  <ul>
+    <li><span class="hi">AntiPassBack (APB)</span> : ré-entrée interdite si la zone n'a pas été quittée au préalable.</li>
+    <li><span class="hi">Contrôle à 4 yeux</span> (mode escorte) : 2 badges autorisés requis dans un laps de temps.</li>
+    <li>Autres : contrôle de changement de zone, blocage des accès répétés, contrôle de présence, surveillance de durée de séjour, <span class="hi">code de menace</span> (NIP + 1 chiffre → alarme sous menace).</li>
+    <li>Accréditation = personne → <span class="hi">groupe</span> + zones + horaires.</li>
+    <li>Serrures : <span class="hi">gâche électrique</span> (sécurité faible) · <span class="hi">serrure électromécanique</span> (sécurité élevée, contacts d'état) · ventouse magnétique.</li>
+    <li>Architecture <span class="hi">Online</span> (temps réel, systèmes moyens/grands, LAN/WAN) vs <span class="hi">Offline</span> (données dans le contrôleur, petits systèmes, cylindre/garniture sans fil).</li>
+  </ul>
+  <div class="warn">⚠️ Issues de secours &amp; portes coupe-feu : à traiter avec le fournisseur de porte + RAQ PI + autorités (sinon perte de garantie).</div>
+</div>
+
+<div class="card"><span class="badge ba">Vidéosurveillance</span><h3>Concept VSS à 6 niveaux (EN 50132 / SES)</h3>
+  <ul>
+    <li>VSS = CCTV (circuit fermé) ; <span class="hi">Video Security</span> = détection automatique d'événements. Rôle : surveiller, levée de doute, flux, détection.</li>
+    <li>6 niveaux (EN 50132-7 / SES) : <span class="hi">Surveiller · Détecter · Observer · Reconnaître · Identifier · Inspecter</span> (ancien barème = 4 niveaux).</li>
+    <li>Définis par le % de hauteur de la cible <span class="hi">Rotakin</span> (EN 50132-4) à 1,7 m :</li>
+  </ul>
+  <table>
+    <tr><th>Niveau</th><th>% cible</th><th>pixels/m (ordre)</th></tr>
+    <tr><td>Détecter</td><td>10 %</td><td>50–60</td></tr>
+    <tr><td>Reconnaître</td><td>50 %</td><td>100–250</td></tr>
+    <tr><td>Inspecter</td><td>400 %</td><td>250–500</td></tr>
+  </table>
+  <div class="warn">⚠️ Aucune loi fédérale sur la VSS : seule la <span class="hi">LPD du 01.09.2023</span> (+ CF art. 13) s'applique. Caméra « espion » non signalée = illicite. Durée de conservation en général 24–72 h.</div>
+</div>
+
+<div class="card"><span class="badge ba">Vidéosurveillance</span><h3>Technique : caméra, capteur &amp; objectif</h3>
+  <ul>
+    <li>Capteur : <span class="hi">CCD</span> (meilleure qualité, cher) vs <span class="hi">CMOS</span> (~100× moins d'énergie, bon marché, rapide). Taille en pouces (1/4, 1/3, 1/2).</li>
+    <li>Résolution : <span class="hi">CIF</span> 352×288, 4CIF 704×576 (analogique ≈ 0,4 MP) ; IP jusqu'à 4K/8K.</li>
+    <li>Objectif : focale (mm, petit = grand-angle, grand = téléobjectif) ; diaphragme <span class="hi">f</span> (petit = grande ouverture) ; monture <span class="hi">C = 17,526 mm</span>, <span class="hi">CS = 12,5 mm</span> (objectif CS impossible sur caméra C).</li>
+    <li>Loi du carré inverse : <span class="hi">doubler la distance = 4× plus de lumière</span>. En son direct, +2× distance ⇒ −6 dB.</li>
+  </ul>
+  <div class="fm">Éclairement : 1 lux = 1 lm/m² &nbsp;·&nbsp; candela [cd] source · lumen [lm] flux · lux [lx] reçu</div>
+  <div class="info">Types : fixe, bullet/tube, dôme fixe/mobile PTZ, 360° fisheye, thermique (chaleur, obscurité totale). Pour la sécurité : pas de wifi.</div>
+</div>
+
+<div class="card"><span class="badge bp">SSS</span><h3>Système de sonorisation de sécurité (alarme vocale)</h3>
+  <ul>
+    <li><span class="hi">SSS</span> = système de sonorisation de sécurité = alarme vocale (SAV/IAV) ; <span class="hi">SESU</span> = système électroacoustique pour situations d'urgence.</li>
+    <li>Chaîne électroacoustique : <span class="hi">source de modulation → amplification/transport → diffusion (HP)</span>.</li>
+    <li>Ligne <span class="hi">100 V</span> (haute impédance) : transfo élévateur en sortie d'ampli, transfo abaisseur à chaque HP → pertes réduites, nombreux HP en parallèle.</li>
+    <li>Avantage vs sirène : messages <span class="hi">intelligibles, multilingues (min 2)</span>, incitent à l'autosauvetage. Temps de réaction : signal sonore &gt; 6 min, message pré-enregistré ≈ 4 min, instructions claires &lt; 1 min.</li>
+    <li>Déroulement : coupure de la musique → signal d'avertissement → annonce auto 2–10 s après → répétition &lt; 30 s → consignes manuelles pompiers.</li>
+    <li><span class="hi">Amok</span> (tireur fou) : principe « s'enfermer au lieu d'évacuer », touche dédiée (bleu) ; évacuation (vert).</li>
+  </ul>
+  <div class="warn">⚠️ Un SESU ne peut PAS servir à l'évacuation incendie (interdit par SN-EN 50849). Seul un SSS certifié EN 54 remplace les avertisseurs sonores du SDAI.</div>
+</div>
+
+<div class="card"><span class="badge br">SSS · point examen</span><h3>Normes EN 54 &amp; exigences d'installation</h3>
+  <ul>
+    <li><span class="hi">EN 54-16</span> : ECSAV (centrale + micro pompiers PTT) · <span class="hi">EN 54-24</span> : HP (type A intérieur IP21, type B extérieur IP33) · <span class="hi">EN 54-23</span> : DSAF visuel · <span class="hi">EN 54-4</span> : alim de secours.</li>
+    <li>Signal d'avertissement émis en &lt; <span class="hi">3 s</span> ; indication d'une panne affichée en &lt; <span class="hi">100 s</span>. Micro pompiers prioritaire sur les messages auto.</li>
+    <li>Niveau sonore : min <span class="hi">65 dB(A)</span>, max 125 dB(A), <span class="hi">10–15 dB(A) au-dessus du bruit de fond</span> ; tête de lit ≥ 75 dB(A) ; si bruit fond &gt; 85 dB(A) → alerte visuelle.</li>
+    <li>Intelligibilité : indice <span class="hi">STI &gt; 0,5 sur 90 %</span> de la surface.</li>
+    <li>Câble à maintien de fonction (ex. FE180 E30) ; défaut ⇒ pas plus d'<span class="hi">1 zone d'alarme perdue par compartiment coupe-feu</span>.</li>
+  </ul>
+  <table>
+    <tr><th>Niveau de sécurité</th><th>Câblage</th></tr>
+    <tr><td>I</td><td>Pas de redondance (coupure = toute la ligne HS)</td></tr>
+    <tr><td>II</td><td>2 lignes A/B par compartiment (perte = −3 dB)</td></tr>
+    <tr><td>III</td><td>Redondance complète (sécurité maximale)</td></tr>
+  </table>
+  <div class="info">Alim secours (EN 54-4) : 12/24 h en veille + min 0,5 h en urgence ; bâtiment &gt; 30 m → 1 h.</div>
+</div>
+
+<div class="card"><span class="badge bo">Transmission ATS</span><h3>Transmission sécurisée d'alarme vers les ARC</h3>
+  <ul>
+    <li>Chaîne : détecteurs → ECS/CAI → transmetteur <span class="hi">STP</span> → réseau <span class="hi">ATSN</span> → centres de réception <span class="hi">ARC</span> (officiels ou privés).</li>
+    <li>Prestataire principal CH : <span class="hi">TUS</span> (réseau alarmnet, plateforme TUSNet à 4 sites redondants géographiquement).</li>
+    <li>Normes : <span class="hi">EN 50136</span> (transmission) · EN 54-21 (incendie, type 1/2) · EN 50131 (intrusion).</li>
+    <li>Redondance : <span class="hi">2 voies physiquement séparées</span> — IP (primaire) + LTE/GPRS (secondaire). Surveillance permanente (toutes les 3 min) ou 23 h.</li>
+    <li>Critères : <span class="hi">K01</span> agression · K02 effraction · K03 ouverture sous menace · <span class="hi">K04</span> feu · K06 dérangement SAI · K07 dérangement SDAI · K08 mise hors service SDAI.</li>
+    <li>ARC officiel = norme <span class="hi">EN 50518</span> ; temps de réaction 90 s (117/144), 180 s (118). <span class="hi">Certas</span> = plus grand centre privé CH (Securitas 50 % / Siemens 50 %).</li>
+  </ul>
+  <div class="warn">⚠️ Techniques grand public (wifi, Bluetooth) sujettes au brouillage (jammers interdits — LTC art. 32b) → niveau de sécurité moindre.</div>
+</div>
+
+<div class="card"><span class="badge bo">Normalisation</span><h3>Organismes &amp; cadre normatif</h3>
+  <ul>
+    <li><span class="hi">Norme</span> = document volontaire (organisme reconnu, consensus) ; <span class="hi">prescription</span> = loi étatique obligatoire (coercitive).</li>
+    <li>International : ISO · <span class="hi">CEI/IEC</span> (électrique) · UIT (télécom) · CFPA. Européen : <span class="hi">CEN</span> (non-élec) · <span class="hi">CENELEC</span> (élec) · ETSI · EURALARM.</li>
+    <li>National CH : SNV · Electrosuisse/ASE · <span class="hi">AECA</span> (anc. AEAI, protection incendie) · ASA (assureurs) · <span class="hi">SES</span> (constructeurs systèmes de sécurité) · VdS.</li>
+    <li>Hiérarchie PPI : lois/ordonnances &gt; <span class="hi">NPI</span> (norme) &gt; <span class="hi">DPI</span> (directives AEAI) &gt; <span class="hi">DET</span> (état de la technique SES).</li>
+    <li>Normes systèmes : EN 50131 (intrusion) · EN 50133 (contrôle d'accès) · IEC/EN 62676 (VSS) · EN 54 (incendie) · EN 50136 (transmission) · EN 50518 (centres de réception).</li>
+  </ul>
+  <div class="info">SES = marque de qualité (produits homologués + personnel certifié). Seuls métiers certifiés AECA : réalisation SDAI et sprinkler.</div>
+</div>
+</div>
 </div>
 
 <!-- ===== M3M3 ===== -->
@@ -3343,6 +3528,79 @@ mark.bpel-hit{background:#fde68a;color:inherit;padding:0 2px;border-radius:2px}
 </div>
 </div>
 <!-- ULTRA DETAILS M2 SIA END -->
+
+<!-- M2X -->m2_sia
+<div class="info" style="margin-top:.6rem">📚 Complément extrait du cours :</div>
+<div class="card">
+  <span class="badge bb">Panorama des normes SIA</span>
+  <h3>Les normes du module 2 et leur rôle</h3>
+  <ul>
+    <li>But : garantir qualité, sécurité, durabilité et clarté des projets de construction suisses (référence technique et économique).</li>
+    <li><span class="hi">SIA 112</span> modèle de prestations (phases de conception, réalisation, exploitation) ; <span class="hi">SIA 108</span> prestations & honoraires des ingénieurs.</li>
+    <li><span class="hi">SIA 118</span> conditions générales d'exécution ; <span class="hi">SIA 118/380</span> installations du bâtiment ; <span class="hi">SIA 451</span> interface informatique d'échange de données.</li>
+    <li>Énergie/confort : <span class="hi">SIA 2056</span> (besoin en énergie & puissance), <span class="hi">SIA 387/4</span> (éclairage), SIA 181 (bruit), SIA 2060 (bornes véhicules électriques), SIA 2020 (sûretés).</li>
+  </ul>
+  <div class="info">Ordre de priorité du droit : droit suisse (CC & CO) → contrat conclu → règlement SIA. Le contrat d'entreprise peut être écrit, oral ou par acte concluant.</div>
+</div>
+
+<div class="card">
+  <span class="badge br">SIA 108 — point critique examen</span>
+  <h3>Phases de prestations, honoraires et lien ET</h3>
+  <ul>
+    <li>6 phases : 1 Définition des objectifs, 2 Études préliminaires (régie, architecte), 3 Projet, 4 Appel d'offres, 5 Réalisation, 6 Exploitation (régie).</li>
+    <li>Phase 3 Projet = <span class="hi">ET-A</span> (avant-projet 6% + projet/autorisation 18%), plans 1:200 puis 1:100, <span class="hi">24%</span> du temps de l'ingénieur.</li>
+    <li>Phase 4 Appel d'offres = <span class="hi">ET-B</span>, plans 1:100, <span class="hi">21%</span> ; inclut aussi la phase 51 projet d'exécution.</li>
+    <li>Phase 5 Réalisation : 5.1 exécution (28%), 5.2 réalisation (17%), 5.3 mise en service (10%), plans 1:50 ≈ <span class="hi">55%</span> du temps. L'<span class="hi">ET-C</span> (installateur) démarre en phase 52, en parallèle de l'ET-B.</li>
+  </ul>
+  <div class="warn">⚠️ Devoirs de l'ingénieur : diligence, loyauté, mise en garde, conservation des documents <span class="hi">10 ans</span>. Fin anticipée : résiliée par le mandant → l'ingénieur peut réclamer +10% des honoraires. Dépassement &gt; 10% du montant à annoncer par écrit.</div>
+</div>
+
+<div class="card">
+  <span class="badge br">SIA 118 — point critique examen</span>
+  <h3>Contrat, rémunération, réception</h3>
+  <ul>
+    <li>Appel d'offres : simple, public ou sur invitation ; validité de l'offre <span class="hi">30 jours</span> (sauf mention). L'entrepreneur ne peut modifier le descriptif.</li>
+    <li>Rémunération : <span class="hi">prix unitaires</span> (avec variation), <span class="hi">prix forfaitaire</span> (sans variation), <span class="hi">prix global</span> (avec variation). Régie signée par la DT sous <span class="hi">7 jours</span>, facturée mensuellement.</li>
+    <li>Modification de commande : unitaires jusqu'à <span class="hi">±20%</span> sur la même base (80–120%), réadaptation du prix possible au-delà.</li>
+    <li>Décompte final <span class="hi">2 mois</span> après réception, remis en 4 exemplaires ; vérification DT <span class="hi">1 mois</span> (jusqu'à 3 mois si grand ouvrage) ; paiement 30 jours.</li>
+    <li>Réception = début des garanties ; retenue <span class="hi">10%</span> (unitaire) / <span class="hi">20%</span> (forfait/global). Si pas de réception 1 mois après l'avis d'achèvement, ouvrage réputé reçu.</li>
+  </ul>
+  <div class="info">Bâtiment &gt; 5 étages ou &gt; 15 m : le MO met un élévateur à disposition. Accès chantier, eau et électricité → MO ; bennes/nacelles → entrepreneur ; consommation au prorata. Limite de la garantie-retenue : CHF 2'000'000.-.</div>
+</div>
+
+<div class="card">
+  <span class="badge ba">SIA 118/380</span>
+  <h3>Prestations comprises et modalités de métré</h3>
+  <ul>
+    <li>Comprises : documents d'exécution (AI, AA, actualisation), participation aux séances, mise à disposition d'équipement, contrôle/vérification et instruction.</li>
+    <li>Non comprises : mise à l'enquête, coordination technique, travaux &gt; <span class="hi">3,5 m</span> du sol, mise en service provisoire, carottage, exploitation anticipée avant réception.</li>
+    <li>Métré : à la pièce, linéaire arrondi <span class="hi">±10 cm</span>, tubes/canaux selon longueur effective.</li>
+    <li>Chutes : <span class="hi">30 cm</span> appareil standard / bornier connu, <span class="hi">70 cm</span> TL, 60 cm appareil particulier ; EA = 1×H+2×L ; CUB = <span class="hi">2×H+3×L</span>.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <span class="badge bg">SIA 2056 & 387/4</span>
+  <h3>Besoin en énergie, puissance et éclairage</h3>
+  <ul>
+    <li>SIA 2056 (issue de la SIA 380/4) : estime la demande d'électricité et la puissance de raccordement, utilisée en <span class="hi">avant-projet</span> (SIA 112).</li>
+    <li>Facteur de simultanéité par catégorie : habitat <span class="hi">1,0</span> ; administration 0,6–0,8 ; école 0,7–0,9 ; commerce/restauration 0,8–0,9.</li>
+    <li>Besoins indicatifs : maison individuelle <span class="hi">1900 + 900 kWh/hab</span> ; immeuble collectif 1350 + 650 kWh/hab ; ratio Pth = <span class="hi">3 × Pélec</span>.</li>
+    <li>Éclairement (EN 12464-1) : <span class="hi">750 lx</span> surface de vente, <span class="hi">500 lx</span> bureau/classe/cuisine, 300 lx entrepôt/restaurant/chambre d'hôtel ; facteur de maintenance FM = 0,8.</li>
+    <li>Photovoltaïque : durée de vie <span class="hi">~30 ans</span> ; monocristallin 16–24%, polycristallin 13–19%, ~240 W/m².</li>
+  </ul>
+</div>
+
+<div class="card">
+  <span class="badge bo">SIA 181 & garanties</span>
+  <h3>Bruit, sûretés et délais de défauts</h3>
+  <ul>
+    <li>SIA 181 (bruit) : ne pas fixer les installations électriques avec tuyaux chauffage/ventilation ; encastrer de préférence dans les plafonds ; reboucher les tubes et isoler les traversées de pièces.</li>
+    <li>Garantie EIT.swiss : maximum <span class="hi">10%</span> des travaux exécutés ; &lt; 100'000.- → PV ; &gt; 100'000.- → PV + RS + contrat d'ouvrage.</li>
+    <li>Délais de dénonciation / défauts (dès réception) : <span class="hi">2 ans</span> / 5 ans / 10 ans.</li>
+    <li>SIA 121 : variations de prix par indice spécifique de l'ouvrage ; KBOB : conditions et renchérissement des ouvrages publics.</li>
+  </ul>
+</div>
 </div>
 
 <div id="m2_can" class="sub">
@@ -3416,6 +3674,78 @@ mark.bpel-hit{background:#fde68a;color:inherit;padding:0 2px;border-radius:2px}
 </div>
 </div>
 <!-- ULTRA DETAILS M2 CAN END -->
+
+<!-- M2X -->m2_can
+<div class="info" style="margin-top:.6rem">📚 Complément extrait du cours :</div>
+<div class="card">
+  <span class="badge bb">Bases & définitions</span>
+  <h3>Normes du métré et vocabulaire</h3>
+  <ul>
+    <li>Bases : <span class="hi">SIA 118</span> (conditions générales d'exécution) et <span class="hi">SIA 118/380</span> (installations du bâtiment), complétées par les « Informations sur le CAN ».</li>
+    <li><span class="hi">Avant-métré</span> : métré théorique sur plans ou relevé chantier, base d'une <span class="hi">offre</span>.</li>
+    <li><span class="hi">Métré contradictoire</span> : métré effectif sur chantier des prestations réalisées, base de la <span class="hi">facturation</span>.</li>
+    <li>Attachements (SIA 118 art. 142) : DT et entrepreneur procèdent ensemble au métré, si possible dans les <span class="hi">30 jours</span> ; ils en reconnaissent l'exactitude.</li>
+  </ul>
+  <div class="info">Métré à prix unitaire (art. 141) : quantités fixées soit par métré effectif (mesurage, pesage, comptage), soit par métré théorique sur plans.</div>
+</div>
+
+<div class="card">
+  <span class="badge ba">Décompte à prix unitaires</span>
+  <h3>Contenu de l'article de prestation CAN</h3>
+  <ul>
+    <li>Mode le plus fréquent : toute l'installation quantifiée par articles de prestation (AP) ou parties d'installation (PI), décompte selon mètres posés / pièces montées.</li>
+    <li>Un AP CAN est <span class="hi">verrouillé</span> et complet en état d'exploitation : aucun composant supplémentaire (ex. presse-étoupe) n'est facturable en plus.</li>
+    <li>Compris (CAN 502 022 100) : fourniture + petit matériel, montage jusqu'à <span class="hi">3,5 m</span>, 2 raccordements/appareil, signalétique simple, contrôle de fonction et final OIBT, 1re instruction, réception.</li>
+    <li>Accessoires d'installation et petit matériel (brides, supports de tube, presse-étoupes IPX4+) toujours <span class="hi">compris proportionnellement</span>.</li>
+  </ul>
+  <div class="warn">⚠️ Non compris, à métrer en plus (métré contradictoire / régie) : démontage/démolition, modifications ordonnées par la DT, adaptation à l'existant, provisoires, ouverture de faux-plafonds/sols, percements extraordinaires, mise en service de composants.</div>
+</div>
+
+<div class="card">
+  <span class="badge br">Règles de métré — point critique examen</span>
+  <h3>Mesurage, arrondi et suppléments pour chutes</h3>
+  <ul>
+    <li>Comptage à la pièce ou à la longueur ; installation terminée arrondie à <span class="hi">± 10 cm</span>.</li>
+    <li>Tubes & canaux : <span class="hi">longueur effective installée</span> ; coudes (préfabriqués ou sur place) saisis séparément à la pièce.</li>
+    <li>Chutes de fils/câbles : <span class="hi">30 cm</span> appareils standard & borniers connus, <span class="hi">70 cm</span> armatures/luminaires fluo (TL), 60 cm appareils particuliers.</li>
+    <li>Borniers indéterminés : CFO (EA) = <span class="hi">1×H + 2×L</span> de la zone ; communication (CUB/rack) = <span class="hi">2×H + 3×L</span> en CI 53.</li>
+    <li>Coude de rayon &lt; 50 cm : mesuré jusqu'au sommet de l'angle ; rayon &gt; 50 cm : longueur effective.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <span class="badge br">Codes d'installation CI — point critique examen</span>
+  <h3>Mode de montage (1er chiffre) × difficulté (2e chiffre)</h3>
+  <ul>
+    <li>1er chiffre = mode : <span class="hi">1_ AP</span> (apparent), 2_ ENV/ENC (encastré), 3_ INS (à insérer), 5_ TIR (tirage), <span class="hi">7_ RACC</span> (raccordement).</li>
+    <li>2e chiffre = difficulté : _0 très simple, _1 simple, <span class="hi">_2 normale</span>, _3 difficile.</li>
+    <li>Exemples : AP 11/12/13, ENC <span class="hi">20/21/22/23</span>, INS 31/32/33, TIR <span class="hi">52/53</span>, RACC 71/72/73.</li>
+    <li>RACC : CI 71 = 2 raccordements ; CI 72 = + 2 presse-étoupes ; CI 73 = + 2 sets de cosses.</li>
+  </ul>
+  <div class="info">Le CI fait partie intégrante de l'AP (descriptions au chapitre CAN 502 Electro). Gainage/fraisage ENC dans le béton : non compris → régie ou articles ouverts.</div>
+</div>
+
+<div class="card">
+  <span class="badge bg">F / M / R et conditions</span>
+  <h3>Prestation complète et limites comprises</h3>
+  <ul>
+    <li>Prestation complète = <span class="hi">Fourniture + Montage + Raccordements</span> ; sans remarque, les 3 sont inclus. Variantes : F, M, R, M+R, F+M.</li>
+    <li>Hauteur de montage <span class="hi">jusqu'à 3,5 m</span> (SIA 118/380 2.3.2) ; au-delà, majoration (échafaudages, nacelles, accès) à convenir d'avance.</li>
+    <li>Temps de voyage compris : rayon local = trajet total de <span class="hi">15 km</span> aller-retour (CCT art. 27).</li>
+    <li>Domotique : systèmes propriétaires = programmation/paramétrage/mise en service <span class="hi">compris</span> ; systèmes <span class="hi">KNX</span> et modules logiques (API) = seule la participation aux tests comprise, programmation réalisée par le système-intégrateur.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <span class="badge bo">Parties d'installation & régie</span>
+  <h3>PI, longueur nominale et décompte en régie</h3>
+  <ul>
+    <li>Chapitres PI : <span class="hi">583/584</span> commerce & artisanat (E/T), <span class="hi">585/586</span> bâtiments d'habitation (E/T) ; valeurs moyennes, écarts de quantité <span class="hi">sans supplément</span>.</li>
+    <li>Longueur nominale = des bords extérieurs du boîtier/armoire au bord extérieur de l'appareil ; extrémités libres déjà dans la liste de composants. Luminaires <span class="hi">jamais compris</span> dans les PI.</li>
+    <li>Régie : prestations non évaluables (entretien, dépannage, montage de matériel fourni par la DT) ; <span class="hi">ET-C comprise</span> dans le prix de l'heure sauf chef de projet (ET A/B à part).</li>
+    <li>Rapport de régie quotidien remis à la DT ; retourné signé sous <span class="hi">7 jours</span> ; DT à informer avant exécution.</li>
+  </ul>
+</div>
 </div>
 
 <div id="m2_calc" class="sub">
@@ -3495,6 +3825,83 @@ mark.bpel-hit{background:#fde68a;color:inherit;padding:0 2px;border-radius:2px}
   </ul>
 </div>
 <!-- ULTRA DETAILS M2 CALC END -->
+
+<!-- M2X -->m2_calc
+<div class="info" style="margin-top:.6rem">📚 Complément extrait du cours :</div>
+<div class="card">
+  <span class="badge br">Schéma de calculation — point critique examen</span>
+  <h3>Calculation additionnelle : des coûts au prix de vente</h3>
+  <ul>
+    <li>Deux schémas : <span class="hi">additionnelle</span> (part des coûts → PV, utilisée dans les manuels EIT) et <span class="hi">provisionnelle</span> (part du PV → coûts disponibles).</li>
+    <li>But de la calculation : couvrir la totalité des charges et dégager une marge — <span class="hi">jamais</span> atteindre le prix le plus bas ; elle met en avant le seuil de rentabilité.</li>
+    <li>Cascade : Coût + Charges directes (CDi %) + Autres charges directes (ACDi) = <span class="hi">PRF</span> (prix de revient de fabrication, coût total « sortie de chantier »).</li>
+    <li>PRF + Charges indirectes (CAV %) + Frais spéciaux (FS %) = <span class="hi">PR</span> (prix de revient, tous frais généraux couverts, sans bénéfice).</li>
+    <li>PR + Risques & bénéfices (R&B %) = <span class="hi">PV</span> (prix de vente, provision risques + part de bénéfice).</li>
+  </ul>
+  <div class="fm">Coût → +CDi% +ACDi = PRF → +CAV% +FS% = PR → +R&B% = PV</div>
+  <div class="info">Valeurs EIT indicatives : matériel selon liste fournisseur, taux horaire selon enquête salaires, temps selon étude EIT, charges selon Chiffres Clés de la Branche (CCB).</div>
+</div>
+
+<div class="card">
+  <span class="badge bb">CAN — articles & décompte</span>
+  <h3>Catalogue d'articles normalisés (CAN Electro)</h3>
+  <ul>
+    <li>Base de données (~<span class="hi">14'000 articles</span>) élaborée par l'EIT selon les directives du <span class="hi">CRB</span> ; harmonise langage et méthode, échange au format <span class="hi">SIA 451</span> ou ifA18.</li>
+    <li>3 genres d'articles : <span class="hi">articles de régie</span> (matériel + main d'œuvre), <span class="hi">articles de prestation AP</span> (code d'installation), <span class="hi">parties d'installation PI</span> (bloc d'AP).</li>
+    <li>En cas de litige, seul le <span class="hi">texte CRB</span> est juridiquement contraignant ; la liste de composants n'est qu'une aide à la calculation.</li>
+    <li>Chapitre <span class="hi">500</span> = installations électriques & télécom (512–574 AP, 583–586 PI).</li>
+    <li>Modes de décompte : <span class="hi">prix unitaire</span> (quantités effectives), <span class="hi">régie</span> (frais effectifs), <span class="hi">forfaitaire</span> (sans renchérissement) ou <span class="hi">global</span> (avec renchérissement).</li>
+  </ul>
+  <div class="warn">⚠️ AP et PI = installation complète, en état d'exploitation, conforme aux normes (contrôle OIBT, 1re instruction et remise compris). Les articles de régie n'englobent ni petit matériel ni frais spéciaux.</div>
+</div>
+
+<div class="card">
+  <span class="badge bg">Matériel — rabais & facteur de vente</span>
+  <h3>Prix d'achat, charges et facteur combiné</h3>
+  <ul>
+    <li>Chaîne du prix : prix de liste/brut → <span class="hi">rabais</span> → prix net → <span class="hi">escompte</span> → prix facturé → <span class="hi">ristourne</span> → prix coûtant (net net).</li>
+    <li>Rabais de base, rabais d'objet (volume de commande), rabais de groupe, rabais internet ; ristourne liée au volume annuel.</li>
+    <li>3 genres de matériel : <span class="hi">installation</span> (PV selon calculation), <span class="hi">revente</span> (PV majoré du R&B seul), <span class="hi">article de magasin</span> (prix conseillé/marché).</li>
+    <li>Facteurs de vente combinés standard : <span class="hi">1.35</span> (75% chantier / 25% stock, temps C) ; <span class="hi">1.57</span> (20% chantier / 80% stock, temps M).</li>
+  </ul>
+  <div class="fm">PV matériel = Prix d'achat + charges directes (stock ~36% / chantier ~1.5%) + CAV (~11%) + R&B (~10%)</div>
+</div>
+
+<div class="card">
+  <span class="badge ba">Main d'œuvre & temps</span>
+  <h3>Temps de travail, genres d'installation, élaboration technique</h3>
+  <ul>
+    <li>Temps brut annuel <span class="hi">2'080 h</span> (fixé par la CPN, consigné dans la CCT) ; productives ~<span class="hi">1'700 h</span> ; vacances ~192 h, fériés ~72 h.</li>
+    <li>4 genres d'installation (prix de l'heure moyen par difficulté) : <span class="hi">simple ≈30%</span>, normal ≈50%, exigeante ≈15%, spécialiste ≈5%.</li>
+    <li>Heure de régie : catégorie professionnelle facturée telle quelle + frais spéciaux à part. Heure d'installation : frais spéciaux (~3.3%) et ET <span class="hi">compris</span> dans l'article.</li>
+    <li>Intensité d'<span class="hi">ET-C</span> : régie ~15%, simple ~9.5%, normale ~14%, exigeante ~20%, spécialiste ~13% ; mandat planification <span class="hi">ET A+B = +20%</span>.</li>
+  </ul>
+  <div class="fm">Prix ET = Temps d'installation × Facteur ET × Prix de vente ET</div>
+  <div class="info">Décomposition du temps : TB (base) → TP (préparation, % TB) → TM (majoration, % TB+TP) → TMC (calcul, % du total). ET A/B = avant-projet & projet (SIA 108 phases 31/32 et 52/53), ET C = préparation/construction/fin de travaux.</div>
+</div>
+
+<div class="card">
+  <span class="badge br">Garanties & retenues — point critique examen</span>
+  <h3>Délais de garantie et sûretés (SIA 118 & CO)</h3>
+  <ul>
+    <li>Délais courant dès la réception d'ouvrage : défaut <span class="hi">2 ans</span>, défaut caché <span class="hi">5 ans</span>, défaut caché intentionnellement <span class="hi">10 ans</span>.</li>
+    <li>Garantie de bonne exécution (jusqu'à réception) : prix unitaire <span class="hi">10% jusqu'à 300'000.-</span> puis 5% ; prix forfaitaire <span class="hi">20%</span> (max 1'000'000.-).</li>
+    <li>Retenue travaux de garantie (délai 2 ans) : <span class="hi">10% jusqu'à 200'000.-</span> puis 5% ; libérable contre cautionnement solidaire.</li>
+    <li>Hypothèque légale des artisans : inscriptible dès le début du travail, au plus tard <span class="hi">4 mois</span> après achèvement ; droit impératif.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <span class="badge bo">Taxes & chiffres clés</span>
+  <h3>TVA, TAR et indicateurs de la branche</h3>
+  <ul>
+    <li>TVA (dès <span class="hi">100'000.-</span> de CA) : taux normal <span class="hi">8.1%</span>, réduit 2.6% (première nécessité), spécial 3.8% (hébergement) ; versée à l'AFC.</li>
+    <li><span class="hi">TAR</span> : taxe anticipée de recyclage selon type et poids de l'appareil (électro/électronique, sources lumineuses).</li>
+    <li>CCB (groupes : Gr1 &lt;10 p, Gr2 10–20, Gr3 20–50, Gr4 &gt;50) : CCS <span class="hi">~50%</span>, CAV 11–20%, intensité ET 12–18%, CA/h <span class="hi">≈115.-</span>, CA/pers ≈175'000.-.</li>
+    <li>Appréciation des coûts : estimation <span class="hi">±15%</span> (par CVR) ; devis détaillé <span class="hi">±10%</span> (par descriptif CAN).</li>
+    <li>Post-calculation : résultat financier <span class="hi">par objet</span> (≠ comptabilité par période), à faire avant le décompte final.</li>
+  </ul>
+</div>
 </div>
 
 <div id="m2_chantier" class="sub">
@@ -3544,6 +3951,79 @@ mark.bpel-hit{background:#fde68a;color:inherit;padding:0 2px;border-radius:2px}
   </ul>
 </div>
 <!-- ULTRA DETAILS M2 CHANTIER END -->
+
+<!-- M2X -->m2_chantier
+<div class="info" style="margin-top:.6rem">📚 Complément extrait du cours :</div>
+<div class="card">
+  <span class="badge bb">Marché & formation du prix</span>
+  <h3>Les facteurs qui déterminent le prix d'une offre</h3>
+  <ul>
+    <li><span class="hi">Région</span> : concurrence étrangère (Jura/Genève) tire les prix vers le bas, Valais et zones aisées (Gstaad, Riviera) vers le haut.</li>
+    <li><span class="hi">Secteur</span> : locatif en saturation = prix bas ; infrastructures/industrie spécialisée et marchés de niche = prix élevés ; petits objets/dépannages chers, gros objets prix unitaires plus bas.</li>
+    <li><span class="hi">Entreprise</span> : petite/régionale = niches, réactivité, meilleur rendement ; grande = gros objets, montants élevés mais rendement plus bas ; ambition de croissance impacte le prix.</li>
+    <li><span class="hi">Client</span> : relation de confiance → prix moyen ; entreprise générale cherchant la marge → prix sous pression ; perspective de travail futur influence le dépôt.</li>
+  </ul>
+  <div class="info">Le prix n'est jamais « cassé » : il reflète l'ensemble de ces facteurs et l'état du marché. Chaque objet s'étudie indépendamment.</div>
+</div>
+
+<div class="card">
+  <span class="badge br">Chronologie du mandat — point critique examen</span>
+  <h3>De la recherche de travail à l'adjudication</h3>
+  <ul>
+    <li><span class="hi">1. Recherche</span> : <span class="hi">40–65%</span> du travail vient automatiquement (fidèles, dépannages) ; le reste par prospection, relationnel, marché public (plateformes type Olmero, feuille officielle).</li>
+    <li><span class="hi">2. Analyse / positionnement</span> : décider de déposer ou non, évaluer risques, compétences, proximité, liquidités du client, concurrence.</li>
+    <li><span class="hi">3. Calcul de l'offre + analyse du dossier</span> : prix sur chaque prestation ; vérifier CG, planning, sous-traitance, prorata, conditions de paiement, exigences particulières.</li>
+    <li><span class="hi">4. Dépôt & négociation</span> ; <span class="hi">5. Adjudication</span> et signature du contrat (preuves de garanties, respect de la CCT).</li>
+  </ul>
+  <div class="warn">⚠️ Marché public : références, formation, historique, organigramme peuvent compter jusqu'à <span class="hi">70%</span> du pouvoir de décision. Une PME peut répondre sur de petits objets (max <span class="hi">1/3 du CA</span>).</div>
+</div>
+
+<div class="card">
+  <span class="badge ba">Base de l'offre & soumission</span>
+  <h3>Qui établit l'offre, pour qui et comment</h3>
+  <ul>
+    <li>Une offre correspond toujours à un concret : descriptif, plan, projet ou vision locale ; elle fonde le contrat MO ↔ entreprise.</li>
+    <li>Bureau d'ingénieur mandaté (phase 3 SIA 108 / ET-A) : établit projet + offre budget, envoie aux entreprises via le protocole <span class="hi">SIA 451</span> → c'est la <span class="hi">soumission</span> ; chaque entreprise applique ses prix, une devient <span class="hi">adjudicataire</span>.</li>
+    <li>Entreprise mandatée directement : vision locale, projet d'exécution + offre → souvent adjudication directe.</li>
+    <li>Travail en direct (dépannage) : parfois aucune offre préalable, facturé à la fin (cas rare).</li>
+  </ul>
+  <div class="info">Vision locale indispensable en rénovation pour corréler offre et réalité. Possibilité de consulter les plans auprès du bureau d'ingénieur.</div>
+</div>
+
+<div class="card">
+  <span class="badge bg">Composition d'un prix</span>
+  <h3>De quoi est fait un article d'offre</h3>
+  <ul>
+    <li>Ex. une ligne pour prise en PI comprend : <span class="hi">matériel</span> (fils, câble, tube, boîte, prise, petit matériel) + charges sur matériel (stockage, transport, commandes).</li>
+    <li><span class="hi">Travail</span> (gainage, tirage, raccordement, contrôle, métrage) + charges sur le travail (bureau technique, RH, comptabilité).</li>
+    <li>+ charges globales de l'entreprise (vacances, assurances, primes) + <span class="hi">risque & bénéfice</span>.</li>
+    <li>Répartition moyenne : <span class="hi">~60% main d'œuvre / ~40% matériel</span> (varie selon l'objet).</li>
+  </ul>
+  <div class="warn">⚠️ Trop bas → coûts non couverts ; trop haut → mandat perdu. L'équilibre dépend du positionnement voulu.</div>
+</div>
+
+<div class="card">
+  <span class="badge bo">Types de contrats</span>
+  <h3>Relations contractuelles et points de vigilance</h3>
+  <ul>
+    <li><span class="hi">MO ↔ Nous</span> : contrat direct, sans intermédiaire.</li>
+    <li><span class="hi">MO ↔ Entreprise générale ↔ Nous</span> : sous-traitance de l'EG, aucun lien direct avec le MO.</li>
+    <li><span class="hi">MO ↔ Mandataire ↔ Nous</span> : contrat avec le MO mais le bureau d'étude valide offres et avenants et assure le suivi technique.</li>
+    <li>Toujours : contrat signé par personne habilitée (RC), connaître le payeur, l'adresse de facturation, le montant d'adjudication, le for juridique et le mode (forfait/global/métré).</li>
+  </ul>
+  <div class="info">MO d'ouvrage = client à l'origine de la commande ; maître d'œuvre = personne/entreprise chargée de la conception du projet.</div>
+</div>
+
+<div class="card">
+  <span class="badge bp">Négociation & pré-adjudication</span>
+  <h3>Défendre son prix en séance</h3>
+  <ul>
+    <li>Marché public : dossier + prix déposés, tableau comparatif diffusé par le MO ; résultat définitif sauf recours.</li>
+    <li>Client privé : présenter l'offre en personne, justifier, proposer des produits → se différencier des concurrents.</li>
+    <li>Points clés : maîtriser le projet et ses pièges, connaître ses coûts et marges de manœuvre, être proactif.</li>
+    <li>Toujours <span class="hi">une contrepartie</span> à un rabais : local/container, place de parc, paiement à 30 jours, acompte à la commande.</li>
+  </ul>
+</div>
 </div>
 
 <div id="m2_exam" class="sub">
