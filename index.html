@@ -20866,6 +20866,52 @@ html[data-theme="dark"] .warn{ background:#231c0c !important; border-color:#5a47
 /* ---------- Accessibilité ---------- */
 @media (prefers-reduced-motion: reduce){ *{ animation-duration:.001ms !important; transition-duration:.001ms !important; } #rvx-gl{display:none} }
 @media (max-width:780px){ #rvx-dock{ left:.6rem; bottom:.6rem; } .rvx-fab{ width:42px; height:42px; } }
+
+/* ═══════════════ OPTIMISATION MOBILE (couche pro, haute spécificité) ═══════════════ */
+@media (max-width:780px){
+  /* Pas de débordement horizontal de la page */
+  html body{ overflow-x:hidden; max-width:100%; }
+  .app, .main{ max-width:100%; overflow-x:hidden; }
+
+  /* Sidebar : contraste des pilules non actives sur fond clair */
+  .sidebar .mtab:not(.on){ color:#24415f !important; }
+  .sidebar .mtab.on{ color:#fff !important; }
+  .sidebar .sb-subhead{ width:100%; padding-left:.6rem; }
+
+  /* Barres d'onglets : défilement horizontal (gère les modules à nombreux onglets) */
+  .main .stabs{
+    flex-wrap:nowrap !important; overflow-x:auto !important; overflow-y:hidden;
+    -webkit-overflow-scrolling:touch; scrollbar-width:thin;
+    padding:0 .2rem 6px !important; margin:0 0 1rem !important;
+    scroll-snap-type:x proximity;
+  }
+  .main .stabs::-webkit-scrollbar{ height:4px; }
+  .main .stabs::-webkit-scrollbar-thumb{ background:#c4ccd8; border-radius:4px; }
+  .main .stabs .stab{ flex:0 0 auto !important; white-space:nowrap !important; scroll-snap-align:start; }
+
+  /* Titres de section : plus compacts, pas de coupure */
+  .main .stit{ font-size:17px !important; line-height:1.25 !important; overflow-wrap:anywhere; }
+  .main .stit::before{ font-size:13px !important; margin-right:.35rem !important; }
+
+  /* Cartes plus compactes */
+  .main .card{ padding:1rem 1.05rem !important; border-radius:3px 12px 12px 3px !important; margin-bottom:.85rem !important; }
+  .main .card h3{ font-size:15.5px !important; }
+
+  /* Tableaux : défilement horizontal interne, jamais de débordement de page */
+  .main .card table, .main .mod table{ display:block !important; width:100% !important; overflow-x:auto !important; -webkit-overflow-scrolling:touch; }
+
+  /* Grilles -> une colonne */
+  .main .two, .main .three{ grid-template-columns:1fr !important; gap:.8rem !important; }
+
+  /* Boutons de renvoi : pleine largeur, confortables au doigt */
+  .main .jbtn{ width:100% !important; justify-content:center; padding:10px 14px !important; }
+}
+@media (max-width:400px){
+  .main .stit{ font-size:15px !important; }
+  .main .stabs .stab{ font-size:11px !important; padding:6px 11px !important; }
+  .main .card{ padding:.85rem .9rem !important; }
+  .main .badge{ font-size:9px !important; }
+}
 </style>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
