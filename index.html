@@ -18458,8 +18458,9 @@ html[data-theme="dark"] .plan-chip{ background:#141f2d; color:#9fc0e6; border-co
 #rvx-top{ opacity:0; pointer-events:none; transition:opacity .25s; }
 #rvx-top.show{ opacity:1; pointer-events:auto; }
 
-/* ---------- Footer : statique, discret (plus de barre fixe en bas) ---------- */
-.app-footer{ position:static !important; left:auto !important; right:auto !important; bottom:auto !important; border-top:1px solid var(--hair) !important; background:transparent !important; }
+/* ---------- Footer : pleine largeur SOUS le contenu (plus de barre fixe ni de colonne) ---------- */
+.app{ flex-wrap:wrap; }
+.app-footer{ position:static !important; flex:0 0 100% !important; width:100% !important; left:auto !important; right:auto !important; bottom:auto !important; border-top:1px solid var(--hair) !important; background:transparent !important; }
 html[data-theme="dark"] .app-footer{ border-top-color:rgba(120,160,210,.14) !important; }
 
 /* ═══════════════ MODE SOMBRE (instrument) ═══════════════ */
