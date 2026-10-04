@@ -1027,6 +1027,10 @@ mark.bpel-hit{background:#fde68a;color:inherit;padding:0 2px;border-radius:2px}
   <button class="stab" onclick="S('ms_detection',this,'m3spec_mod')">🔥 Détection incendie</button>
   <button class="stab" onclick="S('ms_mesure',this,'m3spec_mod')">📐 Appareils de mesure</button>
   <button class="stab" onclick="S('ms_securite',this,'m3spec_mod')">🛡️ Sécurité &amp; AV</button>
+  <button class="stab" onclick="S('ms_cablage',this,'m3spec_mod')">🔌 Câblage universel</button>
+  <button class="stab" onclick="S('ms_epe',this,'m3spec_mod')">🌍 EPE (terre)</button>
+  <button class="stab" onclick="S('ms_secu_travail',this,'m3spec_mod')">🦺 Sécurité au travail</button>
+  <button class="stab" onclick="S('ms_norme61439',this,'m3spec_mod')">🗄️ Norme 61439</button>
 </div>
 <div id="ms_electrotechnique" class="sub on">
 <p class="stit">⚡ Électrotechnique — courants alternatifs</p>
@@ -2473,6 +2477,446 @@ mark.bpel-hit{background:#fde68a;color:inherit;padding:0 2px;border-radius:2px}
     <li>Normes systèmes : EN 50131 (intrusion) · EN 50133 (contrôle d'accès) · IEC/EN 62676 (VSS) · EN 54 (incendie) · EN 50136 (transmission) · EN 50518 (centres de réception).</li>
   </ul>
   <div class="info">SES = marque de qualité (produits homologués + personnel certifié). Seuls métiers certifiés AECA : réalisation SDAI et sprinkler.</div>
+</div>
+</div>
+
+<div id="ms_cablage" class="sub">
+<p class="stit">🔌 Câblage universel (réseau cuivre structuré)</p>
+
+<div class="card"><span class="badge bb">Historique &amp; topologie</span><h3>Pourquoi un câblage structuré ?</h3>
+<ul>
+<li>Jusqu'en 1980 : systèmes <b>fermés / propriétaires</b> — chaque fabricant imposait ses câbles et sa connectique ; changer de fournisseur = refaire tout le câblage.</li>
+<li>Dès 1980 : systèmes <b>ouverts et standardisés</b> pour éviter la dépendance et relier des équipements actifs de fournisseurs différents.</li>
+<li>Topologies : <b>bus</b> (10Base-2), <b>anneau</b> (Token Ring) et <b>étoile</b>. La <span class="hi">topologie en étoile</span> est la meilleure solution : toutes les applications sont possibles dessus.</li>
+</ul>
+<div class="info"><b>But de la standardisation :</b> un seul câble et un seul connecteur pour toutes les applications (voix, données, images) ; câbler sans connaître les applications futures ; flexibilité et mobilité maximales des utilisateurs.</div>
+</div>
+
+<div class="card"><span class="badge bg">Structure hiérarchique</span><h3>Les 3 niveaux du câblage (EN 50173)</h3>
+<table>
+<tr><th>Niveau</th><th>Liaison</th><th>Distance</th><th>Support</th></tr>
+<tr><td>1 — Primaire (câblage de zone)</td><td>RS → RB</td><td><span class="hi">1500 m</span></td><td>FO recommandée</td></tr>
+<tr><td>2 — Secondaire (vertical)</td><td>RB → RE</td><td><span class="hi">500 m</span></td><td>FO recommandée</td></tr>
+<tr><td>3 — Tertiaire (horizontal)</td><td>RE → PT</td><td><span class="hi">100 m (Channel)</span></td><td>Cuivre (Cat 5e→7A)</td></tr>
+</table>
+<ul>
+<li><b>RS</b> répartiteur de site · <b>RB</b> répartiteur de bâtiment · <b>RE</b> répartiteur d'étage · <b>PT</b> prise terminale · <b>CP</b> point de consolidation.</li>
+<li>Principe ISO : 1 CD par campus, 1 BD par bâtiment, 1 FD par étage ; 1 FD pour 1000 m² (disque de 60 m de rayon).</li>
+</ul>
+<div class="fm">Primaire = point de coupure réseau privé / réseau externe ouvert. Longueur max prise terminale → local technique de campus = <b>2000 m</b>.</div>
+</div>
+
+<div class="card"><span class="badge br">Point critique examen</span><h3>Permanent Link, Channel &amp; points de coupure</h3>
+<ul>
+<li><b>Permanent Link (lien permanent)</b> : liaison fixe <span class="hi">sans cordons</span>, max <span class="hi">90 m</span>.</li>
+<li><b>Channel (canal)</b> : liaison <span class="hi">avec cordons</span>, max <span class="hi">100 m</span>.</li>
+<li>Décomposition du Channel : <b>90 m</b> lien fixe + <b>3 m</b> cordon au PC + <b>7 m</b> cordons de brassage = <b>100 m</b>.</li>
+<li>Avec point de consolidation : <b>link fixe + (1,5 × longueur câble patch) ≤ 90 m</b> — ex. 60 m + (1,5 × 20 m) = 90 m.</li>
+<li>Longueurs PL : min 15 m, max 90 m (R&amp;M cordons min : Cat 6A 2 m, Cat 6 4 m).</li>
+</ul>
+<div class="warn">⚠️ La norme impose une conformité <b>a minima avec 4 points de coupure</b> (jusqu'à 6 connecteurs ; min 2 : CC, PP, CP, TO). Les composants ayant servi à la certification doivent figurer dans le certificat.</div>
+</div>
+
+<div class="card"><span class="badge ba">Catégories &amp; classes</span><h3>Catégories (composants) ↔ Classes (application)</h3>
+<table>
+<tr><th>Cat. (ISO/TIA)</th><th>Classe</th><th>Fréq. max</th><th>Débit</th><th>Connecteur</th></tr>
+<tr><td>Cat 5 / 5e</td><td>D</td><td>100 MHz</td><td>1 Gbit/s</td><td>RJ45</td></tr>
+<tr><td>Cat 6</td><td>E</td><td>250 MHz</td><td>1 Gbit/s</td><td>RJ45</td></tr>
+<tr><td>Cat 6A</td><td>EA</td><td><span class="hi">500 MHz</span></td><td>10 Gbit/s</td><td>RJ45</td></tr>
+<tr><td>Cat 7</td><td>F</td><td>600 MHz</td><td>10 Gbit/s</td><td>non RJ45</td></tr>
+<tr><td>Cat 7A</td><td>FA</td><td>1000 MHz</td><td>10 Gbit/s</td><td>non RJ45</td></tr>
+<tr><td>Cat 8.1</td><td>I</td><td>2000 MHz</td><td>25/40 Gbit/s</td><td>RJ45</td></tr>
+<tr><td>Cat 8.2</td><td>II</td><td>2000 MHz</td><td>25/40 Gbit/s</td><td>non RJ45</td></tr>
+</table>
+<ul>
+<li><b>Catégorie</b> = performance d'un <span class="hi">composant</span> ; <b>Classe</b> = performance de la liaison complète <span class="hi">« end to end »</span>.</li>
+<li>Cat 8 : certifiée 40 Gbit/s sur <span class="hi">30 m (60 m)</span> seulement ; blindage obligatoire dès Cat 7.</li>
+</ul>
+<div class="fm">Norme ISO 11801 / EN 50173 <b>plus exigeante que la TIA</b> : NEXT Cat 6A à 500 MHz — ISO 27,9 dB vs TIA 26,1 dB (≈ 1,8 dB d'écart). Les normes EN font foi juridiquement en cas de litige.</div>
+</div>
+
+<div class="card"><span class="badge bp">Câbles cuivre</span><h3>Dénominations &amp; caractéristiques (paires torsadées)</h3>
+<table>
+<tr><th>Nouvelle</th><th>Ancienne</th><th>Blindage</th></tr>
+<tr><td>U/UTP</td><td>UTP</td><td>sans blindage</td></tr>
+<tr><td>F/UTP</td><td>FTP</td><td>faisceau (ruban)</td></tr>
+<tr><td>U/FTP</td><td>—</td><td>par paire (ruban)</td></tr>
+<tr><td>SF/UTP</td><td>S-FTP</td><td>faisceau (tresse+ruban)</td></tr>
+<tr><td>S/FTP</td><td>S-STP</td><td>paires (ruban) + tresse globale</td></tr>
+</table>
+<ul>
+<li>Notation <b>XX/YYY</b> : 1ère partie = blindage global des 4 paires, 2ᵉ partie = blindage autour des paires. <b>U</b>=non écranté · <b>F</b>=feuille/ruban (Foiled) · <b>S</b>=tresse (Shielded).</li>
+<li>Diamètres fils : <b>AWG 22</b> = 0,64 mm · <b>AWG 23</b> = 0,57 mm · <b>AWG 24</b> = 0,51 mm (plus gros = meilleur).</li>
+<li>Impédance caractéristique <span class="hi">100 Ω</span>. Câbles 0H (zéro halogène / LS0H) = pas de gaz corrosifs ni toxiques à la combustion.</li>
+</ul>
+<div class="warn">⚠️ Rayon de courbure min : <b>8 × D au tirage</b>, <b>4 × D une fois installé</b>. Force de traction max à l'installation <b>100 N (10 kg)</b>, Real10 <b>80 N (8 kg)</b>. Un rayon trop petit dégrade NEXT, FEXT et RL.</div>
+</div>
+
+<div class="card"><span class="badge bo">Connecteurs &amp; montage</span><h3>RJ45, brochage &amp; connectique Cat 7/7A</h3>
+<ul>
+<li><b>RJ45</b> : connecteur standard jusqu'à Cat 6A et Cat 8.1.</li>
+<li>Brochage <b>EIA/TIA 568 A</b> ou <b>568 B</b> (8 contacts / 4 paires) — la <span class="hi">connexion 568A fournit de meilleures valeurs</span>.</li>
+<li>Cat 7 / 7A (Classe F/FA) non normalisée côté actifs : 3 connectiques existent — <b>TERA</b>, <b>GG45</b> (IEC 61076-3-104), <b>ARJ45</b> (IEC 61076-3-110).</li>
+<li>Montage soigné : fils déposés parallèles, détorsadage minimal, distance manteau/support pour la Cat 6, mise à terre (installation « deluxe » = +50 % de résistance de couplage).</li>
+</ul>
+<div class="info">Séparation câbles données / courant fort selon EN 50174-2 (distance fonction du grade/blindage ; un Cat 7 S/FTP est d'office Grade d). PoE+ (802.3at, 24 W) échauffe les câbles (Cat 5e/u ≈ +10 °C, Cat 7 ≈ +4 °C) et use les contacts RJ45.</div>
+</div>
+
+<div class="card"><span class="badge br">Point critique examen</span><h3>Paramètres de mesure cuivre</h3>
+<table>
+<tr><th>Paramètre</th><th>Signification</th><th>Objectif</th></tr>
+<tr><td><b>IL</b> / Atténuation</td><td>Perte d'insertion (signal reçu/émis)</td><td>la + faible</td></tr>
+<tr><td><b>NEXT</b></td><td>Paradiaphonie, côté proche (6 mes./côté)</td><td>la + forte (dB)</td></tr>
+<tr><td><b>ACR-F</b> (ex ELFEXT)</td><td>FEXT − atténuation (côté lointain)</td><td>la + forte</td></tr>
+<tr><td><b>ACR-N</b> (ex ACR)</td><td>NEXT − IL ≈ rapport signal/bruit</td><td>positif, le + grand</td></tr>
+<tr><td><b>Return Loss</b></td><td>Signal réfléchi (ruptures d'impédance)</td><td>le + grand</td></tr>
+</table>
+<ul>
+<li><b>PS</b> (Power Sum) : diaphonie cumulée de toutes les paires sur une (PS-NEXT ≈ NEXT + 3 dB).</li>
+<li>NEXT peut être compensé, <span class="hi">pas le FEXT</span>. ANEXT/AFEXT (Alien) : pour Classes EA et FA uniquement, quasi impossible à mesurer sur site.</li>
+<li><b>Propagation delay</b> max 550 ns · <b>Delay skew</b> max 50 ns · <b>NVP</b> ex. 70 % → 210 000 km/s. <b>BER</b> &lt; 10⁻¹⁰.</li>
+</ul>
+<div class="fm">Codage : 100BASE-TX = MLT-3 · 1000BASE-T = PAM 5 · 10GBASE-T = dérivé PAM 16. La modulation réduit la bande passante mais augmente la sensibilité au bruit (signal plus faible).</div>
+</div>
+
+<div class="card"><span class="badge bg">Lecture du rapport de test</span><h3>Interpréter un certificat (ex. ISO Class EA PL2)</h3>
+<ul>
+<li>4 blocs : <b>1.</b> infos sur le test · <b>2.</b> infos sur le câblage · <b>3.</b> valeurs de mesures · <b>4.</b> notes / conclusion.</li>
+<li>3 résultats possibles : <b>PASSE</b> (dans la marge) · <b>PASSE AVEC ÉTOILE ✱</b> (dans la norme mais sous la tolérance de l'appareil) · <b>FAIL / ÉCHEC</b> (hors marge).</li>
+<li>Le <span class="hi">trait rouge = valeur limite de la norme</span> à ne pas franchir. <b>NVP</b> à saisir pour calculer la longueur.</li>
+<li><b>DH / MAIN</b> = appareil côté opérateur · <b>RH / SR</b> = smart remote côté récepteur ; valeur en échec notée en rouge/croix côté fautif.</li>
+<li><b>Pire marge</b> = plus petit écart norme/paire · <b>Pire valeur</b> = plus petit écart mesure/norme.</li>
+</ul>
+<div class="info">Les 2 mesures les plus significatives = <b>NEXT</b> et <b>RL</b> (performance produit + qualité d'installation). Section « NOTES » (bas du rapport) = applications supportées (100/1000/10GBase-T). 1 % d'erreurs CRC ≈ −80 % de vitesse réseau. Pensez au <b>backup</b> des mesures.</div>
+</div>
+</div>
+
+<div id="ms_epe" class="sub">
+<p class="stit">🌍 EPE — électrodes de terre &amp; mise à la terre</p>
+
+<div class="card"><span class="badge bb">Types</span><h3>Fonctions et choix de l'électrode</h3>
+  <ul>
+    <li>Fonctions : liaison <span class="hi">faible impédance avec le sol</span> (mise au neutre/à terre TN &amp; TT), potentiel de référence (0 V / GND), écouler un <span class="hi">courant de foudre</span>, équipotentialité entre descentes de paratonnerre.</li>
+    <li>Choix par ordre d'importance/efficacité : <span class="hi">a) électrode de fondation</span> → b) ferraillage du béton (bâtiments existants) → c) ligne circulaire → d) électrodes verticales (pieux) ou radiales (patte d'oie).</li>
+    <li>Électrodes de bâtiments proches (constructions homogènes, groupes hospitaliers) : <span class="hi">à relier entre elles</span> dans la mesure du possible.</li>
+    <li>Références : SN 414113 (terres de fondation), SN 414022 (protection foudre), NIBT SN 411000, PDIE.</li>
+  </ul>
+</div>
+
+<div class="card"><span class="badge br">Examen</span><h3>Électrode de terre de fondation</h3>
+  <ul>
+    <li><span class="hi">Exigée pour tous les bâtiments neufs</span> (PDIE). Posée dans le béton de la dalle de fondation en contact avec le sol (radier), en anneau fermé ceinturant le bâtiment.</li>
+    <li>Conducteur entièrement noyé dans béton <span class="hi">min. CP280</span> (pas dans le béton maigre), recouvrement <span class="hi">min. 5 cm</span>.</li>
+    <li>Fixé à un fer à béton transversal <span class="hi">tous les 5 m</span> ; fer d'armature Ø 10 mm min.</li>
+    <li>Fixation aux fers par <span class="hi">serre-fil, clavette ou soudure</span>. Garnitures de raccordement accessibles ; chambre de contrôle si sous le niveau du terrain.</li>
+  </ul>
+  <div class="warn">⚠️ La <span class="hi">ligature n'est pas admise</span> pour fixer le conducteur aux fers.</div>
+</div>
+
+<div class="card"><span class="badge ba">Attention</span><h3>Fondations isolées et fondations séparées</h3>
+  <ul>
+    <li>Barrière d'étanchéité ou isolation thermique (p. ex. <span class="hi">Minergie</span>) : la fondation ne peut plus servir d'électrode → <span class="hi">électrode de remplacement</span> obligatoire.</li>
+    <li>Réaliser la ceinture dans le radier (connexions tous les 5 m) pour l'intégrer au réseau d'équipotentialité ; <span class="hi">au moins 2 liaisons</span> entre ce réseau et l'électrode de remplacement.</li>
+    <li>En présence d'un paratonnerre : une liaison <span class="hi">en face de chaque descente</span>.</li>
+    <li>Fondations séparées (micro-pieux, pieux béton armé) : utilisables si <span class="hi">non isolées</span> de la terre et toutes reliées entre elles ; grand nombre → seuls les <span class="hi">pieux du pourtour</span> sont reliés.</li>
+  </ul>
+</div>
+
+<div class="card"><span class="badge bg">Méthode</span><h3>Ligne circulaire et compensation</h3>
+  <ul>
+    <li>Pour bâtiments existants non conformes ou avec barrière d'étanchéité : ceinture le bâtiment, distancée <span class="hi">min. 1 m (max. 15 m)</span>, si possible hors avant-toit, enfouie à <span class="hi">min. 0,70 m</span>.</li>
+    <li>Connexions souterraines : bride (borne de dérivation) à 2 vis ou 2 serre-fils, extrémités repliées.</li>
+    <li>Longueur non enfouie à 0,70 m à compenser ; tolérance <span class="hi">20 % de la longueur totale, max. 20 m</span>.</li>
+    <li>Compensation par électrodes verticales (pieux, <span class="hi">longueur comptant double</span>) ou radiales (ruban / pattes d'oie).</li>
+  </ul>
+</div>
+
+<div class="card"><span class="badge bb">Dimensions</span><h3>Électrodes verticales / radiales &amp; sections minimales</h3>
+  <ul>
+    <li>Verticale (pieu) : profondeur <span class="hi">min. 2,5 m</span> ; distance entre pieux <span class="hi">≥ 1,5 × la longueur du plus grand pieu</span>.</li>
+    <li>Radiale : profondeur min. 0,70 m, longueur <span class="hi">max. 15 m</span>, angle <span class="hi">min. 60°</span> entre électrodes.</li>
+    <li>Ferraillage de bâtiment existant : fers Ø min. 8 mm, <span class="hi">2 fers verticaux mis à nu</span> près du sol ; efficacité à vérifier (mesure Icc).</li>
+    <li>Dans le sol : préférer <span class="hi">cuivre nu ou acier inox</span> ; acier galvanisé sous réserve (corrosion).</li>
+  </ul>
+  <table>
+    <tr><th>Matériau / forme</th><th>Section / Ø min.</th></tr>
+    <tr><td>Acier rond galvanisé</td><td>Ø 10 mm</td></tr>
+    <tr><td>Acier ruban galvanisé</td><td>90 mm² / ép. 3 mm</td></tr>
+    <tr><td>Cuivre corde ou rond</td><td>50 mm² (Ø 8 mm)</td></tr>
+    <tr><td>Inox pieu / ruban</td><td>Ø 15 mm / 100 mm²</td></tr>
+  </table>
+</div>
+
+<div class="card"><span class="badge ba">Attention</span><h3>Corrosion galvanique</h3>
+  <ul>
+    <li>Corrosion galvanique = échange d'électrons entre 2 métaux de potentiels différents : <span class="hi">le métal le plus négatif perd de la matière</span> (phénomène destructif).</li>
+    <li>Potentiels d'oxydo-réduction : <span class="hi">Cuivre +0,345 V</span>, Fer −0,44 V, Zinc −0,76 V, Fer galvanisé −0,72 à −0,53 V (réf. Hydrogène = 0 V).</li>
+    <li>Protection : isolation de la ligne circulaire aux croisements avec conduites métalliques enterrées.</li>
+    <li>Manchon isolant dans la conduite : longueur <span class="hi">5 × Ø, mais min. 50 cm</span>.</li>
+  </ul>
+</div>
+
+<div class="card"><span class="badge br">Examen</span><h3>Contrôle et mesure de l'électrode</h3>
+  <ul>
+    <li>Objectifs : vérifier la liaison entre points de raccordement + la <span class="hi">résistance de passage à la terre</span>. À faire en fin de travaux, en <span class="hi">débranchant tous les éléments connectés</span> (descentes paratonnerre, etc.).</li>
+    <li>Mesure de continuité selon chap. 6 NIBT ; paratonnerre → protocole de mesure exigé par l'autorité.</li>
+    <li>Mesure d'impédance de terre généralement non exigée, sauf : <span class="hi">zones à danger d'explosion</span>, pieux non reliés, électrode enterrée en acier galvanisé.</li>
+    <li>Méthodes : telluromètre (3 ou 4 fils), injection de courant, courant de court-circuit : <span class="hi">ZE ≈ Zi② − 0,5·Zi①</span>.</li>
+    <li>Entonnoir de tension : potentiel max = <span class="hi">tension de terre U_E</span> ; différence entre 2 points à 1 m = <span class="hi">tension de pas U_S</span>.</li>
+  </ul>
+  <div class="info">Zone d'influence : distance <span class="hi">min. 20 m</span> entre l'électrode, la sonde (S) et la terre auxiliaire (H) — davantage pour une électrode de très grande surface.</div>
+</div>
+
+<p class="stit">🚨 EPE — éclairage &amp; alimentation de sécurité</p>
+
+<div class="card"><span class="badge bb">Signalisation</span><h3>Voies d'évacuation &amp; pictogrammes</h3>
+  <ul>
+    <li>Signaux immédiatement reconnaissables, placés aux <span class="hi">changements de direction</span>, uniformes dans le bâtiment (ISO 16069, ISO 7010).</li>
+    <li>3 types : phosphorescents, éclairés de l'extérieur, rétroéclairés.</li>
+    <li>Luminance : <span class="hi">≥ 0,15 cd/m²</span> (phosphorescent), <span class="hi">≥ 2 cd/m²</span> (rétroéclairé) ; éclairé de l'extérieur : min. 5 lux vertical sur le signal.</li>
+    <li>Hauteur h selon distance d : phospho <span class="hi">h = d/65</span>, éclairé ext. h = d/100, rétroéclairé h = d/200 ; jamais <span class="hi">&lt; 150 mm</span>.</li>
+    <li>Locaux &gt; 300 personnes : signaux éclairés en permanence ; blocs autonomes durée min. 60 min.</li>
+  </ul>
+</div>
+
+<div class="card"><span class="badge bg">Principes</span><h3>Éclairage de sécurité — enclenchement</h3>
+  <ul>
+    <li>S'enclenche dès une panne (<span class="hi">U &lt; 60 % de Un pendant ≥ 0,5 s</span>), en <span class="hi">max. 0,5 s</span>.</li>
+    <li>Délivre <span class="hi">50 % dans les 5 s, 100 % dans les 60 s</span> ; 100 % dans les 0,5 s pour les emplacements de travaux dangereux.</li>
+    <li>Ne doit <span class="hi">pas être influencé par l'interrupteur principal</span> ; sélectivité (un court-circuit ne touche pas les autres groupes).</li>
+    <li>Circuit terminal : <span class="hi">max. 20 luminaires</span>, charge <span class="hi">≤ 60 % de In</span> du coupe-surintensité.</li>
+    <li>Zones indépendantes : en principe 1 groupe par compartiment coupe-feu (conseillé zones ≤ 1200 m²).</li>
+  </ul>
+</div>
+
+<div class="card"><span class="badge br">Examen</span><h3>Éclairements minimaux (SN EN 1838)</h3>
+  <ul>
+    <li>Durée min. de service <span class="hi">60 min</span> ; durée de maintien de fonction = celle du compartimentage, mais <span class="hi">min. 30 min</span>.</li>
+    <li>Facteur de diversité <span class="hi">Ud min. 1 : 40</span> (éviter l'éblouissement par contraste).</li>
+  </ul>
+  <table>
+    <tr><th>Zone</th><th>Éclairement min.</th></tr>
+    <tr><td>Voies d'évacuation</td><td>1 lx</td></tr>
+    <tr><td>Travaux dangereux</td><td>10 % mais min. 15 lx</td></tr>
+    <tr><td>Postes de premiers secours</td><td>5 lx</td></tr>
+    <tr><td>Ambiance (anti-panique)</td><td>0,5 lx</td></tr>
+  </table>
+</div>
+
+<div class="card"><span class="badge ba">Attention</span><h3>Alimentation de sécurité — sources &amp; emplacement</h3>
+  <ul>
+    <li>Sources : batteries (blocs autonomes ou système centralisé), groupe électrogène, ligne d'alimentation supplémentaire — cette dernière <span class="hi">interdite pour l'éclairage de sécurité</span>.</li>
+    <li>Local à faible risque d'incendie, résistance <span class="hi">min. EI 30</span> (portes EI 30) ; accès réservé aux personnes <span class="hi">BA4 / BA5</span> ; en sous-sol min. EI 60.</li>
+    <li>Batteries : local ventilé <span class="hi">par le haut</span> (hydrogène explosif).</li>
+  </ul>
+  <div class="warn">⚠️ GPI 2009-15 : la source pour les systèmes « Sécurité des personnes » (éclairage / évacuation) <span class="hi">ne doit pas être dans le même compartiment coupe-feu</span> que la distribution basse tension.</div>
+</div>
+
+<div class="card"><span class="badge bg">Réseau</span><h3>Distribution &amp; maintien de fonction</h3>
+  <ul>
+    <li>Circuits de sécurité <span class="hi">indépendants</span> des autres circuits.</li>
+    <li>Sécurité des personnes : maintien de fonction garanti <span class="hi">jusqu'à la 1ère lampe ou le 1er organe de serrage</span> du compartiment coupe-feu.</li>
+    <li>Câble à maintien de fonction désigné <span class="hi">« FE180 – E30/60 »</span> (pose selon fabricant) ; décharges de traction résistantes au feu tous les max. 3,5 m.</li>
+  </ul>
+  <div class="warn">⚠️ Interdit (NIBT) : protéger un circuit de sécurité par un <span class="hi">DDR ou un AFDD</span> ; traverser des emplacements explosibles (BE3).</div>
+</div>
+
+<div class="card"><span class="badge bo">Entretien</span><h3>Contrôle, registre &amp; attestation</h3>
+  <ul>
+    <li>Registre de sécurité (livret de contrôle) conservé dans les locaux ; état de la source affiché, défaut signalé à un endroit visible.</li>
+    <li>Éclairage de sécurité : contrôle <span class="hi">min. 2× / an</span> (1× / an si indicateur d'état de fonctionnement).</li>
+    <li>Groupes électrogènes : <span class="hi">tous les mois</span> ; batteries d'accumulateurs : <span class="hi">1× / an</span>.</li>
+    <li>Contrôle final : « Attestation d'installation » / Déclaration de conformité remise au propriétaire par un organe de contrôle autorisé (<span class="hi">OIBT art. 27</span>).</li>
+  </ul>
+</div>
+</div>
+
+<div id="ms_secu_travail" class="sub">
+<p class="stit">🦺 Sécurité au travail</p>
+
+<div class="card"><span class="badge bb">Bases légales</span><h3>Pyramide législative &amp; obligations</h3>
+<ul>
+<li>Hiérarchie du droit : <b>Constitution fédérale</b> → <b>Lois</b> (Parlement) → <b>Ordonnances</b> (exécutif) → directives / normes / feuillets.</li>
+<li><b>LAA art. 82</b> &amp; <b>LTr art. 6</b> (+ <b>CO art. 328</b>) : l'employeur prend toutes les mesures « dont l'expérience a démontré la nécessité, que l'état de la technique permet d'appliquer et qui sont adaptées aux conditions données ».</li>
+<li>Ordonnances clés : <b>OPA</b> (prévention des accidents), <b>OLT 1 à 5</b>, <b>OLAA</b>, <b>OIBT</b>, <b>OTConst</b>.</li>
+<li>Le travailleur doit seconder l'employeur, utiliser les EPI, ne pas désactiver les dispositifs de sécurité, signaler les défauts.</li>
+</ul>
+<div class="info"><b>CFST</b> = Commission fédérale de coordination pour la sécurité au travail. <b>Directive MSST 6508</b> : appel obligatoire à des spécialistes (MSST) selon la taille de l'entreprise et la présence de dangers particuliers (seuils 10 / 50 employés). Solution de branche : <b>BATISEC©</b> (technique du bâtiment) avec personne de contact PERCO.</div>
+</div>
+
+<div class="card"><span class="badge br">Point critique examen</span><h3>OTConst (832.311.141)</h3>
+<ul>
+<li>Ordonnance sur la sécurité et la protection de la santé dans les <b>travaux de construction</b> : réalisation, rénovation, transformation, entretien, contrôle, déconstruction, démolition (toits, échafaudages, fouilles, etc.).</li>
+<li><b>Art. 3</b> planification des travaux (risque le + faible possible, identification amiante/PCB) · <b>Art. 4</b> plan de sécurité écrit avant le début (incl. premiers secours) · <b>Art. 5</b> désigner sur chaque chantier une personne compétente.</li>
+<li><b>Art. 6</b> casque obligatoire · <b>Art. 20/21</b> échelles · <b>Art. 65</b> échafaudages roulants.</li>
+</ul>
+<div class="fm">La <b>direction des travaux</b> (norme SIA 118, art. 34.3 / 104) coordonne la sécurité entre entrepreneurs et peut être poursuivie (art. 229 CP — violation des règles de l'art de construire). L'employeur peut <b>déléguer mais reste responsable</b> (choix, formation, instructions, surveillance).</div>
+</div>
+
+<div class="card"><span class="badge bg">Gestion des risques</span><h3>Déroulement de l'accident &amp; phénomènes dangereux</h3>
+<ul>
+<li>Chaîne de l'accident : <b>phénomène dangereux</b> → personne en <b>situation dangereuse</b> → <b>événement dangereux</b> (facteur déclencheur) → <b>dommage</b>.</li>
+<li>Dommage uniquement si les <b>3 conditions</b> réunies : exposition + événement déclencheur + aucune possibilité d'évitement (ex. du « pot de fleurs »).</li>
+<li><span class="hi">13 phénomènes dangereux standardisés</span> (mécaniques, chute, électriques, substances nocives, inflammables/explosives, thermiques, physiques, environnement, appareil locomoteur, psychiques, actions inattendues, défaillance énergie, organisation).</li>
+<li>Risque = <b>probabilité × gravité</b> → positionné dans une <b>matrice de risques</b>.</li>
+</ul>
+<div class="info">Règle d'or : <b>« réfléchir avant d'agir »</b>. Au quotidien, observer en permanence les risques <b>au-dessus / au-dessous / autour</b> de soi — et ceux que l'on génère pour les autres. ~257 000 accidents professionnels/an en Suisse ; coûts indirects 2 à 5× les coûts directs (modèle de l'iceberg).</div>
+</div>
+
+<div class="card"><span class="badge ba">EPI</span><h3>Équipements de protection individuelle</h3>
+<ul>
+<li>Les EPI ne s'utilisent que si le risque ne peut être supprimé par substitution, protection collective ou organisation. <b>3 catégories</b> : I (risques mineurs) · II · III (dangers mortels / irréversibles : chutes, chimie, électricité, voies respiratoires).</li>
+<li><b>Tête</b> : casque EN 397 (obligatoire sur chantiers depuis 2000) — la casquette anti-heurt EN 812 est <span class="hi">interdite sur chantier</span>.</li>
+<li><b>Ouïe</b> : obligatoire dès <span class="hi">LEX 85 dB(A)</span>. <b>Pieds</b> : chaussures <span class="hi">S3</span> (EN ISO 20345, embout 200 J, semelle anti-perforation).</li>
+<li><b>Voies respiratoires</b> : FFP1 (4× VME) · FFP2 (10× VME) · FFP3 (30× VME, poussières cancérigènes/quartz).</li>
+</ul>
+<div class="fm">Zones du corps les + touchées (classe 55D électriciens) : <b>mains/doigts 30 %</b>, <b>yeux 20 %</b>, chevilles/pieds 13 %. Gants interdits sur machines à pièces en rotation (perceuses, tours).</div>
+</div>
+
+<div class="card"><span class="badge bp">Protection contre les chutes</span><h3>Travail en hauteur — EPI antichute</h3>
+<ul>
+<li>EPI antichute obligatoire en l'absence de protection collective dès une hauteur de chute &gt; <span class="hi">3 m</span> (dès 2 m pour sécuriser une zone à risque).</li>
+<li>4 systèmes : <b>retenue</b> (empêche d'atteindre le vide) · <b>arrêt des chutes</b> · <b>maintien au poste</b> (en tension) · <b>accès sur corde</b> (corde de travail + corde de sécurité).</li>
+<li><b>Règle de 3</b> : vérifier les 3 éléments vitaux. <b>Partner Check</b> avant chaque utilisation (harnais, casque, longes, connecteurs, plan de secours).</li>
+</ul>
+<div class="warn">⚠️ Calcul du tirant d'air : longe (A) + déchirement absorbeur (B) + distance attache-pieds (C = 1,5 m) + marge norme (D = 1 m). Ex. longe 2 m + absorbeur 1,5 m → surface de travail à plus de <b>6 m</b>. Point d'ancrage au-dessus de la tête, résistant à <b>10 kN (1000 kg)</b> / EN 795.</div>
+</div>
+
+<div class="card"><span class="badge bo">Travaux en hauteur — Échelles</span><h3>Échelles (OTConst art. 20 &amp; 21)</h3>
+<ul>
+<li>Toujours vérifier d'abord s'il n'existe pas un équipement <b>plus sûr</b> (échafaudage roulant, PEMP, échelle à plateforme).</li>
+<li><b>Échelle simple</b> = moyen d'<span class="hi">accès</span> (éviter d'y travailler) · <b>échelle double</b> = <span class="hi">poste de travail</span>, jamais moyen d'accès (risque de basculement).</li>
+<li>Pose : angle ≈ <b>70°</b> (test du coude), sol résistant, assurée contre le glissement ; doit <b>dépasser de 1 m</b> le point d'appui ; 3 derniers échelons (simple) / 2 derniers (double) interdits.</li>
+<li>Travaux à partir d'échelle : seulement si rien de plus sûr, <b>courte durée</b>, travaux légers ; dès <span class="hi">&gt; 2 m</span> → mesures contre les chutes.</li>
+</ul>
+<div class="info">Escabeau : poste de travail ≤ 1 m (EN 14183, dispositif de retenue dès 0,75 m). À proximité d'installations électriques : seules des échelles <b>non conductrices</b> (bois, plastique). Monter : regard vers l'échelle, 2 mains aux échelons, chaussures antidérapantes.</div>
+</div>
+
+<div class="card"><span class="badge bg">Travaux en hauteur — Échafaudages</span><h3>Roulants &amp; de façade</h3>
+<ul>
+<li><b>Roulant (OTConst art. 65)</b> : contrôler stabilité avant usage, <span class="hi">roues bloquées</span>, personne à bord pendant le déplacement, ne pas dépasser la hauteur max (en général <b>8 m extérieur / 12 m intérieur</b>). Accès par l'intérieur, jamais par le côté.</li>
+<li><b>De façade</b> : obligatoire dès une hauteur de chute &gt; <span class="hi">3 m</span> ; garde-corps dépassant d'au moins <b>80 cm</b> le bord à risque (100 cm si &lt; 60 cm du bord).</li>
+<li>Distance façade ≤ <span class="hi">30 cm</span> ; fondation résistante ; accès à max 25 m de chaque poste (échelles interdites comme accès extérieur).</li>
+<li>Ancrages en quinconce : max 25 m²/ancrage (20 m² avec filet, 10 m² avec bâche). Protection latérale en 3 parties dès 2 m (plinthe, garde-corps, lisse intermédiaire).</li>
+</ul>
+<div class="warn">⚠️ L'échafaudage doit être <b>contrôlé chaque jour avant utilisation</b> : charge admissible, emplacement, hauteur, stabilité, platelages et protections latérales complets.</div>
+</div>
+
+<div class="card"><span class="badge br">Point critique examen</span><h3>Électricité — 5 + 5 règles vitales</h3>
+<ul>
+<li><b>3 méthodes de travail</b> (ESTI 407) : <b>hors tension</b> (la + sûre) · à <b>proximité</b> d'éléments sous tension (zone de voisinage) · <b>sous tension</b> (Tst, formation + matériel spécifiques).</li>
+<li>Le travail doit par principe se dérouler <span class="hi">hors tension</span> ; le travail sous tension est interdit sauf exception justifiée par écrit et accord hiérarchique.</li>
+</ul>
+<div class="fm"><b>Les 5 règles de sécurité (travaux hors tension) :</b><br>
+a. déclencher et <b>ouvrir les sectionneurs de toutes parts</b> ;<br>
+b. <b>assurer contre le réenclenchement</b> ;<br>
+c. <b>vérifier l'absence de tension</b> ;<br>
+d. <b>mettre à la terre et en court-circuit</b> (facultatif en BT si aucun retour d'alimentation) ;<br>
+e. <b>protéger</b> contre les parties voisines restées sous tension.</div>
+<div class="info"><b>+ 5 règles vitales SUVA</b> : 1) mandat précis et responsable connu · 2) personnel formé/autorisé · 3) équipements sûrs et isolés · 4) porter les EPI · 5) enclencher seulement après les contrôles prescrits (continuité PE, isolement, DDR, polarité, consignés au PV). Droit de dire <b>STOP</b> en cas de doute.</div>
+</div>
+
+<div class="card"><span class="badge bp">Approche du chantier</span><h3>Dix règles vitales pour les techniciens du bâtiment</h3>
+<ul>
+<li>1) Ne pas improviser (matériel adapté).</li>
+<li>2) Sécuriser les zones dangereuses dès <span class="hi">2 m</span> de hauteur.</li>
+<li>3) Utiliser des échafaudages sûrs · 4) Les contrôler chaque jour.</li>
+<li>5) Sécuriser les ouvertures dans les sols et toitures · 6) dans les parois.</li>
+<li>7) Utiliser correctement les échelles.</li>
+<li>8) Utiliser des prises avec <b>DDR (FI)</b> — sinon DDR mobile.</li>
+<li>9) Se protéger contre les fibres d'<b>amiante</b> (ouvrages avant 1990).</li>
+<li>10) Porter les équipements de protection.</li>
+</ul>
+<div class="warn">⚠️ La branche de la technique du bâtiment enregistre <b>7 accidents professionnels mortels par an</b>. Chaque règle a un volet « travailleur » et un volet « supérieur » ; le droit de dire STOP est fondamental.</div>
+</div>
+</div>
+
+<div id="ms_norme61439" class="sub">
+<p class="stit">🗄️ Norme EN 61439 — ensembles d'appareillage BT</p>
+
+<div class="card"><span class="badge bb">Structure</span><h3>La série EN 61439 et son domaine</h3>
+  <ul>
+    <li>La CEI 61439 a remplacé définitivement la 60439 le <span class="hi">1er novembre 2014</span>. Édition suisse : <span class="hi">SN EN 61439-1</span> (Electrosuisse).</li>
+    <li><span class="hi">Partie 1</span> = règles générales uniquement (il faut aussi la partie propre à l'EA concerné). Domaine : <span class="hi">≤ 1000 V AC ou 1500 V DC</span>.</li>
+    <li>Parties : -2 ensembles de puissance (EAP) · <span class="hi">-3 tableaux DBO</span> · -4 chantier · -5 réseaux de distribution publics · -6 canalisations (busways) · -7 campings / bornes de recharge.</li>
+  </ul>
+  <table>
+    <tr><th>Caractéristique</th><th>SN EN 61439-3</th><th>SNR 461439</th></tr>
+    <tr><td>Tension / terre</td><td>≤ 300 V</td><td>≤ 300 V</td></tr>
+    <tr><td>Courant assigné</td><td>≤ 250 A</td><td>≤ 125 A</td></tr>
+    <tr><td>Courant circuits de départ</td><td>≤ 125 A</td><td>≤ 63 A</td></tr>
+  </table>
+</div>
+
+<div class="card"><span class="badge br">Examen</span><h3>Conception (C10) vs individuelle de série (S11)</h3>
+  <ul>
+    <li><span class="hi">Vérification de conception (C10)</span> : à la charge du <span class="hi">constructeur d'origine</span>, sur un seul échantillon. 3 approches équivalentes : par <span class="hi">essais</span>, par <span class="hi">comparaison</span> avec une référence éprouvée, par les <span class="hi">règles de conception</span> (calculs + marges).</li>
+    <li><span class="hi">Vérification individuelle de série (S11)</span> : à la charge du <span class="hi">fabricant de tableaux</span>, sur <span class="hi">chaque ensemble</span> pendant / après fabrication (essai, contrôle par sondage, contrôle visuel, mesure physique).</li>
+    <li>Réparations / extensions / modifications : protocole de vérification spécifique. Les travaux simples d'entretien ne modifiant pas les propriétés ne nécessitent pas une nouvelle évaluation de conformité, mais doivent être <span class="hi">contrôlés et documentés</span>.</li>
+  </ul>
+</div>
+
+<div class="card"><span class="badge bg">Documentation</span><h3>Documents exigés &amp; plaquette signalétique</h3>
+  <ul>
+    <li>Documents : <span class="hi">déclaration de conformité</span>, plaquette signalétique, protocole de vérification de conception (sur demande), protocole de vérification individuelle de série, <span class="hi">marquage CE</span>, rapport d'essai CEM (si nécessaire).</li>
+    <li>Déclaration de conformité : directives applicables (Basse tension <span class="hi">2014/35/UE</span>, Machine 2006/42/CE, CEM 2014/30/UE), normes utilisées, nom du fournisseur.</li>
+    <li>Plaquette signalétique : constructeur, n° de fabrication, courant &amp; nature (AC/DC), tension assignée, <span class="hi">tenue aux courts-circuits (Icp + Ipk)</span>, degré IP, régime du neutre.</li>
+  </ul>
+  <div class="info">Un DBO exige aussi une vérification de conception, une vérification individuelle de série et une déclaration de conformité — documents <span class="hi">exigibles par l'ESTI</span>.</div>
+</div>
+
+<div class="card"><span class="badge bb">Protection</span><h3>Degré IP / IK &amp; chocs électriques (C10.3 / C10.5)</h3>
+  <ul>
+    <li>IP : 1er chiffre = corps solides, 2e = eau, lettre additionnelle = accès aux parties dangereuses (<span class="hi">IP2X = épreuve du doigt</span>). Une ouverture ajoutée ne doit pas dégrader l'IP annoncé.</li>
+    <li>Code <span class="hi">IK</span> = tenue aux chocs mécaniques. DBO : IK05 (intérieur), IK07 (extérieur) ; enveloppe <span class="hi">IP2XC</span>.</li>
+    <li>Continuité du circuit de terre : essai <span class="hi">I = 10 A</span> (AC ou DC), <span class="hi">R max 0,1 Ω</span> entre masse et circuit de protection.</li>
+    <li>Retrait d'un appareil sous tension ou démontage d'une partie : <span class="hi">ne doit pas interrompre</span> le circuit de protection ; pas de dispositif de sectionnement sur le PE.</li>
+  </ul>
+</div>
+
+<div class="card"><span class="badge ba">Attention</span><h3>Formes de cloisonnement (séparation interne)</h3>
+  <ul>
+    <li><span class="hi">Forme 1</span> : pas de séparation interne.</li>
+    <li><span class="hi">Forme 2</span> : séparation entre jeux de barres et unités fonctionnelles (2a bornes non séparées, 2b bornes séparées).</li>
+    <li><span class="hi">Forme 3</span> : unités fonctionnelles séparées entre elles et du jeu de barres (3a / 3b selon bornes).</li>
+    <li><span class="hi">Forme 4</span> : + séparation des bornes de chaque unité fonctionnelle (4a bornes dans le même compartiment, 4b dans un compartiment séparé).</li>
+  </ul>
+  <div class="info">En Suisse, on retient généralement la <span class="hi">Forme 2b</span>.</div>
+</div>
+
+<div class="card"><span class="badge br">Examen</span><h3>Sélectivité &amp; filiation (C10.6)</h3>
+  <ul>
+    <li>Sélectivité : seul le disjoncteur <span class="hi">immédiatement en amont</span> du défaut déclenche. Types : <span class="hi">ampèremétrique</span>, <span class="hi">chronométrique</span>, <span class="hi">énergétique</span> ; sélectivité <span class="hi">totale</span> = les 3 remplies (rapport 2 à 2,5 entre calibres).</li>
+    <li>Filiation (back-up / cascading) : un disjoncteur <span class="hi">limiteur amont « augmente » le pouvoir de coupure</span> du disjoncteur aval → coûts réduits.</li>
+    <li>Règle : amont du type limiteur avec <span class="hi">Icu &gt; Icc</span> présumé ; aval optimisé (<span class="hi">Icu &lt; Icc mais Icu soutenu &gt; Icc</span>).</li>
+    <li>Composants incorporés : vérifier certification (CE), pouvoirs de coupure, hauteurs d'installation, accessibilité, identification.</li>
+  </ul>
+</div>
+
+<div class="card"><span class="badge bo">Essais</span><h3>Propriétés diélectriques (C10.9)</h3>
+  <ul>
+    <li>Reposent sur les distances d'isolement et lignes de fuite (point 10.4), confirmées par un <span class="hi">essai diélectrique à fréquence industrielle</span> + un essai de tenue aux chocs (ou vérification de conception).</li>
+    <li>Essai AC : <span class="hi">45–65 Hz</span>, U_essai à 50 % puis 100 % pendant <span class="hi">5 secondes</span> ; transfo HT (I sortie min. 200 mA, relais réglé à 100 mA).</li>
+    <li>Validé si <span class="hi">pas de perforation ni de contournement</span>, et si le relais n'a pas déclenché.</li>
+    <li>EA ≤ 250 A : l'essai à fréquence industrielle peut être remplacé par un essai d'isolement à <span class="hi">500 V DC (min. 1 MΩ)</span>.</li>
+  </ul>
+</div>
+
+<div class="card"><span class="badge br">Examen</span><h3>Vérification de l'échauffement (C10.10)</h3>
+  <ul>
+    <li>Réalisation : par <span class="hi">essais</span>, par <span class="hi">comparaison</span> (même type, EA ≥, refroidissement ≥, puissance dissipée ≤) ou par <span class="hi">calcul jusqu'à In 1600 A</span> (CEI 60890).</li>
+    <li>Conditions normales : température ambiante moyenne <span class="hi">35 °C, max. 40 °C</span> ; altitude jusqu'à 2000 m.</li>
+    <li>Limites d'échauffement : bornes conducteurs externes isolés <span class="hi">70 °C</span> ; organe de commande 15 °C (métal) / 25 °C (isolant) ; enveloppe extérieure 30 °C (métal) / 40 °C (isolant).</li>
+  </ul>
+</div>
+
+<div class="card"><span class="badge ba">Attention</span><h3>Tenue aux courts-circuits &amp; sectionnement PEN/PE/N</h3>
+  <ul>
+    <li>Tenue aux courts-circuits (C10.11) : contraintes électrodynamiques sur les barres ; simulations constructeur puis essais en conditions réelles.</li>
+    <li>DBO : au moins <span class="hi">catégorie de surtension III, Icc max 10 kA</span>.</li>
+    <li>Sectionneur dans le PEN : <span class="hi">uniquement au coupe-surintensité général</span>. Sectionneur de neutre : au coupe-surintensité général, chez l'abonné, ou au point de séparation PEN → N + PE (TN-C-S).</li>
+    <li>Isolation de la barre PEN dans un EA <span class="hi">non impérative</span> (courants vagabonds / risque incendie absents dans l'EA, CEI 61439-1 §8.4.3.2.3).</li>
+  </ul>
 </div>
 </div>
 </div>
@@ -4895,7 +5339,72 @@ mark.bpel-hit{background:#fde68a;color:inherit;padding:0 2px;border-radius:2px}
         <li>Remise au propriétaire &amp; à l'Exploitant de Réseau</li>
       </ol>
     </div>
-  </div></div>
+  </div>
+<!-- M4X -->cm4-c4
+<div class="info" style="margin-top:.6rem">📚 Complément extrait du cours :</div>
+<div class="card"><span class="badge bb">Acteurs OIBT</span><h3>Qui fait quoi dans les procédures</h3>
+  <ul>
+    <li><span class="hi">ESTI</span> — autorité de surveillance et de contrôle (basse tension) ; octroie/révoque les autorisations d'installer et de contrôler, tient le registre public, et tranche en cas de litige. C'est aussi un organisme de contrôle accrédité.</li>
+    <li><span class="hi">Exploitant de réseau (GRD)</span> — veille au dépôt des RS, les vérifie sporadiquement, les conserve jusqu'au prochain contrôle périodique, tient le registre des installations qu'il alimente, dénonce les manquements à l'ESTI.</li>
+    <li><span class="hi">Organe de contrôle indépendant</span> — effectue les contrôles de réception et périodiques (sauf installations spéciales) ; peut faire les contrôles finaux pour les installateurs.</li>
+    <li><span class="hi">Organisme accrédité</span> — contrôles nécessitant une accréditation (installations spéciales, annexe 1 OIBT) ; suivi technique des autorisations limitées.</li>
+    <li><span class="hi">Installateur (personne du métier)</span> — établit les avis d'installation, effectue les contrôles finaux et les RS finaux.</li>
+    <li><span class="hi">Client / propriétaire</span> — responsable de son installation ; fait faire les contrôles demandés et conserve les RS.</li>
+    <li>Aussi : <span class="hi">SAS</span> (certifie/audite les organismes accrédités) et <span class="hi">OFEN</span> (poursuite et jugement des infractions).</li>
+  </ul>
+</div>
+
+<div class="card"><span class="badge bg">Avis d'installation (AI)</span><h3>Avant le début des travaux</h3>
+  <ul>
+    <li>Établi par l'installateur et transmis <span class="hi">au GRD avant le début des travaux</span> ; le GRD le retourne à l'installateur (accordé / accordé sous réserve / incomplet).</li>
+    <li>Requis <span class="hi">si &gt; 3,7 kVA au CSG</span> (coffret de sorties du groupe / raccordement).</li>
+    <li>Installations <span class="hi">&gt; 30 kVA AC</span> → en plus, demande d'approbation des plans à l'ESTI.</li>
+    <li>Contenu type : consommateurs / producteurs / accumulateurs, puissances prélevée et fournie au réseau [kVA], capacité de stockage [kWh], raccordement, équipements de mesure, schéma et plan de situation.</li>
+  </ul>
+  <div class="info">Première vérification : au moment de la mise en service / pendant la construction, par l'installateur CFC ou l'électricien de montage ; procès-verbal remis au client s'il n'y a pas d'AI.</div>
+</div>
+
+<div class="card"><span class="badge bp">Rapport de sécurité (RS)</span><h3>Le document de preuve de conformité</h3>
+  <ul>
+    <li><span class="hi">Un RS par installation / compteur</span>, selon l'OIBT (RS 734.27).</li>
+    <li>Les soussignés attestent que les installations ont été contrôlées <span class="hi">selon l'OIBT (art. 3 et 4)</span> et les normes en vigueur.</li>
+    <li>Distribution : RS + annexes <span class="hi">au propriétaire / gérance</span> ; RS <span class="hi">à l'exploitant de réseau / ESTI</span>.</li>
+    <li>Conservé par le propriétaire <span class="hi">jusqu'au prochain contrôle (périodique)</span>.</li>
+    <li>Accompagné du <span class="hi">protocole d'essais-mesures</span> (type, caract., IN, ICC début/fin, RISO, Ifuite) — protocole PV spécifique pour le photovoltaïque.</li>
+  </ul>
+  <div class="warn">⚠️ Négliger les contrôles prescrits, les exécuter de façon gravement incorrecte ou remettre une installation défectueuse est <span class="hi">punissable (art. 42 let. c OIBT)</span>.</div>
+</div>
+
+<div class="card"><span class="badge ba">Réception &amp; contrôle final</span><h3>À la fin des travaux</h3>
+  <ul>
+    <li><span class="hi">Contrôle final</span> — avant la remise au propriétaire, par une personne du métier ou autorisée à contrôler ; RS + protocole de mesure remis au client et au GRD. Requis <span class="hi">si &gt; 3,7 kVA</span>.</li>
+    <li><span class="hi">Contrôle de réception</span> — par un organe de contrôle indépendant (ou organisme accrédité pour les installations spéciales), indépendant de l'installateur.</li>
+    <li>Délai : <span class="hi">dans les 6 mois</span> à compter de la réception ; <span class="hi">2 mois pour les autoproducteurs</span>.</li>
+    <li>Requis si la périodicité est <span class="hi">&lt; 20 ans</span> ou pour une installation autoproductrice.</li>
+    <li>RS + protocole remis au client et au GRD. Un contrôle sporadique du GRD reste possible.</li>
+  </ul>
+</div>
+
+<div class="card"><span class="badge bo">Contrôle périodique (CP)</span><h3>Au terme de la période de contrôle</h3>
+  <ul>
+    <li>Demande de contrôle <span class="hi">6 mois avant l'échéance</span> de la périodicité : par le GRD au client (ou par l'ESTI pour les contrôles accrédités).</li>
+    <li>Éventuels <span class="hi">rappels 1 et 2</span> au client (délai 3 à 6 mois supplémentaire, max 1 an en tout), puis dénonciation à l'ESTI.</li>
+    <li>Exécuté par un organe de contrôle indépendant, un organisme accrédité ou une personne du métier.</li>
+    <li>Remise des documents (RS + protocole de mesures) au client et au GRD — au client et à l'ESTI pour les contrôles accrédités.</li>
+  </ul>
+</div>
+
+<div class="card"><span class="badge br">Délais ESTI — dérogation art. 36</span><h3>Dérogation ESTI du 15 décembre 2023</h3>
+  <ul>
+    <li>Base : art. 36 al. 1 OIBT — <span class="hi">6 mois au moins avant l'expiration</span> de la période de contrôle, le GRD invite par écrit le propriétaire à présenter un RS.</li>
+    <li>Prolongation ordinaire (art. 36 al. 3) : 1 an au plus → <span class="hi">doublée à 2 ans au plus</span> par la dérogation, après l'expiration de la période fixée.</li>
+    <li>Si le RS n'est pas présenté <span class="hi">malgré deux rappels</span>, le GRD confie l'exécution du CP à l'ESTI (ESTI chargée seulement si le propriétaire refuse).</li>
+    <li>Le transfert à l'ESTI se fait <span class="hi">dans tous les cas par voie électronique</span>, sur la plateforme prévue.</li>
+    <li>Dérogation <span class="hi">valable 6 ans</span> (durée prolongeable).</li>
+  </ul>
+  <div class="info">Le propriétaire reste seul responsable du bon état et de l'élimination immédiate des défauts (art. 5 al. 3 OIBT).</div>
+</div>
+</div>
 <div id="cm4-c5" class="cm4-panel"><div class="info" style="display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin:.2rem 0 .8rem"><span>Catalogue dédié des défauts :</span><button class="jbtn" style="margin:0;font-size:11.5px;padding:6px 13px" onclick="GO('defauts_mod')">🔍 Défauts réels — fiche complète →</button></div><div class="cm4-sec">
     <div class="cm4-sec-head" onclick="toggleCM4Sec(this)">📸 Corrigé photos de défauts (125 photos) <span>▼</span></div>
     <div class="cm4-sec-body">
@@ -5457,7 +5966,80 @@ mark.bpel-hit{background:#fde68a;color:inherit;padding:0 2px;border-radius:2px}
         <tr><td>Liaison équipotentielle complémentaire vers élément étranger</td><td>≥ 0,5 × section PE · min. 2,5mm² avec protection · min. 4mm² sans</td></tr>
       </table>
     </div>
-  </div></div>
+  </div>
+<!-- M4X -->cm4-c6
+<div class="info" style="margin-top:.6rem">📚 Complément extrait du cours :</div>
+<div class="card"><span class="badge bb">Contrôle OIBT — partie AC</span><h3>Vérifications NIBT chapitre 6</h3>
+  <ul>
+    <li>Examen visuel</li>
+    <li>Continuités</li>
+    <li>Résistance d'isolement</li>
+    <li>Protection par coupure automatique de l'alimentation</li>
+    <li>Vérification des protections complémentaires <span class="hi">(DDR)</span></li>
+    <li>Champ tournant</li>
+    <li>Essais fonctionnels (dispositifs de verrouillage, etc.)</li>
+    <li>Vérification de la chute de tension</li>
+    <li>Établissement d'un rapport de vérification initiale : <span class="hi">PM + liste des défauts + RS</span></li>
+  </ul>
+  <div class="info">Côté PV, la référence est la norme <span class="hi">EN 62446</span> (en vigueur en Suisse depuis 05/2009) ; voir aussi NIBT 7.12, ESTI STI 233.1104, PDIE et doc Swissolar.</div>
+</div>
+
+<div class="card"><span class="badge bg">EN 62446 — documentation</span><h3>Documentation du système à remettre</h3>
+  <ul>
+    <li><span class="hi">Art. 4.2 données de base</span> : identification du projet, puissance assignée (kW DC ou kVA AC), panneaux et onduleurs (fabricant, modèle, nombre), dates d'installation et de mise en service, client, concepteur, installateur.</li>
+    <li><span class="hi">Art. 4.3</span> schéma de câblage · <span class="hi">Art. 4.4</span> fiches techniques modules (CEI 61730-1) et onduleurs · <span class="hi">Art. 4.5</span> conception mécanique (système de montage).</li>
+    <li><span class="hi">Art. 4.6</span> fonctionnement et maintenance : vérification du fonctionnement, liste de contrôle en cas de défaillance, <span class="hi">procédure d'arrêt d'urgence / sectionnement près de l'onduleur</span>, maintenance, documentation de garantie.</li>
+  </ul>
+  <div class="info">Un porte-document A4 doit se trouver près de l'onduleur dès la mise en service ; le client reçoit le dossier technique complet à la réception.</div>
+</div>
+
+<div class="card"><span class="badge br">Mesures PV — protocole</span><h3>Vérifications EN 62446 art. 5 (point clé examen)</h3>
+  <ul>
+    <li><span class="hi">5.3.2 Continuité du conducteur de protection</span> — essai sur l'ensemble des conducteurs et la borne principale : courant de mesure <span class="hi">0,2 A</span>, valeur max <span class="hi">1 Ω</span>.</li>
+    <li><span class="hi">5.3.3/4 Examen visuel DC/AC</span> — composants DC dimensionnés pour <span class="hi">Voc et 1,25 × Isc (STC)</span>, matériel de connexion adapté au courant continu.</li>
+    <li><span class="hi">5.4.3/4 Polarité et tension à vide</span> — comparée aux valeurs prévues (détecte panneaux croisés/défectueux) ; câbles référencés par n° de chaîne et polarité.</li>
+    <li><span class="hi">5.4.5 Courant de court-circuit et de service</span> — sous éclairement stable ; courant de service à la pince ampèremétrique.</li>
+    <li><span class="hi">5.4.6 Essai de fonctionnement</span> — onduleurs selon méthode du fabricant + <span class="hi">essai de perte de réseau</span>.</li>
+  </ul>
+  <div class="warn">⚠️ 5.4.7 Isolement : l'installation ne pouvant être déconnectée la journée, <span class="hi">risque de choc électrique — porter les EPI</span>.</div>
+</div>
+
+<div class="card"><span class="badge ba">Isolement &amp; périodicité PV</span><h3>Essai de résistance d'isolement (5.4.7)</h3>
+  <table>
+    <tr><th>Tension système (U0 × 1,25)</th><th>Tension d'essai</th><th>Valeur limite</th></tr>
+    <tr><td>&lt; 120 V</td><td>250 V</td><td>0,5 MΩ</td></tr>
+    <tr><td>120 – 500 V</td><td>500 V</td><td>1 MΩ</td></tr>
+    <tr><td>&gt; 500 V</td><td>1000 V</td><td>1 MΩ</td></tr>
+  </table>
+  <ul>
+    <li>Rapport de vérification (5.5.2) : PV de l'examen, infos système, circuits inspectés, résultats par circuit, intervalle avant prochaine vérification, signature.</li>
+    <li>Vérification périodique (5.5.3) : l'installation PV est soumise à <span class="hi">la même période de contrôle que les autres installations de l'objet</span> (Bulletin AES 3/2013).</li>
+  </ul>
+</div>
+
+<div class="card"><span class="badge bo">Sécurité &amp; dimensionnement DC</span><h3>Côté continu — directive NIBT 7.12</h3>
+  <ul>
+    <li>Panneaux surisolés <span class="hi">classe d'isolation 2</span> (IEC 61215 et 61730).</li>
+    <li>Tension DC admissible <span class="hi">0 à 1500 V DC</span> (NIBT 7.12.5.1.1.1.3).</li>
+    <li>Tension max de série = nb panneaux × Uoc × <span class="hi">Tk</span> : ×1,15 jusqu'à 800 m, ×1,20 de 800 à 1500 m, ×1,25 au-delà de 1500 m (NIBT 7.12.5.1.2).</li>
+    <li>Section câbles DC <span class="hi">4 / 6 / 10 mm²</span> selon Imax, avec <span class="hi">Imax = Inom × 1,25</span> (NIBT 7.12.4.3.3).</li>
+    <li>Connecteurs DC : mêmes type et fabricant, pinces à sertir officielles ; boucles de strings à éviter (largeurs jusqu'à 2 m admises).</li>
+    <li>Conducteur d'équipotentialité du champ solaire : <span class="hi">jaune-vert, min. 10 mm²</span>, connexion anti-desserrante, tracé le plus direct vers la prise de terre.</li>
+    <li>Interrupteur DC externe <span class="hi">pas nécessaire</span> si puissance par chaîne &lt; 2 kW ET totale &lt; 6 kW, connecteurs protégés au débranchement ET onduleur muni d'un interrupteur côté DC — sinon obligatoire.</li>
+  </ul>
+</div>
+
+<div class="card"><span class="badge bp">Parafoudres, foudre &amp; batteries</span><h3>Protection et points critiques DC</h3>
+  <ul>
+    <li>Bâtiment avec paratonnerre : l'installation PV doit y être intégrée (variantes 3/4/5 NIBT 7.12.4.4.3.2).</li>
+    <li>Sans paratonnerre, parafoudres selon la longueur critique <span class="hi">Lcrit = 30 m (plateau) / 20 m (Sud, Alpes)</span> : si LDC &lt; 30 m pas obligatoires, si &gt; 30 m obligatoires côté onduleur.</li>
+    <li>Section SPF : <span class="hi">Type I ≥ 16 mm²</span>, <span class="hi">Type II ≥ 6 mm²</span> (section des fils DC) ; parafoudres accessibles entre 40 cm et 2 m, liaison à la terre &lt; 0,5 m.</li>
+    <li>Bâtiments d'importance publique : parafoudres + parasurtensions obligatoires.</li>
+    <li>Étiquetage : autocollant « Courant DC » sur toute canalisation DC <span class="hi">&gt; 120 V</span> ; autocollant « onduleur » avec la tension à vide.</li>
+    <li>Batteries Lithium : interdites dans locaux à risque d'incendie/explosion (BE2) et voies d'évacuation ; <span class="hi">DDR type B ou B+ obligatoire</span> si courants de défaut continus ≥ 6 mA DC.</li>
+  </ul>
+</div>
+</div>
 <div id="cm4-c7" class="cm4-panel"><div class="info" style="display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin:.2rem 0 .8rem"><span>Fiche Icc dédiée (max/min, 0.66 &amp; 0.75) :</span><button class="jbtn" style="margin:0;font-size:11.5px;padding:6px 13px" onclick="GO('icc_mod')">⚡ Icc détaillé — fiche complète →</button></div><!-- =========== MESURE ICC =========== -->
   <div class="cm4-sec">
     <div class="cm4-sec-head" onclick="toggleCM4Sec(this)">🧮 Calcul de I<sub>cc</sub> à la main — théorie complète <span>▼</span></div>
